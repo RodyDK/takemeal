@@ -92,7 +92,7 @@
 						</span>
 						<h2 class="recipe_title">
 							<a class="call_recipe" href="/recipes/73">
-								입이 심심할 때는 식빵 러스크
+								입이 심심할 때는  식빵 러스크
 							</a>
 						</h2>
 						<div class="option">
