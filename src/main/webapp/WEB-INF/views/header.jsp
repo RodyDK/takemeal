@@ -10,10 +10,7 @@
 		<div class="util">
 			<ul>
 				<li>
-					<a href="">회원가입</a>
-				</li>
-				<li>
-					<a href="">로그인</a>
+					<a href="#" class="btn-login">로그인</a>
 				</li>
 				<li>
 					<a href="">자주찾는질문</a>
@@ -33,7 +30,7 @@
 				<a href="./fridgeList.do">나의냉장고</a>
 			</li>
 			<li>
-				<a href="./recipeList.do">레시피</a>
+				<a href="./recipe.do">레시피</a>
 			</li>
 			<li>
 				<a href="./chefList.do">요리사</a>
@@ -45,6 +42,23 @@
 	</nav>
 </header>
 
+<script>
+$("a.btn-login").on("click", function(){
+	$("#login-sec").addClass("active");
+	var that = this;
+	$("#login-sec").removeClass("agree").removeClass("findpw-form").addClass("login-form");
+	$("html").attr("class", "right-on login");
+});
+
+function customAlert(message,url=null){
+	if(url != null || url != ''){
+		alert(message);
+		location.href=url;
+	}else{
+		alert(message);
+	}
+}
+</script>
 <%-- <header>
 
 <c:if test="${empty loginUser }">

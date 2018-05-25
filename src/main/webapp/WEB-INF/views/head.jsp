@@ -5,4 +5,5 @@
 	<meta charset="UTF-8">
 	<title>챙겨먹어요</title>
 	<link rel="stylesheet" type="text/css" href="./resources/css/style.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.10.2/jquery.js"></script>
 </head>
