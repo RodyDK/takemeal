@@ -38,6 +38,11 @@
 		<constructor-arg ref="sqlSession"></constructor-arg>
 	</bean>
 	
+	<!-- 패키지 자동인식 -->
+	<context:component-scan base-package="com.cm.takemeal">
+	
+	</context:component-scan>
+	
 	
 	
 </beans>
