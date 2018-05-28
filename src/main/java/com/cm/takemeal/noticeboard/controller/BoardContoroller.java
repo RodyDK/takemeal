@@ -25,15 +25,15 @@ public class BoardContoroller {
 	@Inject 
 	private BoardService service;
 	
-	@RequestMapping(value = "/register", method = RequestMethod.GET)
+	@RequestMapping(value = "/register.do", method = RequestMethod.GET)
 	public void registerGET(BoardVo board, Model model) throws Exception{
 		
-		logger.info("register get..............");
+		logger.info("register get...........asdasd...");
 		
 	}
 	
 	
-	@RequestMapping(value = "/register", method = RequestMethod.POST)
+	@RequestMapping(value = "/register.do", method = RequestMethod.POST)
 	public String registerPOST(BoardVo board, RedirectAttributes rttr)throws Exception{
 		
 		logger.info("register post.....");
@@ -44,43 +44,45 @@ public class BoardContoroller {
 		rttr.addAttribute("msg", "SUCCESS");
 		
 		/*return "/board/success";*/
-		return "redirect:/board/listAll";
+		return "redirect:/dj/listAll";
 	}
 		
-	@RequestMapping(value = "/listAll", method=RequestMethod.GET)
+	@RequestMapping(value = "/listAll.do", method=RequestMethod.GET)
 	public void listAll(Model model) throws Exception{
 		
 		logger.info("show all list..................");
 		model.addAttribute("list", service.listAll());
 		
+	
+		
 	}
 	
-	@RequestMapping(value ="/read", method = RequestMethod.GET)
+	@RequestMapping(value ="/read.do", method = RequestMethod.GET)
 	public void read(@RequestParam("bno")int bno, Model model)throws Exception{
-		
+		System.out.println("read.............");
 		model.addAttribute(service.read(bno));
 	}
 	
 	
-	@RequestMapping(value = "/remove", method= RequestMethod.POST)
+	@RequestMapping(value = "/remove.do", method= RequestMethod.POST)
 	public String remove(@RequestParam("bno") int bno, RedirectAttributes rttr)throws Exception{
 		
 		service.remove(bno);
 		
 		rttr.addFlashAttribute("msg", "SUCCESS");
 		
-		return "redirect:/board/listAll";
+		return "redirect:/dj/listAll";
 	}
 	
 	
-	@RequestMapping(value = "/modify", method = RequestMethod.GET)
+	@RequestMapping(value = "/modify.do", method = RequestMethod.GET)
 	public void modifyGET(int bno, Model model) throws Exception{
 		
 		model.addAttribute(service.read(bno));
 	}
 	
 	
-	@RequestMapping(value = "/modify", method = RequestMethod.POST)
+	@RequestMapping(value = "/modify.do", method = RequestMethod.POST)
 	public String modifyPOST(BoardVo board, RedirectAttributes rttr)throws Exception{
 		
 		logger.info("mod post.....");
@@ -89,7 +91,7 @@ public class BoardContoroller {
 		
 		rttr.addFlashAttribute("msg", "SUCCESS");
 		
-		return "redirect:/board/listAll";
+		return "redirect:/dj/listAll";
 	}
 	
 }
