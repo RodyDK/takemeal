@@ -60,13 +60,19 @@
 	
 	<select id="listCriteria" resultType="BoardVo">
 	<![CDATA[
-	select 
-		bno, title, content, writer, regdate, viewcnt
-		from
-		tbl_board
-		where bno > 0
-		order by bno desc, regdate desc
-		limit #{pageStart}, #{perPageNum}
+	select * from
+	(select rownum rn, bno, title, content, writer, regdate, viewcnt from
+	TBL_BOARD where bno>0 order by bno asc)
+ 	where rn >= #{pageStart} and rn <= #{perPageNum}
+		
+	]]>
+	
+	</select>
+	
+	
+	<select id="countPaging" resultType="int">
+	<![CDATA[
+		select count(bno) from tbl_board where bno > 0 
 	]]>
 	
 	</select>

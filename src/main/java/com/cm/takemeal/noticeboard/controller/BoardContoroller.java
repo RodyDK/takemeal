@@ -8,6 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -16,6 +17,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.cm.takemeal.noticeboard.model.service.BoardService;
 import com.cm.takemeal.noticeboard.model.vo.BoardVo;
 import com.cm.takemeal.noticeboard.model.vo.Criteria;
+import com.cm.takemeal.noticeboard.model.vo.PageMaker;
 
 @Controller
 @RequestMapping("/dj/*")
@@ -101,6 +103,23 @@ public class BoardContoroller {
 		logger.info("show list page with Criteria...........");
 		
 		model.addAttribute("list", service.listCriteia(cri));
+	}
+	
+	
+	@RequestMapping(value = "/listPage", method=RequestMethod.GET)
+	public void listPage(@ModelAttribute("cri")Criteria cri, Model model) throws Exception{
+		
+		logger.info(cri.toString());
+		
+		model.addAttribute("list", service.listCriteia(cri));
+		
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setCri(cri);
+		/*pageMaker.setTotalCount(131);*/
+		pageMaker.setTotalCount(service.listCountCriteria(cri));
+		
+		
+		model.addAttribute("pageMaker", pageMaker);
 	}
 	
 	
