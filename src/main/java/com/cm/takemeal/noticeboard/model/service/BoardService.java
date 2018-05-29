@@ -3,6 +3,7 @@ package com.cm.takemeal.noticeboard.model.service;
 import java.util.List;
 
 import com.cm.takemeal.noticeboard.model.vo.BoardVo;
+import com.cm.takemeal.noticeboard.model.vo.Criteria;
 
 public interface BoardService {
 	
@@ -15,6 +16,8 @@ public interface BoardService {
 	public void remove(Integer bno) throws Exception;
 	
 	public List<BoardVo> listAll() throws Exception;
+	
+	public List<BoardVo> listCriteia(Criteria cri)throws Exception;
 	
 
 }

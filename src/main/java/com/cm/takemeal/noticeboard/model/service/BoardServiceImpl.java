@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.cm.takemeal.noticeboard.model.dao.BoardDao;
 import com.cm.takemeal.noticeboard.model.vo.BoardVo;
+import com.cm.takemeal.noticeboard.model.vo.Criteria;
 
 @Service
 public class BoardServiceImpl implements BoardService{
@@ -46,6 +47,13 @@ public class BoardServiceImpl implements BoardService{
 		// TODO Auto-generated method stub
 		return dao.listAll();
 	}
+
+	@Override
+	public List<BoardVo> listCriteia(Criteria cri) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.listCriteria(cri);
+	}
+	
 	
 
 }

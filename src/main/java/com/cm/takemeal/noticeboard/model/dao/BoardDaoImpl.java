@@ -50,6 +50,27 @@ public class BoardDaoImpl implements BoardDao{
 			// TODO Auto-generated method stub
 			return session.selectList(namespace+".listAll");
 		}
+
+		@Override
+		public List<BoardVo> listPage(int page) throws Exception {
+			// TODO Auto-generated method stub
+			
+			if(page <=0 ) {
+				page = 1;
+			}
+			
+			page = (page - 1) * 10;
+			
+			
+			return session.selectList(namespace + ".listPage", page);
+		}
+
+		@Override
+		public List<BoardVo> listCriteria(Criteria cri) throws Exception {
+			// TODO Auto-generated method stub
+			return session.selectList(namespace + ",listCriteria", cri);
+		}
+		
 		
 		
 

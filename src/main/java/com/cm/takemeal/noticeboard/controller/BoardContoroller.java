@@ -15,9 +15,10 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.cm.takemeal.noticeboard.model.service.BoardService;
 import com.cm.takemeal.noticeboard.model.vo.BoardVo;
+import com.cm.takemeal.noticeboard.model.vo.Criteria;
 
 @Controller
-@RequestMapping("/board/*")
+@RequestMapping("/dj/*")
 public class BoardContoroller {
 	
 	private static final Logger logger= LoggerFactory.getLogger(BoardContoroller.class);
@@ -93,5 +94,17 @@ public class BoardContoroller {
 		
 		return "redirect:/dj/listAll";
 	}
+	
+	@RequestMapping(value = "/listCri.do", method = RequestMethod.GET)
+	public void listAll(Criteria cri, Model model)throws Exception{
+		
+		logger.info("show list page with Criteria...........");
+		
+		model.addAttribute("list", service.listCriteia(cri));
+	}
+	
+	
+	
+	
 	
 }
