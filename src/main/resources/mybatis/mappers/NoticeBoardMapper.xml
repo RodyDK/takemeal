@@ -10,7 +10,7 @@
 	values(#{title}, #{content}, #{writer})
 	</insert>
 	
-	<select id="read">
+	<select id="read" resultType="BoardVo">
 	select
 		bno, title, content, writer, regdate, viewcnt
 		from
@@ -31,7 +31,7 @@
 	</delete>
 	
 	
-	<select id="listAll" resultType="com.cm.takemeal.noticeboard.model.vo.BoardVo">
+	<select id="listAll" resultType="BoardVo">
 	
 	<![CDATA[
 	select

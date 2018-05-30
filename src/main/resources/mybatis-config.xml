@@ -10,5 +10,10 @@
 	
 	<mappers>
 		<mapper resource="mybatis/mappers/member-mapper.xml" />
+		<mapper resource="mybatis/mappers/NoticeBoardMapper.xml" />
 	</mappers>
+	
+	
+	
+	
 </configuration>
