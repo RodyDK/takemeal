@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.cm.takemeal.noticeboard.model.service.BoardService;
@@ -27,6 +28,14 @@ public class BoardContoroller {
 
 	@Inject 
 	private BoardService service;
+	
+	
+	@RequestMapping(value="testlist.do", method=RequestMethod.GET)
+	public String moveChefListPage() {
+		
+		
+		return "DJ/listAll";
+	}
 	
 	@RequestMapping(value = "/register.do", method = RequestMethod.GET)
 	public void registerGET(BoardVo board, Model model) throws Exception{
@@ -50,17 +59,16 @@ public class BoardContoroller {
 		return "redirect:/dj/listAll";
 	}
 		
-	@RequestMapping(value = "/listAll.do", method=RequestMethod.GET)
-	public void listAll(Model model) throws Exception{
+	@RequestMapping(value = "listAll.do", method=RequestMethod.GET)
+	public ModelAndView listAll(ModelAndView mv) throws Exception{
 		
 		logger.info("show all list..................");
-		model.addAttribute("list", service.listAll());
-		
-	
-		
+		mv.addObject("list", service.listAll());
+		mv.setViewName("DJ/listAll");
+		return mv;		
 	}
 	
-	@RequestMapping(value ="/read.do", method = RequestMethod.GET)
+	@RequestMapping(value ="/read.do", method = RequestMethod.GET)	
 	public void read(@RequestParam("bno")int bno, Model model)throws Exception{
 		System.out.println("read.............");
 		model.addAttribute(service.read(bno));

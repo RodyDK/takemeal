@@ -26,12 +26,14 @@
 	if(result == 'SUCCESS'){
 		alert("처리가 완료되었씁니다.");
 	}
+	else(result =='FAIL'){
+		alert("표시할 페이지가 없습니다.");
+	}
 
 </script>
 <%@ include file="../header.jsp" %>
 </head>
 <body>
-
 
 <table class="table table-bordered">
 	<tr>
@@ -42,16 +44,15 @@
 	<th style="width: 40px">VIEWCNT</th>
 	</tr>
 	
-<c:forEach items="${list}" var="boardVo">
+<c:forEach items="${list}" var="BoardVo">
 
 	<tr>
-	<td>${boardVo.bno }</td>
-	<td><a href="">${boardVo.title }</a></td>
-	<td>${boardVo.writer }</td>
-	<td><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${boardVo.regdate }" /> </td>
-	<td><span class="badge bg-red">${boardVo.viewcnt }</span></td>
+	<td>${BoardVo.bno }</td>
+	<td><a href="">${BoardVo.title }</a></td>
+	<td>${BoardVo.writer }</td>
+	<td><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${BoardVo.regdate }" /> </td>
+	<td><span class="badge bg-red">${BoardVo.viewcnt }</span></td>
 	</tr>
-	
 	</c:forEach>
 	
 	

@@ -48,7 +48,7 @@ public class BoardDaoImpl implements BoardDao{
 		@Override
 		public List<BoardVo> listAll() throws Exception {
 			// TODO Auto-generated method stub
-			return session.selectList(namespace+".listAll");
+			return session.selectList("listAll");
 		}
 
 		@Override
