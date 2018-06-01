@@ -9,23 +9,25 @@
 <script type="text/javascript" src="/takemeal/resources/js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
+		
 		var formObj = ${"form[role='form']"};
 		
 		console.log(formObj);
 		
-		$(".btn.warning").on("click", function() {
-			formObj.attr("action", "/board/modify");
+		$(".btn-warning").on("click", function() {
+			formObj.attr("action", "modify.do");
 			formObj.attr("method", "get");
 			formObj.submit();
 		});
 		
-		$(".btn.danger").on("click", function() {
-			formObj.attr("action", "/board/remove");
+		$(".btn-danger").on("click", function() {
+			formObj.attr("action", "remove.do");
 			formObj.submit();
 		});
 		
-		$(".btn.primary").on("click", function() {
-			self.location = "/board/listAll";
+		$(".btn-primary").on("click", function() {
+			alert("ㅎㅇ");
+			self.location = "listAll.do";
 		});
 		
 		
@@ -36,31 +38,30 @@
 <body>
 
 <form role="form" method="post">
-	<input type="hidden" name="bno" value="${boardVo.bno }">
+	<input type="hidden" name="bno" value="${BoardVo.bno }">
 </form>
 
 <div class="box-body">
 	<div class="form-group">
 	<label for="exampleInputEmail">Title</label>
-	<input type="text" name="title" class="form-control" value="${boardVo.title }" readonly="readonly">
+	<input type="text" name="title" class="form-control" value="${BoardVo.title }" readonly="readonly">
 	</div>
 	
 	<div class="form-group">
 	<label for="exampleInputPassword1">Content</label>
 	<textarea class="form-control" name="content" rows="3" readonly="readonly">
-	${boardVo.writer}
+	${BoardVo.writer}
 	</textarea>
 	</div>
 	
 	<div class="form-group">
 	<label for="exampleEmail1">Writer</label>
-	<input type="text" name="writer" class="form-control" value="${boardVo.writer }" readonly="readonly">
+	<input type="text" name="writer" class="form-control" value="${BoardVo.writer }" readonly="readonly">
 	
 	
 	</div>
 
 </div>
-
 
 <div class="box-footer">
 	<button type="submit" class="btn btn-warning">Modify</button>

@@ -69,9 +69,11 @@ public class BoardContoroller {
 	}
 	
 	@RequestMapping(value ="/read.do", method = RequestMethod.GET)	
-	public void read(@RequestParam("bno")int bno, Model model)throws Exception{
+	public ModelAndView read(@RequestParam("bno")int bno, ModelAndView mv)throws Exception{
 		System.out.println("read.............");
-		model.addAttribute(service.read(bno));
+		mv.addObject("BoardVo",service.read(bno));
+		mv.setViewName("DJ/read");
+		return mv;
 	}
 	
 	

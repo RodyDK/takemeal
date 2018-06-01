@@ -17,6 +17,7 @@
 
 
 
+
 	<insert id="create">
 	insert into tlb_board(title, content, writer)
 	values(#{title}, #{content}, #{WRITER})
@@ -27,17 +28,17 @@
 		BNO, title, content, writer, regdate, viewcnt
 		from
 		tbl_board
-		where BNO = #{BNO}
+		where BNO = #{bno}
 	</select>
 	
 	
 	<update id="update">
 	update tbl_board set title =#{title}, content =#{content}
-	where BNO=#{BNO}
+	where BNO=#{bno}
 	</update>
 	
 	<delete id="delete">
-	delete from tbl_board where BNO=#{BNO}
+	delete from tbl_board where BNO=#{bno}
 	</delete>
 	
 	

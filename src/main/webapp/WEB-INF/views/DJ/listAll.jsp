@@ -48,7 +48,7 @@
 
 	<tr>
 	<td>${BoardVo.bno }</td>
-	<td><a href="">${BoardVo.title }</a></td>
+	<td><a href="read.do?bno=${BoardVo.bno }">${BoardVo.title }</a></td>
 	<td>${BoardVo.writer }</td>
 	<td><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${BoardVo.regdate }" /> </td>
 	<td><span class="badge bg-red">${BoardVo.viewcnt }</span></td>

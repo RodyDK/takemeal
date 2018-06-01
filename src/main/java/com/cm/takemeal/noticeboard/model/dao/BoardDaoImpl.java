@@ -16,18 +16,19 @@ public class BoardDaoImpl implements BoardDao{
 		@Inject
 		private SqlSession session;
 		
-		private static String namespace = "com.cm.mapper.NoticeBoardMapper";
+		private static String namespace = "NoticeBoardMapper";
 
 		@Override
 		public void create(BoardVo vo) throws Exception {
 			// TODO Auto-generated method stub
-			session.insert(namespace+"create", vo);
+			session.insert("NoticeBoardMapper.create", vo);
 			
 		}
 
 		@Override
 		public BoardVo read(Integer bno) throws Exception {
 			// TODO Auto-generated method stub
+			System.out.println("BoardImpl접근");
 			return session.selectOne(namespace+".read", bno);
 		}
 
@@ -48,7 +49,7 @@ public class BoardDaoImpl implements BoardDao{
 		@Override
 		public List<BoardVo> listAll() throws Exception {
 			// TODO Auto-generated method stub
-			return session.selectList("listAll");
+			return session.selectList(namespace+".listAll");
 		}
 
 		@Override
@@ -68,7 +69,7 @@ public class BoardDaoImpl implements BoardDao{
 		@Override
 		public List<BoardVo> listCriteria(Criteria cri) throws Exception {
 			// TODO Auto-generated method stub
-			return session.selectList(namespace + ",listCriteria", cri);
+			return session.selectList(namespace + ".listCriteria", cri);
 		}
 
 		@Override
