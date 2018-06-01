@@ -6,4 +6,5 @@
 	<title>챙겨먹어요</title>
 	<link rel="stylesheet" type="text/css" href="./resources/css/style.css">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.10.2/jquery.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
 </head>

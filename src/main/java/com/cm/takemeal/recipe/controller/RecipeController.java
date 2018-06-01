@@ -35,10 +35,13 @@ public class RecipeController {
         //조회 하려는 페이지
         int startPage = (paramMap.get("startPage")!=null?Integer.parseInt(paramMap.get("startPage").toString()):1);
         //한페이지에 보여줄 리스트 수
-        int visiblePages = (paramMap.get("visiblePages")!=null?Integer.parseInt(paramMap.get("visiblePages").toString()):10);
+        int visiblePages = 10;
+        int endPage = startPage + visiblePages - 1;
         //일단 전체 건수를 가져온다.
         int totalCnt = recipeService.getContentCnt(paramMap);
  
+        
+        
         //아래 1,2는 실제 개발에서는 class로 빼준다. (여기서는 이해를 위해 직접 적음)
         //1.하단 페이지 네비게이션에서 보여줄 리스트 수를 구한다.
         BigDecimal decimal1 = new BigDecimal(totalCnt);
@@ -48,15 +51,16 @@ public class RecipeController {
         int startLimitPage = 0;
         //2.mysql limit 범위를 구하기 위해 계산
         if(startPage==1){
-            startLimitPage = 0;
+            startLimitPage = 1;
         }else{
-            startLimitPage = (startPage-1)*visiblePages;
+            startLimitPage = ((startPage-1)*visiblePages)+1;
         }
         
         paramMap.put("start", startLimitPage);
-        paramMap.put("end", visiblePages);
+        paramMap.put("end", endPage);
         //jsp 에서 보여줄 정보 추출
-        model.addAttribute("startPage", startPage+"");//현재 페이지      
+
+        model.addAttribute("startPage", startPage);//현재 페이지      
         model.addAttribute("totalCnt", totalCnt);//전체 게시물수
         model.addAttribute("totalPage", totalPage);//페이지 네비게이션에 보여줄 리스트 수
         model.addAttribute("recipeList", recipeService.getContentList(paramMap));//검색

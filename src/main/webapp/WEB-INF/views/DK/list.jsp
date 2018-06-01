@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
-<%@ page session="false" %>
 <html>
 <%@ include file="../head.jsp" %>
 <body>
@@ -63,7 +62,71 @@
 				</c:choose>				
 				</ul>
 			</div>
-			<a href="recipeEdit.do">글쓰기</a>
+			
+
+			<div class="pagination">
+				<div class="paging">
+					<div class="element">
+
+						<c:set var="page" value="${startPage}"/><!-- page maxpage를 넘었을 경우 제한 -->
+						<c:if test="${page > totalPage}">
+							<c:set var="page" value="${totalPage}"/>
+						</c:if> 
+						<!-- 페이지를 8개씩 나누기 위해 현재 페이지에 보여줄 max값 설정 --> 
+						<fmt:formatNumber value="${page/5 - (page/5 % 1)}" type="pattern" pattern="0" var="full"/>
+						<c:set var="full" value="${full * 5}"/>
+						<!-- prev(전페이지), next(다음페이지) 개수 설정 -->
+						<c:set var="scope" value="${page % 5}"/>
+						<c:choose> 
+							<c:when test="${scope == 0}">
+								<c:set var="prev" value="5"/>
+								<c:set var="next" value="1"/> 
+							</c:when> 
+							<c:when test="${scope < 6}">
+								<c:set var="prev" value="${scope}"/>
+								<c:set var="next" value="${6-scope}"/>
+							</c:when>
+						</c:choose>	
+						<!-- prev 버튼 --> 
+						<c:if test="${page > 5}">
+							<fmt:formatNumber value="${(page-1)/5 - (((page-1)/5) % 1)}" type="pattern" pattern="0" var="prevb"/>
+							<c:set value="${(prevb-1)*5 + 1}" var="prevb"/>
+							<span id="prevBtn" class="prev button" value="${prevb}"></span>
+						</c:if>
+						<!-- 전 페이지 -->
+						<c:if test="${page != 1}">
+							<c:set var="j" value="${prev}"/>
+							<c:forEach var="i" begin="1" end="${prev-1}">
+								<c:set var="j" value="${j - 1}"/>
+									<c:if test="${(page - j) > 0}">
+										<span class="no">${page - j}</span>
+									</c:if>
+							</c:forEach> 
+						</c:if>
+						
+						<!-- 현재 페이지 --> 
+						<span class="no selected">${page}</span>
+						
+						<!-- 다음 페이지 -->
+						<c:if test="${page != totalPage}">
+							<c:forEach var="i" begin="1" end="${next-1}">
+								<c:if test="${totalPage >= page+i}"> <span class="no">${page+i}</span></c:if>
+							</c:forEach>
+						</c:if>
+						
+						<!-- next 버튼 -->
+						<c:if test="${totalPage >= page + next}">
+						<fmt:formatNumber value="${(page-1)/5 - (((page-1)/5) % 1)}" type="pattern" pattern="0" var="nextb"/>
+							<c:set value="${(nextb+1)*5 + 1}" var="nextb"/>
+							<span id="nextBtn" class="next button" value="${nextb}"></span>
+						</c:if>
+					</div>
+				</div>	
+			</div>
+
+
+				
+			
 		</div>
 	</div>
 </div>

@@ -9,7 +9,7 @@
 <body>
 <h1>암호화처리 테스트 페이지</h1>
 <form action="bcryp.do" method="post">
-전송 암호 : <input type="password" name="userpwd"> <br>
+전송 암호 : <input type="password" name="password"> <br>
 <input type="submit" value="전송">
 </form>
 </body>

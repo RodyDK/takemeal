@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cm.takemeal.notice.model.dao.NoticeDao">
+
+	<resultMap type="notice" id="resultNotice">
+		<id column="no" property="no" />
+		<result column="subject" property="subject" />
+		<result column="contents" property="contents" />
+		<result column="hit" property="hit" />
+		<result column="userid" property="userid" />
+		<result column="reg_date" property="reg_date" />
+	</resultMap>
+		
+    <select id="selectContentCnt1" resultType="int" parameterType="java.util.HashMap">
+    	<![CDATA[ 
+        SELECT
+            COUNT(no)
+        FROM
+            NOTICE
+		]]> 
+    </select>
+    
+    <select id="selectContent1" resultType="com.cm.takemeal.notice.model.vo.Notice" parameterType="java.util.HashMap">
+    	<![CDATA[ 
+    	SELECT * FROM (
+		    SELECT no, subject, hit, TO_CHAR(reg_date,'YYYY-MM-DD') AS reg_date, ROW_NUMBER() OVER(ORDER BY reg_date DESC) AS RNUM
+		    FROM NOTICE
+		)
+		WHERE RNUM BETWEEN #{start} AND #{end}
+		]]> 
+    </select>
+    
+    
+    <select id="selectContentView1" resultType="com.cm.takemeal.notice.model.vo.Notice" parameterType="java.util.HashMap">
+    	<![CDATA[ 
+		SELECT
+			no,
+			subject,
+			contents,
+			userid,
+			hit,
+			TO_CHAR(reg_date,'YYYY-MM-DD')
+		FROM 
+			notice
+		WHERE 
+			no = #{no}
+		]]> 
+    </select>
+    
+    
+	
+
+
+
+
+
+
+
+
+
+
+
+</mapper>
