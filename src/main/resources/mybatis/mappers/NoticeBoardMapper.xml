@@ -19,8 +19,8 @@
 
 
 	<insert id="create">
-	insert into tlb_board(title, content, writer)
-	values(#{title}, #{content}, #{WRITER})
+	insert into tbl_board(title, content, writer)
+	values(#{title}, #{content}, #{writer})
 	</insert>
 	
 	<select id="read" resultType="BoardVo">

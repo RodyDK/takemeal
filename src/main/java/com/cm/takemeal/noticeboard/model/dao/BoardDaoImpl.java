@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import com.cm.takemeal.noticeboard.model.vo.*;
+import com.sun.media.jfxmedia.logging.Logger;
 
 
 @Repository
@@ -21,7 +22,8 @@ public class BoardDaoImpl implements BoardDao{
 		@Override
 		public void create(BoardVo vo) throws Exception {
 			// TODO Auto-generated method stub
-			session.insert("NoticeBoardMapper.create", vo);
+			System.out.println("BoardCreatDao들어옴");
+			session.insert(namespace+".create", vo);
 			
 		}
 

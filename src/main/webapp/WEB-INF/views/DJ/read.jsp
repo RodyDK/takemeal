@@ -6,11 +6,15 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 
+<link rel="stylesheet" href="/takemeal/resources/bootstrap/css/bootstrap.css">
+<link rel="stylesheet" href="/takemeal/resources/bootstrap/css/bootstrap.min.css">
+
 <script type="text/javascript" src="/takemeal/resources/js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
 		
-		var formObj = ${"form[role='form']"};
+		
+		var formObj = $("form[role= 'form']");
 		
 		console.log(formObj);
 		
@@ -26,7 +30,6 @@
 		});
 		
 		$(".btn-primary").on("click", function() {
-			alert("ㅎㅇ");
 			self.location = "listAll.do";
 		});
 		

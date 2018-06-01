@@ -38,25 +38,28 @@ public class BoardContoroller {
 	}
 	
 	@RequestMapping(value = "/register.do", method = RequestMethod.GET)
-	public void registerGET(BoardVo board, Model model) throws Exception{
+	public ModelAndView registerGET(BoardVo board, ModelAndView mv) throws Exception{
 		
-		logger.info("register get...........asdasd...");
+		logger.info("register get..............");
+		
+		mv.setViewName("DJ/register");
+		return mv;	
 		
 	}
 	
 	
 	@RequestMapping(value = "/register.do", method = RequestMethod.POST)
-	public String registerPOST(BoardVo board, RedirectAttributes rttr)throws Exception{
+	public String registerPOST(BoardVo board, Model model)throws Exception{
 		
 		logger.info("register post.....");
 		logger.info(board.toString());
 		
 		service.regist(board);
 		
-		rttr.addAttribute("msg", "SUCCESS");
+		model.addAttribute("result", "SUCCESS");
 		
 		/*return "/board/success";*/
-		return "redirect:/dj/listAll";
+		return "redirect:listAll.do";
 	}
 		
 	@RequestMapping(value = "listAll.do", method=RequestMethod.GET)
@@ -70,7 +73,6 @@ public class BoardContoroller {
 	
 	@RequestMapping(value ="/read.do", method = RequestMethod.GET)	
 	public ModelAndView read(@RequestParam("bno")int bno, ModelAndView mv)throws Exception{
-		System.out.println("read.............");
 		mv.addObject("BoardVo",service.read(bno));
 		mv.setViewName("DJ/read");
 		return mv;
