@@ -21,15 +21,12 @@
 
 
 <script type="text/javascript">
-	var result = '${msg}';
+	var result = '${result}';
 	
 	if(result == 'SUCCESS'){
 		alert("처리가 완료되었씁니다.");
 	}
-	else(result =='FAIL'){
-		alert("표시할 페이지가 없습니다.");
-	}
-
+	
 </script>
 <%@ include file="../header.jsp" %>
 </head>

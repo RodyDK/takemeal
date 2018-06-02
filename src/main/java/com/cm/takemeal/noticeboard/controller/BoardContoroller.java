@@ -80,24 +80,31 @@ public class BoardContoroller {
 	
 	
 	@RequestMapping(value = "/remove.do", method= RequestMethod.POST)
-	public String remove(@RequestParam("bno") int bno, RedirectAttributes rttr)throws Exception{
+	public ModelAndView remove(@RequestParam("bno") int bno, ModelAndView mv)throws Exception{
+		
+		logger.info("removeController...들어옴");
 		
 		service.remove(bno);
+		/*mv.addObject("BoardVo", service.remove(bno));*/
 		
-		rttr.addFlashAttribute("msg", "SUCCESS");
+		mv.setViewName("redirect:listAll.do");
 		
-		return "redirect:/dj/listAll";
+		return mv;
 	}
 	
 	
-	@RequestMapping(value = "/modify.do", method = RequestMethod.GET)
-	public void modifyGET(int bno, Model model) throws Exception{
+	@RequestMapping(value = "/modify", method = RequestMethod.GET)
+	public ModelAndView modifyGET(int bno, ModelAndView mv) throws Exception{
 		
-		model.addAttribute(service.read(bno));
+		/*model.addAttribute(service.read(bno));*/
+		
+		logger.info("modifyGET Controller..............");
+		mv.setViewName("DJ/modify");
+		return mv;	
 	}
 	
 	
-	@RequestMapping(value = "/modify.do", method = RequestMethod.POST)
+	@RequestMapping(value = "/modify", method = RequestMethod.POST)
 	public String modifyPOST(BoardVo board, RedirectAttributes rttr)throws Exception{
 		
 		logger.info("mod post.....");
@@ -106,7 +113,7 @@ public class BoardContoroller {
 		
 		rttr.addFlashAttribute("msg", "SUCCESS");
 		
-		return "redirect:/dj/listAll";
+		return "redirect:listAll.do";
 	}
 	
 	@RequestMapping(value = "/listCri.do", method = RequestMethod.GET)
