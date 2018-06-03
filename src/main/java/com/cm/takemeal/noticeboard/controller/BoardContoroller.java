@@ -161,8 +161,42 @@ public class BoardContoroller {
 		
 	}
 	
+	@RequestMapping(value="/readPage", method=RequestMethod.GET)
+	public ModelAndView read(@RequestParam("bno") int bno, @ModelAttribute("cri") Criteria cri, ModelAndView mv)throws Exception{
+		
+		mv.addObject("BoardVo",service.read(bno));
+		mv.addObject("bno", service.read(bno));
+		mv.setViewName("DJ/readPage");
+		logger.info("/readPage............");
+		
+		return mv;
+		/*model.addAttribute(service.read(bno));*/
+	}
 	
+	@RequestMapping(value="/removePage", method=RequestMethod.POST)
+	public String remove(@RequestParam("bno") int bno, Criteria cri, RedirectAttributes rttr)throws Exception{
+		service.remove(bno);
+		rttr.addAttribute("page", cri.getPage());
+		rttr.addAttribute("perPageNum", cri.getPerPageNum());
+		rttr.addFlashAttribute("msg", "SUCCESS");
+		
+		return "redirect:/DJ/listPage";
+	}
+	@RequestMapping(value="/modifyPage", method=RequestMethod.GET)
+	public void modifyPagingGet(@RequestParam("bno") int bno, @ModelAttribute("cri")Criteria cri, Model model)throws Exception{
+		
+		model.addAttribute(service.read(bno));
+	}
 	
-	
+	public String modifyPagingPost(BoardVo board, Criteria cri, RedirectAttributes rttr)throws Exception{
+		
+		service.modify(board);
+		
+		rttr.addAttribute("page", cri.getPage());
+		rttr.addAttribute("perPageNum", cri.getPerPageNum());
+		rttr.addFlashAttribute("msg", "SUCCESS");
+		return "redirect:/DJ/listPage";
+		
+	}
 	
 }
