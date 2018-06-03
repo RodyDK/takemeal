@@ -117,28 +117,48 @@ public class BoardContoroller {
 	}
 	
 	@RequestMapping(value = "/listCri.do", method = RequestMethod.GET)
-	public void listAll(Criteria cri, Model model)throws Exception{
+	public ModelAndView listAll(Criteria cri, ModelAndView mv)throws Exception{
 		
 		logger.info("show list page with Criteria...........");
 		
-		model.addAttribute("list", service.listCriteia(cri));
+		mv.addObject("list", service.listCriteia(cri));
+		mv.setViewName("DJ/listCri");
+		return mv;	
+		
+		/*model.addAttribute("list", service.listCriteia(cri));*/
 	}
 	
 	
 	@RequestMapping(value = "/listPage", method=RequestMethod.GET)
-	public void listPage(@ModelAttribute("cri")Criteria cri, Model model) throws Exception{
+	public ModelAndView listPage(@ModelAttribute("cri")Criteria cri, ModelAndView  mv) throws Exception{
 		
 		logger.info(cri.toString());
 		
-		model.addAttribute("list", service.listCriteia(cri));
+		mv.addObject("list", service.listCriteia(cri));
+		
+		
+		
 		
 		PageMaker pageMaker = new PageMaker();
 		pageMaker.setCri(cri);
-		/*pageMaker.setTotalCount(131);*/
+		pageMaker.setTotalCount(service.listCountCriteria(cri));
+		
+		mv.addObject("pageMaker", pageMaker);
+		mv.setViewName("DJ/listPage");
+		
+		System.out.println(pageMaker);
+		return mv;	
+		
+		/*model.addAttribute("list", service.listCriteia(cri));
+		
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setCri(cri);
+		//pageMaker.setTotalCount(131);
 		pageMaker.setTotalCount(service.listCountCriteria(cri));
 		
 		
-		model.addAttribute("pageMaker", pageMaker);
+		model.addAttribute("pageMaker", pageMaker);*/
+		
 	}
 	
 	
