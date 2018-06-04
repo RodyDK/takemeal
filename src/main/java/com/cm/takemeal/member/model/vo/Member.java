@@ -10,130 +10,76 @@ public class Member implements java.io.Serializable{
 	
 	//스프링이 자동으로 setter와 getter 가 작동되게 하려면
 	//테이블의 컬럼명과 필드명을 동일하게 하면 됨
+	private int no;
 	private String userid;
-	private String userpwd;
+	private String password;
 	private String username;
-	private String gender;
-	private int age;
+	private int type;
 	private String phone;
-	private String email;
-	private String hobby;
-	private String etc;
-	private Date enroll_date;
-	private Date lastmodified;
-	
-	public Member() {}
-
-	public Member(String userid, String userpwd, String username, String gender, int age, String phone, String email,
-			String hobby, String etc, Date enroll_date, Date lastmodified) {
-		super();
-		this.userid = userid;
-		this.userpwd = userpwd;
-		this.username = username;
-		this.gender = gender;
-		this.age = age;
-		this.phone = phone;
-		this.email = email;
-		this.hobby = hobby;
-		this.etc = etc;
-		this.enroll_date = enroll_date;
-		this.lastmodified = lastmodified;
+	private String blog;
+	private Date reg_date;
+	public int getNo() {
+		return no;
 	}
-
+	public void setNo(int no) {
+		this.no = no;
+	}
 	public String getUserid() {
 		return userid;
 	}
-
 	public void setUserid(String userid) {
 		this.userid = userid;
 	}
-
-	public String getUserpwd() {
-		return userpwd;
+	public String getPassword() {
+		return password;
 	}
-
-	public void setUserpwd(String userpwd) {
-		this.userpwd = userpwd;
+	public void setPassword(String password) {
+		this.password = password;
 	}
-
 	public String getUsername() {
 		return username;
 	}
-
 	public void setUsername(String username) {
 		this.username = username;
 	}
-
-	public String getGender() {
-		return gender;
+	public int getType() {
+		return type;
 	}
-
-	public void setGender(String gender) {
-		this.gender = gender;
+	public void setType(int type) {
+		this.type = type;
 	}
-
-	public int getAge() {
-		return age;
-	}
-
-	public void setAge(int age) {
-		this.age = age;
-	}
-
 	public String getPhone() {
 		return phone;
 	}
-
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
-
-	public String getEmail() {
-		return email;
+	public String getBlog() {
+		return blog;
 	}
-
-	public void setEmail(String email) {
-		this.email = email;
+	public void setBlog(String blog) {
+		this.blog = blog;
 	}
-
-	public String getHobby() {
-		return hobby;
+	public Date getReg_date() {
+		return reg_date;
 	}
-
-	public void setHobby(String hobby) {
-		this.hobby = hobby;
+	public void setReg_date(Date reg_date) {
+		this.reg_date = reg_date;
 	}
-
-	public String getEtc() {
-		return etc;
-	}
-
-	public void setEtc(String etc) {
-		this.etc = etc;
-	}
-
-	public Date getEnroll_date() {
-		return enroll_date;
-	}
-
-	public void setEnroll_date(Date enroll_date) {
-		this.enroll_date = enroll_date;
-	}
-
-	public Date getLastmodified() {
-		return lastmodified;
-	}
-
-	public void setLastmodified(Date lastmodified) {
-		this.lastmodified = lastmodified;
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 	
 	@Override
-	public String toString(){
-		return this.userid + ", " + this.userpwd + ", " + 
-				this.username + ", " + this.age + ", " +
-				this.gender + ", " + this.phone + ", " +
-				this.email + ", " + this.enroll_date + ", "
-				+ this.etc + ", " + this.lastmodified;
+	public String toString() {
+		return "Member [no=" + no + ", userid=" + userid + ", password=" + password + ", username=" + username
+				+ ", type=" + type + ", phone=" + phone + ", blog=" + blog + ", reg_date=" + reg_date + ", getNo()="
+				+ getNo() + ", getUserid()=" + getUserid() + ", getPassword()=" + getPassword() + ", getUsername()="
+				+ getUsername() + ", getType()=" + getType() + ", getPhone()=" + getPhone() + ", getBlog()=" + getBlog()
+				+ ", getReg_date()=" + getReg_date() + ", getClass()=" + getClass() + ", hashCode()=" + hashCode()
+				+ ", toString()=" + super.toString() + "]";
 	}
+
+
+	
 }

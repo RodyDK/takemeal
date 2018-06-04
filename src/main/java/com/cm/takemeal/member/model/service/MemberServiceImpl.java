@@ -1,6 +1,9 @@
 package com.cm.takemeal.member.model.service;
 
 import java.util.ArrayList;
+import java.util.Map;
+
+import javax.annotation.Resource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -9,20 +12,28 @@ import com.cm.takemeal.member.exception.LoginFailException;
 import com.cm.takemeal.member.model.dao.MemberDao;
 import com.cm.takemeal.member.model.vo.Member;
 
+
+
 @Service("memberService")
 public class MemberServiceImpl implements MemberService{
 
-	@Autowired
-	private MemberDao memberDao;
-	
-	@Override
-	public Member selectMember(Member member) 
+    @Resource(name="memberDao")
+    private MemberDao memberDao;
+    
+    
+    @Override
+	public Member selectMember(Map<String, Object> paramMap) 
 			throws LoginFailException{
 		// 로그인 처리용
-		return memberDao.selectMember(member);
+		return memberDao.selectMember(paramMap);
 	}
 	
-	
+	public int insertMember(Map<String, Object> paramMap) {
+		// TODO Auto-generated method stub
+		return memberDao.insertMember(paramMap);
+	}
+
+    
 	@Override
 	public ArrayList<Member> selectAll() {
 		// TODO Auto-generated method stub
@@ -30,11 +41,7 @@ public class MemberServiceImpl implements MemberService{
 	}
 
 
-	@Override
-	public int insertMember(Member member) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+
 
 	@Override
 	public int updateMember(Member member) {
@@ -48,11 +55,7 @@ public class MemberServiceImpl implements MemberService{
 		return 0;
 	}
 
-	@Override
-	public Member selectMember(String userid) {
-		//회원조회용
-		return memberDao.selectMember(userid);
-	}
+
 
 	
 }

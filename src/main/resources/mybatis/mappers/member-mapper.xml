@@ -6,7 +6,7 @@
 
 	<resultMap type="member" id="resultMember">
 		<id column="userid" property="userid" />
-		<result column="userpwd" property="userpwd" />
+		<result column="password" property="password" />
 		<result column="username" property="username" />
 		<result column="age" property="age" />
 		<result column="gender" property="gender" />
@@ -17,13 +17,31 @@
 		<result column="enroll_date" property="enroll_date" />
 	</resultMap>
 		
-	<select id="loginMember" parameterType="member" 
-	resultType="member">
+	<select id="loginMember" parameterType="java.util.HashMap" 
+	resultType="com.cm.takemeal.member.model.vo.Member">
 		<![CDATA[
 		SELECT * FROM MEMBER
 		WHERE USERID = #{userid} 
 		]]>
 	</select>
+	
+    <insert id="insertMember" parameterType="java.util.HashMap">
+    	<![CDATA[
+        INSERT INTO MEMBER(
+        	NO,
+            USERID,
+            PASSWORD,
+            USERNAME
+        )values(
+        	MEMBER_SEQ.NEXTVAL,
+            #{userid},
+            #{password},
+            #{username}
+        )
+        ]]>
+    </insert>
+    
+	
 	
 	<select id="myinfo" parameterType="string" 
 	resultMap="resultMember">

@@ -1,6 +1,7 @@
 package com.cm.takemeal.member.model.service;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 import com.cm.takemeal.member.exception.LoginFailException;
 import com.cm.takemeal.member.model.vo.Member;
@@ -10,10 +11,12 @@ public interface MemberService {
 	//상수필드도 멤버로 가질 수 있음
 	public static final int MID = 1;
 	
-	/*public abstract */Member selectMember(Member member) throws LoginFailException;
-	Member selectMember(String userid);
+	/*public abstract */Member selectMember(Map<String, Object> paramMap) throws LoginFailException;
+
 	ArrayList<Member> selectAll();	
-	int insertMember(Member member);
+
 	int updateMember(Member member);
 	int deleteMember(String userid);
+
+	int insertMember(Map<String, Object> paramMap);
 }

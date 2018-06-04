@@ -6,25 +6,37 @@
 	<div class="top_header">
 		<a href="./" class="logo">
 			<img src="./resources/images/logo.png" title="logo">
+
+
+
 		</a>
 		<div class="util">
 			<ul>
-				<li>
-					<a href="">회원가입</a>
-				</li>
-				<li>
-					<a href="">로그인</a>
-				</li>
+				<c:if test="${empty sessionScope.loginUser }">
+					<li>
+						<a href="#" class="btn-login">로그인</a>
+					</li>
+				</c:if>
+				<c:if test="${!empty sessionScope.loginUser }">
+					<c:if test="${sessionScope.loginUser.type == 3}">
+						<li class="recipeWrite">
+							<a href="recipeWrite.do">레시피등록</a>
+						</li>
+					</c:if>
+					<li>
+						<a href="mypage.do">마이페이지</a>
+					</li>
+					<li>
+						<a href="logout.do">로그아웃</a>
+					</li>
+				</c:if>
+
 				<li>
 					<a href="">자주찾는질문</a>
 				</li>
 				<li>
 					<a href="">고객센터</a>
 				</li>
-				<li>
-					<a href="./dj/listAll.do">공지사항</a>
-				</li>
-				
 			</ul>
 		</div>
 	</div>
@@ -46,39 +58,12 @@
 				<a href="./shopList.do">쇼핑몰</a>
 			</li>
 			<li>
-				<a href="./test.do">공지사항</a>
+				<a href="./noticeList.do">공지사항</a>
 			</li>
 		</ul>
 	</nav>
 </header>
 
-<%-- <header>
-
-<c:if test="${empty loginUser }">
-<table id="loginFrm">
-<form action="login.do" method="post">
-<tr><th><input type="text" name="userid"></th>
-<th rowspan="2"><input type="submit" value="로그인"></th></tr>
-<tr><th><input type="password" name="userpwd"></th></tr>
-<tr><th colspan="2"><a>아이디/암호분실시</a>
-&nbsp <a>회원가입</a></th></tr>
-</form>
-</table>
-</c:if>
-<c:if test="${!empty loginUser }">
-<table>
-<tr><th>${loginUser.username } 님</th>
-<th><a href="logout.do">로그아웃</a></th><tr>
-<c:url var="minfo" value="myinfo.do">
-	<c:param name="userid" value="${loginUser.userid }" />
-</c:url>
-<tr><th><a href="${minfo }">내정보보기</a></th>
-<th><a>공지글쓰기</a></th><tr>
-<tr><th><a>메일확인</a></th>
-<th><a>쪽지확인</a></th><tr>
-</table>
-</c:if>
-</header> --%>
 
 
 
