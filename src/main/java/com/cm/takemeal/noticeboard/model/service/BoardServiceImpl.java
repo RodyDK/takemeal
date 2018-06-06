@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.cm.takemeal.noticeboard.model.dao.BoardDao;
 import com.cm.takemeal.noticeboard.model.vo.BoardVo;
 import com.cm.takemeal.noticeboard.model.vo.Criteria;
+import com.cm.takemeal.noticeboard.model.vo.SearchCriteria;
 
 @Service
 public class BoardServiceImpl implements BoardService{
@@ -58,6 +59,18 @@ public class BoardServiceImpl implements BoardService{
 	public int listCountCriteria(Criteria cri) throws Exception {
 		// TODO Auto-generated method stub
 		return dao.countPaging(cri);
+	}
+
+	@Override
+	public List<BoardVo> listSearchCriteria(SearchCriteria cri) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.listSearch(cri);
+	}
+
+	@Override
+	public int listSearchCount(SearchCriteria cri) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.listSearchCount(cri);
 	}
 	
 	

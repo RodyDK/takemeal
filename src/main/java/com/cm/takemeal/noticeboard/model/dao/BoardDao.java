@@ -2,7 +2,8 @@ package com.cm.takemeal.noticeboard.model.dao;
 
 import java.util.*;
 import com.cm.takemeal.noticeboard.model.vo.BoardVo;
-import com.cm.takemeal.noticeboard.model.vo.Criteria;;
+import com.cm.takemeal.noticeboard.model.vo.Criteria;
+import com.cm.takemeal.noticeboard.model.vo.SearchCriteria;;
 
 public interface BoardDao {
 	
@@ -23,5 +24,8 @@ public interface BoardDao {
 	
 	public int countPaging(Criteria cri) throws Exception;
 	
+	public List<BoardVo> listSearch(SearchCriteria cri)throws Exception;
+	
+	public int listSearchCount(SearchCriteria cri)throws Exception;
 	
 }

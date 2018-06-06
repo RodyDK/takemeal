@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.cm.takemeal.noticeboard.model.vo.BoardVo;
 import com.cm.takemeal.noticeboard.model.vo.Criteria;
+import com.cm.takemeal.noticeboard.model.vo.SearchCriteria;
 
 public interface BoardService {
 	
@@ -20,4 +21,9 @@ public interface BoardService {
 	public List<BoardVo> listCriteia(Criteria cri)throws Exception;
 	
 	public int listCountCriteria(Criteria cri)throws Exception;
+	
+	public List<BoardVo> listSearchCriteria(SearchCriteria cri)throws Exception;
+	
+	public int listSearchCount(SearchCriteria cri)throws Exception;
+	
 }

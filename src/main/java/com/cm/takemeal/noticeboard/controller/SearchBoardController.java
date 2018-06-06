@@ -29,12 +29,12 @@ public class SearchBoardController {
 		
 		logger.info(cri.toString());
 		
-		mv.addObject("list", service.listCriteia(cri));
+		mv.addObject("list", service.listSearchCriteria(cri));
 		mv.setViewName("DJ/sboard/list");
 		PageMaker pageMaker = new PageMaker();
 		pageMaker.setCri(cri);
 		
-		pageMaker.setTotalCount(service.listCountCriteria(cri));
+		pageMaker.setTotalCount(service.listSearchCount(cri));
 		
 		mv.addObject("pageMaker", pageMaker);
 		return mv;
