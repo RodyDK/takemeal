@@ -67,7 +67,7 @@ public class NoticeController {
 		System.out.println("totalcnt" + totalCnt);
 		System.out.println("noticeList" + noticeService.getContentList(paramMap));
 		
-		return "notice/list2";
+		return "notice/list";
 
 	}
 

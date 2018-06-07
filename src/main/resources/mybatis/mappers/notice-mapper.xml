@@ -12,7 +12,7 @@
 		<result column="reg_date" property="reg_date" />
 	</resultMap>
 		
-    <select id="selectContentCnt1" resultType="int" parameterType="java.util.HashMap">
+    <select id="selectNoticeContentCnt" resultType="int" parameterType="java.util.HashMap">
     	<![CDATA[ 
         SELECT
             COUNT(no)
@@ -21,7 +21,7 @@
 		]]> 
     </select>
     
-    <select id="selectContent1" resultType="com.cm.takemeal.notice.model.vo.Notice" parameterType="java.util.HashMap">
+    <select id="selectNoticeContent" resultType="com.cm.takemeal.notice.model.vo.Notice" parameterType="java.util.HashMap">
     	<![CDATA[ 
     	SELECT * FROM (
 		    SELECT no, subject, hit, TO_CHAR(reg_date,'YYYY-MM-DD') AS reg_date, ROW_NUMBER() OVER(ORDER BY reg_date DESC) AS RNUM
@@ -32,7 +32,7 @@
     </select>
     
     
-    <select id="selectContentView1" resultType="com.cm.takemeal.notice.model.vo.Notice" parameterType="java.util.HashMap">
+    <select id="selectNoticeContentView" resultType="com.cm.takemeal.notice.model.vo.Notice" parameterType="java.util.HashMap">
     	<![CDATA[ 
 		SELECT
 			no,
@@ -40,7 +40,7 @@
 			contents,
 			userid,
 			hit,
-			TO_CHAR(reg_date,'YYYY-MM-DD')
+			TO_CHAR(reg_date,'YYYY-MM-DD') AS reg_date
 		FROM 
 			notice
 		WHERE 

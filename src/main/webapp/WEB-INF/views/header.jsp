@@ -20,7 +20,7 @@
 				<c:if test="${!empty sessionScope.loginUser }">
 					<c:if test="${sessionScope.loginUser.type == 3}">
 						<li class="recipeWrite">
-							<a href="recipeWrite.do">레시피등록</a>
+							<a href="recipeEdit.do">레시피등록</a>
 						</li>
 					</c:if>
 					<li>
@@ -32,7 +32,7 @@
 				</c:if>
 
 				<li>
-					<a href="">자주찾는질문</a>
+					<a href="faqList.do">자주찾는질문</a>
 				</li>
 				<li>
 					<a href="">고객센터</a>
@@ -42,9 +42,6 @@
 	</div>
 	<nav>
 		<ul>
-			<li>
-				<a href="./">인기레시피</a>
-			</li>
 			<li>
 				<a href="./fridgeList.do">나의냉장고</a>
 			</li>

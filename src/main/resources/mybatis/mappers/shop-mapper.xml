@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cm.takemeal.recipe.model.dao.RecipeDao">
+
+	<resultMap type="shop" id="resultShop">
+		<id column="no" property="no" />
+		<result column="subject" property="subject" />
+		<result column="contents" property="contents" />
+		<result column="thumbnail" property="thumbnail" />
+		<result column="time" property="time" />
+		<result column="follow" property="follow" />
+		<result column="hit" property="hit" />
+		<result column="kcal" property="kcal" />
+		<result column="userid" property="userid" />
+		<result column="reg_date" property="reg_date" />
+	</resultMap>
+		
+    <select id="selectShopContentCnt" resultType="int" parameterType="java.util.HashMap">
+    	<![CDATA[ 
+        SELECT
+            COUNT(no)
+        FROM
+            shop
+		]]> 
+    </select>
+    
+    <select id="selectShopContent" resultType="com.cm.takemeal.shop.model.vo.Shop" parameterType="java.util.HashMap">
+    	<![CDATA[ 
+    	SELECT * FROM (
+		    SELECT no, subject, contents, time, follow, thumbnail, TO_CHAR(reg_date,'YYYY-MM-DD'), ROW_NUMBER() OVER(ORDER BY NO DESC) AS RNUM
+		    FROM shop
+		)
+		WHERE RNUM BETWEEN #{start} AND #{end}
+		]]> 
+    </select>
+    
+    
+    <select id="selectShopContentView" resultType="com.cm.takemeal.shop.model.vo.Shop" parameterType="java.util.HashMap">
+    	<![CDATA[ 
+		SELECT
+			no,
+			subject,
+			contents,
+			time,
+			follow,
+			TO_CHAR(reg_date,'YYYY-MM-DD')
+		FROM 
+			shop
+		WHERE 
+			no = #{no}
+		]]> 
+    </select>
+    
+    
+	
+
+
+
+
+
+
+
+
+
+
+
+</mapper>

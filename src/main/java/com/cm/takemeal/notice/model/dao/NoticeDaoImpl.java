@@ -22,17 +22,17 @@ public class NoticeDaoImpl implements NoticeDao{
  
     @Override
     public int getContentCnt(Map<String, Object> paramMap) {
-        return sqlSession.selectOne("selectContentCnt1", paramMap);
+        return sqlSession.selectOne("selectNoticeContentCnt", paramMap);
     }
      
     @Override
     public List<Notice> getContentList(Map<String, Object> paramMap) {
-        return sqlSession.selectList("selectContent1", paramMap);
+        return sqlSession.selectList("selectNoticeContent", paramMap);
     }
  
     @Override
     public Notice getContentView(Map<String, Object> paramMap) {
-        return sqlSession.selectOne("selectContentView1", paramMap);
+        return sqlSession.selectOne("selectNoticeContentView", paramMap);
     }
     
 }

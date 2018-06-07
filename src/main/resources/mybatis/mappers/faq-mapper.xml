@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cm.takemeal.faq.model.dao.FaqDao">
+
+	<resultMap type="faq" id="resultFaq">
+		<id column="no" property="no" />
+		<result column="subject" property="subject" />
+		<result column="contents" property="contents" />
+		<result column="hit" property="hit" />
+		<result column="userid" property="userid" />
+		<result column="reg_date" property="reg_date" />
+		<result column="category" property="category" />
+	</resultMap>
+		
+    <select id="selectFaqContentCnt" resultType="int" parameterType="java.util.HashMap">
+    	<![CDATA[ 
+        SELECT
+            COUNT(no)
+        FROM
+            faq
+		]]> 
+    </select>
+    
+    <select id="selectFaqContent" resultType="com.cm.takemeal.faq.model.vo.Faq" parameterType="java.util.HashMap">
+    	<![CDATA[ 
+    	SELECT * FROM (
+		    SELECT no, subject, hit, TO_CHAR(reg_date,'YYYY-MM-DD') AS reg_date, ROW_NUMBER() OVER(ORDER BY reg_date DESC) AS RNUM
+		    FROM faq
+		)
+		WHERE RNUM BETWEEN #{start} AND #{end}
+		]]> 
+    </select>
+    
+    
+    <select id="selectFaqContentView" resultType="com.cm.takemeal.faq.model.vo.Faq" parameterType="java.util.HashMap">
+    	<![CDATA[ 
+		SELECT
+			no,
+			subject,
+			contents,
+			userid,
+			hit,
+			TO_CHAR(reg_date,'YYYY-MM-DD') AS reg_date
+		FROM 
+			faq
+		WHERE 
+			no = #{no}
+		]]> 
+    </select>
+    
+    
+	
+
+
+
+
+
+
+
+
+
+
+
+</mapper>
