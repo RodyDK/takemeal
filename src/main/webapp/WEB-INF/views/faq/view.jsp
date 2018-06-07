@@ -9,12 +9,12 @@
 
 <c:if test="${msg ne null}">
 	<script>
-		customAlert("${msg}","noticeList.do");
+		customAlert("${msg}","faqList.do");
 	</script>
 </c:if>
-<c:if test="${noticeView.no == '' || noticeView.no eq null}">
+<c:if test="${faqView.no == '' || faqView.no eq null}">
 	<script>
-		customAlert("게시글이 업습니다.","noticeList.do");
+		customAlert("게시글이 업습니다.","faqList.do");
 	</script>
 </c:if>
 
@@ -31,13 +31,13 @@
 			<div class="recipe_box_normal">
 				<div class="notice view">
 					<div class="view_title">
-						${noticeView.subject}
+						${faqView.subject}
 						<span>
-							작성일 : ${noticeView.reg_date}&nbsp;|&nbsp;조회수 : ${noticeView.hit}
+							작성일 : ${faqView.reg_date}&nbsp;|&nbsp;조회수 : ${faqView.hit}
 						</span>
 					</div>
 					<div class="view_content">
-						${noticeView.contents}
+						${faqView.contents}
 					</div>
 				</div>
 				<div class="write_btn">

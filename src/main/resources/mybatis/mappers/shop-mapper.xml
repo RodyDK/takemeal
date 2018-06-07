@@ -3,7 +3,7 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.cm.takemeal.recipe.model.dao.RecipeDao">
 
-	<resultMap type="recipe" id="resultRecipe">
+	<resultMap type="shop" id="resultShop">
 		<id column="no" property="no" />
 		<result column="subject" property="subject" />
 		<result column="contents" property="contents" />
@@ -16,27 +16,27 @@
 		<result column="reg_date" property="reg_date" />
 	</resultMap>
 		
-    <select id="selectContentCnt" resultType="int" parameterType="java.util.HashMap">
+    <select id="selectShopContentCnt" resultType="int" parameterType="java.util.HashMap">
     	<![CDATA[ 
         SELECT
             COUNT(no)
         FROM
-            RECIPE
+            shop
 		]]> 
     </select>
     
-    <select id="selectContent" resultType="com.cm.takemeal.recipe.model.vo.Recipe" parameterType="java.util.HashMap">
+    <select id="selectShopContent" resultType="com.cm.takemeal.shop.model.vo.Shop" parameterType="java.util.HashMap">
     	<![CDATA[ 
     	SELECT * FROM (
 		    SELECT no, subject, contents, time, follow, thumbnail, TO_CHAR(reg_date,'YYYY-MM-DD'), ROW_NUMBER() OVER(ORDER BY NO DESC) AS RNUM
-		    FROM RECIPE
+		    FROM shop
 		)
 		WHERE RNUM BETWEEN #{start} AND #{end}
 		]]> 
     </select>
     
     
-    <select id="selectContentView" resultType="com.cm.takemeal.recipe.model.vo.Recipe" parameterType="java.util.HashMap">
+    <select id="selectShopContentView" resultType="com.cm.takemeal.shop.model.vo.Shop" parameterType="java.util.HashMap">
     	<![CDATA[ 
 		SELECT
 			no,
@@ -46,7 +46,7 @@
 			follow,
 			TO_CHAR(reg_date,'YYYY-MM-DD')
 		FROM 
-			recipe
+			shop
 		WHERE 
 			no = #{no}
 		]]> 

@@ -1,6 +1,7 @@
-package com.cm.takemeal.notice.controller;
+package com.cm.takemeal.faq.controller;
 
 import java.math.BigDecimal;
+import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -13,22 +14,24 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.cm.takemeal.notice.model.service.NoticeService;
-import com.cm.takemeal.notice.model.vo.Notice;
+import com.cm.takemeal.faq.model.service.FaqService;
+import com.cm.takemeal.faq.model.vo.Faq;
+import com.cm.takemeal.recipe.model.vo.Recipe;
 
 @Controller
-public class NoticeController {
+public class FaqController {
 
 	@Autowired
-	NoticeService noticeService;
+	FaqService faqService;
 
-	private static final Logger logger = LoggerFactory.getLogger(NoticeController.class);
+	private static final Logger logger = LoggerFactory.getLogger(FaqController.class);
 
 	// 게시글 리스트 조회
-	@RequestMapping(value = "noticeList.do")
-	public String noticeList(@RequestParam Map<String, Object> paramMap, Model model, Notice notice) {
+	@RequestMapping(value = "faqList.do")
+	public String faqList(@RequestParam Map<String, Object> paramMap, Model model) {
 
 		// 조회 하려는 페이지
 		int startPage = (paramMap.get("startPage") != null ? Integer.parseInt(paramMap.get("startPage").toString())
@@ -38,7 +41,7 @@ public class NoticeController {
 				? Integer.parseInt(paramMap.get("visiblePages").toString())
 				: 10);
 		// 일단 전체 건수를 가져온다.
-		int totalCnt = noticeService.getContentCnt(paramMap);
+		int totalCnt = faqService.getContentCnt(paramMap);
 		
 
 		// 아래 1,2는 실제 개발에서는 class로 빼준다. (여기서는 이해를 위해 직접 적음)
@@ -61,54 +64,61 @@ public class NoticeController {
 		model.addAttribute("startPage", startPage + "");// 현재 페이지
 		model.addAttribute("totalCnt", totalCnt);// 전체 게시물수
 		model.addAttribute("totalPage", totalPage);// 페이지 네비게이션에 보여줄 리스트 수
-		model.addAttribute("noticeList", noticeService.getContentList(paramMap));// 검색
+		model.addAttribute("faqList", faqService.getContentList(paramMap));// 검색
 		
 		
 		System.out.println("totalcnt" + totalCnt);
-		System.out.println("noticeList" + noticeService.getContentList(paramMap));
+		System.out.println("faqList" + faqService.getContentList(paramMap));
 		
-		return "notice/list";
+		return "faq/list";
 
 	}
 
-	// 게시글 상세 보기
-	@RequestMapping(value = "noticeView.do")
-	public String recipeView(@RequestParam Map<String, Object> paramMap, Model model) {
-		if (paramMap.get("no") != null) {
-			model.addAttribute("noticeView", noticeService.getContentView(paramMap));
-			return "notice/view";
-		} else {
-			model.addAttribute("msg", "올바른 경로가 아닙니다.");// 현재 페이지
-			return "notice/view";
-		}
+	// 게시글 상세 보기	
+    @RequestMapping(value = "faqView.do")
+    @ResponseBody
+    public Object faqView(@RequestParam Map<String, Object> paramMap, Model model) {
+    	
+    	Map<String, Object> retVal = new HashMap<String, Object>();
+    	Faq result = faqService.getContentView(paramMap);
+    	
+    	if(result != null){
+    		retVal.put("code", "SUCCESS");
+    		retVal.put("data", result);
+    	}else {   
+    		retVal.put("code", "FAIL");
+            retVal.put("message", "잘못된 요청입니다.");
+    	}
 
-	}
-
+        return retVal;
+    }
+    
+    
 	// 게시글 등록 및 수정
-	@RequestMapping(value = "noticeEdit.do")
-	public String recipeEdit(HttpServletRequest request, @RequestParam Map<String, Object> paramMap, Model model) {
+	@RequestMapping(value = "faqEdit.do")
+	public String faqEdit(HttpServletRequest request, @RequestParam Map<String, Object> paramMap, Model model) {
 
 		// Referer 검사
 		String Referer = request.getHeader("referer");
 
 		if (Referer != null) {// URL로 직접 접근 불가
 			if (paramMap.get("no") != null) { // 게시글 수정
-				if (Referer.indexOf("noticeView.do") > -1) {
+				if (Referer.indexOf("faqView.do") > -1) {
 					// 정보를 가져온다.
-					model.addAttribute("noticeView", noticeService.getContentView(paramMap));
-					return "notice/edit";
+					model.addAttribute("faqView", faqService.getContentView(paramMap));
+					return "faq/edit";
 				} else {
-					return "redirect:noticeList.do";
+					return "redirect:faqList.do";
 				}
 			} else { // 게시글 등록
-				if (Referer.indexOf("noticeList.do") > -1) {
-					return "notice/edit";
+				if (Referer.indexOf("faqList.do") > -1) {
+					return "faq/edit";
 				} else {
-					return "redirect:noticeList.do";
+					return "redirect:faqList.do";
 				}
 			}
 		} else {
-			return "redirect:noticeList.do";
+			return "redirect:faqList.do";
 		}
 
 	}

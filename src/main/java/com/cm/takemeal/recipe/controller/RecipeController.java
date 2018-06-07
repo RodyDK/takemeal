@@ -1,6 +1,7 @@
 package com.cm.takemeal.recipe.controller;
 
 import java.math.BigDecimal;
+import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -13,9 +14,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.cm.takemeal.recipe.model.service.RecipeService;
+import com.cm.takemeal.recipe.model.vo.Recipe;
 
 
 
@@ -35,7 +38,7 @@ public class RecipeController {
         //조회 하려는 페이지
         int startPage = (paramMap.get("startPage")!=null?Integer.parseInt(paramMap.get("startPage").toString()):1);
         //한페이지에 보여줄 리스트 수
-        int visiblePages = 10;
+        int visiblePages = 8;
         int endPage = startPage + visiblePages - 1;
         //일단 전체 건수를 가져온다.
         int totalCnt = recipeService.getContentCnt(paramMap);
@@ -71,48 +74,36 @@ public class RecipeController {
 
     //게시글 상세 보기
     @RequestMapping(value = "recipeView.do")
-    public String recipeView(@RequestParam Map<String, Object> paramMap, Model model) {
-    	if(paramMap.get("no") != null){
-            model.addAttribute("recipeView", recipeService.getContentView(paramMap));
-            return "DK/view";
-    	}else {
-    		model.addAttribute("msg", "올바른 경로가 아닙니다.");//현재 페이지      
-    		return "DK/view";
+    @ResponseBody
+    public Object recipeView(@RequestParam Map<String, Object> paramMap, Model model) {
+    	
+    	Map<String, Object> retVal = new HashMap<String, Object>();
+    	Recipe result = recipeService.getContentView(paramMap);
+    	
+    	if(result != null){
+    		retVal.put("code", "SUCCESS");
+    		retVal.put("data", result);
+    	}else {   
+    		retVal.put("code", "FAIL");
+            retVal.put("message", "잘못된 요청입니다.");
     	}
 
+        return retVal;
     }
     
     //게시글 등록 및 수정
     @RequestMapping(value = "recipeEdit.do")
     public String recipeEdit(HttpServletRequest request, @RequestParam Map<String, Object> paramMap, Model model) {
- 
-        //Referer 검사
-        String Referer = request.getHeader("referer");
- 
-        if(Referer!=null){//URL로 직접 접근 불가
-            if(paramMap.get("no") != null){ //게시글 수정
-                if(Referer.indexOf("recipeView.do")>-1){
-                    //정보를 가져온다.
-                    model.addAttribute("recipeView", recipeService.getContentView(paramMap));
-                    return "DK/edit";
-                }else{
-                    return "redirect:recipeList.do";
-                }
-            }else{ //게시글 등록
-                if(Referer.indexOf("recipeList.do")>-1){
-                    return "DK/edit";
-                }else{
-                    return "redirect:recipeList.do";
-                }
-            }
-        }else{
-            return "redirect:recipeList.do";
+
+        if(paramMap.get("no") != null){ //게시글 수정
+            //정보를 가져온다.
+            model.addAttribute("recipeView", recipeService.getContentView(paramMap));
+            return "DK/edit";
+        }else{ //게시글 등록
+            return "DK/edit";
         }
- 
-    }
- 
-  
-	
+
+    }	
 }
 
 

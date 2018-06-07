@@ -9,6 +9,20 @@
 <div class="container">
 	<div>
 		<div class="recipe_wrap">
+			<div class="search">
+				<div class="category">
+				　
+				</div>
+				<div class="search_form">
+					<input type="text" placeholder="음식명 으로 검색">
+					<a href="#">
+						<i class="fa fa-search"></i>
+					</a>
+				</div>
+				<div class="sort">
+				　
+				</div>
+			</div>
 			<div class="recipe_box_normal">
 				<ul>		
 				<c:choose>
@@ -20,8 +34,8 @@
 				    <c:otherwise>
 				        <c:forEach var="recipeList" items="${recipeList}" varStatus="status">
 							<li>
-								<a class="thumbnail" href="recipeView.do?no=${recipeList.no}">
-									<img src="https://cloudfront.haemukja.com/vh.php?url=https://d1hk7gw6lgygff.cloudfront.net/uploads/direction/image_file/3658/mid_thumb____.png&convert=jpgmin&rt=600" alt="Mid thumb">
+								<a href="#" class="thumbnail" onclick="javascript:popupOpen('recipe',${recipeList.no});">
+									<img src="/takeMeal/resources/upfile/recipe/${recipeList.thumbnail}">
 								</a>
 								<span class="author">
 									<a href="recipeChef.do?userid=${recipeList.userid}">
@@ -32,19 +46,31 @@
 									</a>			
 								</span>
 								<h2 class="recipe_title">
-									<a class="call_recipe" href="recipeView.do?no=${recipeList.no}">
+									<a href="#" onclick="javascript:popupOpen('recipe',${recipeList.no});">
 										${recipeList.subject}
+										<span>
+										${recipeList.contents}
+										</span>
 									</a>
 								</h2>
 								<div class="option">
 									<div class="time">
-										<a href="/recipes?cooking_time=30">${recipeList.time}분</a>
+										<a href="/recipes?cooking_time=30">
+										<i class="fa fa-clock-o"></i>
+										${recipeList.time}분
+										</a>
 									</div>
 									<div class="like">
-										<a href="/recipes?cooking_time=30">${recipeList.follow}명</a>
+										<a href="/recipes?cooking_time=30">
+										<i class="fa fa-heart"></i>
+										${recipeList.follow}명
+										</a>
 									</div>
 									<div class="share">
-										<a href="javascript:;" class="call-share">공유</a>
+										<a href="javascript:;" class="call-share">
+											<i class="fa fa-share-alt"></i>
+											공유
+										</a>
 									</div>
 								</div>
 								<!-- [D] 공유하기 레이어 -->

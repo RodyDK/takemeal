@@ -12,8 +12,8 @@
 		<div class="recipe_wrap">
 		
 			<div class="title">
-				<h1>공지사항</h1>
-				<p>서비스 이용 시 중요사항을 전달해드립니다. </p>
+				<h1>자주찾는질문</h1>
+				<p>서비스 이용 시 궁금한 점을 해소시켜 드립니다.</p>
 			</div>
 	        <form class="form-inline" id="frmSearch" action="notice/list">
 	            <input type="hidden" id="startPage" name="startPage" value=""><!-- 페이징을 위한 hidden타입 추가 -->
@@ -21,40 +21,30 @@
 	        </form>
 	        
 	        
-            <div class="notice">
+            <div class="faq">
                 <table>
                 	<colgroup>
-                		<col width="80"/>
+                		<col width="50"/>
                 		<col width=""/>
-                		<col width="150"/>
                 	</colgroup>
-                    <tr>
-                        <th>
-							번호
-                        </th>
-                        <th>
-                           	 제목
-                        </th>
-                        <th>
-                          	  작성일
-                        </th>
-                    </tr>
                     <c:choose>
-                        <c:when test="${fn:length(noticeList) == 0}">
+                        <c:when test="${fn:length(faqList) == 0}">
                             <tr>
-                                <td colspan="3" class="no-data">
+                                <td colspan="2" class="no-data">
 									조회결과가 없습니다.
                                 </td>
                             </tr>
                         </c:when>
                         <c:otherwise>
-                            <c:forEach var="noticeList" items="${noticeList}" varStatus="status">
-                                <tr>
-                                    <td align="center">${noticeList.no}</td>
+                            <c:forEach var="faqList" items="${faqList}" varStatus="status">
+                                <tr onclick="javascript:faqlistAccordion(this,${faqList.no});">
+                                    <td align="center">Q</td>
                                     <td>
-                                        <a href="noticeView.do?no=${noticeList.no}">${noticeList.subject}</a>
+                                        ${faqList.subject}
                                     </td>
-                                    <td align="center">${noticeList.reg_date}</td>
+                                </tr>
+                                <tr>
+                                	<td colspan="2" id="faq_content_${faqList.no}" class="accordion"></td>
                                 </tr>
                             </c:forEach>
                         </c:otherwise> 

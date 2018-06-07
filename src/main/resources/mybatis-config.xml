@@ -7,11 +7,15 @@
 		<typeAlias type="com.cm.takemeal.member.model.vo.Member" alias="Member" />
 		<typeAlias type="com.cm.takemeal.recipe.model.vo.Recipe" alias="Recipe" />
 		<typeAlias type="com.cm.takemeal.notice.model.vo.Notice" alias="Notice" />
+		<typeAlias type="com.cm.takemeal.faq.model.vo.Faq" alias="Faq" />
+
 	</typeAliases>
 	
 	<mappers>
 		<mapper resource="mybatis/mappers/member-mapper.xml" />
 		<mapper resource="mybatis/mappers/recipe-mapper.xml" />
 		<mapper resource="mybatis/mappers/notice-mapper.xml" />
+		<mapper resource="mybatis/mappers/faq-mapper.xml" />
+
 	</mappers>
 </configuration>
