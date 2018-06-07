@@ -22,6 +22,7 @@ public class NoticeDaoImpl implements NoticeDao{
  
     @Override
     public int getContentCnt(Map<String, Object> paramMap) {
+<<<<<<< HEAD
         return sqlSession.selectOne("selectNoticeContentCnt", paramMap);
     }
      
@@ -33,6 +34,19 @@ public class NoticeDaoImpl implements NoticeDao{
     @Override
     public Notice getContentView(Map<String, Object> paramMap) {
         return sqlSession.selectOne("selectNoticeContentView", paramMap);
+=======
+        return sqlSession.selectOne("selectContentCnt1", paramMap);
+    }
+     
+    @Override
+    public List<Notice> getContentList(Map<String, Object> paramMap) {
+        return sqlSession.selectList("selectContent1", paramMap);
+    }
+ 
+    @Override
+    public Notice getContentView(Map<String, Object> paramMap) {
+        return sqlSession.selectOne("selectContentView1", paramMap);
+>>>>>>> branch 'master' of https://github.com/RodyDK/takemeal.git
     }
     
 }

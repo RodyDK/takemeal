@@ -15,6 +15,8 @@ import com.cm.takemeal.recipe.model.vo.Recipe;
 
 
 
+
+
 @Service("memberService")
 public class MemberServiceImpl implements MemberService{
 
