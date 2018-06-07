@@ -28,7 +28,15 @@
     <select id="selectContent" resultType="com.cm.takemeal.recipe.model.vo.Recipe" parameterType="java.util.HashMap">
     	<![CDATA[ 
     	SELECT * FROM (
+<<<<<<< HEAD
 		    SELECT no, subject, contents, time, follow, thumbnail, TO_CHAR(reg_date,'YYYY-MM-DD'), ROW_NUMBER() OVER(ORDER BY NO DESC) AS RNUM
+=======
+<<<<<<< HEAD
+		    SELECT no, subject, contents, time, follow, thumbnail, TO_CHAR(reg_date,'YYYY-MM-DD'), ROW_NUMBER() OVER(ORDER BY NO DESC) AS RNUM
+=======
+		    SELECT no, subject, time, follow, TO_CHAR(reg_date,'YYYY-MM-DD'), ROW_NUMBER() OVER(ORDER BY NO DESC) AS RNUM
+>>>>>>> branch 'master' of https://github.com/RodyDK/takemeal.git
+>>>>>>> branch 'master' of https://github.com/RodyDK/takemeal.git
 		    FROM RECIPE
 		)
 		WHERE RNUM BETWEEN #{start} AND #{end}

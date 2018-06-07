@@ -41,12 +41,23 @@
 			userid,
 			hit,
 			TO_CHAR(reg_date,'YYYY-MM-DD') AS reg_date
+<<<<<<< HEAD
 		FROM 
 			notice
 		WHERE 
 			no = #{no}
+=======
+    <select id="selectContentCnt1" resultType="int" parameterType="java.util.HashMap">
+    	<![CDATA[ 
+        SELECT
+            COUNT(no)
+        FROM
+            NOTICE
+>>>>>>> branch 'master' of https://github.com/RodyDK/takemeal.git
 		]]> 
     </select>
+    
+    
     
     
 	

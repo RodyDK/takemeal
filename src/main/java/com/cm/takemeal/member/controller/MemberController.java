@@ -3,7 +3,11 @@ package com.cm.takemeal.member.controller;
 import java.util.HashMap;
 import java.util.Map;
 
+<<<<<<< HEAD
 import javax.security.auth.message.callback.PrivateKeyCallback.Request;
+=======
+//import javax.security.auth.message.callback.PrivateKeyCallback.Request;
+>>>>>>> branch 'master' of https://github.com/RodyDK/takemeal.git
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;

@@ -30,7 +30,16 @@
 						<a href="logout.do">로그아웃</a>
 					</li>
 				</c:if>
-
+				<li>
+					<a href="faqList.do">자주찾는질문</a>
+							<a href="recipeWrite.do">레시피등록</a>
+						</li>
+					<li>
+						<a href="mypage.do">마이페이지</a>
+					</li>
+					<li>
+						<a href="logout.do">로그아웃</a>
+					</li>
 				<li>
 					<a href="faqList.do">자주찾는질문</a>
 				</li>
