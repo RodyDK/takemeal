@@ -101,7 +101,7 @@ public class RecipeController {
             //정보를 가져온다.
             model.addAttribute("recipeView", recipeService.getContentView(paramMap));
             return "DK/edit";
-        }else{ //게시글 등록
+        }else{ //게시글 등록 
             return "DK/edit";
         }
 

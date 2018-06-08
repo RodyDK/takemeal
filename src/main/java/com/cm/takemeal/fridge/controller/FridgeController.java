@@ -16,7 +16,7 @@ public class FridgeController {
 	
 	@RequestMapping(value="fridgeList.do", method=RequestMethod.GET)
 	public String moveFridgeListPage() {
-		return "fridge/list";
+		return "JH/foodstorage";
 	}
 	
 }
