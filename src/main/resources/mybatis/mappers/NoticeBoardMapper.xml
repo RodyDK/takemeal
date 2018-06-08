@@ -89,13 +89,13 @@
 	<sql id="search">
 		<if test="searchType != null">
 			<if test="searchType =='t'.toString()">
-				and title like CONCAT('%', #{keyword}, '%')
+				where title like '%#{keyword}%'
 			</if>
 			<if test="searchType =='c'.toString()">
-				and content like CONCAT('%', #{keyword}, '%')
+				and content like '%'#{keyword}'%'
 			</if>
 			<if test="searchType =='w'.toString()">
-				and writer like CONCAT('%', #{keyword}, '%')
+				and writer like '%'#{keyword}'%'
 			</if>
 			<if test="searchType =='tc'.toString()">
 				and (title like CONCAT('%', #{keyword}, '%') OR content like
@@ -106,7 +106,7 @@
 				CONCAT('%', #{keyword}, '%'))
 			</if>
 			<if test="searchType =='tcw'.toString()">
-				and (title content CONCAT('%', #{keyword}, '%')
+				and (title like CONCAT('%', #{keyword}, '%')
 				OR
 				content like CONCAT('%', #{keyword}, '%')
 				OR
@@ -120,23 +120,26 @@
 	<![CDATA[
 		select * from
 	(select rownum rn, bno, title, content, writer, regdate, viewcnt from
-	TBL_BOARD where bno>0 order by bno asc)
+	TBL_BOARD where bno>0)
 	]]>
 		<include refid="search"></include>
-	
 	<![CDATA[
- 	where rn between #{pageStart} and #{perPageNum}
+ 	and rn between #{pageStart} and #{perPageNum}
+ 	order by bno asc
 	]]>
 	</select>
 
 	<select id="listSearchCount" resultType="int">
+	
 	<![CDATA[
 	select count(bno)
 	from tbl_board
-	where bno > 0
-	
+	where bno>0
+
 	]]>
-		<include refid="search"></include>
+	<include refid="search"></include>
+	
+<!-- 		<include refid="search"></include> -->
 
 	</select>
 

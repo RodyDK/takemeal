@@ -22,7 +22,7 @@
 	$(document).ready(function() {
 		$('#searchBtn').on("click", function(event) {
 			
-			self.location = "list"
+			self.location = "list.do"
 			+ "${pageMaker.makeQuery(1)}"
 			+ "&searchType="
 			+ $("select option:selected").val()
@@ -48,7 +48,7 @@
 
 		var jobForm = $("#jobForm");
 		jobForm.find("[name='page']").val(targetPage);
-		jobForm.attr("action", "/DJ/listPage.do").attr("method", "get");
+		jobForm.attr("action", "/DJ/sboard/list.do").attr("method", "get");
 		jobForm.submit();
 
 	});
@@ -81,7 +81,6 @@
 			<option value="tcw"
 				<c:out value="${cri.searchType eq 'tcw' ? 'selected':'' }"/>>
 				Titile Or Content Or Writer</option>
-		
 		</select>
 		
 		<input type="text" name="keyword" id="keywordInput" value="${cri.keyword }">
@@ -104,7 +103,7 @@
 
 			<tr>
 				<td>${BoardVo.bno }</td>
-				<td><a href="/DJ/sboard/readPage.do${pageMaker.makeSearch(pageMaker.cri.page)}&bno=${BoardVo.bno }">${BoardVo.title }</a></td>
+				<td><a href="readPage.do${pageMaker.makeSearch(pageMaker.cri.page)}&bno=${BoardVo.bno }">${BoardVo.title }</a></td>
 				<td>${BoardVo.writer }</td>
 				<td><fmt:formatDate pattern="yyyy-MM-dd HH:mm"
 						value="${BoardVo.regdate }" /></td>

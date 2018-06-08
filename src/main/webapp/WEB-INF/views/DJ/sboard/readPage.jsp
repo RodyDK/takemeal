@@ -21,18 +21,18 @@
 		console.log(formObj);
 
 		$(".modifyBtn").on("click", function() {
-			formObj.attr("action", "dj/sboard/modifyPage");
+			formObj.attr("action", "modifyPage.do");
 			formObj.attr("method", "get");
 			formObj.submit();
 		});
 
 		$(".removeBtn").on("click", function() {
-			formObj.attr("action", "dj/sboard/removePage.do");
+			formObj.attr("action", "removePage.do");
 			formObj.submit();
 		});
 
 		$(".goListBtn").on("click", function() {
-			formObj.attr("action", "dj/sboard/listPage.do");
+			formObj.attr("action", "list.do");
 			formObj.attr("method", "get");
 			formObj.submit();
 		});

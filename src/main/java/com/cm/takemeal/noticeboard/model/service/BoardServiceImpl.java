@@ -50,7 +50,7 @@ public class BoardServiceImpl implements BoardService{
 	}
 
 	@Override
-	public List<BoardVo> listCriteia(Criteria cri) throws Exception {
+	public List<BoardVo> listCriteria(Criteria cri) throws Exception {
 		// TODO Auto-generated method stub
 		return dao.listCriteria(cri);
 	}

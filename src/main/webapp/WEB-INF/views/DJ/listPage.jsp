@@ -33,7 +33,7 @@
 
 </head>
 <body>
-
+	
 	<table class="table table-bordered">
 		<tr>
 			<th style="width: 10px">BNO</th>

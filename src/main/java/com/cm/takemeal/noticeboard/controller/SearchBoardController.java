@@ -19,7 +19,7 @@ import com.cm.takemeal.noticeboard.model.vo.PageMaker;
 import com.cm.takemeal.noticeboard.model.vo.SearchCriteria;
 
 @Controller
-@RequestMapping("DJ/sboard/*")
+@RequestMapping("/DJ/sboard/*")
 public class SearchBoardController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(SearchBoardController.class);
@@ -32,26 +32,30 @@ public class SearchBoardController {
 		
 		logger.info(cri.toString());
 		
-		mv.addObject("list", service.listSearchCriteria(cri));
+		mv.addObject("list", service.listCriteria(cri));
 		mv.setViewName("DJ/sboard/list");
 		PageMaker pageMaker = new PageMaker();
+		System.out.println("----------여까지들어옴---------");
 		pageMaker.setCri(cri);
-		
 		pageMaker.setTotalCount(service.listSearchCount(cri));
-		
+		System.out.println("---됌?");
 		mv.addObject("pageMaker", pageMaker);
 		return mv;
 		
 		
 	}
 	
-	@RequestMapping(value="/reaPage", method=RequestMethod.GET)
+	@RequestMapping(value="/readPage", method=RequestMethod.GET)
 	public ModelAndView read(@RequestParam("bno")int bno, @ModelAttribute("cri")SearchCriteria cri, ModelAndView mv)
 			throws Exception{
 		
+		System.out.println("readPage컨트롤러들어옴............");
+		logger.info("readPage컨트롤러들어옴............");
 		/*model.addAttribute(service.read(bno));*/
-		mv.addObject(service.read(bno));
-		mv.setViewName("dj/sboard/read");
+		mv.addObject("BoardVo",service.read(bno));
+		/*mv.addObject(service.read(bno));*/
+		mv.setViewName("DJ/sboard/readPage");
+		
 		return mv;
 	}
 	
@@ -59,6 +63,7 @@ public class SearchBoardController {
 	public String remove(@RequestParam("bno")int bno, SearchCriteria cri, RedirectAttributes rttr)throws Exception{
 		
 		service.remove(bno);
+		System.out.println("-----removePage----------들어옴??-");
 		rttr.addAttribute("page", cri.getPage());
 		rttr.addAttribute("perPageNum", cri.getPerPageNum());
 		rttr.addAttribute("searchType", cri.getSearchType());
@@ -66,21 +71,23 @@ public class SearchBoardController {
 		
 		rttr.addFlashAttribute("msg","SUCCESS");
 		
-		return "redirect:/sboard/list";
+		return "redirect:DJ/sboard/list";
 	
 	}
 	
-	@RequestMapping(value="/modifyPage.do", method=RequestMethod.GET)
+	@RequestMapping(value="/modifyPage", method=RequestMethod.GET)
 	public void modifyPagingGET(int bno, @ModelAttribute("cri")SearchCriteria cri, Model model)throws Exception{
+		
+		System.out.println("-----------modifyPage들어옴~~~~~~");
 		model.addAttribute(service.read(bno));
 	} 
 	
 	
-	@RequestMapping(value="/modifyPage.do", method=RequestMethod.POST)
+	@RequestMapping(value="/modifyPage", method=RequestMethod.POST)
 	public String modifyPagingPOST(BoardVo board, SearchCriteria cri, RedirectAttributes rttr)throws Exception{
 		logger.info(cri.toString());
 		service.modify(board);
-		
+		System.out.println("-----------modifyPage.들어옴~~~~~~");
 		rttr.addAttribute("page", cri.getPage());
 		rttr.addAttribute("perPageNum", cri.getPerPageNum());
 		rttr.addAttribute("searchType", cri.getSearchType());
@@ -91,4 +98,25 @@ public class SearchBoardController {
 		return "redirect:/sboard/list";
 	}
 
+	
+	@RequestMapping(value="/register.do", method=RequestMethod.GET)
+	public void registGET() throws Exception{
+		logger.info("regist get..............");
+		
+	}
+	
+	@RequestMapping(value = "/register.do", method=RequestMethod.POST)
+	public String registerPOST(BoardVo board, RedirectAttributes rttr)throws Exception{
+		
+		logger.info("register post....");
+		logger.info(board.toString());
+		
+		service.regist(board);
+		
+		rttr.addFlashAttribute("msg", "SUCCESS");
+		
+		return "redirect:/dj/sboard/list";
+	}
+	
+	
 }

@@ -20,7 +20,7 @@
 		console.log(formObj);
 
 		$(".btn-warning").on("click", function() {
-			self.location = "dj/sboard/listPage?page=${cri.page}&perPageNum=${cri.perPageNum}"
+			self.location = "list?page=${cri.page}&perPageNum=${cri.perPageNum}"
 					+"&searchType=${cri.searchType}&keyword=${cri.keyword}";
 		});
 

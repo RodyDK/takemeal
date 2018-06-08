@@ -121,7 +121,7 @@ public class BoardContoroller {
 		
 		logger.info("show list page with Criteria...........");
 		
-		mv.addObject("list", service.listCriteia(cri));
+		mv.addObject("list", service.listCriteria(cri));
 		mv.setViewName("DJ/listCri");
 		return mv;	
 		
@@ -134,7 +134,7 @@ public class BoardContoroller {
 		
 		logger.info(cri.toString());
 		
-		mv.addObject("list", service.listCriteia(cri));
+		mv.addObject("list", service.listCriteria(cri));
 		
 		
 		

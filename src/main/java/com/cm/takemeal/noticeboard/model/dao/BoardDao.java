@@ -20,7 +20,7 @@ public interface BoardDao {
 	
 	public List<BoardVo> listPage(int page) throws Exception;
 	
-	public List<BoardVo> listCriteria(Criteria cri) throws Exception;
+	public List<BoardVo>listCriteria (Criteria cri) throws Exception;
 	
 	public int countPaging(Criteria cri) throws Exception;
 	
