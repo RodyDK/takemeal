@@ -28,7 +28,7 @@ public class NoticeController {
 
 	// 게시글 리스트 조회
 	@RequestMapping(value = "noticeList.do")
-	public String noticeList(@RequestParam Map<String, Object> paramMap, Model model, Notice notice) {
+	public String noticeList(@RequestParam Map<String, Object> paramMap, Model model) {
 
 		// 조회 하려는 페이지
 		int startPage = (paramMap.get("startPage") != null ? Integer.parseInt(paramMap.get("startPage").toString())
