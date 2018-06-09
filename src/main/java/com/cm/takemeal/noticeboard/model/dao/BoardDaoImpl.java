@@ -30,7 +30,7 @@ public class BoardDaoImpl implements BoardDao{
 		@Override
 		public BoardVo read(Integer bno) throws Exception {
 			// TODO Auto-generated method stub
-			System.out.println("BoardImpl접근");
+			System.out.println("BoardImpl read접근");
 			System.out.println(bno);
 			return session.selectOne(namespace+".read", bno);
 		}

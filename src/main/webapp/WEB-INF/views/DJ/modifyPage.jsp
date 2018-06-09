@@ -20,7 +20,7 @@
 		console.log(formObj);
 
 		$(".btn-warning").on("click", function() {
-			self.location = "dj/listPage?page=${cri.page}&perPageNum=${cri.perPageNum}";
+			self.location = "DJ/listPage.do?page=${cri.page}&perPageNum=${cri.perPageNum}";
 		});
 
 		$(".btn-primary").on("click", function() {

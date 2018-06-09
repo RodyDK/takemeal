@@ -63,9 +63,9 @@
 
 		<div class="form-group">
 			<label for="exampleInputPassword1">Content</label>
-			<textarea class="form-control" name="content" rows="3"
+			<textarea class="form-control" name="content" rows="10"
 				readonly="readonly">
-	${BoardVo.writer}
+	${BoardVo.content}
 	</textarea>
 		</div>
 

@@ -15,6 +15,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.cm.takemeal.noticeboard.model.service.BoardService;
 import com.cm.takemeal.noticeboard.model.vo.BoardVo;
+import com.cm.takemeal.noticeboard.model.vo.Criteria;
 import com.cm.takemeal.noticeboard.model.vo.PageMaker;
 import com.cm.takemeal.noticeboard.model.vo.SearchCriteria;
 
@@ -31,15 +32,15 @@ public class SearchBoardController {
 	public ModelAndView listPage(@ModelAttribute("cri") SearchCriteria cri, ModelAndView mv)throws Exception{
 		
 		logger.info(cri.toString());
-		
+		Criteria c = new Criteria();
+		logger.info(c.toString());
 		mv.addObject("list", service.listCriteria(cri));
 		mv.setViewName("DJ/sboard/list");
 		PageMaker pageMaker = new PageMaker();
-		System.out.println("----------여까지들어옴---------");
 		pageMaker.setCri(cri);
 		pageMaker.setTotalCount(service.listSearchCount(cri));
-		System.out.println("---됌?");
 		mv.addObject("pageMaker", pageMaker);
+		logger.info(pageMaker.toString());
 		return mv;
 		
 		
@@ -71,23 +72,24 @@ public class SearchBoardController {
 		
 		rttr.addFlashAttribute("msg","SUCCESS");
 		
-		return "redirect:DJ/sboard/list";
+		return "redirect:list.do";
 	
 	}
 	
-	@RequestMapping(value="/modifyPage", method=RequestMethod.GET)
+	@RequestMapping(value="/modifyPage.do", method=RequestMethod.GET)
 	public void modifyPagingGET(int bno, @ModelAttribute("cri")SearchCriteria cri, Model model)throws Exception{
 		
-		System.out.println("-----------modifyPage들어옴~~~~~~");
-		model.addAttribute(service.read(bno));
+		System.out.println("-----------modifyPage.GET들어옴~~~~~~");
+		model.addAttribute(service.read(bno));	
 	} 
 	
 	
-	@RequestMapping(value="/modifyPage", method=RequestMethod.POST)
+	@RequestMapping(value="/modifyPage.do", method=RequestMethod.POST)
 	public String modifyPagingPOST(BoardVo board, SearchCriteria cri, RedirectAttributes rttr)throws Exception{
+		
 		logger.info(cri.toString());
 		service.modify(board);
-		System.out.println("-----------modifyPage.들어옴~~~~~~");
+		System.out.println("-----------modifyPage.POST들어옴~~~~~~");
 		rttr.addAttribute("page", cri.getPage());
 		rttr.addAttribute("perPageNum", cri.getPerPageNum());
 		rttr.addAttribute("searchType", cri.getSearchType());
@@ -99,13 +101,13 @@ public class SearchBoardController {
 	}
 
 	
-	@RequestMapping(value="/register.do", method=RequestMethod.GET)
+	@RequestMapping(value="/register", method=RequestMethod.GET)
 	public void registGET() throws Exception{
 		logger.info("regist get..............");
 		
 	}
 	
-	@RequestMapping(value = "/register.do", method=RequestMethod.POST)
+	@RequestMapping(value = "/register", method=RequestMethod.POST)
 	public String registerPOST(BoardVo board, RedirectAttributes rttr)throws Exception{
 		
 		logger.info("register post....");
@@ -115,7 +117,7 @@ public class SearchBoardController {
 		
 		rttr.addFlashAttribute("msg", "SUCCESS");
 		
-		return "redirect:/dj/sboard/list";
+		return "redirect:list.do";
 	}
 	
 	

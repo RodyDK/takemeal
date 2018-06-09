@@ -60,7 +60,7 @@
 	
 		select * from
 	(select rownum rn, bno, title, content, writer, regdate, viewcnt from
-	TBL_BOARD where bno>0 order by bno asc)
+	TBL_BOARD where bno>0 order by bno desc)
  	where rn between #{page} and 10
 	
 	]]>
@@ -72,12 +72,13 @@
 	<![CDATA[
 	select * from
 	(select rownum rn, bno, title, content, writer, regdate, viewcnt from
-	TBL_BOARD where bno>0 order by bno asc)
+	TBL_BOARD where bno>0 order by bno desc)
 	where rn between #{pageStart} and #{perPageNum}
 	]]>
 
 	</select>
-
+	<!-- where rn >= #{pageStart} and rn <= #{perPageNum} -->
+<!--  -->
 
 	<select id="countPaging" resultType="int">
 	<![CDATA[
@@ -135,11 +136,9 @@
 	select count(bno)
 	from tbl_board
 	where bno>0
-
 	]]>
 	<include refid="search"></include>
 	
-<!-- 		<include refid="search"></include> -->
 
 	</select>
 
