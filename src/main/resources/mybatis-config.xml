@@ -8,6 +8,8 @@
 		<typeAlias type="com.cm.takemeal.recipe.model.vo.Recipe" alias="Recipe" />
 		<typeAlias type="com.cm.takemeal.notice.model.vo.Notice" alias="Notice" />
 		<typeAlias type="com.cm.takemeal.faq.model.vo.Faq" alias="Faq" />
+		<typeAlias type="com.cm.takemeal.chef.model.vo.Chef" alias="Chef" />
+		<typeAlias type="com.cm.takemeal.shop.model.vo.Shop" alias="Shop" />
 		<typeAlias type="com.cm.takemeal.noticeboard.model.vo.BoardVo" alias="BoardVo" />
 		<package name="com.cm.takemeal"/>
 	</typeAliases>
@@ -17,7 +19,9 @@
 		<mapper resource="mybatis/mappers/recipe-mapper.xml" />
 		<mapper resource="mybatis/mappers/notice-mapper.xml" />
 		<mapper resource="mybatis/mappers/faq-mapper.xml" />
+		<mapper resource="mybatis/mappers/shop-mapper.xml" />
 		<mapper resource="mybatis/mappers/NoticeBoardMapper.xml" />
+		<mapper resource="mybatis/mappers/chef-mapper.xml" />
 	</mappers>
 	
 	

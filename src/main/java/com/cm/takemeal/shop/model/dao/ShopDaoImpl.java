@@ -22,17 +22,17 @@ public class ShopDaoImpl implements ShopDao{
  
     @Override
     public int getContentCnt(Map<String, Object> paramMap) {
-        return sqlSession.selectOne("selectContentCnt", paramMap);
+        return sqlSession.selectOne("selectShopContentCnt", paramMap);
     }
      
     @Override
     public List<Shop> getContentList(Map<String, Object> paramMap) {
-        return sqlSession.selectList("selectContent", paramMap);
+        return sqlSession.selectList("selectShopContent", paramMap);
     }
  
     @Override
     public Shop getContentView(Map<String, Object> paramMap) {
-        return sqlSession.selectOne("selectContentView", paramMap);
+        return sqlSession.selectOne("selectShopContentView", paramMap);
     }
     
 }

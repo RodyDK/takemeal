@@ -5,15 +5,15 @@
 
 	<resultMap type="shop" id="resultShop">
 		<id column="no" property="no" />
-		<result column="subject" property="subject" />
+		<result column="name" property="name" />
+		<result column="price" property="price" />
+		<result column="qty" property="qty" />
+		<result column="description" property="description" />
 		<result column="contents" property="contents" />
-		<result column="thumbnail" property="thumbnail" />
-		<result column="time" property="time" />
-		<result column="follow" property="follow" />
-		<result column="hit" property="hit" />
-		<result column="kcal" property="kcal" />
-		<result column="userid" property="userid" />
 		<result column="reg_date" property="reg_date" />
+		<result column="thumbnail" property="thumbnail" />
+		<result column="company" property="company" />
+		<result column="country" property="country" />
 	</resultMap>
 		
     <select id="selectShopContentCnt" resultType="int" parameterType="java.util.HashMap">
@@ -21,15 +21,15 @@
         SELECT
             COUNT(no)
         FROM
-            shop
+            goods
 		]]> 
     </select>
     
     <select id="selectShopContent" resultType="com.cm.takemeal.shop.model.vo.Shop" parameterType="java.util.HashMap">
     	<![CDATA[ 
     	SELECT * FROM (
-		    SELECT no, subject, contents, time, follow, thumbnail, TO_CHAR(reg_date,'YYYY-MM-DD'), ROW_NUMBER() OVER(ORDER BY NO DESC) AS RNUM
-		    FROM shop
+		    SELECT no, name, price, qty, description, contents,  thumbnail, company, country, TO_CHAR(reg_date,'YYYY-MM-DD'), ROW_NUMBER() OVER(ORDER BY NO DESC) AS RNUM
+		    FROM goods
 		)
 		WHERE RNUM BETWEEN #{start} AND #{end}
 		]]> 
@@ -40,13 +40,17 @@
     	<![CDATA[ 
 		SELECT
 			no,
-			subject,
+			name,
+			price,
+			qty,
+			description,
 			contents,
-			time,
-			follow,
+			thumbnail,
+			company,
+			country,
 			TO_CHAR(reg_date,'YYYY-MM-DD')
 		FROM 
-			shop
+			goods
 		WHERE 
 			no = #{no}
 		]]> 

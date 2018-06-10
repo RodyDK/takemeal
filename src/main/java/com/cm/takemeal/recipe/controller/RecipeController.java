@@ -1,6 +1,5 @@
 package com.cm.takemeal.recipe.controller;
 
-import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -11,12 +10,12 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
-
+import com.cm.takemeal.Setting;
+import com.cm.takemeal.Pagination;
 import com.cm.takemeal.recipe.model.service.RecipeService;
 import com.cm.takemeal.recipe.model.vo.Recipe;
 
@@ -34,40 +33,27 @@ public class RecipeController {
 	
     //게시글 리스트 조회
     @RequestMapping(value = "recipeList.do")
-    public String recipeList(@RequestParam Map<String, Object> paramMap, Model model) {
+    public String recipeList(@RequestParam Map<String, Object> paramMap, Model model, @ModelAttribute("setting")Setting setting) {
  
-        //조회 하려는 페이지
-        int startPage = (paramMap.get("startPage")!=null?Integer.parseInt(paramMap.get("startPage").toString()):1);
-        //한페이지에 보여줄 리스트 수
-        int visiblePages = 8;
-
-        int endPage = startPage + visiblePages - 1;
-        //일단 전체 건수를 가져온다.
         int totalCnt = recipeService.getContentCnt(paramMap);
- 
+        int currentPage = setting.getPage();
+		int startRow = (currentPage-1) * setting.getPerPageNum();
+		int endRow = currentPage * setting.getPerPageNum();
         
         
-        //아래 1,2는 실제 개발에서는 class로 빼준다. (여기서는 이해를 위해 직접 적음)
-        //1.하단 페이지 네비게이션에서 보여줄 리스트 수를 구한다.
-        BigDecimal decimal1 = new BigDecimal(totalCnt);
-        BigDecimal decimal2 = new BigDecimal(visiblePages);
-        BigDecimal totalPage = decimal1.divide(decimal2, 0, BigDecimal.ROUND_UP);
-        
-        int startLimitPage = 0;
-        //2.mysql limit 범위를 구하기 위해 계산
-        if(startPage==1){
-            startLimitPage = 1;
-        }else{
-            startLimitPage = ((startPage-1)*visiblePages)+1;
-        }
-        
-        paramMap.put("start", startLimitPage);
-        paramMap.put("end", endPage);
-        //jsp 에서 보여줄 정보 추출
 
-        model.addAttribute("startPage", startPage);//현재 페이지      
-        model.addAttribute("totalCnt", totalCnt);//전체 게시물수
-        model.addAttribute("totalPage", totalPage);//페이지 네비게이션에 보여줄 리스트 수
+		Pagination pagination = new Pagination();
+		
+		
+		pagination.setSetting(setting);
+		pagination.setTotalCount(totalCnt);
+        paramMap.put("start", startRow);
+        paramMap.put("end", endRow);
+        
+        
+        System.out.println(startRow+"22"+endRow);
+
+		model.addAttribute("pagination", pagination);
         model.addAttribute("recipeList", recipeService.getContentList(paramMap));//검색
  
         return "DK/list";

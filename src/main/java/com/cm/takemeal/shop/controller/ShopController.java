@@ -15,7 +15,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.cm.takemeal.recipe.model.service.RecipeService;
+import com.cm.takemeal.Pagination;
+import com.cm.takemeal.Setting;
+import com.cm.takemeal.shop.model.service.ShopService;
 
 
 
@@ -23,44 +25,36 @@ import com.cm.takemeal.recipe.model.service.RecipeService;
 public class ShopController {
 	
     @Autowired
-    RecipeService shopService;
+    ShopService shopService;
     
 	private static final Logger logger = 
 			LoggerFactory.getLogger(ShopController.class);
 	
     //게시글 리스트 조회
     @RequestMapping(value = "shopList.do")
-    public String shopList(@RequestParam Map<String, Object> paramMap, Model model) {
+    public String shopList(@RequestParam Map<String, Object> paramMap, Model model, Setting setting) {
  
-        //조회 하려는 페이지
-        int startPage = (paramMap.get("startPage")!=null?Integer.parseInt(paramMap.get("startPage").toString()):1);
-        //한페이지에 보여줄 리스트 수
-        int visiblePages = (paramMap.get("visiblePages")!=null?Integer.parseInt(paramMap.get("visiblePages").toString()):10);
-        //일단 전체 건수를 가져온다.
         int totalCnt = shopService.getContentCnt(paramMap);
- 
-        //아래 1,2는 실제 개발에서는 class로 빼준다. (여기서는 이해를 위해 직접 적음)
-        //1.하단 페이지 네비게이션에서 보여줄 리스트 수를 구한다.
-        BigDecimal decimal1 = new BigDecimal(totalCnt);
-        BigDecimal decimal2 = new BigDecimal(visiblePages);
-        BigDecimal totalPage = decimal1.divide(decimal2, 0, BigDecimal.ROUND_UP);
+        int currentPage = setting.getPage();
+		int startRow = (currentPage-1) * setting.getPerPageNum();
+		int endRow = currentPage * setting.getPerPageNum();
         
-        int startLimitPage = 0;
-        //2.mysql limit 범위를 구하기 위해 계산
-        if(startPage==1){
-            startLimitPage = 0;
-        }else{
-            startLimitPage = (startPage-1)*visiblePages;
-        }
         
-        paramMap.put("start", startLimitPage);
-        paramMap.put("end", visiblePages);
-        //jsp 에서 보여줄 정보 추출
-        model.addAttribute("startPage", startPage+"");//현재 페이지      
-        model.addAttribute("totalCnt", totalCnt);//전체 게시물수
-        model.addAttribute("totalPage", totalPage);//페이지 네비게이션에 보여줄 리스트 수
+
+		Pagination pagination = new Pagination();
+		
+		
+		pagination.setSetting(setting);
+		pagination.setTotalCount(totalCnt);
+        paramMap.put("start", startRow);
+        paramMap.put("end", endRow);
+        
+        
+        System.out.println(startRow+"22"+endRow);
+
+		model.addAttribute("pagination", pagination);
         model.addAttribute("shopList", shopService.getContentList(paramMap));//검색
- 
+        
         return "shop/list";
  
     }
