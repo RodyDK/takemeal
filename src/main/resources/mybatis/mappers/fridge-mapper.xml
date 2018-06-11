@@ -13,7 +13,7 @@
 		<result column="food_count" property="food_count" />
 	</resultMap>
 	
-	<select id="myfridge_cold" resultMap="Food">
+	<select id="myfridge_cold" resultMap="ResultFood">
 	<![CDATA[
 	select food_name, food_count
 		from(
@@ -55,7 +55,7 @@
 	]]>
 	</select>
 	
-	<select id="myfridge_freeze" resultMap="Food">
+	<select id="myfridge_freeze" resultMap="ResultFood">
 	<![CDATA[
 	select food_name, food_count
 		from(
