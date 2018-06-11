@@ -12,6 +12,88 @@
 		<result column="expiry_date" property="expiry_date" />
 	</resultMap>
 	
-
+	<select id="myfridge_cold" resultMap="Food">
+	<![CDATA[
+	select FOOD_NAME, FOOD_COUNT
+		from(
+		 select food_name, FOOD_COUNT
+		 from meats
+		 where no=1 and cool_sys='냉장'
+		 
+		 union
+		 
+		 select food_name, FOOD_COUNT
+		 from fishs
+		 where no=1 and cool_sys='냉장'
+		 
+		 union
+		 
+		 select food_name, FOOD_COUNT
+		 from CEREALS
+		 where no=1 and cool_sys='냉장'
+		 
+		 union
+		 
+		 select food_name, FOOD_COUNT
+		 from VEGETABLES
+		 where no=1 and cool_sys='냉장'
+		 
+		 union
+		 
+		 select food_name, FOOD_COUNT
+		 from eggs
+		 where no=1 and cool_sys='냉장'
+		 
+		 union
+		 
+		 select food_name, FOOD_COUNT
+		 from milky
+		 where no=1 and cool_sys='냉장'
+		 
+		);
+	]]>
+	</select>
+	
+	<select id="myfridge_freeze" resultMap="Food">
+	<![CDATA[
+	select FOOD_NAME, FOOD_COUNT
+		from(
+		 select food_name, FOOD_COUNT
+		 from meats
+		 where no=1 and cool_sys='냉동'
+		 
+		 union
+		 
+		 select food_name, FOOD_COUNT
+		 from fishs
+		 where no=1 and cool_sys='냉동'
+		 
+		 union
+		 
+		 select food_name, FOOD_COUNT
+		 from CEREALS
+		 where no=1 and cool_sys='냉동'
+		 
+		 union
+		 
+		 select food_name, FOOD_COUNT
+		 from VEGETABLES
+		 where no=1 and cool_sys='냉동'
+		 
+		 union
+		 
+		 select food_name, FOOD_COUNT
+		 from eggs
+		 where no=1 and cool_sys='냉동'
+		 
+		 union
+		 
+		 select food_name, FOOD_COUNT
+		 from milky
+		 where no=1 and cool_sys='냉동'
+		 
+		);
+	]]>
+	</select>
 
 </mapper>
