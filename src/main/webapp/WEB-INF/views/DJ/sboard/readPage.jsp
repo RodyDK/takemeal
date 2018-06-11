@@ -38,20 +38,17 @@
 		});
 
 	});
-	
-	
-	
 </script>
 
 </head>
 <body>
 
 	<form role="form" action="modifyPage" method="post">
-		<input type="hidden" name="bno" value="${BoardVo.bno }">
-		<input type="hidden" name="page" value="${cri.page }">
-		<input type="hidden" name="perPageNum" value="${cri.perPageNum }">
-		<input type="hidden" name="searchType" value="${cri.searchType }">
-		<input type="hidden" name="keyword" value="${cri.keyword }">
+		<input type="hidden" name="bno" value="${BoardVo.bno }"> <input
+			type="hidden" name="page" value="${cri.page }"> <input
+			type="hidden" name="perPageNum" value="${cri.perPageNum }"> <input
+			type="hidden" name="searchType" value="${cri.searchType }"> <input
+			type="hidden" name="keyword" value="${cri.keyword }">
 	</form>
 
 	<div class="box-body">
@@ -87,8 +84,47 @@
 	</div>
 
 
+	<div class="row">
+		<div class="col-md-12">
+			<div class="box box-success">
+				<div class="box-header">
+					<h3 class="box-title">ADD New REPLY</h3>
+				</div>
 
-	
+				<div class="box-body">
+					<label for="newReplyWriter">Writer</label> <input
+						class="form-control" type="text" placeholder="USER ID"
+						id="newReplyWriter"> <label for="newReplyText">ReplyText</label>
+					<input class="form-control" type="text" placeholder="REPLY TEXT"
+						id="newReplyText">
+				</div>
+			</div>
+
+
+		</div>
+		
+		<!-- .box-body -->
+		<div class="box-footer">
+		<button type="submit" class="btn btn-primary" id="replyAddBtn">ADD REPLY</button>
+		</div>
+
+	</div>
+
+
+		<!-- The time line -->
+		<ul class="timeline">
+			<li class="time-label" id="repliDiv"><span class="bg-green">Replies List</span>
+			
+			<div class="text-center">
+				<ul id="pagination" class="pagination pagination-sm no-margin ">
+				
+				</ul>
+			</div>
+			
+		
+		</ul>
+
+
 
 </body>
 </html>
