@@ -10,18 +10,20 @@ public class Food implements java.io.Serializable{
 	private String food_name;
 	private String cool_sys;
 	private Date expiry_date;
+	private int food_count;
 	
 	public Food() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Food(String class_code, int food_code, String food_name, String cool_sys, Date expiry_date) {
+	public Food(String class_code, int food_code, String food_name, String cool_sys, Date expiry_date, int food_count) {
 		super();
 		this.class_code = class_code;
 		this.food_code = food_code;
 		this.food_name = food_name;
 		this.cool_sys = cool_sys;
 		this.expiry_date = expiry_date;
+		this.food_count = food_count;
 	}
 
 	public String getClass_code() {
@@ -64,10 +66,18 @@ public class Food implements java.io.Serializable{
 		this.expiry_date = expiry_date;
 	}
 
+	public int getFood_count() {
+		return food_count;
+	}
+
+	public void setFood_count(int food_count) {
+		this.food_count = food_count;
+	}
+
 	@Override
 	public String toString() {
 		return "Food [class_code=" + class_code + ", food_code=" + food_code + ", food_name=" + food_name
-				+ ", cool_sys=" + cool_sys + ", expiry_date=" + expiry_date + "]";
+				+ ", cool_sys=" + cool_sys + ", expiry_date=" + expiry_date + ", food_count=" + food_count + "]";
 	}
 
 	

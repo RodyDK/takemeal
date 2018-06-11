@@ -10,6 +10,7 @@
 		<result column="food_name" property="food_name" />
 		<result column="cool_sys" property="cool_sys" />
 		<result column="expiry_date" property="expiry_date" />
+		<result column="food_count" property="food_count" />
 	</resultMap>
 	
 	<select id="myfridge_cold" resultMap="Food">
