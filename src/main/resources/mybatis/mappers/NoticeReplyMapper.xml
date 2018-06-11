@@ -24,8 +24,8 @@
 	</select>
 	
 	<insert id="create">
-	insert into tbl_reply
-	values (TBL_REPLY_SEQ.nextval, #{bno}, #{replytext},#{replyer}, sysdate, sysdate);
+	insert into tbl_reply (bno, replytext, replyer)
+	values (#{bno}, #{replytext},#{replyer})
 	
 	</insert>
 	

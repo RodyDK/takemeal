@@ -31,7 +31,6 @@ public class ReplyController {
 	@RequestMapping(value="", method=RequestMethod.POST)
 	public ResponseEntity<String> register(@RequestBody ReplyVo vo){
 		
-		System.out.println("들어옴....?");
 		ResponseEntity<String> entity = null;
 		
 		try {
