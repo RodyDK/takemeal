@@ -11,6 +11,7 @@
 		<typeAlias type="com.cm.takemeal.chef.model.vo.Chef" alias="Chef" />
 		<typeAlias type="com.cm.takemeal.shop.model.vo.Shop" alias="Shop" />
 		<typeAlias type="com.cm.takemeal.noticeboard.model.vo.BoardVo" alias="BoardVo" />
+		<typeAlias type="com.cm.takemeal.fridge.model.vo.Food" alias="Food" />
 		<package name="com.cm.takemeal"/>
 	</typeAliases>
 	
@@ -22,6 +23,7 @@
 		<mapper resource="mybatis/mappers/shop-mapper.xml" />
 		<mapper resource="mybatis/mappers/NoticeBoardMapper.xml" />
 		<mapper resource="mybatis/mappers/chef-mapper.xml" />
+		<mapper resource="mybatis/mappers/fridge-mapper.xml" />
 	</mappers>
 	
 	

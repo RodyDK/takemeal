@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cm.takemeal.fridge.model.dao.FridgeDao">
+
+	<resultMap type="Food" id="ResultFood">
+		<id column="no" property="no" />
+		<result column="class_code" property="class_code" />
+		<result column="food_code" property="food_code" />
+		<result column="food_name" property="food_name" />
+		<result column="cool_sys" property="cool_sys" />
+		<result column="expiry_date" property="expiry_date" />
+	</resultMap>
+	
+
+
+</mapper>
