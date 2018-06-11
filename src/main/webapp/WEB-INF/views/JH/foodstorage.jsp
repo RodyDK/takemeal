@@ -48,41 +48,52 @@
     height: 300px;
 }
 
-.ref_closed{
-	display:block;
-}
-
-.ref_openall{
-	display:none;
-}
-
 </style>
 
 <html>
 <script type="text/javascript">
-/* $(document).click(function(tablinks){
-	
-	var clickElement
-}); */
-function openRef(evt, refName) {
+function openRef(evt, refName, loc) {
     // Declare all variables
     var i, tabcontent, tablinks;
+
+    if(refName=='freeze'){
+    	if("resources/images/open_bottom_sr.jpg"== $(loc).attr("src")){
+    		$("#bot").attr("src","resources/images/closed_bottom.jpg");
+    		tabcontent = document.getElementsByClassName("tabcontent");
+    	    tabcontent.freeze.style.display = "none";
+    	}else{
+    		$("#bot").attr("src","resources/images/open_bottom_sr.jpg");
+    	    // Get all elements with class="tablinks" and remove the class "active"
+    	    tablinks = document.getElementsByClassName("tablinks");
+    	    for (i = 0; i < tablinks.length; i++) {
+    	        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    	    }
+
+    	    // Show the current tab, and add an "active" class to the link that opened the tab
+    	    document.getElementById(refName).style.display = "block";
+    	    evt.currentTarget.className += " active";
+    	}  	
+    	
+    }
+    else if(refName=='cold'){
+    	if("resources/images/open_top_sr.jpg"== $(loc).attr("src")){
+    		$("#top").attr("src","resources/images/closed_top.jpg");
+    		tabcontent = document.getElementsByClassName("tabcontent");
+    	    tabcontent.cold.style.display = "none";
+    	}else{
+    		$("#top").attr("src","resources/images/open_top_sr.jpg");
+    	    // Get all elements with class="tablinks" and remove the class "active"
+    	    tablinks = document.getElementsByClassName("tablinks");
+    	    for (i = 0; i < tablinks.length; i++) {
+    	        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    	    }
+
+    	    // Show the current tab, and add an "active" class to the link that opened the tab
+    	    document.getElementById(refName).style.display = "block";
+    	    evt.currentTarget.className += " active";
+    	}
+    }
     
-    // Get all elements with class="tabcontent" and hide them
-    tabcontent = document.getElementsByClassName("tabcontent");
-    for (i = 0; i < tabcontent.length; i++) {
-        tabcontent[i].style.display = "none";
-    }
-
-    // Get all elements with class="tablinks" and remove the class "active"
-    tablinks = document.getElementsByClassName("tablinks");
-    for (i = 0; i < tablinks.length; i++) {
-        tablinks[i].className = tablinks[i].className.replace(" active", "");
-    }
-
-    // Show the current tab, and add an "active" class to the link that opened the tab
-    document.getElementById(refName).style.display = "block";
-    evt.currentTarget.className += " active";
 }
 </script>
 <%@ include file="../head.jsp" %>
@@ -92,16 +103,19 @@ function openRef(evt, refName) {
 <div class="inner" style="overflow:hidden;">
 
      <h1>냉장고 페이지</h1>
-     <div class="ref_closed">
-     	<img src="resources/images/closed.jpg">
+     <div class="ref">
+     	<img id="top" src="resources/images/closed_top.jpg" onclick="openRef(event, 'cold', '#top')"><br>
+     	<img id="bot" src="resources/images/closed_bottom.jpg" onclick="openRef(event, 'freeze', '#bot')">
      </div>
-     <div class="ref_openall">
-     	<img src="resources/images/open_all.jpg">
-     </div>
-     
+
      <div class="tab">
-	 <button class="tablinks" onclick="openRef(event, 'freeze')">냉동실 열어보기</button>
-	 <button class="tablinks" onclick="openRef(event, 'cold')">냉장실 열어보기</button>
+	 <button class="tablinks" onclick="openRef(event, 'cold', '#top')">냉장실</button>
+	 <button class="tablinks" onclick="openRef(event, 'freeze', '#bot')">냉동실</button>
+	</div>
+	
+	<div id="cold" class="tabcontent">
+	  <h3>냉장실</h3>
+	  <p>냉장 DB나와랏</p> 
 	</div>
 	
 	<div id="freeze" class="tabcontent">
@@ -109,10 +123,6 @@ function openRef(evt, refName) {
 	  <p>냉동 DB나와랏</p>
 	</div>
 	
-	<div id="cold" class="tabcontent">
-	  <h3>냉장실</h3>
-	  <p>냉장 DB나와랏</p> 
-	</div>
 </div>
 </div>
 <%@ include file="../footer.jsp" %>
