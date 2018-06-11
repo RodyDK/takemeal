@@ -2,7 +2,8 @@ package com.cm.takemeal.noticeboard.model.vo;
 
 import java.util.Date;
 
-public class ReplyVo {
+public class ReplyVo implements java.io.Serializable{
+	private static final long serialVersionUID = 54234L;
 	
 	private Integer rno;
 	private Integer bno;
@@ -12,6 +13,9 @@ public class ReplyVo {
 	private Date regdate;
 	private Date updatedate;
 	
+	public ReplyVo() {
+		// TODO Auto-generated constructor stub
+	}
 	
 	public ReplyVo(Integer rno, Integer bno, String replytext, String replyer, Date regdate, Date updatedate) {
 		super();

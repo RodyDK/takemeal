@@ -18,7 +18,7 @@ public class ReplyDaoImpl implements ReplyDao{
 	@Inject
 	private SqlSession session;
 	
-	private static String namespace = "ReplyVo";
+	private static String namespace = "NoticeReplyMapper";
 
 	@Override
 	public List<ReplyVo> list(Integer bno) throws Exception {
@@ -29,7 +29,10 @@ public class ReplyDaoImpl implements ReplyDao{
 	@Override
 	public void create(ReplyVo vo) throws Exception {
 		// TODO Auto-generated method stub
+		System.out.println("impl");
+		System.out.println(vo.toString());
 		session.insert(namespace + ".create", vo);
+		
 		
 	}
 
