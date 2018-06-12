@@ -32,10 +32,9 @@ public class ReplyController {
 	
 	
 	
-	@RequestMapping(value = "/test.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/test.do")
 	public ModelAndView registerGET(BoardVo board, ModelAndView mv) throws Exception{
 		
-				System.out.println("들어옴?ㅁㄴㅇㅁㄴㅇ");
 		mv.setViewName("DJ/sboard/test");
 		return mv;	
 		
