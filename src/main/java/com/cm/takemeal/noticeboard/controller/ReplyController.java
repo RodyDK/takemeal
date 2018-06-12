@@ -14,8 +14,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.cm.takemeal.noticeboard.model.service.ReplyService;
+import com.cm.takemeal.noticeboard.model.vo.BoardVo;
 import com.cm.takemeal.noticeboard.model.vo.Criteria;
 import com.cm.takemeal.noticeboard.model.vo.PageMaker;
 import com.cm.takemeal.noticeboard.model.vo.ReplyVo;
@@ -27,6 +29,18 @@ public class ReplyController {
 
 	@Inject
 	private ReplyService service;
+	
+	
+	
+	@RequestMapping(value = "/test.do", method = RequestMethod.GET)
+	public ModelAndView registerGET(BoardVo board, ModelAndView mv) throws Exception{
+		
+				System.out.println("들어옴?ㅁㄴㅇㅁㄴㅇ");
+		mv.setViewName("DJ/sboard/test");
+		return mv;	
+		
+	}
+	
 	
 	@RequestMapping(value="", method=RequestMethod.POST)
 	public ResponseEntity<String> register(@RequestBody ReplyVo vo){

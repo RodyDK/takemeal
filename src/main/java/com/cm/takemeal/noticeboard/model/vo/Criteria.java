@@ -33,11 +33,16 @@ public class Criteria {
 			this.perPageNum = 10;
 			return;
 		}
+		
+		
 		this.perPageNum = perPageNum;
+		System.out.println("PageStart="+((this.page -1) * perPageNum));
+		System.out.println("perPageNum="+this.perPageNum);
 	}
 	
-	//mothod for SQL
+	//method for SQL
 	public int getPageStart() {
+		
 		return(this.page -1) * perPageNum;
 	}
 	

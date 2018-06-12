@@ -116,9 +116,9 @@
 	</table>
 
 	<form id="jobForm">
-		<input type="hidden" name="page" value=${PageMaker.cri.perPageNum}>
+		<input type="hidden" name="page" value=${PageMaker.cri.perPageNum }/>
 		<input type="hidden" name="perPageNum"
-			value=${PageMaker.cri.perPageNum}>
+			value=${PageMaker.cri.perPageNum }/>
 	</form>
 
 	<div class="text-center">

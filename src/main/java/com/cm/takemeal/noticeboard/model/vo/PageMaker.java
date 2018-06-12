@@ -20,6 +20,7 @@ public class PageMaker {
 	private Criteria cri;
 
 	public String makeSearch(int page) {
+		System.out.println("여기="+cri.getPerPageNum());
 		UriComponents uriComponents = UriComponentsBuilder.newInstance().queryParam("page", page)
 				.queryParam("perPageNum", cri.getPerPageNum())
 				.queryParam("searchType", ((SearchCriteria) cri).getSearchType())
@@ -83,6 +84,7 @@ public class PageMaker {
 	}
 
 	public void setStartPage(int startPage) {
+		System.out.println("startPage="+startPage);
 		this.startPage = startPage;
 	}
 
@@ -115,6 +117,7 @@ public class PageMaker {
 	}
 
 	public void setDisplayPageNum(int displayPageNum) {
+		System.out.println("displayPageNum="+displayPageNum);
 		this.displayPageNum = displayPageNum;
 	}
 
