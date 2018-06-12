@@ -91,6 +91,21 @@ function openRef(evt, refName, loc) {
     	    // Show the current tab, and add an "active" class to the link that opened the tab
     	    document.getElementById(refName).style.display = "block";
     	    evt.currentTarget.className += " active";
+    	    
+    	  /*   $.ajax({
+    	    	url:"",
+    	    	type:"get",
+    	    	dataType:"json",
+    	    	data:{
+    	    		a: a,
+    	    	},
+    	    	success:function(data){
+    	    		
+    	    	},
+    	    	error:function(a,b,c){
+    	    		alert("a = " + a + " , b = " + b + " , c = " + c);
+    	    	}
+    	    }); */
     	}
     }
     
@@ -115,13 +130,28 @@ function openRef(evt, refName, loc) {
 	
 	<div id="cold" class="tabcontent">
 	  <h3>냉장실</h3>
-	  <p>냉장 DB나와랏</p> 
+	 <c:forEach items="${cold}" var="coldFood">
+		<p>${coldFood.food_name} : ${coldFood.food_count}</p>
+	</c:forEach>
 	</div>
 	
 	<div id="freeze" class="tabcontent">
 	  <h3>냉동실</h3>
-	  <p>냉동 DB나와랏</p>
+	 <c:forEach items="${freeze}" var="freezeFood">
+		<p>${freezeFood.food_name} : ${freezeFood.food_count}</p>
+	</c:forEach>
 	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 </div>
 </div>
