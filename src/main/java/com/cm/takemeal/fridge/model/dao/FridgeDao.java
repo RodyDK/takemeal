@@ -14,14 +14,14 @@ public class FridgeDao {
 	@Autowired
 	private SqlSessionTemplate sqlSession;
 
-	public List<Food> selectColdFridge() {
+	public List<Food> selectColdFridge(String no) {
 		// TODO Auto-generated method stub
-		return sqlSession.selectList("myfridge_cold");
+		return sqlSession.selectList("myfridge_cold", no);
 	}
 	
-	public List<Food> selectFreezeFridge() {
+	public List<Food> selectFreezeFridge(String no) {
 		// TODO Auto-generated method stub
-		return sqlSession.selectList("myfridge_freeze");
+		return sqlSession.selectList("myfridge_freeze", no);
 	}
 	
 }

@@ -18,37 +18,37 @@
 		from(
 		 select food_name, food_count
 		 from meats
-		 where no=1 and cool_sys='냉장'
+		 where no=#{no} and cool_sys='냉장'
 		 
 		 union
 		 
 		 select food_name, food_count
 		 from fishs
-		 where no=1 and cool_sys='냉장'
+		 where no=#{no} and cool_sys='냉장'
 		 
 		 union
 		 
 		 select food_name, food_count
 		 from CEREALS
-		 where no=1 and cool_sys='냉장'
+		 where no=#{no} and cool_sys='냉장'
 		 
 		 union
 		 
 		 select food_name, food_count
 		 from VEGETABLES
-		 where no=1 and cool_sys='냉장'
+		 where no=#{no} and cool_sys='냉장'
 		 
 		 union
 		 
 		 select food_name, food_count
 		 from eggs
-		 where no=1 and cool_sys='냉장'
+		 where no=#{no} and cool_sys='냉장'
 		 
 		 union
 		 
 		 select food_name, food_count
 		 from milky
-		 where no=1 and cool_sys='냉장'
+		 where no=#{no} and cool_sys='냉장'
 		 
 		)
 	]]>
@@ -60,37 +60,37 @@
 		from(
 		 select food_name, food_count
 		 from meats
-		 where no=1 and cool_sys='냉동'
+		 where no=#{no} and cool_sys='냉동'
 		 
 		 union
 		 
 		 select food_name, food_count
 		 from fishs
-		 where no=1 and cool_sys='냉동'
+		 where no=#{no} and cool_sys='냉동'
 		 
 		 union
 		 
 		 select food_name, food_count
 		 from CEREALS
-		 where no=1 and cool_sys='냉동'
+		 where no=#{no} and cool_sys='냉동'
 		 
 		 union
 		 
 		 select food_name, food_count
 		 from VEGETABLES
-		 where no=1 and cool_sys='냉동'
+		 where no=#{no} and cool_sys='냉동'
 		 
 		 union
 		 
 		 select food_name, food_count
 		 from eggs
-		 where no=1 and cool_sys='냉동'
+		 where no=#{no} and cool_sys='냉동'
 		 
 		 union
 		 
 		 select food_name, food_count
 		 from milky
-		 where no=1 and cool_sys='냉동'
+		 where no=#{no} and cool_sys='냉동'
 		 
 		)
 	]]>

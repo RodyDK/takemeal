@@ -42,7 +42,7 @@
 	<nav>
 		<ul>
 			<li>
-				<a href="./fridgeList.do">나의냉장고</a>
+				<a href="./fridgeList.do?no=${loginUser.no }">나의냉장고</a>
 			</li>
 			<li>
 				<a href="./recipeList.do">레시피</a>

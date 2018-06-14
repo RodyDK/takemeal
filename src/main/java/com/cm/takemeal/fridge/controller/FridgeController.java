@@ -2,12 +2,15 @@ package com.cm.takemeal.fridge.controller;
 
 import java.util.*;
 
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.cm.takemeal.fridge.model.service.FridgeService;
@@ -24,12 +27,12 @@ public class FridgeController {
 	private FridgeService fridgeService;
 	
 	@RequestMapping(value="fridgeList.do", method=RequestMethod.GET)
-	public ModelAndView moveFridgeListPage(ModelAndView mv) { //매개변수로 member_id깉은 식별자를 받아와야지 ex),@RequestParam("member_id") String member_id
+	public ModelAndView moveFridgeListPage(ModelAndView mv, @RequestParam("no") String no) { //@RequestParam("member_id") String member_id
 		//이 페이지로의 이동으 ㄹ요청한 유저의 냉동,냉장에 들어있는 재료들을 뽑아서 페이지로 보내는 거
 		//1. 냉장 재료 꺼내오기
-		ArrayList<Food> cold = (ArrayList<Food>)fridgeService.selectColdFridge(); //매개변수로 멤버 아이디도 추가해야됨.
+		ArrayList<Food> cold = (ArrayList<Food>)fridgeService.selectColdFridge(no); //매개변수로 멤버도 추가해야됨.
 		//2. 냉동 재료 꺼내오기
-		ArrayList<Food> freeze = (ArrayList<Food>)fridgeService.selectFreezeFridge();
+		ArrayList<Food> freeze = (ArrayList<Food>)fridgeService.selectFreezeFridge(no);
 		
 		if(cold.size() > 0 && freeze.size() > 0) {
 			System.out.println("데이터 가져오기 성공");

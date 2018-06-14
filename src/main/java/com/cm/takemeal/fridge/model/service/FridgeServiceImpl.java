@@ -15,14 +15,14 @@ public class FridgeServiceImpl implements FridgeService{
 	private FridgeDao fridgeDao;
 	
 	@Override
-	public List<Food> selectColdFridge() {
+	public List<Food> selectColdFridge(String no) {
 		// TODO Auto-generated method stub
-		return fridgeDao.selectColdFridge();
+		return fridgeDao.selectColdFridge(no);
 	}
 	
 	@Override
-	public List<Food> selectFreezeFridge() {
+	public List<Food> selectFreezeFridge(String no) {
 		// TODO Auto-generated method stub
-		return fridgeDao.selectFreezeFridge();
+		return fridgeDao.selectFreezeFridge(no);
 	}
 }

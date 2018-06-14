@@ -6,7 +6,7 @@ import com.cm.takemeal.fridge.model.vo.Food;
 
 public interface FridgeService {
 
-	public abstract List<Food> selectColdFridge();
+	public abstract List<Food> selectColdFridge(String no);
 	
-	public abstract List<Food> selectFreezeFridge();
+	public abstract List<Food> selectFreezeFridge(String no);
 }
