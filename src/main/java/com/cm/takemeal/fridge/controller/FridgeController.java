@@ -45,6 +45,12 @@ public class FridgeController {
 		return mv;
 	}
 	
+	@RequestMapping(value="foodinsert.do", method=RequestMethod.GET)
+	public ModelAndView moveFoodInsertPage(ModelAndView mv) {
+		mv.setViewName("JH/foodinsert");
+		return mv;
+	}
+	
 }
 
 

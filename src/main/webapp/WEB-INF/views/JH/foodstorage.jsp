@@ -51,7 +51,32 @@
 </style>
 
 <html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript">
+
+$(document).ready(function(){
+	// .check 클래스 중 어떤 원소가 체크되었을 때 발생하는 이벤트
+	
+	$(".check").click(function(){
+		var str = ""; 
+	
+		$(".check").each(function(){
+	
+			if($(this).is(":checked"))
+	
+				str += $(this).val() + " ";
+	
+		});
+	
+		$("#checked_food").text(str);
+	
+  	});
+});
+
+function goPage(url){
+	location.href = url;
+}
+
 function openRef(evt, refName, loc) {
     // Declare all variables
     var i, tabcontent, tablinks;
@@ -119,7 +144,7 @@ function openRef(evt, refName, loc) {
 
      <h1>냉장고 페이지</h1>
      <div class="ref">
-     	<img id="top" src="resources/images/closed_top.jpg" onclick="openRef(event, 'cold', '#top')"><br>
+     	<img id="top" src="resources/images/closed_top.jpg" onclick="openRef(event, 'cold', '#top')"> <br>
      	<img id="bot" src="resources/images/closed_bottom.jpg" onclick="openRef(event, 'freeze', '#bot')">
      </div>
 
@@ -131,20 +156,30 @@ function openRef(evt, refName, loc) {
 	<div id="cold" class="tabcontent">
 	  <h3>냉장실</h3>
 	 <c:forEach items="${cold}" var="coldFood">
-		<p>${coldFood.food_name} : ${coldFood.food_count}</p>
+		<p><input type="checkbox" class="check" value="${coldFood.food_name}">${coldFood.food_name} : ${coldFood.food_count}</p>
 	</c:forEach>
 	</div>
 	
 	<div id="freeze" class="tabcontent">
 	  <h3>냉동실</h3>
 	 <c:forEach items="${freeze}" var="freezeFood">
-		<p>${freezeFood.food_name} : ${freezeFood.food_count}</p>
+		<p><input type="checkbox" class="check" value="${freezeFood.food_name}">${freezeFood.food_name} : ${freezeFood.food_count}</p>
 	</c:forEach>
 	</div>
 	
 	
+	<div id="checked_food" class="tabcontent">
+		선택한 재료 :<span id="print_food"></span>
+	</div>
 	
+	<br>
 	
+	<div class="ref_insert">
+	<button onclick="goPage('./foodinsert.do');">
+	냉장고 재료 등록 하러가기~
+	</button>
+	
+	 </div>
 	
 	
 	
