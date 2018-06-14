@@ -5,7 +5,9 @@ import java.util.List;
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import com.cm.takemeal.noticeboard.model.dao.BoardDao;
 import com.cm.takemeal.noticeboard.model.dao.ReplyDao;
 import com.cm.takemeal.noticeboard.model.vo.Criteria;
 import com.cm.takemeal.noticeboard.model.vo.ReplyVo;
@@ -15,11 +17,19 @@ public class ReplyServiceImpl implements ReplyService{
 
 	@Inject
 	private ReplyDao dao;
+	
+	@Inject
+	private ReplyDao replyDao;
+	
+	@Inject BoardDao boardDao;
 
+	
+	@Transactional
 	@Override
 	public void addReply(ReplyVo vo) throws Exception {
 		// TODO Auto-generated method stub
-		dao.create(vo);
+		replyDao.create(vo);
+		boardDao.updateReplyCnt(vo.getBno(), 1);
 		
 	}
 
@@ -35,10 +45,14 @@ public class ReplyServiceImpl implements ReplyService{
 		dao.update(vo);
 	}
 
+	
+	@Transactional
 	@Override
 	public void removeReply(Integer rno) throws Exception {
 		// TODO Auto-generated method stub
-		dao.delete(rno);
+		int bno=replyDao.getBno(rno);
+		replyDao.delete(rno);
+		boardDao.updateReplyCnt(bno, -1);
 		
 	}
 
@@ -53,6 +67,8 @@ public class ReplyServiceImpl implements ReplyService{
 		// TODO Auto-generated method stub
 		return dao.count(bno);
 	}
+	
+	
 	
 	
 	

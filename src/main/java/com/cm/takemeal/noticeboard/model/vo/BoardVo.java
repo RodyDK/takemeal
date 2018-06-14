@@ -18,6 +18,19 @@ public class BoardVo implements java.io.Serializable {
 	private String writer;
 	private Date regdate;
 	private int viewcnt;
+	private int replycnt;
+	
+	
+	public BoardVo(int bno, String title, String content, String writer, Date regdate, int viewcnt, int replycnt) {
+		super();
+		this.bno = bno;
+		this.title = title;
+		this.content = content;
+		this.writer = writer;
+		this.regdate = regdate;
+		this.viewcnt = viewcnt;
+		this.replycnt = replycnt;
+	}
 
 	public int getBno() {
 		return bno;
@@ -66,21 +79,23 @@ public class BoardVo implements java.io.Serializable {
 	public void setViewcnt(int viewcnt) {
 		this.viewcnt = viewcnt;
 	}
+	
+	
+
+	public int getReplycnt() {
+		return replycnt;
+	}
+
+	public void setReplycnt(int replycnt) {
+		this.replycnt = replycnt;
+	}
 
 	@Override
 	public String toString() {
 		return "BoardVo [bno=" + bno + ", title=" + title + ", content=" + content + ", writer=" + writer + ", regdate="
-				+ regdate + ", viewcnt=" + viewcnt + "]";
+				+ regdate + ", viewcnt=" + viewcnt + ", replycnt=" + replycnt + "]";
 	}
 
-	public BoardVo(int bno, String title, String content, String writer, Date regdate, int viewcnt) {
-		super();
-		this.bno = bno;
-		this.title = title;
-		this.content = content;
-		this.writer = writer;
-		this.regdate = regdate;
-		this.viewcnt = viewcnt;
-	}
-
+	
+	
 }

@@ -96,7 +96,7 @@
 			</div>
 
 		
-		<%-- <!-- The time line -->
+		 <!-- The time line -->
 		<ul class="timeline">
 		  <!-- timeline time label -->
 		<li class="time-label" id="repliesDiv">
@@ -104,7 +104,7 @@
 		    Replies List <small id='replycntSmall'> [ ${BoardVo.replycnt} ] </small>
 		    </span>
 		  </li>
-		</ul> --%>
+		</ul> 
 		   
 			<div class='text-center'>
 				<ul id="pagination" class="pagination pagination-sm no-margin ">
@@ -337,19 +337,19 @@ $(document).ready(function(){
 	console.log(formObj);
 	
 	$("#modifyBtn").on("click", function(){
-		formObj.attr("action", "/sboard/modifyPage");
+		formObj.attr("action", "modifyPage.do");
 		formObj.attr("method", "get");		
 		formObj.submit();
 	});
 	
 	$("#removeBtn").on("click", function(){
-		formObj.attr("action", "/sboard/removePage");
+		formObj.attr("action", "removePage.do");
 		formObj.submit();
 	});
 	
 	$("#goListBtn ").on("click", function(){
 		formObj.attr("method", "get");
-		formObj.attr("action", "/sboard/list");
+		formObj.attr("action", "list.do");
 		formObj.submit();
 	});
 	

@@ -103,7 +103,9 @@
 
 			<tr>
 				<td>${BoardVo.bno }</td>
-				<td><a href="readPage.do${pageMaker.makeSearch(pageMaker.cri.page)}&bno=${BoardVo.bno }">${BoardVo.title }</a></td>
+				<td><a href="readPage.do${pageMaker.makeSearch(pageMaker.cri.page)}&bno=${BoardVo.bno }">${BoardVo.title }
+				<strong>[${BoardVo.replycnt }]</strong>
+				</a></td>
 				<td>${BoardVo.writer }</td>
 				<td><fmt:formatDate pattern="yyyy-MM-dd HH:mm"
 						value="${BoardVo.regdate }" /></td>

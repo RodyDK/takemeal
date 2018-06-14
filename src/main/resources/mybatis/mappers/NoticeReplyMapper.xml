@@ -53,5 +53,9 @@
 	
 	</select>
 	
+	<select id="getBno" resultType="int">
+	select bno from tbl_reply where rno =#{rno}
+	
+	</select>
 	
 </mapper>

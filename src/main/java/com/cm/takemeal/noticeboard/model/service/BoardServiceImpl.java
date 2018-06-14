@@ -5,6 +5,8 @@ import java.util.List;
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.cm.takemeal.noticeboard.model.dao.BoardDao;
 import com.cm.takemeal.noticeboard.model.vo.BoardVo;
@@ -24,9 +26,12 @@ public class BoardServiceImpl implements BoardService{
 		
 	}
 
+	
+	@Transactional
 	@Override
 	public BoardVo read(Integer bno) throws Exception {
 		// TODO Auto-generated method stub
+		dao.updateViewCnt(bno);
 		return dao.read(bno);
 	}
 

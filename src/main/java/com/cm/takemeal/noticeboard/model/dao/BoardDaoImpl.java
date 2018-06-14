@@ -6,6 +6,8 @@ import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.cm.takemeal.noticeboard.model.vo.*;
 import com.sun.media.jfxmedia.logging.Logger;
@@ -26,11 +28,10 @@ public class BoardDaoImpl implements BoardDao{
 			session.insert(namespace+".create", vo);
 			
 		}
-
+		
 		@Override
-		public BoardVo read(Integer bno) throws Exception {
+		public BoardVo read(Integer  bno) throws Exception {
 			// TODO Auto-generated method stub
-			System.out.println("BoardImpl read접근");
 			System.out.println(bno);
 			return session.selectOne(namespace+".read", bno);
 		}
@@ -92,6 +93,27 @@ public class BoardDaoImpl implements BoardDao{
 			// TODO Auto-generated method stub
 			return session.selectOne(namespace + ".listSearchCount", cri);
 		}
+
+		@Override
+		public void updateReplyCnt(Integer bno, int amount) throws Exception {
+			// TODO Auto-generated method stub
+			Map<String, Object> paramMap = new HashMap<String, Object>();
+			
+			paramMap.put("bno", bno);
+			paramMap.put("amount", amount);
+			
+			System.out.println("updateReplyCnt.DaoImpl.bno = " + bno);
+			session.update(namespace + ".updateReplyCnt", paramMap);
+			
+		}
+
+		@Override
+		public void updateViewCnt(Integer bno) throws Exception {
+			// TODO Auto-generated method stub
+			
+			session.update(namespace + ".updateViewCnt", bno);
+		}
+		
 		
 		
 		

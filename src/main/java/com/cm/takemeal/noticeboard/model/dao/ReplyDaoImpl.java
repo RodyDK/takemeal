@@ -67,6 +67,12 @@ public class ReplyDaoImpl implements ReplyDao{
 		
 		return session.selectOne(namespace + ".count", bno);
 	}
+
+	@Override
+	public int getBno(Integer rno) throws Exception {
+		// TODO Auto-generated method stub
+		return session.selectOne(namespace + ".getBno",	 rno);
+	}
 	
 	
 	
