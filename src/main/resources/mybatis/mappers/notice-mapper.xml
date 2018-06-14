@@ -45,12 +45,6 @@
 			notice
 		WHERE 
 			no = #{no}
-    <select id="selectContentCnt1" resultType="int" parameterType="java.util.HashMap">
-    	<![CDATA[ 
-        SELECT
-            COUNT(no)
-        FROM
-            NOTICE
 		]]> 
     </select>
     

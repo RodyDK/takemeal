@@ -1,6 +1,6 @@
 package com.cm.takemeal.shop.controller;
 
-import java.math.BigDecimal;
+import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -10,14 +10,13 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
-
+import org.springframework.web.bind.annotation.ResponseBody;
 import com.cm.takemeal.Pagination;
 import com.cm.takemeal.Setting;
 import com.cm.takemeal.shop.model.service.ShopService;
+import com.cm.takemeal.shop.model.vo.Shop;
 
 
 
@@ -59,17 +58,23 @@ public class ShopController {
  
     }
 
-    //게시글 상세 보기
+  //게시글 상세 보기
     @RequestMapping(value = "shopView.do")
-    public String shopView(@RequestParam Map<String, Object> paramMap, Model model) {
-    	if(paramMap.get("no") != null){
-            model.addAttribute("shopView", shopService.getContentView(paramMap));
-            return "shop/view";
-    	}else {
-    		model.addAttribute("msg", "올바른 경로가 아닙니다.");//현재 페이지      
-    		return "shop/view";
+    @ResponseBody
+    public Object shopView(@RequestParam Map<String, Object> paramMap, Model model) {
+    	
+    	Map<String, Object> retVal = new HashMap<String, Object>();
+    	Shop result = shopService.getContentView(paramMap);
+    	
+    	if(result != null){
+    		retVal.put("code", "SUCCESS");
+    		retVal.put("data", result);
+    	}else {   
+    		retVal.put("code", "FAIL");
+            retVal.put("message", "잘못된 요청입니다.");
     	}
 
+        return retVal;
     }
     
     //게시글 등록 및 수정

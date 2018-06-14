@@ -8,10 +8,10 @@
 
 <c:if test="${msg ne null}">
 	<script>
-		customAlert("${msg}","recipeList.do");
+		customAlert("${msg}","shopList.do");
 	</script>
 </c:if>
-<c:if test="${recipeView.no == '' || recipeView.no eq null}">
+<c:if test="${shopView.no == '' || shopView.no eq null}">
 	<script>
 		customAlert("게시글이 업습니다.","recipeList.do");
 	</script>
@@ -25,9 +25,9 @@
 	<div>
 		<div class="recipe_wrap">
 			<div class="recipe_box_normal">
-				${recipeView.subject} ${param.no} 
+				${shopView.subject} ${param.no} 
 			</div>
-			<a href="recipeEdit.do?no=${recipeView.no}">수정</a>
+			<a href="recipeEdit.do?no=${shopView.no}">수정</a>
 		</div>
 	</div>
 </div>

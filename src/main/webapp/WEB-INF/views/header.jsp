@@ -33,9 +33,6 @@
 				<li>
 					<a href="faqList.do">자주찾는질문</a>
 				</li>
-				<li>	
-					<a href="recipeWrite.do">레시피등록</a>
-				</li>
 				<li>
 					<a href="">고객센터</a>
 				</li>

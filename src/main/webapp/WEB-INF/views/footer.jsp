@@ -28,16 +28,63 @@
 	.recipe-view {
 		position: absolute; 
 		top: 0; 
-		left: 50%; 
-		transform: translate(-50%, 0);
+		left: 10%; 
 		background:#fff;
 		width:80%;
 		overflow:hidden;
 	}
-	
+	.recipe-view h2{
+		font-size:30px;
+		font-weight:600;
+		
+	}
 	.recipe-view .recipe-content{
-		width:70%;
+		width:calc(70% - 60px);
 		float:left;
+		padding:30px;
+	}
+	
+	.recipe-view .recipe-content .recipe-taginfo{
+		margin-bottom:30px;
+	}
+	
+	.recipe-view .recipe-content .recipe-taginfo ul {
+		overflow:hidden;
+	}
+	.recipe-view .recipe-content .recipe-taginfo ul li{
+		float:left;
+		margin-right:5px;
+		padding:5px 10px; 
+		border:1px solid #e1e1e1;
+		color:#3e3e3e;
+		font-size:13px;
+		border-radius:5px;
+	}
+	
+	.recipe-view .recipe-content .recipe-detail{
+		overflow:hidden;
+	}
+	
+	.recipe-view .recipe-content .recipe-detail h2{
+		margin:50px 0 30px;
+	}
+	.recipe-view .recipe-content .recipe-detail ul{
+		width:80%;
+		margin:0 auto;
+		text-align:center;
+		
+	}
+	.recipe-view .recipe-content .recipe-detail ul li{
+		margin:50px 0;
+		line-height:150%;
+		
+	}
+	.recipe-view .recipe-content .recipe-detail ul li .img-cover{
+		margin-bottom:15px;
+	}
+	
+	.recipe-view .recipe-content .recipe-detail ul li .img-cover img{
+		width:100%;
 	}
 	.recipe-view .recipe-info{
 		width:30%;
@@ -138,6 +185,56 @@
 		content:none;
 	}
 	
+	.recipe-view .recipe-info .recipe-ingredient{
+		overflow:hidden;
+		padding:0 20px;
+		width:320px;
+	
+	}
+	
+	.recipe-view .recipe-info .recipe-ingredient h2{
+		font-size:24px; 
+		color:#999;
+		position:relative;
+	}
+	.recipe-view .recipe-info .recipe-ingredient h2 em{
+		position:absolute;
+		bottom:0;
+		right:0;
+		font-size:12px;
+		font-style:normal;
+		font-weight:normal;
+		
+	}
+	.recipe-view .recipe-info .recipe-ingredient ul{
+		width:100%;
+	}
+	.recipe-view .recipe-info .recipe-ingredient ul li{
+		line-height:55px;
+		padding:0 10px;
+		overflow:hidden;
+		background:#474747;
+	}
+	.recipe-view .recipe-info .recipe-ingredient ul li:nth-child(2n){
+		background:#4e4e4e;
+	}
+	.recipe-view .recipe-info .recipe-ingredient ul li span{
+		width:50%;
+		display:block;
+		border:0;
+		float:left;
+		margin:0;
+		padding:0;
+		color:#999;
+		font-weight:normal;
+		font-size:16px;
+	}
+	
+	.recipe-view .recipe-info .recipe-ingredient ul li span.desc{
+		font-weight:bold;
+		color:#d1d1d1;
+		text-align:right;
+	}
 	.popup-close {
 		position: fixed;
 	    top: 10px;
@@ -153,22 +250,91 @@
 		line-height:40px;
 	}
 </style>
+<link rel="stylesheet" href="/takeMeal/resources/css/flexslider.css" type="text/css" media="screen" />
+<script defer src="/takeMeal/resources/js/jquery.flexslider.js"></script>
 <div class="popup">
 	<div class="popup-close">
 		<i class="fa fa-times"></i>
 	</div>
 	<div class="recipe-view">
 		<div class="recipe-content">
-			<img src="https://cloudfront.haemukja.com/vh.php?url=https://d1hk7gw6lgygff.cloudfront.net/uploads/direction/image_file/4806/pad_thumb_Mixed-Berry-Cream-Cheese-Blintzes9.jpg&amp;convert=jpgmin&amp;rt=600" alt="Pad thumb mixed berry cream cheese blintzes9" draggable="false">
-				<ol class="lst_step">
-
-					<li>
-						<div class="img-cover">
-							<img src="https://cloudfront.haemukja.com/vh.php?url=https://d1hk7gw6lgygff.cloudfront.net/uploads/direction/image_file/6669/org_resized_ChocMugcake-6.jpg&amp;convert=jpgmin&amp;rt=600" alt="Org resized chocmugcake 6">
-						</div>
-						<p>오늘의 레시피는 머그 케이크입니다. 사실 머그 케이크의 아이디어는 참 심플한데요. 모든 재료를 큰 머그에 넣고 몇 분 전자레인지에 돌리면 짠! 완성입니다. 그리고 케이크를 먹고 싶은데, 먹을 사람이 저 밖에 없을 때 머그 케이크를 만들기도 해요.</p>
+			<div class="recipeSlide">
+		        <div id="slider" class="flexslider">
+		          <ul class="slides">
+		            <li>
+					   <img src="https://cloudfront.haemukja.com/vh.php?url=https://d1hk7gw6lgygff.cloudfront.net/uploads/direction/image_file/4806/pad_thumb_Mixed-Berry-Cream-Cheese-Blintzes9.jpg&amp;convert=jpgmin&amp;rt=600" alt="Pad thumb mixed berry cream cheese blintzes9" draggable="false">
 					</li>
+					<li>
+					   <img src="https://cloudfront.haemukja.com/vh.php?url=https://d1hk7gw6lgygff.cloudfront.net/uploads/direction/image_file/4806/pad_thumb_Mixed-Berry-Cream-Cheese-Blintzes9.jpg&amp;convert=jpgmin&amp;rt=600" alt="Pad thumb mixed berry cream cheese blintzes9" draggable="false">
+					</li>
+					<li>
+					   <img src="https://cloudfront.haemukja.com/vh.php?url=https://d1hk7gw6lgygff.cloudfront.net/uploads/direction/image_file/4806/pad_thumb_Mixed-Berry-Cream-Cheese-Blintzes9.jpg&amp;convert=jpgmin&amp;rt=600" alt="Pad thumb mixed berry cream cheese blintzes9" draggable="false">
+					</li>
+					<li>
+					   <img src="https://cloudfront.haemukja.com/vh.php?url=https://d1hk7gw6lgygff.cloudfront.net/uploads/direction/image_file/4806/pad_thumb_Mixed-Berry-Cream-Cheese-Blintzes9.jpg&amp;convert=jpgmin&amp;rt=600" alt="Pad thumb mixed berry cream cheese blintzes9" draggable="false">
+					</li>
+		          </ul>
+		        </div>
+		        <div id="carousel" class="flexslider">
+		          <ul class="slides">
+				   	<li>
+				   		<img src="https://cloudfront.haemukja.com/vh.php?url=https://d1hk7gw6lgygff.cloudfront.net/uploads/direction/image_file/4806/pad_thumb_Mixed-Berry-Cream-Cheese-Blintzes9.jpg&amp;convert=jpgmin&amp;rt=600" alt="Pad thumb mixed berry cream cheese blintzes9" draggable="false">
+					</li>
+					<li>
+					   <img src="https://cloudfront.haemukja.com/vh.php?url=https://d1hk7gw6lgygff.cloudfront.net/uploads/direction/image_file/4806/pad_thumb_Mixed-Berry-Cream-Cheese-Blintzes9.jpg&amp;convert=jpgmin&amp;rt=600" alt="Pad thumb mixed berry cream cheese blintzes9" draggable="false">
+					</li>
+					<li>
+					   <img src="https://cloudfront.haemukja.com/vh.php?url=https://d1hk7gw6lgygff.cloudfront.net/uploads/direction/image_file/4806/pad_thumb_Mixed-Berry-Cream-Cheese-Blintzes9.jpg&amp;convert=jpgmin&amp;rt=600" alt="Pad thumb mixed berry cream cheese blintzes9" draggable="false">
+					</li>
+					<li>
+					   <img src="https://cloudfront.haemukja.com/vh.php?url=https://d1hk7gw6lgygff.cloudfront.net/uploads/direction/image_file/4806/pad_thumb_Mixed-Berry-Cream-Cheese-Blintzes9.jpg&amp;convert=jpgmin&amp;rt=600" alt="Pad thumb mixed berry cream cheese blintzes9" draggable="false">
+					</li>
+		          </ul>
+		        </div>
+		    </div>
+	     	<script type="text/javascript">
+			    
+			    $(window).load(function(){
+			      $('#carousel').flexslider({
+			        animation: "slide",
+			        controlNav: false,
+			        animationLoop: true,
+			        slideshow: false,
+			        itemWidth: 100,
+			        itemMargin: 10,
+			        asNavFor: '#slider'
+			      });
+			
+			      $('#slider').flexslider({
+			        animation: "slide",
+			        controlNav: false,
+			        animationLoop: true,
+			        slideshow: false,
+			        sync: "#carousel",
+			        start: function(slider){
+			          $('body').removeClass('loading');
+			        }
+			      });
+			    });
+			    
 
+			  
+
+			</script>
+			<div class="recipe-taginfo">
+				<h2>태그 정보</h2>
+				<ul>
+					<li>#가공품</li>
+					<li>#수산 가공품</li>
+					<li>#김밥/롤/주먹밥/초밥</li>
+					<li>#실생활 요리</li>
+					<li>#암 예방</li>
+					<li>#빈혈 예방</li>
+				</ul>
+			</div>
+			<div class="recipe-detail">
+				<h2>레시피</h2>
+				<ul class="lst_step">
 					<li>
 						<div class="img-cover">
 							<img src="https://cloudfront.haemukja.com/vh.php?url=https://d1hk7gw6lgygff.cloudfront.net/uploads/direction/image_file/6666/org_resized_ChocMugcake-3.jpg&amp;convert=jpgmin&amp;rt=600" alt="Org resized chocmugcake 3">
@@ -189,40 +355,44 @@
 						</div>
 						<p></p>
 					</li>
-				</ol>
+				</ul>
+			</div>
+				
 		</div>
 		<div class="recipe-info">
-			<span class="author">
-				<a href="recipeChef.do?userid=">
-					<span class="profile_thumb">
-						<img src="https://cloudfront.haemukja.com/vh.php?url=https://d1hk7gw6lgygff.cloudfront.net/uploads/user/image_file/10/thumb__BF_F8_C7_FC.jpg&amp;convert=jpgmin&amp;rt=600">
-					</span>
-					<strong >
-					
-					</strong>
-				</a>			
-			</span>
-			<h2 class="recipe-subject">
-			
-			</h2>
-			<ul class="recipe-util">
-				<li>
-					<span>
-						<i class="fa fa-clock-o"></i> 조리시간
-					</span>
-					<p class="recipe-time"></p>
-				</li>
-				<li>
-					<span>
-						<i class="fa fa-heart"></i> 스크랩
-					</span>
-					<p class="recipe-follow"></p>
-				</li>
-			</ul>
-			<div class="recipe-scrap">
-				<a href="#">
-					<i class="fa fa-heart"></i> 스크랩하기
-				</a>
+			<div class="recipe-info-top">
+				<span class="author">
+					<a href="recipeChef.do?userid=">
+						<span class="profile_thumb">
+							<img src="https://cloudfront.haemukja.com/vh.php?url=https://d1hk7gw6lgygff.cloudfront.net/uploads/user/image_file/10/thumb__BF_F8_C7_FC.jpg&amp;convert=jpgmin&amp;rt=600">
+						</span>
+						<strong >
+						
+						</strong>
+					</a>			
+				</span>
+				<h2 class="recipe-subject">
+				
+				</h2>
+				<ul class="recipe-util">
+					<li>
+						<span>
+							<i class="fa fa-clock-o"></i> 조리시간
+						</span>
+						<p class="recipe-time"></p>
+					</li>
+					<li>
+						<span>
+							<i class="fa fa-heart"></i> 스크랩
+						</span>
+						<p class="recipe-follow"></p>
+					</li>
+				</ul>
+				<div class="recipe-scrap">
+					<a href="#">
+						<i class="fa fa-heart"></i> 스크랩하기
+					</a>
+				</div>
 			</div>
 			<div class="recipe-sns">
 				<dl>
@@ -230,6 +400,36 @@
 					<dd><i class="fa fa-twitter"></i></dd>
 					<dd><i class="fa fa-link"></i></dd>
 				</dl>
+			</div>
+			<div class="recipe-ingredient">
+				<h2>재료리스트  <em>10인 기준</em></h2>
+				<ul>
+					<li>
+						<span class="title">생망고</span>
+						<span class="desc">1½ 컵</span>
+					</li>
+					<li>
+						<span class="title">설탕</span>
+						<span class="desc">1/4컵</span>
+					</li>
+					<li>
+						<span class="title">생망고</span>
+						<span class="desc">1½ 컵</span>
+					</li>
+					<li>
+						<span class="title">설탕</span>
+						<span class="desc">1/4컵</span>
+					</li>
+					<li>
+						<span class="title">생망고</span>
+						<span class="desc">1½ 컵</span>
+					</li>
+					<li>
+						<span class="title">설탕</span>
+						<span class="desc">1/4컵</span>
+					</li>
+					
+				</ul>
 			</div>
 		</div>
 	</div>
@@ -423,6 +623,7 @@ function faqlistAccordion(obj,no){
 
 }
 
+
 function popupOpen(type,no){
 	
 	var html = "";
@@ -431,6 +632,34 @@ function popupOpen(type,no){
 	$("html").addClass("popup-on");
 	$(".popup").addClass("on");
 	
+	if(type=="shop"){
+		$.ajax({
+            method: "POST",
+            cache: false,
+            url: "shopView.do",
+            data: {
+            		no:no
+            },
+            success: function(result) {
+                if(result.code=="SUCCESS"){
+                	var shopValue = result.data;
+                	
+                	$(".recipe-subject").text(shopValue.name);
+                	$(".recipe-time").text(shopValue.time+"분");
+                	$(".recipe-follow").text(shopValue.follow);
+                	
+                	$(".recipe-info").height($(".recipe-content").height());
+                	
+                	
+                }else if(result.code=="FAIL"){
+                	alert(result.message);
+                }
+            },
+            error: function (result) {
+            	console.log(result);
+            }
+        });
+	}
 	
 	if(type=="recipe"){
 		$.ajax({
@@ -455,10 +684,14 @@ function popupOpen(type,no){
             },
             error: function (result) {
             	console.log(result);
+            },
+            complete: function(){
+            	scrollFix();
             }
         });
 	}
 }
+
 $("a.btn-login").on("click", function(){
 	$("#login-sec").addClass("active");
 
@@ -511,7 +744,53 @@ function join(){
 	});
 }
 
-function customAlert(message,url=null) {
+
+//재료리스트 scroll fix : 150324
+function scrollFix(){
+  var htmlLength = $('.recipe-detail').outerHeight(true);
+  var ingreLenght = $(".recipe-info .recipe-ingredient").outerHeight(true);
+  var btm_offset = $(".recipe-info .recipe-info-top").outerHeight(true) + $(".recipe-info .recipe-sns").outerHeight(true);
+  var marginComp = (1048 / 2) - 290;
+  var max_scroll = htmlLength - ingreLenght;
+  var $target = $(".popup.on");
+  $(".recipe-info").height(htmlLength);
+
+  
+  //if (!isModal) {
+  //  btm_offset += 113; // inpage에서 로딩시 헤더 높이 만큼 compensation
+  //  marginComp += 8.5;
+  //}
+
+  $target.scroll(function () {
+    var scroll = $(this).scrollTop();
+
+    if (scroll < btm_offset) {
+      $('.recipe-info .recipe-ingredient').css({
+        'position': 'relative',
+        'top': '0',
+        'left': '0',
+        'margin-left': '0'
+      });
+    } else if (scroll >= max_scroll) {
+      $('.recipe-info .recipe-ingredient').css({
+        'position': 'absolute',
+        'bottom': '0',
+        'top': 'auto',
+        'left': '0',
+        'margin-left': '0'
+      });
+    } else {
+      $('.recipe-info .recipe-ingredient').css({
+        'position': 'fixed',
+        'top': '0',
+        'left': '50%',
+        'margin-left': marginComp
+      });
+    }
+  });
+}
+
+function customAlert(message, url) {
 	if(url != null || url != ''){
 		alert(message);
 		location.href=url;

@@ -36,15 +36,33 @@
 					<li>
 						<div>
 							<span class="goods">
+							<a href="#" onclick="javascript:popupOpen('shop',${shopList.no});">
+									<img src=${shopList.thumbnail }>
+									
+									<strong>${shopList.price }</strong>
+									<span>${shopList.description }</span>
 								<a href="/profile/10">
 									<span class="goods_thumb">
-										<img src=${shopList.thumbnail }>
+									<img src=${shopList.thumbnail }>
 									</span>
 									<strong>${shopList.price }</strong>
 									<span>${shopList.description }</span>
-								</a>			
+								</a>
+							</a>
 							</span>
 						</div>
+						
+						<%-- <h2 class="recipe_title">
+									<a href="#" onclick="javascript:popupOpen('recipe',${recipeList.no});">
+										${recipeList.subject}
+										<span>
+										${recipeList.contents}
+										</span>
+									</a>
+								</h2>
+						
+						 --%>
+						
 						<div class="goods_name">
 							${shopList.name }
 						</div>
