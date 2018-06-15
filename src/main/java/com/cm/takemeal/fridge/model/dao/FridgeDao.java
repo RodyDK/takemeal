@@ -23,5 +23,10 @@ public class FridgeDao {
 		// TODO Auto-generated method stub
 		return sqlSession.selectList("myfridge_freeze", no);
 	}
+
+	public void updateFood(Food updatefood) {
+		// TODO Auto-generated method stub
+		sqlSession.update("updateFood", updatefood);
+	}
 	
 }

@@ -4,6 +4,7 @@
 <mapper namespace="com.cm.takemeal.fridge.model.dao.FridgeDao">
 
 	<resultMap type="Food" id="ResultFood">
+		<result column="no" property="no" />
 		<result column="class_code" property="class_code" />
 		<result column="food_code" property="food_code" />
 		<result column="food_name" property="food_name" />
@@ -95,5 +96,11 @@
 		)
 	]]>
 	</select>
+	
+	<update id="updateFood" parameterType="Food">
+	
+	
+	
+	</update>
 
 </mapper>

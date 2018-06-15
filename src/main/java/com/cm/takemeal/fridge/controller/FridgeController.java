@@ -2,6 +2,7 @@ package com.cm.takemeal.fridge.controller;
 
 import java.util.*;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -49,6 +50,28 @@ public class FridgeController {
 	public ModelAndView moveFoodInsertPage(ModelAndView mv) {
 		mv.setViewName("JH/foodinsert");
 		return mv;
+	}
+	
+	@RequestMapping(value="updateFood.do", method=RequestMethod.POST)
+	public void updateFood(HttpServletRequest request, @RequestParam("no") String no) {
+		String[] strArr = request.getParameterValues("food_name");
+		String[] intArr = request.getParameterValues("food_count");
+		
+		
+		for(int i=0;i<strArr.length;i++) {
+			Food updatefood = new Food();
+			updatefood.setFood_name(strArr[i]);
+			updatefood.setFood_count(Integer.parseInt(intArr[i]));
+			updatefood.setNo(Integer.parseInt(no));
+			fridgeService.updateFood(updatefood);
+		}
+		
+	/*	HashMap<String,Integer> map = new HashMap<String,Integer>();
+		for(int i=0;i<strArr.length;i++) {
+			map.put(strArr[i], Integer.parseInt(intArr[i]));
+			System.out.println(map.get(strArr[i]));
+		}*/
+		
 	}
 	
 }

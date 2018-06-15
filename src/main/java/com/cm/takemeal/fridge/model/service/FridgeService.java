@@ -9,4 +9,6 @@ public interface FridgeService {
 	public abstract List<Food> selectColdFridge(String no);
 	
 	public abstract List<Food> selectFreezeFridge(String no);
+	
+	public abstract void updateFood(Food updatefood);
 }

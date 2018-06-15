@@ -25,4 +25,10 @@ public class FridgeServiceImpl implements FridgeService{
 		// TODO Auto-generated method stub
 		return fridgeDao.selectFreezeFridge(no);
 	}
+	
+	@Override
+	public void updateFood(Food updatefood) {
+		
+		fridgeDao.updateFood(updatefood);
+	}
 }

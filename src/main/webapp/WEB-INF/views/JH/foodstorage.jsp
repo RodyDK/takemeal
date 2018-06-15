@@ -46,6 +46,7 @@
     width: 30%;
     border-left: none;
     height: 300px;
+    overflow:scroll;
 }
 
 </style>
@@ -58,20 +59,28 @@ $(document).ready(function(){
 	// .check 클래스 중 어떤 원소가 체크되었을 때 발생하는 이벤트
 	
 	$(".check").click(function(){
-		var str = ""; 
 	
-		$(".check").each(function(){
+	 var val=$(this).val();
+	 $("#checked_food").html($("#checked_food").html()+"<input type='text' name='food_name' value='"+val+"' style='border:none; width:5%;' class='select_food_name'>"
+	 +"<input type='number' class='select_food_count' name='food_count' placeholder='수량을 선택하세요'>"
+	 + "<br>");
+	 $(this).hide();
 	
-			if($(this).is(":checked"))
+	 $("#select_food_btn").on("click", function(){
+		 $("#checked_food").html("");
+		 $(".check").show();
+		 $('.check').removeAttr('checked');
+		 
+	 });
 	
-				str += $(this).val() + " ";
+	});
 	
-		});
 	
-		$("#checked_food").text(str);
 	
-  	});
+	
 });
+
+
 
 function goPage(url){
 	location.href = url;
@@ -153,10 +162,11 @@ function openRef(evt, refName, loc) {
 	 <button class="tablinks" onclick="openRef(event, 'freeze', '#bot')">냉동실</button>
 	</div>
 	
-	<div id="cold" class="tabcontent">
+	<div id="cold" class="tabcontent" >
 	  <h3>냉장실</h3>
 	 <c:forEach items="${cold}" var="coldFood">
-		<p><input type="checkbox" class="check" value="${coldFood.food_name}">${coldFood.food_name} : ${coldFood.food_count}</p>
+		<p>
+		<input type="checkbox" class="check" value="${coldFood.food_name}"> ${coldFood.food_name} :    ${coldFood.food_count}      </p>
 	</c:forEach>
 	</div>
 	
@@ -167,19 +177,24 @@ function openRef(evt, refName, loc) {
 	</c:forEach>
 	</div>
 	
+	선택한 재료 :<br>
+	<form method="POST" action="updateFood.do?no=${loginUser.no }">
+	<div id="checked_food">
 	
-	<div id="checked_food" class="tabcontent">
-		선택한 재료 :<span id="print_food"></span>
+	
 	</div>
+	<button type=submit>update</button>
+	</form>
 	
+	<button id='select_food_btn'>Reset</button>
 	<br>
 	
 	<div class="ref_insert">
-	<button onclick="goPage('./foodinsert.do');">
+	<!-- <button onclick="goPage('./foodinsert.do');">
 	냉장고 재료 등록 하러가기~
-	</button>
+	</button> -->
 	
-	 </div>
+	</div>
 	
 	
 	
