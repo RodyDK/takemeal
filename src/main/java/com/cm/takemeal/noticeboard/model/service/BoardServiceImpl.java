@@ -27,7 +27,7 @@ public class BoardServiceImpl implements BoardService{
 	}
 
 	
-	@Transactional
+	  @Transactional(isolation=Isolation.READ_COMMITTED)
 	@Override
 	public BoardVo read(Integer bno) throws Exception {
 		// TODO Auto-generated method stub

@@ -5,7 +5,7 @@
 
 <mapper namespace="NoticeBoardMapper">
 
-	<resultMap type="BoardVo" id="BoardVo">
+	 <resultMap type="BoardVo" id="BoardVo">
 		<id column="bno" property="bno" />
 		<result column="title" property="title" />
 		<result column="content" property="content" />
@@ -14,7 +14,7 @@
 		<result column="viewcnt" property="viewcnt" />
 		<result column="replycnt" property="replycnt" />
 	</resultMap>
-
+ 
 
 
 
@@ -55,7 +55,7 @@
 	]]>
 	</select>
 
-	<select id="listPage" resultType="BoardVo">
+	<select id="listPage" resultType="com.cm.takemeal.noticeboard.model.vo.BoardVo">
 	<![CDATA[
 	
 		select * from
@@ -68,7 +68,7 @@
 
 	</select>
 
-	<select id="listCriteria" resultType="BoardVo">
+	<select id="listCriteria" resultType="com.cm.takemeal.noticeboard.model.vo.BoardVo">
 	<![CDATA[
 	select * from
 	(select rownum rn, bno, title, content, writer, regdate, viewcnt, replycnt from
@@ -117,7 +117,7 @@
 	</sql>
 
 
-	<select id="listSearch" resultType="BoardVo">
+	<select id="listSearch" resultType="com.cm.takemeal.noticeboard.model.vo.BoardVo">
 	<![CDATA[
 		select * from
 	(select rownum rn, bno, title, content, writer, regdate, viewcnt from
@@ -151,7 +151,9 @@
 
 	<select id="updateViewCnt">
 	
-	update tbl_board set viewcnt = viewcnt + 1 where bno = ${bno}
+	update tbl_board set viewcnt =
+	 viewcnt + 1 
+	 where bno = #{bno}
 	</select>
 
 

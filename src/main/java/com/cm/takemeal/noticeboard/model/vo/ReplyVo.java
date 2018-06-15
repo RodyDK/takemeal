@@ -5,8 +5,8 @@ import java.util.Date;
 public class ReplyVo implements java.io.Serializable{
 	private static final long serialVersionUID = 54234L;
 	
-	private Integer rno;
-	private Integer bno;
+	private Integer  rno;
+	private Integer  bno;
 	private String replytext;
 	private String replyer;
 	
@@ -17,33 +17,25 @@ public class ReplyVo implements java.io.Serializable{
 		// TODO Auto-generated constructor stub
 	}
 	
-	public ReplyVo(Integer rno, Integer bno, String replytext, String replyer, Date regdate, Date updatedate) {
-		super();
-		this.rno = rno;
-		this.bno = bno;
-		this.replytext = replytext;
-		this.replyer = replyer;
-		this.regdate = regdate;
-		this.updatedate = updatedate;
-	}
+	
 
 
-	public Integer getRno() {
+	public Integer  getRno() {
 		return rno;
 	}
 
 
-	public void setRno(Integer rno) {
+	public void setRno(Integer  rno) {
 		this.rno = rno;
 	}
 
 
-	public Integer getBno() {
+	public Integer  getBno() {
 		return bno;
 	}
 
 
-	public void setBno(Integer bno) {
+	public void setBno(Integer  bno) {
 		this.bno = bno;
 	}
 

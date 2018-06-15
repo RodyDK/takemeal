@@ -12,7 +12,7 @@ public class BoardVo implements java.io.Serializable {
 		// TODO Auto-generated constructor stub
 	}
 
-	private int bno;
+	private Integer  bno;
 	private String title;
 	private String content;
 	private String writer;
@@ -21,22 +21,13 @@ public class BoardVo implements java.io.Serializable {
 	private int replycnt;
 	
 	
-	public BoardVo(int bno, String title, String content, String writer, Date regdate, int viewcnt, int replycnt) {
-		super();
-		this.bno = bno;
-		this.title = title;
-		this.content = content;
-		this.writer = writer;
-		this.regdate = regdate;
-		this.viewcnt = viewcnt;
-		this.replycnt = replycnt;
-	}
+	
 
-	public int getBno() {
+	public Integer  getBno() {
 		return bno;
 	}
 
-	public void setBno(int bno) {
+	public void setBno(Integer  bno) {
 		this.bno = bno;
 	}
 

@@ -54,7 +54,6 @@ public class SearchBoardController {
 		logger.info("readPage컨트롤러들어옴............");
 		/*model.addAttribute(service.read(bno));*/
 		System.out.println("bno : " + bno);
-		
 		mv.addObject("BoardVo",service.read(bno));
 		/*mv.addObject(service.read(bno));*/
 		mv.setViewName("DJ/sboard/readPage2");

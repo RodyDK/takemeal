@@ -6,14 +6,55 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 
+<!-- <script src="/takemeal/resources/js/jquery-3.3.1.min.js"></script>
+<script src="/takemeal/resources/js/handlebars-v4.0.11.js"></script>
 <link rel="stylesheet"
 	href="/takemeal/resources/bootstrap/css/bootstrap.css">
 <link rel="stylesheet"
 	href="/takemeal/resources/bootstrap/css/bootstrap.min.css">
 
+	
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    Font Awesome Icons
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    Ionicons
+    <link href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" type="text/css" />
 
-<script src="/takemeal/resources/js/jquery-3.3.1.min.js"></script>
+
+<link rel="stylesheet"
+	href="/takemeal/resources/bootstrap/js/bootstrap.js">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
+ -->
+  <script src="/takemeal/resources/js/jquery-3.3.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
+ <!-- Bootstrap 3.3.4 -->
+    <link href="/takemeal/resources/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <!-- Font Awesome Icons -->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <!-- Ionicons -->
+    <link href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" type="text/css" />
+ 
+<!-- Main content -->
+    <style type="text/css">
+    .popup {position: absolute;}
+    .back { background-color: gray; opacity:0.5; width: 100%; height: 300%; overflow:hidden;  z-index:1101;}
+    .front { 
+       z-index:1110; opacity:1; boarder:1px; margin: auto; 
+      }
+     .show{
+       position:relative;
+       max-width: 1200px; 
+       max-height: 800px; 
+       overflow: auto;       
+     } 
+  	
+    </style>
+
+    <div class='popup back' style="display:none;"></div>
+    <div id="popup_front" class='popup front' style="display:none;">
+     <img id="popup_img">
+    </div>
+
 <!-- Main content -->
 <section class="content">
 	<div class="row">
@@ -224,10 +265,10 @@
 
 	$("#repliesDiv").on("click", function() {
 
-		if ($(".timeline li").size() > 1) {
+		 /* if ($(".timeline li").size() > 1) {
 			return;
-		}
-		getPage("/replies/" + bno + "/1");
+		}  */
+		getPage("/takemeal/replies/" + bno + "/1");
 
 	});
 	
@@ -238,7 +279,7 @@
 		
 		replyPage = $(this).attr("href");
 		
-		getPage("/replies/"+bno+"/"+replyPage);
+		getPage("/takemeal/replies/"+bno+"/"+replyPage);
 		
 	});
 	
@@ -250,21 +291,21 @@
 		 var replyer = replyerObj.val();
 		 var replytext = replytextObj.val();
 		
-		  
 		  $.ajax({
 				type:'post',
-				url:'/replies/',
+				url:'/takemeal/replies/',
 				headers: { 
 				      "Content-Type": "application/json",
 				      "X-HTTP-Method-Override": "POST" },
 				dataType:'text',
 				data: JSON.stringify({bno:bno, replyer:replyer, replytext:replytext}),
+				
 				success:function(result){
 					console.log("result: " + result);
 					if(result == 'SUCCESS'){
 						alert("등록 되었습니다.");
 						replyPage = 1;
-						getPage("/replies/"+bno+"/"+replyPage );
+						getPage("/takemeal/replies/"+bno+"/"+replyPage );
 						replyerObj.val("");
 						replytextObj.val("");
 					}
@@ -290,7 +331,7 @@
 		  
 		  $.ajax({
 				type:'put',
-				url:'/replies/'+rno,
+				url:'/takemeal/replies/'+rno,
 				headers: { 
 				      "Content-Type": "application/json",
 				      "X-HTTP-Method-Override": "PUT" },
@@ -300,7 +341,7 @@
 					console.log("result: " + result);
 					if(result == 'SUCCESS'){
 						alert("수정 되었습니다.");
-						getPage("/replies/"+bno+"/"+replyPage );
+						getPage("/takemeal/replies/"+bno+"/"+replyPage );
 					}
 			}});
 	});
@@ -312,7 +353,7 @@
 		  
 		  $.ajax({
 				type:'delete',
-				url:'/replies/'+rno,
+				url:'/takemeal/replies/'+rno,
 				headers: { 
 				      "Content-Type": "application/json",
 				      "X-HTTP-Method-Override": "DELETE" },
@@ -321,7 +362,7 @@
 					console.log("result: " + result);
 					if(result == 'SUCCESS'){
 						alert("삭제 되었습니다.");
-						getPage("/replies/"+bno+"/"+replyPage );
+						getPage("/takemeal/replies/"+bno+"/"+replyPage );
 					}
 			}});
 	});
@@ -357,5 +398,7 @@ $(document).ready(function(){
 </script>
 
 
+<!-- Bootstrap 3.3.2 JS -->
+    <script src="/takemeal/resources/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
 
 </html>
