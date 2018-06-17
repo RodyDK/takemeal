@@ -54,7 +54,7 @@
 
 	});
 </script> 
- 
+
 
 </head>
 <body>
@@ -91,37 +91,28 @@
 	
 	</div> --%>
 
-	<div class="box-body">
+	<table class="table table-bordered">
+		<tr>
+			<th style="width: 10px">BNO</th>
+			<th>TITLE</th>
+			<th>WRITER</th>
+			<th>REGDATE</th>
+			<th style="width: 40px">VIEWCNT</th>
+		</tr>
 
+		<c:forEach items="${list}" var="BoardVo">
 
-					<table class="table table-bordered">
-						<tr>
-							<th style="width: 10px">BNO</th>
-							<th>TITLE</th>
-							<th>WRITER</th>
-							<th>REGDATE</th>
-							<th style="width: 40px">VIEWCNT</th>
-						</tr>
-
-						<c:forEach items="${list}" var="boardVo">
-
-							<tr>
-								<td>${boardVo.bno}</td>
-								<td><a
-									href='/sboard/readPage${pageMaker.makeSearch(pageMaker.cri.page) }&bno=${boardVo.bno}'>
-										${boardVo.title} <strong>[ ${boardVo.replycnt} ]</strong>
-								</a></td>
-								<td>${boardVo.writer}</td>
-								<td><fmt:formatDate pattern="yyyy-MM-dd HH:mm"
-										value="${boardVo.regdate}" /></td>
-								<td><span class="badge bg-red">${boardVo.viewcnt }</span></td>
-							</tr>
-
-						</c:forEach>
-
-					</table>
-				</div>
-				<!-- /.box-body -->
+			<tr>
+				<td>${BoardVo.bno }</td>
+				<td><a href="readPage.do${pageMaker.makeSearch(pageMaker.cri.page)}&bno=${BoardVo.bno }">${BoardVo.title }
+				<strong>[${BoardVo.replycnt }]</strong>
+				</a></td>
+				<td>${BoardVo.writer }</td>
+				<td><fmt:formatDate pattern="yyyy-MM-dd HH:mm"
+						value="${BoardVo.regdate }" /></td>
+				<td><span class="badge bg-red">${BoardVo.viewcnt }</span></td>
+			</tr>
+		</c:forEach>
 
 
 

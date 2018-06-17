@@ -32,9 +32,8 @@ public class SearchBoardController {
 	public ModelAndView listPage(@ModelAttribute("cri") SearchCriteria cri, ModelAndView mv)throws Exception{
 		
 		logger.info(cri.toString());
-		Criteria c = new Criteria();
-		logger.info(c.toString());
-		mv.addObject("list", service.listCriteria(cri));
+		
+		mv.addObject("list", service.listSearchCriteria(cri));
 		mv.setViewName("DJ/sboard/list");
 		PageMaker pageMaker = new PageMaker();
 		pageMaker.setCri(cri);
