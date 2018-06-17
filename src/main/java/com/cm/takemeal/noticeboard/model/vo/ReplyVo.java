@@ -5,8 +5,8 @@ import java.util.Date;
 public class ReplyVo implements java.io.Serializable{
 	private static final long serialVersionUID = 54234L;
 	
-	private Integer  rno;
-	private Integer  bno;
+	private Integer rno;
+	private Integer bno;
 	private String replytext;
 	private String replyer;
 	

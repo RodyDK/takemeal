@@ -186,6 +186,8 @@
 <!-- /.content -->
 
 
+
+
 <script id="template" type="text/x-handlebars-template">
 {{#each .}}
 <li class="replyLi" data-rno={{rno}}>
@@ -285,6 +287,7 @@
 	});
 	
 
+
 	$("#replyAddBtn").on("click",function(){
 		 
 		 var replyerObj = $("#newReplyWriter");
@@ -292,21 +295,21 @@
 		 var replyer = replyerObj.val();
 		 var replytext = replytextObj.val();
 		
+		  
 		  $.ajax({
 				type:'post',
-				url:'/takemeal/replies/register',
+				url:'/replies/',
 				headers: { 
 				      "Content-Type": "application/json",
 				      "X-HTTP-Method-Override": "POST" },
 				dataType:'text',
 				data: JSON.stringify({bno:bno, replyer:replyer, replytext:replytext}),
-				
 				success:function(result){
 					console.log("result: " + result);
 					if(result == 'SUCCESS'){
 						alert("등록 되었습니다.");
 						replyPage = 1;
-						getPage("/takemeal/replies/"+bno+"/"+replyPage );
+						getPage("/replies/"+bno+"/"+replyPage );
 						replyerObj.val("");
 						replytextObj.val("");
 					}
@@ -331,19 +334,18 @@
 		  var replytext = $("#replytext").val();
 		  
 		  $.ajax({
-			  
-				type:'post',
-				url:'/takemeal/replies/modify',
+				type:'put',
+				url:'/replies/'+rno,
 				headers: { 
 				      "Content-Type": "application/json",
-				      "X-HTTP-Method-Override": "POST" },
+				      "X-HTTP-Method-Override": "PUT" },
+				data:JSON.stringify({replytext:replytext}), 
 				dataType:'text', 
-				data:JSON.stringify({rno:rno, replytext:replytext}), 
 				success:function(result){
 					console.log("result: " + result);
 					if(result == 'SUCCESS'){
 						alert("수정 되었습니다.");
-						getPage("/takemeal/replies/"+bno+"/"+replyPage );
+						getPage("/replies/"+bno+"/"+replyPage );
 					}
 			}});
 	});
@@ -355,7 +357,7 @@
 		  
 		  $.ajax({
 				type:'delete',
-				url:'/takemeal/replies/'+rno,
+				url:'/replies/'+rno,
 				headers: { 
 				      "Content-Type": "application/json",
 				      "X-HTTP-Method-Override": "DELETE" },
@@ -364,10 +366,13 @@
 					console.log("result: " + result);
 					if(result == 'SUCCESS'){
 						alert("삭제 되었습니다.");
-						getPage("/takemeal/replies/"+bno+"/"+replyPage );
+						getPage("/replies/"+bno+"/"+replyPage );
 					}
 			}});
 	});
+	
+</script>
+
 	
 </script>
 
@@ -400,7 +405,21 @@ $(document).ready(function(){
 </script>
 
 
+<!-- Font Awesome Icons -->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <!-- Ionicons -->
+    <link href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" type="text/css" />
+    <!-- Theme style -->
+    <link href="/resources/dist/css/AdminLTE.min.css" rel="stylesheet" type="text/css" />
+    <!-- AdminLTE Skins. Choose a skin from the css/skins 
+         folder instead of downloading all of them to reduce the load. -->
+    <link href="/resources/dist/css/skins/_all-skins.min.css" rel="stylesheet" type="text/css" />
 <!-- Bootstrap 3.3.2 JS -->
     <script src="/takemeal/resources/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+ <script src='/resources/plugins/fastclick/fastclick.min.js'></script>
+    <!-- AdminLTE App -->
+    <script src="/resources/dist/js/app.min.js" type="text/javascript"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="/resources/dist/js/demo.js" type="text/javascript"></script>
 
 </html>

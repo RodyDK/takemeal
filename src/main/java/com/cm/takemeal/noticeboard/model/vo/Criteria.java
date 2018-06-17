@@ -2,66 +2,53 @@ package com.cm.takemeal.noticeboard.model.vo;
 
 public class Criteria {
 	
-	private int page;
+	private int page;	
 	private int perPageNum;
 	
-	public Criteria() {
-		// TODO Auto-generated constructor stub
+	public Criteria(){
 		this.page = 1;
 		this.perPageNum = 10;
 	}
 
-	public int getPage() {
+	public void setPage(int page){
+		System.out.println("크리테리아 : page" + page);
 		
-		return page;
-	}
-
-	public void setPage(int page) {
-		
-		if(page<=0) {
+		if(page <= 0){
 			this.page = 1;
 			return;
 		}
 		
 		this.page = page;
 	}
-
-
-	public void setPerPageNum(int perPageNum) {
+	
+	public void setPerPageNum(int perPageNum){
 		
-		if(perPageNum <=0 || perPageNum >100) {
+		if(perPageNum <= 0 || perPageNum > 100){
 			this.perPageNum = 10;
 			return;
 		}
 		
-		
 		this.perPageNum = perPageNum;
-		System.out.println("PageStart="+((this.page -1) * perPageNum));
-		System.out.println("perPageNum="+this.perPageNum);
 	}
 	
-	//method for SQL
+	public int getPage() {
+		return page;
+	}	
+	
+	//method for MyBatis SQL Mapper - 
 	public int getPageStart() {
 		
-		return(this.page -1) * perPageNum;
+		return (this.page -1)* perPageNum;
 	}
 	
-
-	public int getPerPageNum() {
+	//method for MyBatis SQL Mapper 
+	public int getPerPageNum(){
+		
 		return this.perPageNum;
 	}
-	
-	
-	
 
 	@Override
 	public String toString() {
 		return "Criteria [page=" + page + ", perPageNum=" + perPageNum + "]";
 	}
-
-	
-	
-	
-	
-
 }

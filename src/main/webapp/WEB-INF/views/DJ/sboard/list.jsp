@@ -50,15 +50,16 @@
 		jobForm.find("[name='page']").val(targetPage);
 		jobForm.attr("action", "/DJ/sboard/list.do").attr("method", "get");
 		jobForm.submit();
+		alert(jobForm);
 
 	});
-</script>
-
+</script> 
+ 
 
 </head>
 <body>
 
-	<div class="box-body">
+	<%-- <div class="box-body">
 		<select name="searchType">
 			<option value="n"
 				<c:out value="${cri.searchType == null?'selected':'' }"/>>
@@ -88,61 +89,79 @@
 		<button id="newBtn">New Board</button>
 		
 	
-	</div>
+	</div> --%>
 
-	<table class="table table-bordered">
-		<tr>
-			<th style="width: 10px">BNO</th>
-			<th>TITLE</th>
-			<th>WRITER</th>
-			<th>REGDATE</th>
-			<th style="width: 40px">VIEWCNT</th>
-		</tr>
+	<div class="box-body">
 
-		<c:forEach items="${list}" var="BoardVo">
 
-			<tr>
-				<td>${BoardVo.bno }</td>
-				<td><a href="readPage.do${pageMaker.makeSearch(pageMaker.cri.page)}&bno=${BoardVo.bno }">${BoardVo.title }
-				<strong>[${BoardVo.replycnt }]</strong>
-				</a></td>
-				<td>${BoardVo.writer }</td>
-				<td><fmt:formatDate pattern="yyyy-MM-dd HH:mm"
-						value="${BoardVo.regdate }" /></td>
-				<td><span class="badge bg-red">${BoardVo.viewcnt }</span></td>
-			</tr>
-		</c:forEach>
+					<table class="table table-bordered">
+						<tr>
+							<th style="width: 10px">BNO</th>
+							<th>TITLE</th>
+							<th>WRITER</th>
+							<th>REGDATE</th>
+							<th style="width: 40px">VIEWCNT</th>
+						</tr>
+
+						<c:forEach items="${list}" var="boardVo">
+
+							<tr>
+								<td>${boardVo.bno}</td>
+								<td><a
+									href='/sboard/readPage${pageMaker.makeSearch(pageMaker.cri.page) }&bno=${boardVo.bno}'>
+										${boardVo.title} <strong>[ ${boardVo.replycnt} ]</strong>
+								</a></td>
+								<td>${boardVo.writer}</td>
+								<td><fmt:formatDate pattern="yyyy-MM-dd HH:mm"
+										value="${boardVo.regdate}" /></td>
+								<td><span class="badge bg-red">${boardVo.viewcnt }</span></td>
+							</tr>
+
+						</c:forEach>
+
+					</table>
+				</div>
+				<!-- /.box-body -->
 
 
 
 	</table>
+	<button id="newBtn">New Board</button>
 
 	<form id="jobForm">
-		<input type="hidden" name="page" value=${PageMaker.cri.perPageNum }/>
+		<input type="hidden" name="page" value=${cri.page }/>
 		<input type="hidden" name="perPageNum"
-			value=${PageMaker.cri.perPageNum }/>
-	</form>
+			value=${cri.perPageNum }/>
+	</form> 
 
-	<div class="text-center">
-		<ul class="pagination">
-			<c:if test="${pageMaker.prev }">
-				<li><a href="list.do${pageMaker.makeSearch(pageMaker.startPage - 1)}">&laquo;</a></li>
-			</c:if>
+<div class="box-footer">
 
-			<c:forEach begin="${pageMaker.startPage }"
-				end="${pageMaker.endPage }" var="idx">
-				<li
-					<c:out value="${pageMaker.cri.page == idx? 'class = active':''}"/>>
-					<a href="list.do${pageMaker.makeSearch(idx) }">${idx }</a>
-				</li>
-			</c:forEach>
+					<div class="text-center">
+						<ul class="pagination">
 
-			<c:if test="${pageMaker.next && pageMaker.endPage > 0}">
-				<li><a href="list.do${pageMaker.makeSearch(pageMaker.endPage + 1) }">&raquo;</a></li>
-			</c:if>
-		</ul>
+							<c:if test="${pageMaker.prev}">
+								<li><a
+									href="list${pageMaker.makeSearch(pageMaker.startPage - 1) }">&laquo;</a></li>
+							</c:if>
 
-	</div>
+							<c:forEach begin="${pageMaker.startPage }"
+								end="${pageMaker.endPage }" var="idx">
+								<li
+									<c:out value="${pageMaker.cri.page == idx?'class =active':''}"/>>
+									<a href="list${pageMaker.makeSearch(idx)}">${idx}</a>
+								</li>
+							</c:forEach>
+
+							<c:if test="${pageMaker.next && pageMaker.endPage > 0}">
+								<li><a
+									href="list${pageMaker.makeSearch(pageMaker.endPage +1) }">&raquo;</a></li>
+							</c:if>
+
+						</ul>
+					</div>
+
+				</div>
+		
 
 </body>
 </html>

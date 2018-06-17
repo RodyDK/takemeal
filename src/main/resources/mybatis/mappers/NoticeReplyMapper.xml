@@ -31,7 +31,7 @@
 
 	<update id="update">
 		update tbl_reply set replytext = #{replytext},
-		updatedate = now()
+		updatedate = sysdate
 		where rno = #{rno}
 
 	</update>
@@ -45,13 +45,15 @@
 		<!-- select * from tbl_reply where bno = #{bno} order by rno desc limit 
 			#{cri.pageStart}, #{cri.perPageNum} -->
 		select * from
-		(select rownum rn, RNO
+		(select rownum rn,
+		RNO,
 		BNO,
 		REPLYTEXT,
 		REPLYER,
 		REGDATE,
 		UPDATEDATE from
-		TBL_REPLY where bno>0 order by bno desc)
+		TBL_REPLY where bno = #{bno}
+		order by REGDATE desc)
 		where rn between #{cri.pageStart} and #{cri.perPageNum}
 	</select>
 

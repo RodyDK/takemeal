@@ -701,3 +701,4 @@ BEGIN
 END;
 /
 ALTER TRIGGER "TAKEMEAL"."TBL_BOARD_TRG1" ENABLE;
+alter table TBL_BOARD add (replycnt number default 0);
