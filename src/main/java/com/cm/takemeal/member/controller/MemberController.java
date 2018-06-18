@@ -142,8 +142,6 @@ public class MemberController {
         int returnMember = memberService.insertMember(paramMap);
  
 		if(returnMember > 0) {
-			//model.addAttribute("loginUser", returnMember);
-			//session.setAttribute("loginUser", memberService.selectMember(paramMap));
 			return "redirect:home.do";
 		}else {
 			return "common/error";
