@@ -14,7 +14,9 @@ public interface MemberService {
 	/*public abstract */Member selectMember(Map<String, Object> paramMap) throws LoginFailException;
 
 	ArrayList<Member> selectAll();	
-
+	
+	int checkUserid(Map<String, Object> paramMap);
+	
 	int updateMember(Member member);
 	int deleteMember(String userid);
 

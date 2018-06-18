@@ -25,6 +25,15 @@
 		]]>
 	</select>
 	
+
+
+    <select id="checkMember" resultType="int" parameterType="java.util.HashMap">
+		<![CDATA[
+		SELECT count(*) FROM MEMBER
+		WHERE USERID = #{userid}
+		]]>
+    </select>
+    	
     <insert id="insertMember" parameterType="java.util.HashMap">
     	<![CDATA[
         INSERT INTO MEMBER(

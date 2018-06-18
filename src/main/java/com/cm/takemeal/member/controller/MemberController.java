@@ -22,6 +22,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.cm.takemeal.member.exception.LoginFailException;
 import com.cm.takemeal.member.model.service.MemberService;
 import com.cm.takemeal.member.model.vo.Member;
+import com.cm.takemeal.shop.model.vo.Shop;
 
 @Controller
 @SessionAttributes("loginUser")
@@ -70,27 +71,7 @@ public class MemberController {
 	}
 	
 	
-	
-	@RequestMapping(value="join.do", method=RequestMethod.POST)
-    public String joinMember(@RequestParam Map<String, Object> paramMap, HttpSession session) {
- 
-		System.out.println("password : " + paramMap);
-        //패스워드 암호화
-        String password = pwdEncoder.encode(paramMap.get("password").toString());
-        
-        paramMap.put("password", password);
-        //정보입력
-        int returnMember = memberService.insertMember(paramMap);
- 
-		if(returnMember > 0) {
-			//model.addAttribute("loginUser", returnMember);
-			//session.setAttribute("loginUser", memberService.selectMember(paramMap));
-			return "redirect:home.do";
-		}else {
-			return "common/error";
-		}
- 
-    }
+
 	
 	@RequestMapping("test.do")
 	/*public String testMethod(HttpServletRequest request, 
@@ -131,7 +112,48 @@ public class MemberController {
 		return "test/testCryto";
 	}
 	
-	
+    @RequestMapping(value = "checkID.do")
+    @ResponseBody
+    public Object checkID(@RequestParam Map<String, Object> paramMap, Model model) {
+    	
+    	Map<String, Object> retVal = new HashMap<String, Object>();
+    	int result = memberService.checkUserid(paramMap);
+    	
+    	if(result > 0){
+    		retVal.put("code", true);
+    	}else {   
+    		retVal.put("code", false);
+    	}
+
+        return retVal;
+    }
+    
+    @RequestMapping(value = "joinExec.do")
+    @ResponseBody
+    public Object joinExec(@RequestParam Map<String, Object> paramMap, Model model) {
+    	
+
+		System.out.println("password : " + paramMap);
+        //패스워드 암호화
+        String password = pwdEncoder.encode(paramMap.get("password").toString());
+
+        paramMap.put("password", password);
+        //정보입력
+        int returnMember = memberService.insertMember(paramMap);
+ 
+		if(returnMember > 0) {
+			//model.addAttribute("loginUser", returnMember);
+			//session.setAttribute("loginUser", memberService.selectMember(paramMap));
+			return "redirect:home.do";
+		}else {
+			return "common/error";
+		}
+
+
+    }
+    
+    
+    	
 	@RequestMapping(value="bcryp.do", method=RequestMethod.GET)
 	public String testBcryptoPassword(Member member) {
 		

@@ -650,7 +650,7 @@
 
 	<!-- 가입폼 -->
 	<div class="sec join">
-		<form id="_fmFrontJoin" name="_frontJoin" method="post" action="join.do">
+		<form id="_fmFrontJoin" name="_frontJoin" method="post" action="joinExec.do" onsubmit="return checkFrontJoinForm(this)">
 			<input type="hidden" name="redirectUrl" value="">
 			<ul>
 				<li>
@@ -929,6 +929,33 @@ function hide() {
 	$("html").removeClass("right-on login");
 }
 
+
+function checkFrontJoinForm(f) {
+
+	var bCheckId = true;
+	// var bCheckNickName = true;
+	$.ajax({
+		type : "POST"
+		, async : false
+		, cache : false
+		, data : {"userid" : f.userid.value}
+		, url : "checkID.do"
+	}).done(function (result) {
+		console.log(result.code);
+		if (result.code == true) {
+			rightLayerAlert.init("이미 사용 중인 이메일입니다.");
+			bCheckId = false;
+		}
+	});
+	if (bCheckId) {
+		if (confirm("입력하신 정보로 챙겨먹어요에 가입하시겠습니까?")) {
+			return true;
+		}
+	}
+
+	return false;
+}
+
 $(".right-side-bar a.close").on("click", function(){
 	hide();
 	setTimeout(function(){
@@ -1070,7 +1097,7 @@ function customAlert(message, url) {
 	}
 }
 </script>
-
+<iframe id="_iFrmForAction" name="_iFrmForAction" src="" width="0" height="0" style="display:none"></iframe>
 <c:if test="${!empty sessionScope.loginUser }">
 	<script>
 	$(document).ready(function(){

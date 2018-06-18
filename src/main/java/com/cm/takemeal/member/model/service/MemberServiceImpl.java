@@ -45,7 +45,12 @@ public class MemberServiceImpl implements MemberService{
 
 
 
-
+	@Override
+	public int checkUserid(Map<String, Object> paramMap) {
+		// TODO Auto-generated method stub
+		return memberDao.checkUserid(paramMap);
+	}
+	
 	@Override
 	public int updateMember(Member member) {
 		// TODO Auto-generated method stub

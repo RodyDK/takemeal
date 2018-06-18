@@ -40,7 +40,11 @@ public class MemberDao {
         return sqlSession.insert("insertMember", paramMap);
     }
 
-	
+    public int checkUserid(Map<String, Object> paramMap) {
+        return sqlSession.selectOne("checkMember", paramMap);
+    }
+    
+    
 
 
 
