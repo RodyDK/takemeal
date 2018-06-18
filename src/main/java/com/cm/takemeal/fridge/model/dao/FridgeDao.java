@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.cm.takemeal.fridge.model.vo.Food;
+import com.cm.takemeal.fridge.model.vo.Food_code;
 
 @Repository("fridgeDao")
 public class FridgeDao {
@@ -27,6 +28,16 @@ public class FridgeDao {
 	public void updateFood(Food updatefood) {
 		// TODO Auto-generated method stub
 		sqlSession.update("updateFood", updatefood);
+	}
+
+	public List<Food_code> selectClass_code() {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList("class_code_info");
+	}
+
+	public List<Food> selectMeat() {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList("select_meat");
 	}
 	
 }

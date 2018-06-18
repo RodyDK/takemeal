@@ -15,92 +15,41 @@
 	
 	<select id="myfridge_cold" resultType="Food">
 	<![CDATA[
-	select food_name, food_count
-		from(
-		 select food_name, food_count
-		 from meats
-		 where no=#{no} and cool_sys='냉장'
-		 
-		 union
-		 
-		 select food_name, food_count
-		 from fishs
-		 where no=#{no} and cool_sys='냉장'
-		 
-		 union
-		 
-		 select food_name, food_count
-		 from CEREALS
-		 where no=#{no} and cool_sys='냉장'
-		 
-		 union
-		 
-		 select food_name, food_count
-		 from VEGETABLES
-		 where no=#{no} and cool_sys='냉장'
-		 
-		 union
-		 
-		 select food_name, food_count
-		 from eggs
-		 where no=#{no} and cool_sys='냉장'
-		 
-		 union
-		 
-		 select food_name, food_count
-		 from milky
-		 where no=#{no} and cool_sys='냉장'
-		 
-		)
+		select food_name, food_count
+		from all_food
+		where no=#{no} and cool_sys='냉장'
 	]]>
 	</select>
 	
 	<select id="myfridge_freeze" resultType="Food">
 	<![CDATA[
-	select food_name, food_count
-		from(
-		 select food_name, food_count
-		 from meats
-		 where no=#{no} and cool_sys='냉동'
-		 
-		 union
-		 
-		 select food_name, food_count
-		 from fishs
-		 where no=#{no} and cool_sys='냉동'
-		 
-		 union
-		 
-		 select food_name, food_count
-		 from CEREALS
-		 where no=#{no} and cool_sys='냉동'
-		 
-		 union
-		 
-		 select food_name, food_count
-		 from VEGETABLES
-		 where no=#{no} and cool_sys='냉동'
-		 
-		 union
-		 
-		 select food_name, food_count
-		 from eggs
-		 where no=#{no} and cool_sys='냉동'
-		 
-		 union
-		 
-		 select food_name, food_count
-		 from milky
-		 where no=#{no} and cool_sys='냉동'
-		 
-		)
+		select food_name, food_count
+		from all_food
+		where no=#{no} and cool_sys='냉동'
 	]]>
 	</select>
 	
 	<update id="updateFood" parameterType="Food">
-	
+		 update all_food
+	     set food_count = #{food_count}
+	     where no=#{no} and food_name= #{food_name}
 	
 	
 	</update>
+	
+	<select id="class_code_info" resultType="Food_code">
+	<![CDATA[
+		select *
+		from food
+	]]>
+	</select>
+	
+	<select id="select_meat" resultType="Food">
+	<![CDATA[
+	 select food_name, food_code
+	 from all_food
+	 where class_code='ME'
+	]]>
+	</select>
 
 </mapper>

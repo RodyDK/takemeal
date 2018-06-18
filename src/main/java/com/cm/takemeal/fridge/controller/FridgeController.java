@@ -16,6 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.cm.takemeal.fridge.model.service.FridgeService;
 import com.cm.takemeal.fridge.model.vo.Food;
+import com.cm.takemeal.fridge.model.vo.Food_code;
 
 
 @Controller
@@ -35,10 +36,13 @@ public class FridgeController {
 		//2. 냉동 재료 꺼내오기
 		ArrayList<Food> freeze = (ArrayList<Food>)fridgeService.selectFreezeFridge(no);
 		
-		if(cold.size() > 0 && freeze.size() > 0) {
+		ArrayList<Food_code> class_code = (ArrayList<Food_code>)fridgeService.selectClass_code();
+		
+		if(cold.size() > 0 && freeze.size() > 0 && class_code.size() > 0) {
 			System.out.println("데이터 가져오기 성공");
 			mv.addObject("cold", cold);
 			mv.addObject("freeze", freeze);
+			mv.addObject("class_code", class_code);
 		}else {
 			System.out.println("데이터 가져오기 실패");
 		}
@@ -53,18 +57,30 @@ public class FridgeController {
 	}
 	
 	@RequestMapping(value="updateFood.do", method=RequestMethod.POST)
-	public void updateFood(HttpServletRequest request, @RequestParam("no") String no) {
+	public ModelAndView updateFood(ModelAndView mv, HttpServletRequest request, @RequestParam("no") String no) {
 		String[] strArr = request.getParameterValues("food_name");
 		String[] intArr = request.getParameterValues("food_count");
-		
-		
+
 		for(int i=0;i<strArr.length;i++) {
 			Food updatefood = new Food();
 			updatefood.setFood_name(strArr[i]);
 			updatefood.setFood_count(Integer.parseInt(intArr[i]));
 			updatefood.setNo(Integer.parseInt(no));
+			System.out.println(updatefood.getFood_name());
+			System.out.println(updatefood.getFood_count());
+			System.out.println(updatefood.getNo());
 			fridgeService.updateFood(updatefood);
+			if(updatefood.getFood_count() > 0) {
+				System.out.println((i+1)+"번 수량 업데이트 성공");
+			}
+			else {
+				System.out.println((i+1)+"번 업데이트 실패");
+			}
 		}
+		mv.setViewName("JH/foodstorage");
+		return mv;
+		
+		
 		
 	/*	HashMap<String,Integer> map = new HashMap<String,Integer>();
 		for(int i=0;i<strArr.length;i++) {
@@ -72,6 +88,17 @@ public class FridgeController {
 			System.out.println(map.get(strArr[i]));
 		}*/
 		
+	}
+	
+	@RequestMapping(value="selectmeat.do", method=RequestMethod.GET)
+	public ModelAndView selectmeat(ModelAndView mv) {
+		ArrayList<Food> meat = (ArrayList<Food>)fridgeService.selectMeat();
+		if(meat.size() > 0) {
+			System.out.println("고기류");
+		mv.addObject("meat", meat);
+		}
+		mv.setViewName("JH/foodstorage");
+		return mv;
 	}
 	
 }

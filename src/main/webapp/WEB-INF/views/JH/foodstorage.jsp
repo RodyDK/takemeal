@@ -49,6 +49,10 @@
     overflow:scroll;
 }
 
+#food_name {
+	display: none;
+}
+
 </style>
 
 <html>
@@ -75,12 +79,24 @@ $(document).ready(function(){
 	
 	});
 	
-	
+	$("#code_change").change(function(){
+		
+		if($("#code_change").val() == 'ME'){
+			
+			location.href = "selectmeat.do";
+			$("#food_name").empty();
+			$("#food_name").show();
+			$("#food_name").append("<c:forEach items="${meat}" var="meat"><option value=${meat.food_code } id=${meat.food_code }>${meat.food_name }</option></c:forEach>");
+		}
+		
+	});
 	
 	
 });
 
-
+function select_code(obj){
+	 
+}
 
 function goPage(url){
 	location.href = url;
@@ -149,9 +165,11 @@ function openRef(evt, refName, loc) {
 <body>
 <%@ include file="../header.jsp" %>
 <div class="container">
-<div class="inner" style="overflow:hidden;">
-
+<!-- <div class="inner" style="overflow:hidden;"> -->
+<div class="inner">
+	
      <h1>냉장고 페이지</h1>
+     
      <div class="ref">
      	<img id="top" src="resources/images/closed_top.jpg" onclick="openRef(event, 'cold', '#top')"> <br>
      	<img id="bot" src="resources/images/closed_bottom.jpg" onclick="openRef(event, 'freeze', '#bot')">
@@ -187,17 +205,73 @@ function openRef(evt, refName, loc) {
 	</form>
 	
 	<button id='select_food_btn'>Reset</button>
+	
+	
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
 	<br>
 	
 	<div class="ref_insert">
-	<!-- <button onclick="goPage('./foodinsert.do');">
-	냉장고 재료 등록 하러가기~
-	</button> -->
+	<p>재료 등록</p>
+	<select name="class_code" id="code_change" > <!-- onchange='select_code(this)' -->
+	<option value="" selected="selected">재료의 종류를 골라주세요</option> 
+			<c:forEach items="${class_code}" var="code">
+				<option value=${code.class_code } id=${code.table_code }>${code.class_name }</option>
+			</c:forEach>
+			
+			<!-- <option value="ME" id ="meats">육류</option>
+			<option value="FS" id ="fishs">어패류</option>
+			<option value="CR" id ="cereals">곡류</option>
+			<option value="VT" id ="vegetables">야채류</option>
+			<option value="EG" id ="eggs">계란</option>
+			<option value="MK" id ="milky">유제품</option> -->
+			
+			
+			<%-- <option value="n"
+				<c:out value="${cri.searchType == null?'selected':'' }"/>>
+				---</option>
+			<option value="t"
+				<c:out value="${cri.searchType eq 't' ? 'selected':'' }"/>>
+				Titile</option>
+			<option value="c"
+				<c:out value="${cri.searchType eq 'c' ? 'selected':'' }"/>>
+				Content</option>
+			<option value="t"
+				<c:out value="${cri.searchType eq 'w' ? 'selected':'' }"/>>
+				Writer</option>
+			<option value="tc"
+				<c:out value="${cri.searchType eq 'tc' ? 'selected':'' }"/>>
+				Titile Or Content</option>
+			<option value="cw"
+				<c:out value="${cri.searchType eq 'cw' ? 'selected':'' }"/>>
+				Content Or Witer</option>
+			<option value="tcw"
+				<c:out value="${cri.searchType eq 'tcw' ? 'selected':'' }"/>>
+				Titile Or Content Or Writer</option> --%>
+		</select>
 	
+	<select name="food_name" id="food_name">
+	
+	</select>
+	
+	<input type="text" value="expiry_date" />
 	</div>
 	
-	
-	
+	<br>
+	<br>
+	<br>
+	<br>
 	
 	
 	
