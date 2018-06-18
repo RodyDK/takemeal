@@ -83,6 +83,13 @@ public class ShopController {
             return "shop/write";
     }
  
+    
+    //게시글 등록 및 수정
+    @RequestMapping(value = "shopOrder.do")
+    public String shopOrder(HttpServletRequest request, @RequestParam Map<String, Object> paramMap, Model model) {
+            return "shop/order";
+    }
+    
     //@RequestMapping(value = "shopSave.do")
     //@ResponseBody
     /*public Object shopSave(@RequestParam Map<String, Object> paramMap, HttpServletRequest request) throws Exception {

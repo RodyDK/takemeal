@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <html>
 <%@ include file="../head.jsp" %>
 <link rel="stylesheet" type="text/css" href="/takeMeal/resources/css/style.css">
@@ -34,13 +36,14 @@
 				    </c:when>
 				<c:otherwise>
 				<c:forEach var="shopList" items="${shopList}" varStatus="status">
+					
 					<li onclick="javascript:popupOpen('shop',${shopList.no});">
 						<div>
 							<span class="goods">
 								<span class="goods_thumb">
 								<img src=${shopList.thumbnail } style="width:100%">
 								</span>
-								<strong>${shopList.price }</strong>
+								<strong><fmt:formatNumber value="${shopList.price }" pattern="#,###" />원</strong>
 								<span>${shopList.description }</span>
 							</span>
 						</div>

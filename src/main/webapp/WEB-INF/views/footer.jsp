@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>   
+</div>
 <style>
 	html.popup-on {
 		overflow:hidden;
@@ -24,33 +25,37 @@
 		display:block;
 	}
 	
-	.recipe-view {
+	.popup-view {
 		position: absolute; 
 		top: 0; 
 		left: 10%; 
 		background:#fff;
 		width:80%;
 		overflow:hidden;
+		display:none;
 	}
-	.recipe-view h2{
+	.popup-view.active {
+		display:block;
+	}
+	.popup-view h2{
 		font-size:30px;
 		font-weight:600;
 		
 	}
-	.recipe-view .recipe-content{
+	.popup-view .popup-content{
 		width:calc(70% - 60px);
 		float:left;
 		padding:30px;
 	}
 	
-	.recipe-view .recipe-content .recipe-taginfo{
+	.popup-view .popup-content .recipe-taginfo{
 		margin-bottom:30px;
 	}
 	
-	.recipe-view .recipe-content .recipe-taginfo ul {
+	.popup-view .popup-content .recipe-taginfo ul {
 		overflow:hidden;
 	}
-	.recipe-view .recipe-content .recipe-taginfo ul li{
+	.popup-view .popup-content .recipe-taginfo ul li{
 		float:left;
 		margin-right:5px;
 		padding:5px 10px; 
@@ -60,83 +65,184 @@
 		border-radius:5px;
 	}
 	
-	.recipe-view .recipe-content .recipe-detail{
+	.popup-view .popup-content .recipe-detail{
 		overflow:hidden;
 	}
 	
-	.recipe-view .recipe-content .recipe-detail h2{
+	.popup-view .popup-content .recipe-detail h2{
 		margin:50px 0 30px;
 	}
-	.recipe-view .recipe-content .recipe-detail ul{
+	.popup-view .popup-content .recipe-detail ul{
 		width:80%;
 		margin:0 auto;
 		text-align:center;
 		
 	}
-	.recipe-view .recipe-content .recipe-detail ul li{
+	.popup-view .popup-content .recipe-detail ul li{
 		margin:50px 0;
 		line-height:150%;
 		
 	}
-	.recipe-view .recipe-content .recipe-detail ul li .img-cover{
+	.popup-view .popup-content .recipe-detail ul li .img-cover{
 		margin-bottom:15px;
 	}
 	
-	.recipe-view .recipe-content .recipe-detail ul li .img-cover img{
+	.popup-view .popup-content .recipe-detail ul li .img-cover img{
 		width:100%;
 	}
-	.recipe-view .recipe-info{
+	.popup-view .popup-info{
 		width:30%;
 		float:left;
 		background:#282828;
 		padding-top:20px;
 	}
+	.popup-view .popup-info .goods-info {
+		margin:0 20px 10px;
+		border-bottom:1px solid #fff;
+		padding-bottom:10px;
+	}
+	.popup-view .popup-info .goods-subject {
+		color:#fff;
+		margin:0;
+		font-size:20px;
+	}
+	.popup-view .popup-info .goods-option {
+	    margin: 20px;
+	    background: #f1f2f3;
+	    border: 1px solid #dbdbdb;
+	    padding: 10px;
+	}
+	.popup-view .popup-info .goods-option > dl > dt > strong {
+		font-weight: normal;
+	    color: #222;
+	    font-size:12px;
+    }
+    
+    .popup-view .popup-info .goods-option > dl {
+    	overflow:hidden;
+    }
+	.popup-view .popup-info .goods-option > dl .cdtl_amount {
+		display: block;
+	    position: relative;
+	    min-width: 48px;
+	    padding: 0 30px;
+	}
+	.popup-view .popup-info .goods-option > dl .cdtl_amount .cdtl_b_minus {
+	    overflow: hidden;
+	    position: absolute;
+	    top: 0;
+	    left: 0;
+	    width: 28px;
+	    height: 28px;
+	    border: 1px solid #e1e1e1;
+	    background: #fff url(http://static.ssgcdn.com/ui/ssg/img/product/v2/sp_cdtl.png) no-repeat -100px -170px;
+	    line-height: 999px;
+	}
+	.popup-view .popup-info .goods-option > dl .cdtl_amount .cdtl_b_plus {
+	    overflow: hidden;
+	    position: absolute;
+	    top: 0;
+	    right: 0;
+	    width: 28px;
+	    height: 28px;
+	    border: 1px solid #e1e1e1;
+	    background: #fff url(http://static.ssgcdn.com/ui/ssg/img/product/v2/sp_cdtl.png) no-repeat -130px -170px;
+	    line-height: 999px;
+	}
+	.popup-view .popup-info .goods-option > dl .cdtl_inpbx {
+	    display: inline-block;
+	    width: 48px;
+	    height: 28px;
+	    border: 1px solid #e1e1e1;
+	    border-width: 1px 0;
+	    background: #fff;
+	    vertical-align: top;
+	}
+	.popup-view .popup-info .goods-option > dl .cdtl_amount input {
+	    display: block;
+	    width: 48px;
+	    height: 28px;
+	    border: 0;
+	    background: none;
+	    line-height: 28px;
+	    text-align: center;
+    }
+	.popup-view .popup-info .goods-option .goods-option-left {
+	    float: left;
+	    margin-top: 11px;
+	}
+
+	.popup-view .popup-info .goods-option .goods-option-right {
+	    float: right;
+	    margin-top: 14px;
+	}
+	.popup-view .popup-info .goods-option .goods-option-right em {
+	    font-style: normal;
+	    font-size: 16px;
+    }
+    
+	.popup-view .popup-info .goods-option .goods-option-left .cdtl_amount {
+		position:relative;
+	}
 	
-	.recipe-view .recipe-info .author {
+	
+	
+	.popup-view .popup-info .goods-price {
+		color:#ff7272;
+		font-size:20px;
+		font-weight:900;
+		padding:0 20px;
+	}
+	.popup-view .popup-info .goods-description {
+		color:#fff;
+		margin:0;
+	}
+	
+	.popup-view .popup-info .author {
 		width:100%;
 		display:block;
 	}
 	
-	.recipe-view .recipe-info .author a {
+	.popup-view .popup-info .author a {
 		display:block;
 	}
 	
-	.recipe-view .recipe-info .author .profile_thumb {
+	.popup-view .popup-info .author .profile_thumb {
 		margin:0 auto;
 		width:100px;
 		border-radius:50px;
 		overflow:hidden;
 		display:block;
 	}
-	.recipe-view .recipe-info .recipe-subject {
+	.popup-view .popup-info .recipe-subject {
 		font-size:20px;
 		color:#fff;
 		text-align:center;
 	}
 	
-	.recipe-view .recipe-info .recipe-util {
+	.popup-view .popup-info .recipe-util {
 		padding:0 30px;
 		width:auto;
 		color:#fff;
 		font-size:14px;
 	}
-	.recipe-view .recipe-info .recipe-util li {
+	.popup-view .popup-info .recipe-util li {
 		overflow:hidden;
 		line-height:30px;
 	}
-	.recipe-view .recipe-info .recipe-util li span {
+	.popup-view .popup-info .recipe-util li span {
 		float:left;
 		width:120px;
 		color:#f9f9f9;
 	}
-	.recipe-view .recipe-info .recipe-util li p {
+	.popup-view .popup-info .recipe-util li p {
 		float:left;
 		width:calc(100% - 120px);
 		text-align:right;
 		font-weight:900;
 	}
 	
-	.recipe-view .recipe-info .recipe-scrap a {
+	.popup-view .popup-info .recipe-scrap a {
 		width:150px;
 		line-height:40px;
 		height:40px;
@@ -149,18 +255,18 @@
 		margin:20px auto;
 	}
 	
-	.recipe-view .recipe-info .recipe-sns {
+	.popup-view .popup-info .recipe-sns {
 		border: 1px solid #f9f9f9;
 		border-radius:5px;
 		margin:0 20px 20px;
 	}
-	.recipe-view .recipe-info .recipe-sns dl {
+	.popup-view .popup-info .recipe-sns dl {
 		overflow:hidden;
 		-webkit-box-sizing: border-box;
      	-moz-box-sizing: border-box;
 		box-sizing: border-box;
 	}
-	.recipe-view .recipe-info .recipe-sns dl dd {
+	.popup-view .popup-info .recipe-sns dl dd {
 		width:33.3333333%;
 		float:left;
 		margin:0;
@@ -171,7 +277,7 @@
 		position:relative;
 	}
 	
-	.recipe-view .recipe-info .recipe-sns dl dd:after {
+	.popup-view .popup-info .recipe-sns dl dd:after {
 		content:"";
 		width:1px;
 		height:10px;
@@ -180,23 +286,23 @@
 		top:10px;
 		left:0;
 	}
-	.recipe-view .recipe-info .recipe-sns dl dd:first-child:after{
+	.popup-view .popup-info .recipe-sns dl dd:first-child:after{
 		content:none;
 	}
 	
-	.recipe-view .recipe-info .recipe-ingredient{
+	.popup-view .popup-info .recipe-ingredient{
 		overflow:hidden;
 		padding:0 20px;
 		width:325px;
 	
 	}
 	
-	.recipe-view .recipe-info .recipe-ingredient h2{
+	.popup-view .popup-info .recipe-ingredient h2{
 		font-size:24px; 
 		color:#999;
 		position:relative;
 	}
-	.recipe-view .recipe-info .recipe-ingredient h2 em{
+	.popup-view .popup-info .recipe-ingredient h2 em{
 		position:absolute;
 		bottom:0;
 		right:0;
@@ -205,19 +311,19 @@
 		font-weight:normal;
 		
 	}
-	.recipe-view .recipe-info .recipe-ingredient ul{
+	.popup-view .popup-info .recipe-ingredient ul{
 		width:100%;
 	}
-	.recipe-view .recipe-info .recipe-ingredient ul li{
+	.popup-view .popup-info .recipe-ingredient ul li{
 		line-height:55px;
 		padding:0 10px;
 		overflow:hidden;
 		background:#474747;
 	}
-	.recipe-view .recipe-info .recipe-ingredient ul li:nth-child(2n){
+	.popup-view .popup-info .recipe-ingredient ul li:nth-child(2n){
 		background:#4e4e4e;
 	}
-	.recipe-view .recipe-info .recipe-ingredient ul li span{
+	.popup-view .popup-info .recipe-ingredient ul li span{
 		width:50%;
 		display:block;
 		border:0;
@@ -229,7 +335,7 @@
 		font-size:16px;
 	}
 	
-	.recipe-view .recipe-info .recipe-ingredient ul li span.desc{
+	.popup-view .popup-info .recipe-ingredient ul li span.desc{
 		font-weight:bold;
 		color:#d1d1d1;
 		text-align:right;
@@ -255,8 +361,8 @@
 	<div class="popup-close">
 		<i class="fa fa-times"></i>
 	</div>
-	<div class="recipe-view">
-		<div class="recipe-content">
+	<div class="popup-view" id="recipe">
+		<div class="popup-content">
 			<div class="recipeSlide">
 		        <div id="slider" class="flexslider">
 		          <ul class="slides">
@@ -315,10 +421,6 @@
 			        }
 			      });
 			    });
-			    
-
-			  
-
 			</script>
 			<div class="recipe-taginfo">
 				<h2>태그 정보</h2>
@@ -355,11 +457,10 @@
 						<p></p>
 					</li>
 				</ul>
-			</div>
-				
+			</div>	
 		</div>
-		<div class="recipe-info">
-			<div class="recipe-info-top">
+		<div class="popup-info">
+			<div class="popup-info-top">
 				<span class="author">
 					<a href="recipeChef.do?userid=">
 						<span class="profile_thumb">
@@ -427,8 +528,68 @@
 						<span class="title">설탕</span>
 						<span class="desc">1/4컵</span>
 					</li>
-					
 				</ul>
+			</div>
+		</div>
+	</div>
+	
+	<div class="popup-view" id="shop">
+		<div class="popup-content">
+			<div class="recipeSlide">
+		        <div id="shop_slider" class="flexslider">
+		          <ul class="slides">
+		            <li>
+					   <img src="http://item.ssgcdn.com/05/38/12/item/1000018123805_i1_450.jpg" draggable="false">
+					</li>
+					<li>
+					   <img src="//item.ssgcdn.com/05/38/12/item/1000018123805_i2_450.jpg" draggable="false">
+					</li>		          </ul>
+		        </div>
+		        <div id="shop_carousel" class="flexslider">
+		          <ul class="slides">
+					<li>
+					   <img src="http://item.ssgcdn.com/05/38/12/item/1000018123805_i1_450.jpg" draggable="false">
+					</li>
+					<li>
+					   <img src="//item.ssgcdn.com/05/38/12/item/1000018123805_i2_450.jpg" draggable="false">
+					</li>	
+		          </ul>
+		        </div>
+		    </div>
+			<div class="recipe-detail">
+				<img alt="" src="http://image.homeplus.co.kr/UserFiles/Image/GoodDesc3/20180403152710.jpg"><img width="800" height="3515" alt="" src="http://image.homeplus.co.kr/UserFiles/Image/GoodDesc3/201804161545553.jpg"><img alt="" width="800" height="2597" src="http://image.homeplus.co.kr/UserFiles/Image/GoodDesc3/201804031527666.jpg"><img alt="" width="800" height="3554" src="http://image.homeplus.co.kr/UserFiles/Image/GoodDesc3/201804031527979.jpg">
+			</div>	
+		</div>
+		<div class="popup-info">
+			<div class="popup-info-top">
+				<div class="goods-info">
+					<h2 class="goods-subject"></h2>
+					<span class="goods-description"></span>
+				</div>
+				<p class="goods-price"></p>
+				
+				<div class="goods-option">
+					<dl>
+						<dt><strong></strong></dt>
+						<dd class="goods-option-left">
+							<div class="cdtl_amount">
+								<a href="javascript:void(0);" class="cdtl_b_minus" onclick="changeOrdQty(this, -1);">빼기</a>
+								<span class="cdtl_inpbx"><input type="text" id="cdtl_item_amount1" title="수량입력" value="1" onchange="changeOrdQty(this, 0);"></span>
+								<a href="javascript:void(0);" class="cdtl_b_plus" onclick="changeOrdQty(this, 1);">더하기</a>
+							</div>
+						</dd>
+						<dd class="goods-option-right">
+							<span class="price">
+								<em class="total_price" data=""></em>
+							</span>
+						</dd>
+					</dl>
+				</div>
+				<div class="recipe-scrap">
+					<a href="shopOrder.do?goods_no=13">
+						구매하기
+					</a>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -462,7 +623,9 @@
 				<label><input type="checkbox" name="agree-1"><span>동의</span></label>
 			</p>
 			<div class="text" id="service-text-2">
-				<dl></dl>
+				<dl>
+				챙겨먹어요 이용약관입니다.
+				</dl>
 			</div>
 		</div>
 
@@ -472,7 +635,9 @@
 				<label><input type="checkbox" name="agree-2"><span>동의</span></label>
 			</p>
 			<div class="text" id="privacy-text-2">
-				<dl></dl>
+				<dl>
+				챙겨먹어요 개인정보처리방침입니다.
+				</dl>
 			</div>
 		</div>
 
@@ -622,6 +787,25 @@ function faqlistAccordion(obj,no){
 
 }
 
+function comma(num){
+    var len, point, str; 
+       
+    num = num + ""; 
+    point = num.length % 3 ;
+    len = num.length; 
+   
+    str = num.substring(0, point); 
+    while (point < len) { 
+        if (str != "") str += ","; 
+        str += num.substring(point, point + 3); 
+        point += 3; 
+    } 
+     
+    return str;
+ 
+}
+
+
 
 function popupOpen(type,no){
 	
@@ -630,6 +814,7 @@ function popupOpen(type,no){
 	
 	$("html").addClass("popup-on");
 	$(".popup").addClass("on");
+	$("#"+type).addClass("active");
 	
 	if(type=="shop"){
 		$.ajax({
@@ -643,16 +828,46 @@ function popupOpen(type,no){
                 if(result.code=="SUCCESS"){
                 	var shopValue = result.data;
                 	
-                	$(".recipe-subject").text(shopValue.name);
-                	$(".recipe-time").text(shopValue.time+"분");
-                	$(".recipe-follow").text(shopValue.follow);
+                	$("#"+type+" .goods-subject").text(shopValue.name);
+                	$("#"+type+" .goods-description").text(shopValue.description);
+                	$("#"+type+" .goods-price").text(comma(shopValue.price)+"원");
                 	
-                	$(".recipe-info").height($(".recipe-content").height());
+                	$("#"+type+" .goods-option > dl > dt > strong").text(shopValue.name);
+					
+                	$("#"+type+" .total_price").attr("data",shopValue.price);
+                	$("#"+type+" .total_price").text(comma(shopValue.price)+"원");
+                	
+                	
+                	$("#"+type+".popup-info").height($("#"+type+".popup-content").height());
                 	
                 	
                 }else if(result.code=="FAIL"){
                 	alert(result.message);
                 }
+            },
+            complete : function(){
+            	scrollFix(type);
+            	
+				$('#shop_carousel').flexslider({
+				  animation: "slide",
+				  controlNav: false,
+				  animationLoop: true,
+				  slideshow: false,
+				  itemWidth: 100,
+				  itemMargin: 10,
+				  asNavFor: '#shop_slider'
+				});
+				
+				$('#shop_slider').flexslider({
+				  animation: "slide",
+				  controlNav: false,
+				  animationLoop: true,
+				  slideshow: false,
+				  sync: "#shop_carousel",
+				  start: function(slider){
+				    $('body').removeClass('loading');
+				  }
+				});
             },
             error: function (result) {
             	console.log(result);
@@ -675,7 +890,7 @@ function popupOpen(type,no){
                 	$(".recipe-subject").text(recipeValue.subject);
                 	$(".recipe-time").text(recipeValue.time+"분");
                 	$(".recipe-follow").text(recipeValue.follow);
-                	$(".recipe-info").height($(".recipe-content").height());
+                	$("#"+type+".popup-info").height($("#"+type+".popup-content").height());
                 	
                 	
                 }else if(result.code=="FAIL"){
@@ -686,7 +901,7 @@ function popupOpen(type,no){
             	console.log(result);
             },
             complete: function(){
-            	scrollFix();
+            	scrollFix(type);
             }
         });
 	}
@@ -708,6 +923,58 @@ $("a.join").off("click").on("click", function(){
 $("a.findpw").off("click").on("click", function(){
 	findPw();
 });
+
+
+function hide() {
+	$("html").removeClass("right-on login");
+}
+
+$(".right-side-bar a.close").on("click", function(){
+	hide();
+	setTimeout(function(){
+		$("#login-sec")
+			.removeClass("active")
+			.removeClass("login-form")
+			.removeClass("setting")
+			.removeClass("agree")
+			.removeClass("join-form")
+			.removeClass("findpw-form")
+			.removeClass("setting")
+			.removeClass("modifypw")
+			.removeClass("secede")
+			.removeClass("newPassword");
+	}, 300);
+});
+
+function changeOrdQty(aEl, changeQty) {
+	var nowQty = Number($(".cdtl_inpbx input").val());
+	if(changeQty >= 0){
+		nowQty = nowQty+1;
+	}else{
+		nowQty = nowQty-1;
+	}
+	
+	if(nowQty<1){
+		return false;
+	}else if(nowQty>10){
+		alert("최대 주문수량 초과!");
+		return false;
+	}
+	$(".cdtl_inpbx input").val(nowQty);
+	$("#shop .total_price").text(comma($("#shop .total_price").attr("data")*nowQty)+"원");
+	
+
+
+}
+
+
+
+function findPw(){
+	rightLayerAlert.hide();
+	$("#_fmFrontFindPasswd input[name=email]").val("");
+	$("#login-sec").removeClass("login-form").addClass("findpw-form");
+	$("html").attr("class", "right-on login findpw");
+}
 
 function joinFrm(){
 	rightLayerAlert.hide();
@@ -746,33 +1013,35 @@ function join(){
 
 
 //재료리스트 scroll fix : 150324
-function scrollFix(){
-  var htmlLength = $('.recipe-content').outerHeight(true);
-  var ingreLenght = $(".recipe-info .recipe-ingredient").outerHeight(true);
-  var btm_offset = $(".recipe-info .recipe-info-top").outerHeight(true) + $(".recipe-info .recipe-sns").outerHeight(true);
+function scrollFix(type){
+  var htmlLength = $('#'+type+' .popup-content').outerHeight(true);
+  var ingreLenght = $('#'+type+' .popup-info .recipe-ingredient').outerHeight(true);
+  var btm_offset = $('#'+type+' .popup-info .popup-info-top').outerHeight(true) + $('#'+type+' .popup-info .recipe-sns').outerHeight(true);
   var marginComp = (1048 / 2) - 290;
   var max_scroll = htmlLength - ingreLenght;
   var $target = $(".popup.on");
-  $(".recipe-info").height(htmlLength);
+  $('#'+type+' .popup-info').height(htmlLength);
 
   
   //if (!isModal) {
   //  btm_offset += 113; // inpage에서 로딩시 헤더 높이 만큼 compensation
   //  marginComp += 8.5;
   //}
-
+  $(window).resize(function(){
+		$('#'+type+' .popup-info').height(htmlLength);
+  })
   $target.scroll(function () {
     var scroll = $(this).scrollTop();
 
     if (scroll < btm_offset) {
-      $('.recipe-info .recipe-ingredient').css({
+      $('#'+type+' .popup-info .recipe-ingredient').css({
         'position': 'relative',
         'top': '0',
         'left': '0',
         'margin-left': '0'
       });
     } else if (scroll >= max_scroll) {
-      $('.recipe-info .recipe-ingredient').css({
+      $('#'+type+' .popup-info .recipe-ingredient').css({
         'position': 'fixed',
         'bottom': '0',
         'top': 'auto',
@@ -780,7 +1049,7 @@ function scrollFix(){
         'margin-left': marginComp
       });
     } else {
-      $('.recipe-info .recipe-ingredient').css({
+      $('#'+type+' .popup-info .recipe-ingredient').css({
         'position': 'fixed',
         'top': '0',
         'left': '50%',
@@ -791,10 +1060,7 @@ function scrollFix(){
 }
 
 
-$(window).resize(function(){
-	var htmlLength = $('.recipe-content').outerHeight(true);
-	$(".recipe-info").height(htmlLength);
-})
+
 function customAlert(message, url) {
 	if(url != null || url != ''){
 		alert(message);
