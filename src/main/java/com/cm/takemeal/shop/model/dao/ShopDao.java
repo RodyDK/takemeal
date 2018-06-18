@@ -18,4 +18,5 @@ public interface ShopDao {
 	
 	Shop getContentView(Map<String, Object> paramMap);
     
+	void setShop(Map<String, Object> paramMap);
 }

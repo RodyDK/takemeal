@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -21,6 +23,10 @@ public interface RecipeDao {
 
 	int getContentCnt(Map<String, Object> paramMap);
 	
+	List<String> getLike(Map<String, Object> paramMap);
+	
 	Recipe getContentView(Map<String, Object> paramMap);
-    
+
+
+	void setRecipe(Map<String, Object> paramMap);
 }

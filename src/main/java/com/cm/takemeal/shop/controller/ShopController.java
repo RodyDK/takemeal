@@ -78,35 +78,23 @@ public class ShopController {
     }
     
     //게시글 등록 및 수정
-    @RequestMapping(value = "shopEdit.do")
-    public String shopEdit(HttpServletRequest request, @RequestParam Map<String, Object> paramMap, Model model) {
- 
-        //Referer 검사
-        String Referer = request.getHeader("referer");
- 
-        if(Referer!=null){//URL로 직접 접근 불가
-            if(paramMap.get("no") != null){ //게시글 수정
-                if(Referer.indexOf("shopView.do")>-1){
-                    //정보를 가져온다.
-                    model.addAttribute("shopView", shopService.getContentView(paramMap));
-                    return "shop/edit";
-                }else{
-                    return "redirect:shopList.do";
-                }
-            }else{ //게시글 등록
-                if(Referer.indexOf("shopList.do")>-1){
-                    return "shop/edit";
-                }else{
-                    return "redirect:shopList.do";
-                }
-            }
-        }else{
-            return "redirect:shopList.do";
-        }
- 
+    @RequestMapping(value = "shopWrite.do")
+    public String shopWrite(HttpServletRequest request, @RequestParam Map<String, Object> paramMap, Model model) {
+            return "shop/write";
     }
  
-  
+    //@RequestMapping(value = "shopSave.do")
+    //@ResponseBody
+    /*public Object shopSave(@RequestParam Map<String, Object> paramMap, HttpServletRequest request) throws Exception {
+    	
+    	Map<String, Object> retVal = new HashMap<String, Object>();
+
+    	shopService.setRecipe(paramMap,request);
+    	
+
+
+        return retVal;
+    }*/
 	
 }
 

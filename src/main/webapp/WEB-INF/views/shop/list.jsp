@@ -3,6 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <html>
 <%@ include file="../head.jsp" %>
+<link rel="stylesheet" type="text/css" href="/takeMeal/resources/css/style.css">
 <body>
 <%@ include file="../header.jsp" %>
 
@@ -33,36 +34,16 @@
 				    </c:when>
 				<c:otherwise>
 				<c:forEach var="shopList" items="${shopList}" varStatus="status">
-					<li>
+					<li onclick="javascript:popupOpen('shop',${shopList.no});">
 						<div>
 							<span class="goods">
-							<a href="#" onclick="javascript:popupOpen('shop',${shopList.no});">
-									<img src=${shopList.thumbnail }>
-									
-									<strong>${shopList.price }</strong>
-									<span>${shopList.description }</span>
-								<a href="/profile/10">
-									<span class="goods_thumb">
-									<img src=${shopList.thumbnail }>
-									</span>
-									<strong>${shopList.price }</strong>
-									<span>${shopList.description }</span>
-								</a>
-							</a>
+								<span class="goods_thumb">
+								<img src=${shopList.thumbnail } style="width:100%">
+								</span>
+								<strong>${shopList.price }</strong>
+								<span>${shopList.description }</span>
 							</span>
 						</div>
-						
-						<%-- <h2 class="recipe_title">
-									<a href="#" onclick="javascript:popupOpen('recipe',${recipeList.no});">
-										${recipeList.subject}
-										<span>
-										${recipeList.contents}
-										</span>
-									</a>
-								</h2>
-						
-						 --%>
-						
 						<div class="goods_name">
 							${shopList.name }
 						</div>

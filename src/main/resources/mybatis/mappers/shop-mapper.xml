@@ -56,6 +56,30 @@
 		]]> 
     </select>
     
+    <insert id="insertShop" parameterType="java.util.HashMap">
+    	<![CDATA[ 
+        INSERT INTO goods(
+        	no,
+            name,
+            price,
+			qty,
+			description,
+			contents,
+			thumbnail,
+			company,
+			country,
+        )values(
+        	GOODS_SEQ.NEXTVAL,
+            #{name},
+            #{price},
+            #{contents},
+            #{thumbnail},
+            #{contents},
+            #{company},
+            #{country}
+        )
+        ]]>
+    </insert>
     
 	
 

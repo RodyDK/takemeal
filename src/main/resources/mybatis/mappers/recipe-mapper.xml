@@ -7,7 +7,10 @@
 		<id column="no" property="no" />
 		<result column="subject" property="subject" />
 		<result column="contents" property="contents" />
-		<result column="thumbnail" property="thumbnail" />
+		<result column="thumbnail1" property="thumbnail1" />
+		<result column="thumbnail2" property="thumbnail2" />
+		<result column="thumbnail3" property="thumbnail3" />
+		<result column="thumbnail4" property="thumbnail4" />
 		<result column="time" property="time" />
 		<result column="follow" property="follow" />
 		<result column="hit" property="hit" />
@@ -21,20 +24,61 @@
         SELECT
             COUNT(no)
         FROM
-            RECIPE
+            recipe
 		]]> 
     </select>
+    
+    
+    <insert id="insertRecipe" parameterType="java.util.HashMap">
+    	<![CDATA[ 
+        INSERT INTO recipe(
+        	no,
+            subject,
+            contents,
+            thumbnail1,
+            thumbnail2,
+            thumbnail3,
+            thumbnail4,
+            time
+        )values(
+        	RECIPE_SEQ.NEXTVAL,
+            #{subject},
+            #{contents},
+            #{thumbnail1, jdbcType=VARCHAR},
+            #{thumbnail2, jdbcType=VARCHAR},
+            #{thumbnail3, jdbcType=VARCHAR},
+            #{thumbnail4, jdbcType=VARCHAR},
+            #{time}
+        )
+        ]]>
+    </insert>
+    
     
     <select id="selectContent" resultType="com.cm.takemeal.recipe.model.vo.Recipe" parameterType="java.util.HashMap">
     	<![CDATA[ 
     	SELECT * FROM (
-		    SELECT no, subject, contents, time, follow, thumbnail, TO_CHAR(reg_date,'YYYY-MM-DD'), ROW_NUMBER() OVER(ORDER BY NO DESC) AS RNUM
-		    FROM RECIPE
+		    SELECT no, subject, contents, time, follow, thumbnail1, thumbnail2, thumbnail3, thumbnail4, TO_CHAR(reg_date,'YYYY-MM-DD'), ROW_NUMBER() OVER(ORDER BY NO DESC) AS RNUM
+		    FROM recipe
 		)
 		WHERE RNUM > #{start} AND RNUM <= #{end}
 		]]> 
     </select>
     
+    
+    
+    
+    <select id="selectRecipeLikeCnt" resultType="java.util.HashMap" parameterType="java.util.HashMap">
+    	<![CDATA[ 
+		SELECT
+			no,
+			recipe_no,
+			userid
+		FROM 
+			recipe_like
+		WHERE 
+			userid = #{userid}
+		]]> 
+    </select>
     
     <select id="selectContentView" resultType="com.cm.takemeal.recipe.model.vo.Recipe" parameterType="java.util.HashMap">
     	<![CDATA[ 

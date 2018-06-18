@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>   
 <style>
 	html.popup-on {
 		overflow:hidden;
@@ -188,7 +187,7 @@
 	.recipe-view .recipe-info .recipe-ingredient{
 		overflow:hidden;
 		padding:0 20px;
-		width:320px;
+		width:325px;
 	
 	}
 	
@@ -390,7 +389,7 @@
 				</ul>
 				<div class="recipe-scrap">
 					<a href="#">
-						<i class="fa fa-heart"></i> 스크랩하기
+						<i class="fa fa-heart"></i> 좋아요
 					</a>
 				</div>
 			</div>
@@ -676,8 +675,9 @@ function popupOpen(type,no){
                 	$(".recipe-subject").text(recipeValue.subject);
                 	$(".recipe-time").text(recipeValue.time+"분");
                 	$(".recipe-follow").text(recipeValue.follow);
-                	
                 	$(".recipe-info").height($(".recipe-content").height());
+                	
+                	
                 }else if(result.code=="FAIL"){
                 	alert(result.message);
                 }
@@ -747,7 +747,7 @@ function join(){
 
 //재료리스트 scroll fix : 150324
 function scrollFix(){
-  var htmlLength = $('.recipe-detail').outerHeight(true);
+  var htmlLength = $('.recipe-content').outerHeight(true);
   var ingreLenght = $(".recipe-info .recipe-ingredient").outerHeight(true);
   var btm_offset = $(".recipe-info .recipe-info-top").outerHeight(true) + $(".recipe-info .recipe-sns").outerHeight(true);
   var marginComp = (1048 / 2) - 290;
@@ -773,11 +773,11 @@ function scrollFix(){
       });
     } else if (scroll >= max_scroll) {
       $('.recipe-info .recipe-ingredient').css({
-        'position': 'absolute',
+        'position': 'fixed',
         'bottom': '0',
         'top': 'auto',
-        'left': '0',
-        'margin-left': '0'
+        'left': '50%',
+        'margin-left': marginComp
       });
     } else {
       $('.recipe-info .recipe-ingredient').css({
@@ -790,6 +790,11 @@ function scrollFix(){
   });
 }
 
+
+$(window).resize(function(){
+	var htmlLength = $('.recipe-content').outerHeight(true);
+	$(".recipe-info").height(htmlLength);
+})
 function customAlert(message, url) {
 	if(url != null || url != ''){
 		alert(message);
@@ -799,3 +804,47 @@ function customAlert(message, url) {
 	}
 }
 </script>
+
+<c:if test="${!empty sessionScope.loginUser }">
+	<script>
+	$(document).ready(function(){
+		$.ajax({
+			method: "POST",
+		    cache: false,
+		    url: "recipeLike.do",
+		    data: {
+				userid:"${sessionScope.loginUser.userid}"
+		    },
+		    success: function(result) {
+					if(result){
+					$.each(result,function(key,value){
+						$(".recipe_box_"+value.RECIPE_NO+" .like").addClass("on");
+					});
+				}
+		    },
+		    error: function (result) {
+		    	console.log(result);
+		    }
+		});	
+		
+		$(".recipe_box_normal li div.like").on("click",function(){
+			alert($(this).attr("rel"));
+			$.ajax({
+				method: "POST",
+			    cache: false,
+			    url: "recipeLikeSave.do",
+			    data: {
+					userid:"${sessionScope.loginUser.userid}",
+					recipe_no:$(this).attr("rel")
+			    },
+			    success: function(result) {
+					
+			    },
+			    error: function (result) {
+			    	console.log(result);
+			    }
+			});	
+		})
+	});
+	</script>
+</c:if>

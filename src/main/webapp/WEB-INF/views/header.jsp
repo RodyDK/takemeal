@@ -6,9 +6,6 @@
 	<div class="top_header">
 		<a href="./" class="logo">
 			<img src="./resources/images/logo.png" title="logo">
-
-
-
 		</a>
 		<div class="util">
 			<ul>
@@ -20,9 +17,16 @@
 				<c:if test="${!empty sessionScope.loginUser }">
 					<c:if test="${sessionScope.loginUser.type == 3}">
 						<li class="recipeWrite">
-							<a href="recipeEdit.do">레시피등록</a>
+							<a href="recipeWrite.do">레시피등록</a>
 						</li>
 					</c:if>
+					
+					<%-- <c:if test="${!empty sessionScope.loginUser }">
+						<c:if test="${sessionScope.loginUser.type == 1}">
+						<li class="recipeWrite">
+							<a href="shopWrite.do">쇼핑몰 등록</a>
+						</li>
+					</c:if> --%>
 					<li>
 						<a href="mypage.do">마이페이지</a>
 					</li>
@@ -30,11 +34,12 @@
 						<a href="logout.do">로그아웃</a>
 					</li>
 				</c:if>
+				<%-- </c:if> --%>
 				<li>
 					<a href="faqList.do">자주찾는질문</a>
 				</li>
 				<li>
-					<a href="">고객센터</a>
+					<a href="./noticeList.do">공지사항</a>
 				</li>
 			</ul>
 		</div>
@@ -52,9 +57,6 @@
 			</li>
 			<li>
 				<a href="./shopList.do">쇼핑몰</a>
-			</li>
-			<li>
-				<a href="./noticeList.do">공지사항</a>
 			</li>
 		</ul>
 	</nav>

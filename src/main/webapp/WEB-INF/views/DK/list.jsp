@@ -33,9 +33,9 @@
 				    </c:when>
 				    <c:otherwise>
 				        <c:forEach var="recipeList" items="${recipeList}" varStatus="status">
-							<li>
+							<li class="recipe_box_${recipeList.no}">
 								<a href="#" class="thumbnail" onclick="javascript:popupOpen('recipe',${recipeList.no});">
-									<img src="/takeMeal/resources/upfile/recipe/${recipeList.thumbnail}">
+									<img src="/takeMeal/resources/upfile/recipe/thumb/${recipeList.thumbnail1}">
 								</a>
 								<span class="author">
 									<a href="recipeChef.do?userid=${recipeList.userid}">
@@ -60,8 +60,8 @@
 										${recipeList.time}분
 										</a>
 									</div>
-									<div class="like">
-										<a href="/recipes?cooking_time=30">
+									<div class="like" rel="${recipeList.no}">
+										<a href="#">
 										<i class="fa fa-heart"></i>
 										${recipeList.follow}명
 										</a>

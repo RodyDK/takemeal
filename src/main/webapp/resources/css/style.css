@@ -200,9 +200,13 @@ html.right-on.login #login-sec {
 .recipe_box_normal ul li .author a strong {width:100%; font-size:12px; color:#000; margin-top:5px; display:block; font-weight:300;}
 
 .recipe_box_normal ul li .recipe_title a {font-size:14px; color:#000; font-weight:500; text-align:center; display:block; font-weight:600;}
-.recipe_box_normal ul li .recipe_title a span {font-size:12px; font-weight:100; display:block; color:#555;}
+.recipe_box_normal ul li .recipe_title a span {font-size:12px; font-weight:100; display:block; color:#555;
+
+display: block;  white-space: nowrap; overflow: hidden; text-overflow: ellipsis; padding:0 10px;
+}
 .recipe_box_normal ul li .option {border-top:1px solid #dadee1; margin-top:15px;}
 .recipe_box_normal ul li .option > div {width:33.333333%; display:inline-block; text-align:center; position:relative;}
+.recipe_box_normal ul li .option > div.like.on i {color:red;}
 .recipe_box_normal ul li .option > div:after {content:""; width:1px; background:#dadee1; height:20px; position:absolute; top:5px; right:0;}
 .recipe_box_normal ul li .option > div:last-child:after {content:none;} 
 .recipe_box_normal ul li .option > div > a {font-size:12px; color:#888; line-height:40px;}
@@ -213,7 +217,7 @@ html.right-on.login #login-sec {
 
 
 .shop_box_normal ul {overflow:hidden; font-size:0;}
-.shop_box_normal ul li {vertical-align: top; background:#fff; width:calc(25% - 15px); display:inline-block; margin-right:20px; border:1px solid #dadee1; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;}
+.shop_box_normal ul li {margin-bottom:20px; vertical-align: top; background:#fff; width:calc(25% - 15px); display:inline-block; margin-right:20px; border:1px solid #dadee1; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;}
 .shop_box_normal ul li:nth-child(4n) {margin-right:0;}
 
 .shop_box_normal ul li .goods {text-align: left; width: 100%; z-index: 5; display: block; position: relative;}
@@ -243,7 +247,7 @@ html.right-on.login #login-sec {
 
 
 .chef_box_normal ul {overflow:hidden; font-size:0;}
-.chef_box_normal ul li {vertical-align: top; background:#fff; width:calc(25% - 15px); display:inline-block; margin-right:20px; border:1px solid #dadee1; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;}
+.chef_box_normal ul li {margin-bottom:20px; vertical-align: top; background:#fff; width:calc(25% - 15px); display:inline-block; margin-right:20px; border:1px solid #dadee1; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;}
 .chef_box_normal ul li:nth-child(4n) {margin-right:0;}
 
 .chef_box_normal ul li .author {text-align: center; width: 100%; z-index: 5; display: block; position: relative;}

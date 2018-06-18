@@ -35,4 +35,9 @@ public class ShopDaoImpl implements ShopDao{
         return sqlSession.selectOne("selectShopContentView", paramMap);
     }
     
+    @Override
+    public void setShop(Map<String, Object> paramMap) {
+        sqlSession.insert("insertShop", paramMap);
+    }
+    
 }

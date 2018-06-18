@@ -44,6 +44,11 @@
 		<beans:property name="order" value="0" /> 
 		<!-- 제일 먼저 실행되도록 순서 지정함 -->
 	</beans:bean>
+	
+	<beans:bean
+		id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+	</beans:bean>
 
 
 
