@@ -18,7 +18,7 @@
 				<div class="recipe_wrap">
 					<div class="recipe_box_normal">
 
-						<input type="text" name="subject" value="${recipeView.subject}">
+						<%-- <input type="text" name="subject" value="${recipeView.subject}"> --%>
 
 						<input type="text" name="subject" class="form-control"
 							placeholder="Enter Title">
