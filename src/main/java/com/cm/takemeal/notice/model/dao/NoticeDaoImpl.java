@@ -35,7 +35,16 @@ public class NoticeDaoImpl implements NoticeDao{
     public Notice getContentView(Map<String, Object> paramMap) {
         return sqlSession.selectOne("selectNoticeContentView", paramMap);
     }
+
+	@Override
+	public void create(Notice nc) throws Exception {
+		// TODO Auto-generated method stub
+		
+		sqlSession.insert("create", nc);
+	}
  
+    
+    
   
     
 }

@@ -23,4 +23,6 @@ public interface NoticeDao {
 	
 	Notice getContentView(Map<String, Object> paramMap);
     
+	public void create(Notice nc)throws Exception;
+	
 }

@@ -49,6 +49,17 @@
     </select>
     
     
+    <insert id="create">
+		insert into tbl_board(no,
+			subject,
+			contents,
+			userid,
+			hit,
+			TO_CHAR(reg_date,'YYYY-MM-DD') AS reg_date)
+		values(
+		
+		)
+	</insert>
     
     
 	

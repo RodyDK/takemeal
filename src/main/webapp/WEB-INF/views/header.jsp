@@ -54,7 +54,7 @@
 				<a href="./shopList.do">쇼핑몰</a>
 			</li>
 			<li>
-				<a href="./noticeList.do">공지사항</a>
+				<a href="DJ/sboard/list">공지사항</a>
 			</li>
 		</ul>
 	</nav>

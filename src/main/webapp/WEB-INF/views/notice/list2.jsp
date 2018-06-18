@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
-<%@ taglib prefix="" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <html>
 <%@ include file="../head.jsp" %>
 <body>
@@ -40,19 +39,7 @@
                           	  작성일
                         </th>
                     </tr>
-                    <c:forEach items="${list}" var="BoardVo">
-
-			<tr>
-				<td>${BoardVo.bno }</td>
-				<td><a href="readPage.do${pageMaker.makeSearch(pageMaker.cri.page)}&bno=${BoardVo.bno }">${BoardVo.title }
-				</a></td>
-				<td><fmt:formatDate pattern="yyyy-MM-dd HH:mm"
-						value="${BoardVo.regdate }" /></td>
-				<td><span class="badge bg-red">${BoardVo.viewcnt }</span></td>
-			</tr>
-		</c:forEach>
-                    
-                   <%--  <c:choose>
+                    <c:choose>
                         <c:when test="${fn:length(noticeList) == 0}">
                             <tr>
                                 <td colspan="3" class="no-data">
@@ -71,7 +58,7 @@
                                 </tr>
                             </c:forEach>
                         </c:otherwise> 
-                    </c:choose> --%>
+                    </c:choose>
                 </table>
                 
                 <div id="pagination"></div>

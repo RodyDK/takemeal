@@ -12,5 +12,7 @@ public interface NoticeService {
     List<Notice> getContentList(Map<String, Object> paramMap);
 
     Notice getContentView(Map<String, Object> paramMap);
+    
+    public void regist(Notice nc)throws Exception;
      
 }

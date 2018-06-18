@@ -34,6 +34,16 @@ public class NoticeServiceImpl implements NoticeService {
     public Notice getContentView(Map<String, Object> paramMap) {
         return noticeDao.getContentView(paramMap);
     }
+
+	@Override
+	public void regist(Notice nc) throws Exception {
+		// TODO Auto-generated method stub
+		noticeDao.create(nc);
+		
+	}
+    
+    
+    
 }
 
 
