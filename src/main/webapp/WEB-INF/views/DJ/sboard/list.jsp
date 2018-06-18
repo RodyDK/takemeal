@@ -10,9 +10,9 @@
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="../../resources/css/style.css">
 
-<%-- <%@ include file="takemeal/head.jsp" %> --%>
+<%@ include file="../../head.jsp" %>
 <body>
-<%-- <%@ include file=".takemeal/WEB-INF/views/head.jsp" %> --%>
+<%@ include file="../../header.jsp" %>
 
 
 <link rel="stylesheet"

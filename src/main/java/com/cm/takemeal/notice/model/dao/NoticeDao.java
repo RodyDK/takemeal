@@ -12,6 +12,7 @@ import org.springframework.stereotype.Repository;
 import com.cm.takemeal.member.model.vo.Member;
 import com.cm.takemeal.notice.exception.NoticeFailException;
 import com.cm.takemeal.notice.model.vo.Notice;
+import com.cm.takemeal.notice.model.vo.NoticeRegistVO;
 
 
 @Repository("noticeDao")
@@ -23,6 +24,6 @@ public interface NoticeDao {
 	
 	Notice getContentView(Map<String, Object> paramMap);
     
-	public void create(Notice nc)throws Exception;
+	public void create(NoticeRegistVO nc)throws Exception;
 	
 }

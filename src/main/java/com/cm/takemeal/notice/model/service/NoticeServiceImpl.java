@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.cm.takemeal.notice.model.dao.NoticeDao;
 import com.cm.takemeal.notice.model.vo.Notice;
+import com.cm.takemeal.notice.model.vo.NoticeRegistVO;
 
 
 @Service("noticeService")
@@ -36,7 +37,7 @@ public class NoticeServiceImpl implements NoticeService {
     }
 
 	@Override
-	public void regist(Notice nc) throws Exception {
+	public void regist(NoticeRegistVO nc) throws Exception {
 		// TODO Auto-generated method stub
 		noticeDao.create(nc);
 		

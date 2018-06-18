@@ -19,6 +19,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.cm.takemeal.notice.model.service.NoticeService;
 import com.cm.takemeal.notice.model.vo.Notice;
+import com.cm.takemeal.notice.model.vo.NoticeRegistVO;
 import com.cm.takemeal.noticeboard.model.vo.BoardVo;
 
 @Controller
@@ -115,10 +116,16 @@ public class NoticeController {
 		}
 
 	}
-	
 	@RequestMapping(value="/noticeRegister", method=RequestMethod.GET)
+	public String registGET() throws Exception{
+		logger.info("regist get..............");
+		return "notice/register";
+	}
 	
-	public String registerPOST(Notice nc, RedirectAttributes rttr)throws Exception{
+	
+	@RequestMapping(value="/noticeRegister", method=RequestMethod.POST)
+	
+	public String registerPOST(NoticeRegistVO nc, RedirectAttributes rttr)throws Exception{
 		
 		logger.info("register post....");
 		logger.info(nc.toString());
@@ -127,7 +134,7 @@ public class NoticeController {
 		
 		rttr.addFlashAttribute("msg", "SUCCESS");
 		
-		return "notice/register";
+		return "redirect:noticeList.do";
 	}
 	
 	
