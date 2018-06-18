@@ -129,8 +129,7 @@ public class MemberController {
     }
     
     @RequestMapping(value = "joinExec.do")
-    @ResponseBody
-    public Object joinExec(@RequestParam Map<String, Object> paramMap, Model model) {
+    public Object joinExec(@RequestParam Map<String, Object> paramMap, Model model, HttpSession session) {
     	
 
 		System.out.println("password : " + paramMap);
@@ -142,6 +141,7 @@ public class MemberController {
         int returnMember = memberService.insertMember(paramMap);
  
 		if(returnMember > 0) {
+			session.setAttribute("loginUser", paramMap);
 			return "redirect:home.do";
 		}else {
 			return "common/error";
