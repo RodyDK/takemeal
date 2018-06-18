@@ -12,11 +12,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.cm.takemeal.notice.model.service.NoticeService;
 import com.cm.takemeal.notice.model.vo.Notice;
+import com.cm.takemeal.notice.model.vo.NoticeRegistVO;
+import com.cm.takemeal.noticeboard.model.vo.BoardVo;
 
 @Controller
 public class NoticeController {
@@ -112,4 +116,31 @@ public class NoticeController {
 		}
 
 	}
+	@RequestMapping(value="/noticeRegister", method=RequestMethod.GET)
+	public String registGET() throws Exception{
+		logger.info("regist get..............");
+		return "notice/register";
+	}
+	
+	
+	@RequestMapping(value="/noticeRegister", method=RequestMethod.POST)
+	
+	public String registerPOST(NoticeRegistVO nc, RedirectAttributes rttr)throws Exception{
+		
+		logger.info("register post....");
+		logger.info(nc.toString());
+		
+		noticeService.regist(nc);
+		
+		rttr.addFlashAttribute("msg", "SUCCESS");
+		
+		return "redirect:noticeList.do";
+	}
+	
+	
+	
+	
+	
+	
+	
 }

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.cm.takemeal.fridge.model.dao.FridgeDao;
 import com.cm.takemeal.fridge.model.vo.Food;
+import com.cm.takemeal.fridge.model.vo.Food_code;
 
 @Service("fridgeService")
 public class FridgeServiceImpl implements FridgeService{
@@ -30,5 +31,17 @@ public class FridgeServiceImpl implements FridgeService{
 	public void updateFood(Food updatefood) {
 		
 		fridgeDao.updateFood(updatefood);
+	}
+	
+	@Override
+	public List<Food_code> selectClass_code() {
+		// TODO Auto-generated method stub
+		return fridgeDao.selectClass_code();
+	}
+	
+	@Override
+	public List<Food> selectMeat() {
+		// TODO Auto-generated method stub
+		return fridgeDao.selectMeat();
 	}
 }

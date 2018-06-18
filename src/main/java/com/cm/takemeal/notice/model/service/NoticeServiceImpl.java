@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.cm.takemeal.notice.model.dao.NoticeDao;
 import com.cm.takemeal.notice.model.vo.Notice;
+import com.cm.takemeal.notice.model.vo.NoticeRegistVO;
 
 
 @Service("noticeService")
@@ -34,6 +35,16 @@ public class NoticeServiceImpl implements NoticeService {
     public Notice getContentView(Map<String, Object> paramMap) {
         return noticeDao.getContentView(paramMap);
     }
+
+	@Override
+	public void regist(NoticeRegistVO nc) throws Exception {
+		// TODO Auto-generated method stub
+		noticeDao.create(nc);
+		
+	}
+    
+    
+    
 }
 
 

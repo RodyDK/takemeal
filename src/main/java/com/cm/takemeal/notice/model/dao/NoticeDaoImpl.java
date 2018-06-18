@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.cm.takemeal.notice.model.vo.Notice;
+import com.cm.takemeal.notice.model.vo.NoticeRegistVO;
 import com.cm.takemeal.notice.model.dao.NoticeDao;
 
 @Repository("noticeDao")
@@ -15,6 +16,8 @@ public class NoticeDaoImpl implements NoticeDao{
 
     @Autowired
     private SqlSession sqlSession;
+    
+	private static String namespace = "com.cm.takemeal.notice.model.dao.NoticeDao";
   
     public void setSqlSession(SqlSession sqlSession){
         this.sqlSession = sqlSession;
@@ -35,7 +38,17 @@ public class NoticeDaoImpl implements NoticeDao{
     public Notice getContentView(Map<String, Object> paramMap) {
         return sqlSession.selectOne("selectNoticeContentView", paramMap);
     }
+
+	@Override
+	public void create(NoticeRegistVO nc) throws Exception {
+		// TODO Auto-generated method stub
+		
+		sqlSession.insert(namespace+".create", nc);
+		System.out.println("nc: "+ nc);
+	}
  
+    
+    
   
     
 }

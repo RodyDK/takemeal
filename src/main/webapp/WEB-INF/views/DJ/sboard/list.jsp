@@ -1,13 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ page session="false"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="../../resources/css/style.css">
+
+<%@ include file="../../head.jsp" %>
+<body>
+<%@ include file="../../header.jsp" %>
+
 
 <link rel="stylesheet"
 	href="/takemeal/resources/bootstrap/css/bootstrap.css">
@@ -50,15 +56,16 @@
 		jobForm.find("[name='page']").val(targetPage);
 		jobForm.attr("action", "/DJ/sboard/list.do").attr("method", "get");
 		jobForm.submit();
+		alert(jobForm);
 
 	});
-</script>
+</script> 
 
 
 </head>
 <body>
 
-	<div class="box-body">
+	<%-- <div class="box-body">
 		<select name="searchType">
 			<option value="n"
 				<c:out value="${cri.searchType == null?'selected':'' }"/>>
@@ -88,7 +95,7 @@
 		<button id="newBtn">New Board</button>
 		
 	
-	</div>
+	</div> --%>
 
 	<table class="table table-bordered">
 		<tr>
@@ -116,33 +123,42 @@
 
 
 	</table>
+	<button id="newBtn">New Board</button>
 
 	<form id="jobForm">
-		<input type="hidden" name="page" value=${PageMaker.cri.perPageNum }/>
+		<input type="hidden" name="page" value=${cri.page }/>
 		<input type="hidden" name="perPageNum"
-			value=${PageMaker.cri.perPageNum }/>
-	</form>
+			value=${cri.perPageNum }/>
+	</form> 
 
-	<div class="text-center">
-		<ul class="pagination">
-			<c:if test="${pageMaker.prev }">
-				<li><a href="list.do${pageMaker.makeSearch(pageMaker.startPage - 1)}">&laquo;</a></li>
-			</c:if>
+<div class="box-footer">
 
-			<c:forEach begin="${pageMaker.startPage }"
-				end="${pageMaker.endPage }" var="idx">
-				<li
-					<c:out value="${pageMaker.cri.page == idx? 'class = active':''}"/>>
-					<a href="list.do${pageMaker.makeSearch(idx) }">${idx }</a>
-				</li>
-			</c:forEach>
+					<div class="text-center">
+						<ul class="pagination">
 
-			<c:if test="${pageMaker.next && pageMaker.endPage > 0}">
-				<li><a href="list.do${pageMaker.makeSearch(pageMaker.endPage + 1) }">&raquo;</a></li>
-			</c:if>
-		</ul>
+							<c:if test="${pageMaker.prev}">
+								<li><a
+									href="list${pageMaker.makeSearch(pageMaker.startPage - 1) }">&laquo;</a></li>
+							</c:if>
 
-	</div>
+							<c:forEach begin="${pageMaker.startPage }"
+								end="${pageMaker.endPage }" var="idx">
+								<li
+									<c:out value="${pageMaker.cri.page == idx?'class =active':''}"/>>
+									<a href="list${pageMaker.makeSearch(idx)}">${idx}</a>
+								</li>
+							</c:forEach>
 
+							<c:if test="${pageMaker.next && pageMaker.endPage > 0}">
+								<li><a
+									href="list${pageMaker.makeSearch(pageMaker.endPage +1) }">&raquo;</a></li>
+							</c:if>
+
+						</ul>
+					</div>
+
+				</div>
+		
+<%@ include file="../../footer.jsp" %>
 </body>
 </html>
