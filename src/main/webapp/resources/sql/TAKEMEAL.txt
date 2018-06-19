@@ -1,4 +1,4 @@
--- ��������. ������ �������� ����.
+-- 유저생성. 관리자 계정으로 수행.
 -- CREATE USER TAKEMEAL IDENTIFIED BY TAKEMEAL;
 -- GRANT CONNECT,RESOURCE TO TAKEMEAL;
 
@@ -14,7 +14,7 @@ DROP TABLE MEMBER;
 PURGE RECYCLEBIN;
 
 --------------------------------------------------------
---  ������ ������ - �����-6��-14-2018   
+--  파일이 생성됨 - 목요일-6월-14-2018   
 --------------------------------------------------------
 --------------------------------------------------------
 --  DDL for Table MEMBER
@@ -32,15 +32,15 @@ CREATE TABLE MEMBER (
   REM INSERTING into MEMBER
   SET DEFINE OFF;
 
-Insert into TAKEMEAL.MEMBER (NO,USERID,PASSWORD,USERNAME,TYPE,PHONE,BLOG,REG_DATE) values (1,'admin','$2a$10$HitvIbUCymBdjVG1Tzrly.RwjheM17CMZFANgxuTfZdaiiuPe9PI2','������',1,'010-0000-0000',null,null);
-Insert into TAKEMEAL.MEMBER (NO,USERID,PASSWORD,USERNAME,TYPE,PHONE,BLOG,REG_DATE) values (2,'user1','$2a$10$HitvIbUCymBdjVG1Tzrly.RwjheM17CMZFANgxuTfZdaiiuPe9PI2','�ʾ�',2,null,null,null);
-Insert into TAKEMEAL.MEMBER (NO,USERID,PASSWORD,USERNAME,TYPE,PHONE,BLOG,REG_DATE) values (3,'user2','$2a$10$HitvIbUCymBdjVG1Tzrly.RwjheM17CMZFANgxuTfZdaiiuPe9PI2','����',2,null,null,null);
-Insert into TAKEMEAL.MEMBER (NO,USERID,PASSWORD,USERNAME,TYPE,PHONE,BLOG,REG_DATE) values (4,'user3','$2a$10$HitvIbUCymBdjVG1Tzrly.RwjheM17CMZFANgxuTfZdaiiuPe9PI2','���̸�',2,null,null,null);
-Insert into TAKEMEAL.MEMBER (NO,USERID,PASSWORD,USERNAME,TYPE,PHONE,BLOG,REG_DATE) values (5,'blog1','$2a$10$HitvIbUCymBdjVG1Tzrly.RwjheM17CMZFANgxuTfZdaiiuPe9PI2','ȫ��õ',3,null,null,null);
-Insert into TAKEMEAL.MEMBER (NO,USERID,PASSWORD,USERNAME,TYPE,PHONE,BLOG,REG_DATE) values (6,'blog2','$2a$10$HitvIbUCymBdjVG1Tzrly.RwjheM17CMZFANgxuTfZdaiiuPe9PI2','ȫ��õ',3,null,null,null);
-Insert into TAKEMEAL.MEMBER (NO,USERID,PASSWORD,USERNAME,TYPE,PHONE,BLOG,REG_DATE) values (7,'blog3','$2a$10$HitvIbUCymBdjVG1Tzrly.RwjheM17CMZFANgxuTfZdaiiuPe9PI2','ȫ��õ',3,null,null,null);
-Insert into TAKEMEAL.MEMBER (NO,USERID,PASSWORD,USERNAME,TYPE,PHONE,BLOG,REG_DATE) values (8,'blog4','$2a$10$HitvIbUCymBdjVG1Tzrly.RwjheM17CMZFANgxuTfZdaiiuPe9PI2','ȫ��õ',3,null,null,null);
-Insert into TAKEMEAL.MEMBER (NO,USERID,PASSWORD,USERNAME,TYPE,PHONE,BLOG,REG_DATE) values (9,'blog5','$2a$10$HitvIbUCymBdjVG1Tzrly.RwjheM17CMZFANgxuTfZdaiiuPe9PI2','ȫ��õ',3,null,null,null);
+Insert into TAKEMEAL.MEMBER (NO,USERID,PASSWORD,USERNAME,TYPE,PHONE,BLOG,REG_DATE) values (1,'admin','$2a$10$HitvIbUCymBdjVG1Tzrly.RwjheM17CMZFANgxuTfZdaiiuPe9PI2','관리자',1,'010-0000-0000',null,null);
+Insert into TAKEMEAL.MEMBER (NO,USERID,PASSWORD,USERNAME,TYPE,PHONE,BLOG,REG_DATE) values (2,'user1','$2a$10$HitvIbUCymBdjVG1Tzrly.RwjheM17CMZFANgxuTfZdaiiuPe9PI2','초아',2,null,null,null);
+Insert into TAKEMEAL.MEMBER (NO,USERID,PASSWORD,USERNAME,TYPE,PHONE,BLOG,REG_DATE) values (3,'user2','$2a$10$HitvIbUCymBdjVG1Tzrly.RwjheM17CMZFANgxuTfZdaiiuPe9PI2','혜리',2,null,null,null);
+Insert into TAKEMEAL.MEMBER (NO,USERID,PASSWORD,USERNAME,TYPE,PHONE,BLOG,REG_DATE) values (4,'user3','$2a$10$HitvIbUCymBdjVG1Tzrly.RwjheM17CMZFANgxuTfZdaiiuPe9PI2','아이린',2,null,null,null);
+Insert into TAKEMEAL.MEMBER (NO,USERID,PASSWORD,USERNAME,TYPE,PHONE,BLOG,REG_DATE) values (5,'blog1','$2a$10$HitvIbUCymBdjVG1Tzrly.RwjheM17CMZFANgxuTfZdaiiuPe9PI2','홍석천',3,null,null,null);
+Insert into TAKEMEAL.MEMBER (NO,USERID,PASSWORD,USERNAME,TYPE,PHONE,BLOG,REG_DATE) values (6,'blog2','$2a$10$HitvIbUCymBdjVG1Tzrly.RwjheM17CMZFANgxuTfZdaiiuPe9PI2','홍석천',3,null,null,null);
+Insert into TAKEMEAL.MEMBER (NO,USERID,PASSWORD,USERNAME,TYPE,PHONE,BLOG,REG_DATE) values (7,'blog3','$2a$10$HitvIbUCymBdjVG1Tzrly.RwjheM17CMZFANgxuTfZdaiiuPe9PI2','홍석천',3,null,null,null);
+Insert into TAKEMEAL.MEMBER (NO,USERID,PASSWORD,USERNAME,TYPE,PHONE,BLOG,REG_DATE) values (8,'blog4','$2a$10$HitvIbUCymBdjVG1Tzrly.RwjheM17CMZFANgxuTfZdaiiuPe9PI2','홍석천',3,null,null,null);
+Insert into TAKEMEAL.MEMBER (NO,USERID,PASSWORD,USERNAME,TYPE,PHONE,BLOG,REG_DATE) values (9,'blog5','$2a$10$HitvIbUCymBdjVG1Tzrly.RwjheM17CMZFANgxuTfZdaiiuPe9PI2','홍석천',3,null,null,null);
 
 --------------------------------------------------------
 
@@ -91,18 +91,18 @@ SET DEFINE OFF;
   ALTER TABLE "TAKEMEAL"."GOODS" MODIFY ("PRICE" NOT NULL ENABLE);
   ALTER TABLE "TAKEMEAL"."GOODS" MODIFY ("NAME" NOT NULL ENABLE);
 
-Insert into TAKEMEAL.GOODS (NAME,PRICE,QTY,DESCRIPTION,CONTENTS,REG_DATE,THUMBNAIL,NO,COMPANY,COUNTRY) values ('��¡��',3000,1,'�����¡��','�̽��� ��¡� �Ծ��',to_date('18/06/09','RR/MM/DD'),'http://image.homeplus.co.kr/UserFiles/Pressimages/15/800/120581615_0.jpg',1,'���곪��','�ѱ�');
-Insert into TAKEMEAL.GOODS (NAME,PRICE,QTY,DESCRIPTION,CONTENTS,REG_DATE,THUMBNAIL,NO,COMPANY,COUNTRY) values ('�����',1990,1,'��������','������ �����',to_date('18/06/09','RR/MM/DD'),'http://image.homeplus.co.kr/UserFiles/Pressimages/95/800/000005495_0.jpg',2,'����','�ѱ�');
-Insert into TAKEMEAL.GOODS (NAME,PRICE,QTY,DESCRIPTION,CONTENTS,REG_DATE,THUMBNAIL,NO,COMPANY,COUNTRY) values ('����',5990,1,'�ϸ� ���� �߰���','�ż��� �ϸ� �߰���',to_date('18/06/09','RR/MM/DD'),'http://image.homeplus.co.kr/UserFiles/Pressimages/68/800/106974268_0.jpg',3,'(��)�ϸ�','�ѱ�');
-Insert into TAKEMEAL.GOODS (NAME,PRICE,QTY,DESCRIPTION,CONTENTS,REG_DATE,THUMBNAIL,NO,COMPANY,COUNTRY) values ('���̹���',1000,1,'���� ū ���̹���','�ż��� ���̹���',to_date('18/06/09','RR/MM/DD'),'http://image.homeplus.co.kr/UserFiles/Pressimages/85/800/114666185_0.jpg',4,'����','�ѱ�');
-Insert into TAKEMEAL.GOODS (NAME,PRICE,QTY,DESCRIPTION,CONTENTS,REG_DATE,THUMBNAIL,NO,COMPANY,COUNTRY) values ('���̹���',1000,1,'���� ū ���̹���','�ż��� ���̹���',to_date('18/06/09','RR/MM/DD'),'http://image.homeplus.co.kr/UserFiles/Pressimages/85/800/114666185_0.jpg',5,'����','�ѱ�');
-Insert into TAKEMEAL.GOODS (NAME,PRICE,QTY,DESCRIPTION,CONTENTS,REG_DATE,THUMBNAIL,NO,COMPANY,COUNTRY) values ('���̹���',1000,1,'���� ū ���̹���','�ż��� ���̹���',to_date('18/06/09','RR/MM/DD'),'http://image.homeplus.co.kr/UserFiles/Pressimages/85/800/114666185_0.jpg',6,'����','�ѱ�');
+Insert into TAKEMEAL.GOODS (NAME,PRICE,QTY,DESCRIPTION,CONTENTS,REG_DATE,THUMBNAIL,NO,COMPANY,COUNTRY) values ('오징어',3000,1,'서산오징어','싱싱한 오징어가 왔어요',to_date('18/06/09','RR/MM/DD'),'http://image.homeplus.co.kr/UserFiles/Pressimages/15/800/120581615_0.jpg',1,'서산나라','한국');
+Insert into TAKEMEAL.GOODS (NAME,PRICE,QTY,DESCRIPTION,CONTENTS,REG_DATE,THUMBNAIL,NO,COMPANY,COUNTRY) values ('양배추',1990,1,'국산양배추','국내산 양배추',to_date('18/06/09','RR/MM/DD'),'http://image.homeplus.co.kr/UserFiles/Pressimages/95/800/000005495_0.jpg',2,'농협','한국');
+Insert into TAKEMEAL.GOODS (NAME,PRICE,QTY,DESCRIPTION,CONTENTS,REG_DATE,THUMBNAIL,NO,COMPANY,COUNTRY) values ('생닭',5990,1,'하림 생육 닭고기','신선한 하림 닭고기',to_date('18/06/09','RR/MM/DD'),'http://image.homeplus.co.kr/UserFiles/Pressimages/68/800/106974268_0.jpg',3,'(주)하림','한국');
+Insert into TAKEMEAL.GOODS (NAME,PRICE,QTY,DESCRIPTION,CONTENTS,REG_DATE,THUMBNAIL,NO,COMPANY,COUNTRY) values ('팽이버섯',1000,1,'알이 큰 팽이버섯','신선한 팽이버섯',to_date('18/06/09','RR/MM/DD'),'http://image.homeplus.co.kr/UserFiles/Pressimages/85/800/114666185_0.jpg',4,'농협','한국');
+Insert into TAKEMEAL.GOODS (NAME,PRICE,QTY,DESCRIPTION,CONTENTS,REG_DATE,THUMBNAIL,NO,COMPANY,COUNTRY) values ('팽이버섯',1000,1,'알이 큰 팽이버섯','신선한 팽이버섯',to_date('18/06/09','RR/MM/DD'),'http://image.homeplus.co.kr/UserFiles/Pressimages/85/800/114666185_0.jpg',5,'농협','한국');
+Insert into TAKEMEAL.GOODS (NAME,PRICE,QTY,DESCRIPTION,CONTENTS,REG_DATE,THUMBNAIL,NO,COMPANY,COUNTRY) values ('팽이버섯',1000,1,'알이 큰 팽이버섯','신선한 팽이버섯',to_date('18/06/09','RR/MM/DD'),'http://image.homeplus.co.kr/UserFiles/Pressimages/85/800/114666185_0.jpg',6,'농협','한국');
 
 
 ------------------------------------------------------------------------------------------------------------------------------
 
 --------------------------------------------------------
---  ������ ������ - �����-6��-14-2018   
+--  파일이 생성됨 - 목요일-6월-14-2018   
 --------------------------------------------------------
 --------------------------------------------------------
 --  DDL for Table FAQ
@@ -122,21 +122,21 @@ CREATE TABLE FAQ (
   PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
   TABLESPACE "SYSTEM" ;
   
-Insert into TAKEMEAL.FAQ (NO,SUBJECT,CONTENTS,HIT,REG_DATE,CATEGORY,USERID) values (1,'���̵�,��й�ȣ�� �н��߾��.','�α��� â���� ���̵�/��й�ȣ ã�⸦ �̿��Ͻø� �˴ϴ�.<br>
-���̵�� ��й�ȣ�� ȸ�������� ��ϵ� ���� ���� �Ǵ� ���θ��� �޴��������� ���� ã���� �� �ֽ��ϴ�.<br> 
-���̵�� ȸ�������� ��ϵ� �̸��� �޴�����ȣ �Ǵ� �̸����� �Է��Ͻø� ���̵��� �Ϻθ� ���� �� �ֽ��ϴ�.<br>
-���̵� ��ü�� ������ �� ���� ���̵��� �Ϻθ� ���� ã�� �Ŀ� �ϴ���  ���̵� ��üȮ�θ� Ŭ���ϼż� �޴���ȭ/�̸���/�������� �� �����ϼż� ������ȣ�� �Է��Ͻø� Ȯ���Ͻ� �� �ֽ��ϴ�.<br>
+Insert into TAKEMEAL.FAQ (NO,SUBJECT,CONTENTS,HIT,REG_DATE,CATEGORY,USERID) values (1,'아이디,비밀번호를 분실했어요.','로그인 창에서 아이디/비밀번호 찾기를 이용하시면 됩니다.<br>
+아이디와 비밀번호는 회원정보에 등록된 정보 인증 또는 본인명의 휴대폰인증을 통해 찾으실 수 있습니다.<br> 
+아이디는 회원정보에 등록된 이름과 휴대폰번호 또는 이메일을 입력하시면 아이디의 일부를 보실 수 있습니다.<br>
+아이디 전체를 보고자 할 때는 아이디의 일부를 먼저 찾은 후에 하단의  아이디 전체확인를 클릭하셔서 휴대전화/이메일/본인인증 중 선택하셔서 인증번호를 입력하시면 확인하실 수 있습니다.<br>
 <br>
-��й�ȣ�� ȸ�������� ��ϵ� ���̵� �Է��Ͻ� ��, �޴���ȭ/�̸���/���� ���� �� �����Ͻ� ������� ������ ���� ��й�ȣ�� �缳�� �Ͻ� �� �ֽ��ϴ�.<br>
+비밀번호는 회원정보에 등록된 아이디를 입력하신 후, 휴대전화/이메일/본인 인증 중 선택하신 방법으로 인증을 거쳐 비밀번호를 재설정 하실 수 있습니다.<br>
 <br>
-��ϵ� ȸ�������� ��� ���Ͻðų� ����� ��쿡�� �ݼ��� 1577-3355�� ���� �ֽø� �ӽ� ��й�ȣ�� �߼� �ص帳�ϴ�.',152,to_date('18/06/06','RR/MM/DD'),1,'admin');
-Insert into TAKEMEAL.FAQ (NO,SUBJECT,CONTENTS,HIT,REG_DATE,CATEGORY,USERID) values (2,'�������� ������ �ϰ� �;��.','�����Բ��� ���Ͻô� ��� ì�ܸԾ�� ���� ����Ʈ���� ���� ��û�Ͻ� �� �ֽ��ϴ�.',188,to_date('18/06/06','RR/MM/DD'),1,'admin');
-Insert into TAKEMEAL.FAQ (NO,SUBJECT,CONTENTS,HIT,REG_DATE,CATEGORY,USERID) values (3,'��ȸ���� �ֹ� �����Ѱ���?','��ȸ�� �ֹ������մϴ�.<br>
+등록된 회원정보를 기억 못하시거나 변경된 경우에는 콜센터 1577-3355로 연락 주시면 임시 비밀번호를 발송 해드립니다.',152,to_date('18/06/06','RR/MM/DD'),1,'admin');
+Insert into TAKEMEAL.FAQ (NO,SUBJECT,CONTENTS,HIT,REG_DATE,CATEGORY,USERID) values (2,'개인정보 수정을 하고 싶어요.','고객님께서 원하시는 경우 챙겨먹어요 서비스 사이트에서 변경 요청하실 수 있습니다.',188,to_date('18/06/06','RR/MM/DD'),1,'admin');
+Insert into TAKEMEAL.FAQ (NO,SUBJECT,CONTENTS,HIT,REG_DATE,CATEGORY,USERID) values (3,'비회원도 주문 가능한가요?','비회원 주문가능합니다.<br>
 <br>
-�ٸ�, ��ȸ������ �����Ͻø� ����Ʈ ���� �� ȸ������ ������ ���� �� �����ϴ�.',177,to_date('18/06/06','RR/MM/DD'),2,'admin');
-Insert into TAKEMEAL.FAQ (NO,SUBJECT,CONTENTS,HIT,REG_DATE,CATEGORY,USERID) values (4,'��ٱ��� ��ǰ�� �������� �����ǳ���?','��ٱ��� ��ǰ�� �����Բ��� ��ٱ��Ͽ� ��� ��ǰ�� ����/�ֹ��� �Ϸ��Ͻñ� ������ ��� �����Ǹ�, ������ �Ϸ�<br>
-�� �� ��ٱ��Ͽ� ��� ��ǰ�� �����˴ϴ�.<br>
-��, �ֹ��� �Ϸ����� ������ ��� ��ǰ�� �����Բ��� ���������� ��ٱ��Ͽ� ���� ��¥���� 90�ϰ� �����˴ϴ�.
+다만, 비회원으로 구매하시면 포인트 적립 등 회원만의 혜택을 누릴 수 없습니다.',177,to_date('18/06/06','RR/MM/DD'),2,'admin');
+Insert into TAKEMEAL.FAQ (NO,SUBJECT,CONTENTS,HIT,REG_DATE,CATEGORY,USERID) values (4,'장바구니 상품은 언제까지 보관되나요?','장바구니 상품은 고객님께서 장바구니에 담고 상품의 결제/주문을 완료하시기 전까지 계속 보관되며, 결제가 완료<br>
+된 후 장바구니에 담긴 상품은 삭제됩니다.<br>
+단, 주문을 완료하지 않으신 경우 상품은 고객님께서 마지막으로 장바구니에 담은 날짜부터 90일간 보관됩니다.
 ',243,to_date('18/06/06','RR/MM/DD'),2,'admin');
 --------------------------------------------------------
 --  DDL for Index FAQ_PK
@@ -165,7 +165,7 @@ ALTER TABLE "TAKEMEAL"."FAQ" MODIFY ("NO" NOT NULL ENABLE);
 
 
 --------------------------------------------------------
---  ������ ������ - �����-6��-14-2018   
+--  파일이 생성됨 - 목요일-6월-14-2018   
 --------------------------------------------------------
 --------------------------------------------------------
 --  DDL for Table NOTICE
@@ -185,39 +185,39 @@ CREATE TABLE NOTICE(
   TABLESPACE "SYSTEM" ;
 REM INSERTING into TAKEMEAL.NOTICE
 SET DEFINE OFF;
-Insert into TAKEMEAL.NOTICE (NO,USERID,SUBJECT,CONTENTS,HIT,REG_DATE) values (1,'admin','Ȩ������ ����!','�ȳ��ϼ���!
-ì�ܸԾ�� �������Դϴ�.
+Insert into TAKEMEAL.NOTICE (NO,USERID,SUBJECT,CONTENTS,HIT,REG_DATE) values (1,'admin','홈페이지 오픈!','안녕하세요!
+챙겨먹어요 관리자입니다.
 <br><br>
-ì�ܸԾ�䰡 2018�� 6�� 20�Ϻη� ���ķ�Ī�� �Ͽ����ϴ�.
+챙겨먹어요가 2018년 6월 20일부로 정식런칭을 하였습니다.
 <br>
-����� �丮���� �����ǵ��� ������ �Բ� ������ ��ǰ������
+저희는 요리들의 레시피들을 제공과 함께 레시피 상품재료들을
 <br>
-���� �׸��� ��Ằ, �������� �پ��� �������� �����Ǹ�
+구매 그리고 재료별, 국가별등 다양한 조건으로 레시피를
 <br>
-�˻��� �� �ֽ��ϴ�.
+검색할 수 있습니다.
 <br><br>
-�����е��� �� ���ְ� �ǰ��� ���� ���� ����ϰڽ��ϴ�.
+고객분들의 더 맛있고 건강한 삶을 위해 노력하겠습니다.
 <br><br>
-�����մϴ�.',1562,to_date('18/06/20','RR/MM/DD'));
-Insert into TAKEMEAL.NOTICE (NO,USERID,SUBJECT,CONTENTS,HIT,REG_DATE) values (2,'admin','�丮���ΰ� ��ø���!','�ȳ��ϼ���!
+감사합니다.',1562,to_date('18/06/20','RR/MM/DD'));
+Insert into TAKEMEAL.NOTICE (NO,USERID,SUBJECT,CONTENTS,HIT,REG_DATE) values (2,'admin','요리블로거 상시모집!','안녕하세요!
 <br>
-ì�ܸԾ�� �������Դϴ�.
+챙겨먹어요 관리자입니다.
 <br><br>
-���� ì�ܸԾ�信���� ���� ���� ���������� ����
+저희 챙겨먹어요에서는 더욱 좋은 정보제공을 위해
 <br>
-���ΰ� �� SNS ���÷�𼭵��� �����մϴ�.
+블로거 및 SNS 인플루언서들을 모집합니다.
 <br><br>
-�پ��� ������ ì�ܸԾ��� �Բ� ���� ����ڵ鿡�� �����Ͽ�
+다양한 정보를 챙겨먹어요와 함께 많은 사용자들에게 제공하여
 <br>
-���� Win-Win �� �� �ִ� ������ ����� ���� ����ϰڽ��ϴ�.
+서로 Win-Win 할 수 있는 구조를 만들기 위해 노력하겠습니다.
 <br><br>
-���ΰŵ��� ���� �����ǵ� ����� �� �ְ�
+블로거들은 직접 레시피도 등록할 수 있고
 <br>
-������� ������ �� �ֽ��ϴ�.
+고객들과 소통할 수 있습니다.
 <br><br>
-���� ������Ź�帳�ϴ�.
+많은 참여부탁드립니다.
 <br>
-�����մϴ�.',2652,to_date('18/06/21','RR/MM/DD'));
+감사합니다.',2652,to_date('18/06/21','RR/MM/DD'));
 --------------------------------------------------------
 --  DDL for Index NOTICE_PK
 --------------------------------------------------------
@@ -245,7 +245,7 @@ ALTER TABLE "TAKEMEAL"."NOTICE" MODIFY ("USERID" NOT NULL ENABLE);
 
 
 --------------------------------------------------------
---  ������ ������ - �����-6��-14-2018   
+--  파일이 생성됨 - 목요일-6월-14-2018   
 --------------------------------------------------------
 --------------------------------------------------------
 --  DDL for Table RECIPE
@@ -264,18 +264,18 @@ CREATE TABLE RECIPE(
   );
 REM INSERTING into TAKEMEAL.RECIPE
 SET DEFINE OFF;
-Insert into TAKEMEAL.RECIPE (NO,SUBJECT,CONTENTS,THUMBNAIL,TIME,FOLLOW,HIT,KCAL,USERID,REG_DATE) values (1,'����ġ������ũ','������ �ڱ��ϴ� ������ ����� ġ���� ����','1.jpg',10,154,0,123,'blog1',to_date('18/05/23','RR/MM/DD'));
-Insert into TAKEMEAL.RECIPE (NO,SUBJECT,CONTENTS,THUMBNAIL,TIME,FOLLOW,HIT,KCAL,USERID,REG_DATE) values (2,'����佺Ʈ','������� ���� Ȳ�ݷ�����! ������ �Ļ��� ������ �ް� �޺�','2.png',30,1186,0,213,'blog1',to_date('18/05/24','RR/MM/DD'));
-Insert into TAKEMEAL.RECIPE (NO,SUBJECT,CONTENTS,THUMBNAIL,TIME,FOLLOW,HIT,KCAL,USERID,REG_DATE) values (3,'���ں���','����ģ���� ���� ������ ����Ʈ','3.jpg',20,245,0,213,'blog1',to_date('18/05/24','RR/MM/DD'));
-Insert into TAKEMEAL.RECIPE (NO,SUBJECT,CONTENTS,THUMBNAIL,TIME,FOLLOW,HIT,KCAL,USERID,REG_DATE) values (4,'���� ����','�����߳��ҽ� ����� �������� ���� ��𿡵� ���� ������','4.png',15,345,0,213,'blog1',to_date('18/05/24','RR/MM/DD'));
-Insert into TAKEMEAL.RECIPE (NO,SUBJECT,CONTENTS,THUMBNAIL,TIME,FOLLOW,HIT,KCAL,USERID,REG_DATE) values (5,'�����ֵ���','���̵��� �����ϴ� ���� �ʼ���! �ǰ������ε� �ְ�!','5.jpg',30,784,0,213,'blog1',to_date('18/05/24','RR/MM/DD'));
-Insert into TAKEMEAL.RECIPE (NO,SUBJECT,CONTENTS,THUMBNAIL,TIME,FOLLOW,HIT,KCAL,USERID,REG_DATE) values (6,'������������','ȥ���ְ�����, �������÷� �������� �������� �� ��Ҵ�','6.png',60,111,0,213,'blog1',to_date('18/05/24','RR/MM/DD'));
-Insert into TAKEMEAL.RECIPE (NO,SUBJECT,CONTENTS,THUMBNAIL,TIME,FOLLOW,HIT,KCAL,USERID,REG_DATE) values (7,'�����佺Ʈ','���ŧ�� ���� �����佺Ʈ, ���̵鵵 �����ؿ�','7.jpg',25,203,0,213,'blog1',to_date('18/05/24','RR/MM/DD'));
-Insert into TAKEMEAL.RECIPE (NO,SUBJECT,CONTENTS,THUMBNAIL,TIME,FOLLOW,HIT,KCAL,USERID,REG_DATE) values (8,'�������','�۴ٰ� �������� ���ö�! ���� ��� of ���','8.jpg',20,511,0,213,'blog1',to_date('18/05/24','RR/MM/DD'));
-Insert into TAKEMEAL.RECIPE (NO,SUBJECT,CONTENTS,THUMBNAIL,TIME,FOLLOW,HIT,KCAL,USERID,REG_DATE) values (9,'�κ�����','�κα�ġ NO~! �κ����� OK~!','9.jpg',3,347,0,213,'blog1',to_date('18/05/24','RR/MM/DD'));
-Insert into TAKEMEAL.RECIPE (NO,SUBJECT,CONTENTS,THUMBNAIL,TIME,FOLLOW,HIT,KCAL,USERID,REG_DATE) values (10,'���� ��ä','���߳�ä�� GGġ���� ���� ��ä','10.jpg',5,842,0,213,'blog1',to_date('18/05/24','RR/MM/DD'));
-Insert into TAKEMEAL.RECIPE (NO,SUBJECT,CONTENTS,THUMBNAIL,TIME,FOLLOW,HIT,KCAL,USERID,REG_DATE) values (11,'�ٴҶ���̽�ũ��','�������� �ս��� �����Դ� ���� ����Ʈ','11.jpg',50,100,0,213,'blog1',to_date('18/05/24','RR/MM/DD'));
-Insert into TAKEMEAL.RECIPE (NO,SUBJECT,CONTENTS,THUMBNAIL,TIME,FOLLOW,HIT,KCAL,USERID,REG_DATE) values (12,'�����','���Ⱑ ��� �� ���� ���ɟ�','12.png',10,387,0,213,'blog1',to_date('18/06/25','RR/MM/DD'));
+Insert into TAKEMEAL.RECIPE (NO,SUBJECT,CONTENTS,THUMBNAIL,TIME,FOLLOW,HIT,KCAL,USERID,REG_DATE) values (1,'딸기치즈케이크','여심을 자극하는 달콤한 딸기와 치즈의 만남','1.jpg',10,154,0,123,'blog1',to_date('18/05/23','RR/MM/DD'));
+Insert into TAKEMEAL.RECIPE (NO,SUBJECT,CONTENTS,THUMBNAIL,TIME,FOLLOW,HIT,KCAL,USERID,REG_DATE) values (2,'계란토스트','자취생을 위한 황금레시피! 달콤한 식빵과 고소한 달걀 콤비','2.png',30,1186,0,213,'blog1',to_date('18/05/24','RR/MM/DD'));
+Insert into TAKEMEAL.RECIPE (NO,SUBJECT,CONTENTS,THUMBNAIL,TIME,FOLLOW,HIT,KCAL,USERID,REG_DATE) values (3,'초코빙수','여자친구를 위한 달콤한 디저트','3.jpg',20,245,0,213,'blog1',to_date('18/05/24','RR/MM/DD'));
+Insert into TAKEMEAL.RECIPE (NO,SUBJECT,CONTENTS,THUMBNAIL,TIME,FOLLOW,HIT,KCAL,USERID,REG_DATE) values (4,'깻잎 누들','데리야끼소스 누들과 깻잎으로 만든 어디에도 없는 레시피','4.png',15,345,0,213,'blog1',to_date('18/05/24','RR/MM/DD'));
+Insert into TAKEMEAL.RECIPE (NO,SUBJECT,CONTENTS,THUMBNAIL,TIME,FOLLOW,HIT,KCAL,USERID,REG_DATE) values (5,'한입핫도그','아이들이 좋아하는 간식 필수템! 건강식으로도 최고!','5.jpg',30,784,0,213,'blog1',to_date('18/05/24','RR/MM/DD'));
+Insert into TAKEMEAL.RECIPE (NO,SUBJECT,CONTENTS,THUMBNAIL,TIME,FOLLOW,HIT,KCAL,USERID,REG_DATE) values (6,'마늘훈제삼겹살','혼술최강안주, 다진마늘로 돼지고기 냄새까지 싹 잡았다','6.png',60,111,0,213,'blog1',to_date('18/05/24','RR/MM/DD'));
+Insert into TAKEMEAL.RECIPE (NO,SUBJECT,CONTENTS,THUMBNAIL,TIME,FOLLOW,HIT,KCAL,USERID,REG_DATE) values (7,'마늘토스트','드라큘라도 반한 마늘토스트, 아이들도 좋아해요','7.jpg',25,203,0,213,'blog1',to_date('18/05/24','RR/MM/DD'));
+Insert into TAKEMEAL.RECIPE (NO,SUBJECT,CONTENTS,THUMBNAIL,TIME,FOLLOW,HIT,KCAL,USERID,REG_DATE) values (8,'꼬마김밥','작다고 무시하지 마시라! 맛은 김밥 of 김밥','8.jpg',20,511,0,213,'blog1',to_date('18/05/24','RR/MM/DD'));
+Insert into TAKEMEAL.RECIPE (NO,SUBJECT,CONTENTS,THUMBNAIL,TIME,FOLLOW,HIT,KCAL,USERID,REG_DATE) values (9,'두부제육','두부김치 NO~! 두부제육 OK~!','9.jpg',3,347,0,213,'blog1',to_date('18/05/24','RR/MM/DD'));
+Insert into TAKEMEAL.RECIPE (NO,SUBJECT,CONTENTS,THUMBNAIL,TIME,FOLLOW,HIT,KCAL,USERID,REG_DATE) values (10,'삼겹살 냉채','족발냉채도 GG치고간 삼겹살 냉채','10.jpg',5,842,0,213,'blog1',to_date('18/05/24','RR/MM/DD'));
+Insert into TAKEMEAL.RECIPE (NO,SUBJECT,CONTENTS,THUMBNAIL,TIME,FOLLOW,HIT,KCAL,USERID,REG_DATE) values (11,'바닐라아이스크림','집에서도 손쉽게 만들어먹는 간단 디저트','11.jpg',50,100,0,213,'blog1',to_date('18/05/24','RR/MM/DD'));
+Insert into TAKEMEAL.RECIPE (NO,SUBJECT,CONTENTS,THUMBNAIL,TIME,FOLLOW,HIT,KCAL,USERID,REG_DATE) values (12,'딸기롤','딸기가 듬뿍 들어간 수제 롤케잌','12.png',10,387,0,213,'blog1',to_date('18/06/25','RR/MM/DD'));
 
 --------------------------------------------------------
 --  DDL for Index RECIPE_INDEX1
@@ -291,7 +291,7 @@ ALTER TABLE "TAKEMEAL"."RECIPE" MODIFY ("NO" NOT NULL ENABLE);
 
 
 --------------------------------------------------------
---  ������ ������ - ������-6��-18-2018   
+--  파일이 생성됨 - 월요일-6월-18-2018   
 --------------------------------------------------------
 --------------------------------------------------------
 --  DDL for Table FOOD
@@ -306,19 +306,19 @@ CREATE TABLE FOOD(
   PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
   TABLESPACE "SYSTEM" ;
 
-COMMENT ON COLUMN "TAKEMEAL"."FOOD"."CLASS_CODE" IS '��ǰ�ڵ�';
-COMMENT ON COLUMN "TAKEMEAL"."FOOD"."CLASS_NAME" IS '��ǰ�̸�';
-COMMENT ON COLUMN "TAKEMEAL"."FOOD"."TABLE_CODE" IS '���̺��з�';
+COMMENT ON COLUMN "TAKEMEAL"."FOOD"."CLASS_CODE" IS '식품코드';
+COMMENT ON COLUMN "TAKEMEAL"."FOOD"."CLASS_NAME" IS '식품이름';
+COMMENT ON COLUMN "TAKEMEAL"."FOOD"."TABLE_CODE" IS '테이블분류';
 
 REM INSERTING into TAKEMEAL.FOOD
 SET DEFINE OFF;
 
-Insert into TAKEMEAL.FOOD (CLASS_CODE,CLASS_NAME,TABLE_CODE) values ('ME','����','MEATS');
-Insert into TAKEMEAL.FOOD (CLASS_CODE,CLASS_NAME,TABLE_CODE) values ('FS','���з�','FISHS');
-Insert into TAKEMEAL.FOOD (CLASS_CODE,CLASS_NAME,TABLE_CODE) values ('CR','���','CEREALS');
-Insert into TAKEMEAL.FOOD (CLASS_CODE,CLASS_NAME,TABLE_CODE) values ('VT','��ä��','VEGETABLES');
-Insert into TAKEMEAL.FOOD (CLASS_CODE,CLASS_NAME,TABLE_CODE) values ('EG','���','EGGS');
-Insert into TAKEMEAL.FOOD (CLASS_CODE,CLASS_NAME,TABLE_CODE) values ('MK','����ǰ','MILKY');
+Insert into TAKEMEAL.FOOD (CLASS_CODE,CLASS_NAME,TABLE_CODE) values ('ME','육류','MEATS');
+Insert into TAKEMEAL.FOOD (CLASS_CODE,CLASS_NAME,TABLE_CODE) values ('FS','어패류','FISHS');
+Insert into TAKEMEAL.FOOD (CLASS_CODE,CLASS_NAME,TABLE_CODE) values ('CR','곡류','CEREALS');
+Insert into TAKEMEAL.FOOD (CLASS_CODE,CLASS_NAME,TABLE_CODE) values ('VT','야채류','VEGETABLES');
+Insert into TAKEMEAL.FOOD (CLASS_CODE,CLASS_NAME,TABLE_CODE) values ('EG','계란','EGGS');
+Insert into TAKEMEAL.FOOD (CLASS_CODE,CLASS_NAME,TABLE_CODE) values ('MK','유제품','MILKY');
 --------------------------------------------------------
 --  DDL for Index SYS_C007672
 --------------------------------------------------------
@@ -341,7 +341,7 @@ ALTER TABLE "TAKEMEAL"."FOOD" MODIFY ("CLASS_NAME" NOT NULL ENABLE);
 
 
 --------------------------------------------------------
---  ������ ������ - ������-6��-18-2018   
+--  파일이 생성됨 - 월요일-6월-18-2018   
 --------------------------------------------------------
 --------------------------------------------------------
 --  DDL for Table ALL_FOOD
@@ -362,13 +362,13 @@ CREATE TABLE ALL_FOOD(
   PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
   TABLESPACE "SYSTEM" ;
 
-COMMENT ON COLUMN "TAKEMEAL"."ALL_FOOD"."NO" IS 'ȸ����ȣ';
-COMMENT ON COLUMN "TAKEMEAL"."ALL_FOOD"."CLASS_CODE" IS '��ǰ�ڵ�';
-COMMENT ON COLUMN "TAKEMEAL"."ALL_FOOD"."FOOD_CODE" IS '����ڵ�';
-COMMENT ON COLUMN "TAKEMEAL"."ALL_FOOD"."FOOD_NAME" IS '����̸�';
-COMMENT ON COLUMN "TAKEMEAL"."ALL_FOOD"."COOL_SYS" IS '��������';
-COMMENT ON COLUMN "TAKEMEAL"."ALL_FOOD"."EXPIRY_DATE" IS '�������';
-COMMENT ON COLUMN "TAKEMEAL"."ALL_FOOD"."FOOD_COUNT" IS '����';
+COMMENT ON COLUMN "TAKEMEAL"."ALL_FOOD"."NO" IS '회원번호';
+COMMENT ON COLUMN "TAKEMEAL"."ALL_FOOD"."CLASS_CODE" IS '식품코드';
+COMMENT ON COLUMN "TAKEMEAL"."ALL_FOOD"."FOOD_CODE" IS '재료코드';
+COMMENT ON COLUMN "TAKEMEAL"."ALL_FOOD"."FOOD_NAME" IS '재료이름';
+COMMENT ON COLUMN "TAKEMEAL"."ALL_FOOD"."COOL_SYS" IS '보관형태';
+COMMENT ON COLUMN "TAKEMEAL"."ALL_FOOD"."EXPIRY_DATE" IS '유통기한';
+COMMENT ON COLUMN "TAKEMEAL"."ALL_FOOD"."FOOD_COUNT" IS '수량';
 
 REM INSERTING into TAKEMEAL.ALL_FOOD
 SET DEFINE OFF;
@@ -383,64 +383,64 @@ ALTER TABLE "TAKEMEAL"."ALL_FOOD" MODIFY ("FOOD_NAME" NOT NULL ENABLE);
 ALTER TABLE "TAKEMEAL"."ALL_FOOD" MODIFY ("CLASS_CODE" NOT NULL ENABLE);
 ALTER TABLE "TAKEMEAL"."ALL_FOOD" MODIFY ("NO" NOT NULL ENABLE);
 
-Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'ME',101,'�ҵ��','�õ�',null,0);
-Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'ME',102,'�ҾȽ�','�õ�',null,4);
-Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'ME',103,'�Ұ���','����',null,4);
-Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'ME',201,'����','�õ�',null,0);
-Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'ME',202,'���','�õ�',null,0);
-Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'ME',203,'��������','�õ�',null,0);
-Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'ME',301,'���Ѹ���','����',null,0);
-Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'ME',302,'�߰�����','����',null,0);
-Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'ME',303,'�߹�','�õ�',null,0);
-Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'ME',304,'�߰���','�õ�',null,0);
-Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'CR',101,'���','�ǿ�',null,0);
-Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'CR',102,'���','�ǿ�',null,0);
-Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'CR',103,'����','�ǿ�',null,0);
-Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'CR',201,'������','����',null,0);
-Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'CR',202,'������','�õ�',null,0);
-Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'CR',203,'������','�õ�',null,0);
-Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'CR',204,'�ϵ���','�õ�',null,0);
-Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'CR',301,'�а���','�ǿ�',null,0);
-Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'CR',302,'�Ұ���','�ǿ�',null,0);
-Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'CR',303,'Ƣ�谡��','�ǿ�',null,0);
-Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'CR',304,'������','�ǿ�',null,0);
-Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'CR',401,'�Ļ�','�ǿ�',null,0);
-Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'CR',402,'�ٰ�Ʈ��','�ǿ�',null,0);
-Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'CR',403,'���̱�','����',null,0);
-Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'CR',501,'������','�õ�',null,0);
-Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'CR',502,'�����̶�','�õ�',null,0);
-Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'EG',101,'���','����',null,0);
-Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'EG',102,'���߸���','����',null,0);
-Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'EG',103,'������','����',null,0);
-Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'FS',101,'�����','����',null,0);
-Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'FS',102,'����','�õ�',null,0);
-Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'FS',103,'��ġ','�õ�',null,0);
-Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'FS',104,'��ġ','����',null,2);
-Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'FS',201,'������','����',null,0);
-Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'FS',202,'�������','����',null,0);
-Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'FS',203,'����','�õ�',null,0);
-Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'FS',301,'�����̿�','�ǿ�',null,0);
-Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'FS',302,'�����ٽø�','�ǿ�',null,0);
-Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'MK',101,'����','����',null,0);
-Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'MK',102,'���Ʈ','����',null,0);
-Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'MK',201,'ü��ġ��','����',null,0);
-Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'MK',202,'����Ÿġ��','����',null,0);
-Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'VT',101,'�ɻ���','����',null,0);
-Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'VT',102,'������','����',null,0);
-Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'VT',103,'����','����',null,0);
-Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'VT',104,'�����','����',null,0);
-Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'VT',105,'����','����',null,0);
-Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'VT',106,'����','����',null,0);
-Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'VT',107,'���','����',null,0);
-Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'VT',108,'����','����',null,0);
-Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'VT',109,'����','����',null,0);
+Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'ME',101,'소등심','냉동',null,0);
+Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'ME',102,'소안심','냉동',null,4);
+Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'ME',103,'소갈비','냉장',null,4);
+Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'ME',201,'삼겹살','냉동',null,0);
+Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'ME',202,'목살','냉동',null,0);
+Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'ME',203,'돼지갈비','냉동',null,0);
+Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'ME',301,'닭한마리','냉장',null,0);
+Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'ME',302,'닭가슴살','냉장',null,0);
+Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'ME',303,'닭발','냉동',null,0);
+Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'ME',304,'닭갈비','냉동',null,0);
+Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'CR',101,'백미','실온',null,0);
+Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'CR',102,'흑미','실온',null,0);
+Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'CR',103,'현미','실온',null,0);
+Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'CR',201,'옥수수','냉장',null,0);
+Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'CR',202,'강낭콩','냉동',null,0);
+Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'CR',203,'검은콩','냉동',null,0);
+Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'CR',204,'완두콩','냉동',null,0);
+Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'CR',301,'밀가루','실온',null,0);
+Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'CR',302,'쌀가루','실온',null,0);
+Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'CR',303,'튀김가루','실온',null,0);
+Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'CR',304,'빵가루','실온',null,0);
+Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'CR',401,'식빵','실온',null,0);
+Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'CR',402,'바게트빵','실온',null,0);
+Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'CR',403,'베이글','냉장',null,0);
+Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'CR',501,'떡국떡','냉동',null,0);
+Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'CR',502,'조랭이떡','냉동',null,0);
+Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'EG',101,'계란','냉장',null,0);
+Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'EG',102,'메추리알','냉장',null,0);
+Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'EG',103,'오리알','냉장',null,0);
+Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'FS',101,'고등어','냉장',null,0);
+Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'FS',102,'동태','냉동',null,0);
+Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'FS',103,'삼치','냉동',null,0);
+Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'FS',104,'갈치','냉장',null,2);
+Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'FS',201,'바지락','냉장',null,0);
+Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'FS',202,'모시조개','냉장',null,0);
+Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'FS',203,'꼬막','냉동',null,0);
+Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'FS',301,'마른미역','실온',null,0);
+Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'FS',302,'마른다시마','실온',null,0);
+Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'MK',101,'우유','냉장',null,0);
+Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'MK',102,'요거트','냉장',null,0);
+Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'MK',201,'체다치즈','냉장',null,0);
+Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'MK',202,'리코타치즈','냉장',null,0);
+Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'VT',101,'꽃상추','냉장',null,0);
+Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'VT',102,'적상추','냉장',null,0);
+Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'VT',103,'양파','냉장',null,0);
+Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'VT',104,'양배추','냉장',null,0);
+Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'VT',105,'대파','냉장',null,0);
+Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'VT',106,'쪽파','냉장',null,0);
+Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'VT',107,'당근','냉장',null,0);
+Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'VT',108,'마늘','냉장',null,0);
+Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'VT',109,'생강','냉장',null,0);
 
 
 ------------------------------------------------------------------------------------------------------------------------------
 
 
 --------------------------------------------------------
---  ������ ������ - �ݿ���-6��-08-2018   
+--  파일이 생성됨 - 금요일-6월-08-2018   
 --------------------------------------------------------
 DROP TABLE TBL_REPLY;
 DROP TABLE TBL_BOARD;
@@ -457,10 +457,10 @@ CREATE SEQUENCE  "TAKEMEAL"."TBL_BOARD_SEQ"  MINVALUE 1 MAXVALUE 999999999999999
 CREATE TABLE TBL_BOARD(
   BNO NUMBER PRIMARY KEY, 
 	TITLE VARCHAR2(200 BYTE), 
-	CONTENT VARCHAR2(2000 BYTE), 
+	CONTENT VARCHAR2(4000 BYTE), 
 	WRITER VARCHAR2(200 BYTE), 
 	REGDATE DATE DEFAULT SYSDATE, 
-	VIEWCNT NUMBER
+  VIEWCNT number DEFAULT 0
   ) SEGMENT CREATION IMMEDIATE 
   PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 NOCOMPRESS LOGGING
   STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
@@ -500,6 +500,7 @@ END;
 /
 ALTER TRIGGER "TAKEMEAL"."TBL_BOARD_TRG1" ENABLE;
 alter table TBL_BOARD add (replycnt number default 0);
+
 
 
 --------------------------------------------------------
@@ -558,3 +559,493 @@ BEGIN
 END;
 /
 ALTER TRIGGER "TAKEMEAL"."TBL_REPLY_TRG" ENABLE;
+
+---------------------------------------------------
+--  tbl_board insert
+-----------------------------------------------------
+Insert into TAKEMEAL.TBL_BOARD (BNO,TITLE,CONTENT,WRITER,REGDATE,VIEWCNT,REPLYCNT) values (1,'메인서비스 점검 안내','안녕하세요. 
+
+챙겨먹어요 입니다.  
+
+보다 안정적이고 편리한 서비스 제공을 위해 아래와 같이 사이트 점검이 진행될 예정입니다.  
+
+해당 점검시간에는 사이트 접속이 어려우니 고객님의 너그러운 양해 부탁드립니다.  
+
+감사합니다.  
+
+○ 점검 일시 : 2018년 06월 24일(일) 03:00 ~ 06:00(3시간)  
+
+○ 점검 내용 : 오브젝트 추가 및 변경, 데이터 마이그레이션, 운영 DBMS 스토리지 추가 작업 
+
+○ 영향 범위 : takeMeal 전체 웹 서비스 이용 중지','관리자',to_date('18/06/19 19:17','RR/MM/DD HH24:MI'),1,0);
+Insert into TAKEMEAL.TBL_BOARD (BNO,TITLE,CONTENT,WRITER,REGDATE,VIEWCNT,REPLYCNT) values (2,'개인정보처리방침 개정 안내','안녕하세요. 
+챙겨먹어요 입니다. 
+2018. 6. 7(목)부터 
+ 개인정보처리방침 내용 일부가 개정되어, 아래와 같이 안내합니다. 
+
+제5조 수집한 개인정보의 처리위탁 변경 
+ 본인확인 서비스 업무 : NICE 정보통신 주식회사 추가 
+
+ 회원님께서 개정일까지 거부의사(회원탈퇴)를 표시하지 않으시는 경우, 본 개인정보처리방침에 
+ 동의하신 것으로 봅니다. 
+
+앞으로도 고객님의 즐겁고 편안한 쇼핑을 위하여 더욱 노력하겠습니다. 
+감사합니다.','관리자',to_date('18/06/19 19:17','RR/MM/DD HH24:MI'),0,0);
+Insert into TAKEMEAL.TBL_BOARD (BNO,TITLE,CONTENT,WRITER,REGDATE,VIEWCNT,REPLYCNT) values (3,'챙겨먹어요 이용 규칙 ','가. 일반 회원의 사이트 이용규칙
+
+본 챙겨먹어요 사이트 이용규칙 (이하 “규칙”이라 합니다)은 ㈜챙겨먹어요가 관리, 유지, 소유하는 온라인 사이트(챙겨먹어요 
+)내 서비스 전체(이하 “서비스”라 합니다)에 포괄적으로 적용 됩니다.
+
+회원은 아래 각 조항에 해당하는 행위 시, 모니터링 또는 신고된 내용에 따라 주의 및 경고 또는 즉시 레벨강등 조치가 진행됩니다.  또한 규칙을 위반한 게시물, 코멘트 등은 삭제처리 된 후 원상복구 되지 않습니다. 가입 및 탈퇴, 게시물 등록 삭제 등의 과정에서 포인트가 차감되는 경우에도 포인트는 원상복구 되지 않습니다. 또한 재가입 시, 멀티아이디 등을 통해 제재가 진행된 부분은 본인 계정으로 승계 됩니다.
+
+제재 받게 된 게시글, 코멘트 등은 별도로 저장되며, 분쟁 해결을 위하여 행정기관 또는 사법기관의 증거 자료 제출 명령이 있을 경우, 요청된 자료는 해당 기관에 제공하게 됩니다.
+
+1조 회원 가입 및 이용 시 금지사항 입니다.
+
+1항  회원가입신청 또는 변경 시, 타인의 정보를 무단 도용 또는 전재하거나, 허위내용을 등록하였을 경우 강제 탈퇴처리 됩니다.
+
+2항  타 회원의 ID 및 비밀번호를 무단 도용하거나, 부당하게 서비스를 이용하는 경우 이용에 제한을 받습니다.
+
+3항  멀티 아이디를 사용하고 있는 경우, 임시 레벨강등 조치 후 해명절차가 진행되며 최소 1주일 이상 레벨강등의 징계를 받습니다. 
+
+- 본인이 아닌 타인의 명의로 가입하여 이를 사용하지 않더라도 적발될 경우 멀티 아이디 사용에 해당됩니다. 이는 일가친척의 명의에도 예외를 두지 않습니다. 본인의 계정 외 계정은 레벨강등 조치가 진행됩니다.
+
+- 챙겨먹어요 에서는 성별, 나이, 레벨 등에 따라 출입이 가능한 게시판이 제한되어 있어 본인 명의의 계정만 이용해야 합니다. 가족의 명의라도 본인의 계정이 아닌 경우 명의차용의 사유로 레벨강등이 진행됩니다.
+
+※ 탈퇴 및 영구레벨 강등 조치 후에는 개인정보가 포함된 게시물 외에는 삭제는 진행되지 않습니다.  
+
+4항 징계 중 임의 탈퇴하였을 경우, 이후 이력에 따라 최대 5년간 재가입이 제한될 수 있습니다. (포인트가 마이너스일 경우도 동일합니다.)
+
+5항 장터를 이용할 경우, 가입자와 장터 이용자, 거래통장의 실명이 상이할 경우 출입을 제한합니다.
+
+
+ ','관리자',to_date('18/06/19 19:17','RR/MM/DD HH24:MI'),0,0);
+Insert into TAKEMEAL.TBL_BOARD (BNO,TITLE,CONTENT,WRITER,REGDATE,VIEWCNT,REPLYCNT) values (4,'사이트 소개 - 2018년 06월 22일','챙겨먹어요 에 오신 것을 환영합니다.
+
+1. 챙겨먹어요 가 뭐에요??
+
+챙겨먹어요는 바쁜 현대인들에세
+맛있는 밥한끼 간편한 끼니 한끼를 책임지겠다는 의미로 쓰고있습니다
+
+
+2. 챙겨먹어요 사이트는 언제부터 생겼나요??
+
+2018년 6월 22일 오픈했습니다. 
+
+
+3. 챙겨먹어요 커뮤니티의 목적
+
+냉장고에 있는 음식 관련 레시피 정보공유를 목적으로 합니다.
+
+
+챙겨먹어요 게시판을 이용할때 알아야 하는 사항들입니다. 꼭 읽어보시기 바랍니다.
+
+
+
+더 좋은 챙겨먹어요가 되도록 함께 해 주셨으면 합니다. ','관리자',to_date('18/06/19 19:17','RR/MM/DD HH24:MI'),0,0);
+Insert into TAKEMEAL.TBL_BOARD (BNO,TITLE,CONTENT,WRITER,REGDATE,VIEWCNT,REPLYCNT) values (5,'PC보안 강화 및 백신 정보, 비밀번호 변경 Tip','가.정보보호실천수칙
+
+1. 지속적으로 OS 보안패치를 설치합니다. 
+2. 바이러스 백신 및 스파이웨어 제거 프로그램 사용합니다.
+3. 컴퓨터 패스워드를 설정합니다.
+4. 신뢰할 수 있는 웹사이트에서 제공하는 ActiveX 프로그램만 설치합니다.
+5. 의심스러운 이메일(E-mail) 열람하지 않습니다.
+6. 네트워크 공유폴더(Network shared folder) 사용 자제합니다.
+7. USB 등 보조기억매체 관리를 철저히 합니다.
+8. 페이스북, 트위터 등 SNS를 이용할 때 잘 모르는 사람의 SNS 페이지에서 함부로 단축 URL을 클릭하지 않습니다.
+9. P2P 프로그램 사용 시 파일을 다운로드할 때는 반드시 보안 제품으로 검사한 후 사용한다.
+10. 단축 URL은 피싱이나 사기, 클릭 유도, 스팸 등의 위험이 있으니, 믿을 만한 경우에만 클릭합니다.
+
+
+나. 온라인 검사
+
+ 백신 홈페이지 상에서 바이러스 및 스파이웨어를 점검할 수 있는 시스템입니다. 
+http://www.boho.or.kr/kor/check/check_02.jsp
+
+
+다.무료백신 설치
+
+1. 주요백신
+avast - http://www.avastkorea.com/download/free-antivirus/
+ avira  - http://www.avira.com/ko/avira-free-antivirus
+ mse - http://windows.microsoft.com/ko-KR/windows/products/security-essentials
+하우리 - http://www.hauri.co.kr/customer/download/download_index.html
+
+ 2. 기타백신
+http://www.boho.or.kr/kor/download/download_01.jsp
+
+
+라. 인터넷 브라우저 최신 버전 설치
+
+1.인터넷익스플로러 (Internet Explorer) : http://windows.microsoft.com/ko-KR/internet-explorer/products/ie/home
+ 2. 크롬 (chrome) : https://www.google.com/chrome/?brand=ECSB&installdataindex=no-apps-no-promo
+ 3. 사파리 (safari): http://www.apple.com/safari/download
+ 4. 파이어폭스 (Fire Fox) : http://www.mozilla.or.kr/ko/
+
+
+마. 기타 업데이트 및 전용백신, 프로그램
+
+1. Adobe Flashplayer
+http://get.adobe.com/kr/flashplayer/
+
+ 2. JAVA 최신 버젼 다운로드
+http://www.java.com/ko/ 
+
+ 3.  V3 GameHack Kill : 가장 빈번하게 발생하는 온라인 게임 계정 탈취를 목적으로 제작된 악성코드에 대응하는 전용백신입니다.
+http://www.ahnlab.com/kr/site/download/vacc/vaccView.do?seq=105
+
+ 4. 울타리 ( 악성코드 검사 및 제거)
+http://data.rodream.org/index.htm?page=safefence
+
+ 5. DNS 체인저 감염확인 및 조치안내
+http://www.dns-ok.us ( 녹색이면 양호 . 적색이면 감염 )
+http://www.boho.or.kr/kor/notice/noticeView.jsp?p_bulletin_writing_sequence=960
+
+
+바. 비밀번호 변경 
+
+- 비밀번호 변경 : http://www.ppomppu.co.kr/myinfo/profile.php
+
+- 비밀번호의 경우 특수문자+대문자+소문자+숫자를 조합해서 12자 이상으로 설정하시는게 좋습니다.
+    (챙겨먹어요 는 최대 20자까지 만들 수 있습니다.)
+
+- 각 사이트 별로 다르지만 쉽게 기억하기 위해, 각 사이트의 도메인과 공통된 조합문자를 사용하시면 더 안전합니다. 
+
+    예>챙겨먹어요  : Tk@1234#12, 네이버 : Na@1234#12, 다음 : Da@1234#12
+
+- 비밀번호는 재샤용 하지 않습니다.
+
+- 비밀번호 재설정 질문도 추측할 수 없도록 만듭니다.
+
+- 공용PC에서 자동 로그인이 안되도록 하고, 이용 후 반드시 브라우저를 닫습니다. ','관리자',to_date('18/06/19 19:17','RR/MM/DD HH24:MI'),1,0);
+Insert into TAKEMEAL.TBL_BOARD (BNO,TITLE,CONTENT,WRITER,REGDATE,VIEWCNT,REPLYCNT) values (6,'메인서비스 점검 안내','안녕하세요. 
+
+챙겨먹어요 입니다.  
+
+보다 안정적이고 편리한 서비스 제공을 위해 아래와 같이 사이트 점검이 진행될 예정입니다.  
+
+해당 점검시간에는 사이트 접속이 어려우니 고객님의 너그러운 양해 부탁드립니다.  
+
+감사합니다.  
+
+○ 점검 일시 : 2018년 06월 24일(일) 03:00 ~ 06:00(3시간)  
+
+○ 점검 내용 : 오브젝트 추가 및 변경, 데이터 마이그레이션, 운영 DBMS 스토리지 추가 작업 
+
+○ 영향 범위 : takeMeal 전체 웹 서비스 이용 중지','관리자',to_date('18/06/19 19:17','RR/MM/DD HH24:MI'),0,0);
+Insert into TAKEMEAL.TBL_BOARD (BNO,TITLE,CONTENT,WRITER,REGDATE,VIEWCNT,REPLYCNT) values (7,'개인정보처리방침 개정 안내','안녕하세요. 
+챙겨먹어요 입니다. 
+2018. 6. 7(목)부터 
+ 개인정보처리방침 내용 일부가 개정되어, 아래와 같이 안내합니다. 
+
+제5조 수집한 개인정보의 처리위탁 변경 
+ 본인확인 서비스 업무 : NICE 정보통신 주식회사 추가 
+
+ 회원님께서 개정일까지 거부의사(회원탈퇴)를 표시하지 않으시는 경우, 본 개인정보처리방침에 
+ 동의하신 것으로 봅니다. 
+
+앞으로도 고객님의 즐겁고 편안한 쇼핑을 위하여 더욱 노력하겠습니다. 
+감사합니다.','관리자',to_date('18/06/19 19:17','RR/MM/DD HH24:MI'),0,0);
+Insert into TAKEMEAL.TBL_BOARD (BNO,TITLE,CONTENT,WRITER,REGDATE,VIEWCNT,REPLYCNT) values (8,'챙겨먹어요 이용 규칙 ','가. 일반 회원의 사이트 이용규칙
+
+본 챙겨먹어요 사이트 이용규칙 (이하 “규칙”이라 합니다)은 ㈜챙겨먹어요가 관리, 유지, 소유하는 온라인 사이트(챙겨먹어요 
+)내 서비스 전체(이하 “서비스”라 합니다)에 포괄적으로 적용 됩니다.
+
+회원은 아래 각 조항에 해당하는 행위 시, 모니터링 또는 신고된 내용에 따라 주의 및 경고 또는 즉시 레벨강등 조치가 진행됩니다.  또한 규칙을 위반한 게시물, 코멘트 등은 삭제처리 된 후 원상복구 되지 않습니다. 가입 및 탈퇴, 게시물 등록 삭제 등의 과정에서 포인트가 차감되는 경우에도 포인트는 원상복구 되지 않습니다. 또한 재가입 시, 멀티아이디 등을 통해 제재가 진행된 부분은 본인 계정으로 승계 됩니다.
+
+제재 받게 된 게시글, 코멘트 등은 별도로 저장되며, 분쟁 해결을 위하여 행정기관 또는 사법기관의 증거 자료 제출 명령이 있을 경우, 요청된 자료는 해당 기관에 제공하게 됩니다.
+
+1조 회원 가입 및 이용 시 금지사항 입니다.
+
+1항  회원가입신청 또는 변경 시, 타인의 정보를 무단 도용 또는 전재하거나, 허위내용을 등록하였을 경우 강제 탈퇴처리 됩니다.
+
+2항  타 회원의 ID 및 비밀번호를 무단 도용하거나, 부당하게 서비스를 이용하는 경우 이용에 제한을 받습니다.
+
+3항  멀티 아이디를 사용하고 있는 경우, 임시 레벨강등 조치 후 해명절차가 진행되며 최소 1주일 이상 레벨강등의 징계를 받습니다. 
+
+- 본인이 아닌 타인의 명의로 가입하여 이를 사용하지 않더라도 적발될 경우 멀티 아이디 사용에 해당됩니다. 이는 일가친척의 명의에도 예외를 두지 않습니다. 본인의 계정 외 계정은 레벨강등 조치가 진행됩니다.
+
+- 챙겨먹어요 에서는 성별, 나이, 레벨 등에 따라 출입이 가능한 게시판이 제한되어 있어 본인 명의의 계정만 이용해야 합니다. 가족의 명의라도 본인의 계정이 아닌 경우 명의차용의 사유로 레벨강등이 진행됩니다.
+
+※ 탈퇴 및 영구레벨 강등 조치 후에는 개인정보가 포함된 게시물 외에는 삭제는 진행되지 않습니다.  
+
+4항 징계 중 임의 탈퇴하였을 경우, 이후 이력에 따라 최대 5년간 재가입이 제한될 수 있습니다. (포인트가 마이너스일 경우도 동일합니다.)
+
+5항 장터를 이용할 경우, 가입자와 장터 이용자, 거래통장의 실명이 상이할 경우 출입을 제한합니다.
+
+
+ ','관리자',to_date('18/06/19 19:17','RR/MM/DD HH24:MI'),5,0);
+Insert into TAKEMEAL.TBL_BOARD (BNO,TITLE,CONTENT,WRITER,REGDATE,VIEWCNT,REPLYCNT) values (9,'사이트 소개 - 2018년 06월 22일','챙겨먹어요 에 오신 것을 환영합니다.
+
+1. 챙겨먹어요 가 뭐에요??
+
+챙겨먹어요는 바쁜 현대인들에세
+맛있는 밥한끼 간편한 끼니 한끼를 책임지겠다는 의미로 쓰고있습니다
+
+
+2. 챙겨먹어요 사이트는 언제부터 생겼나요??
+
+2018년 6월 22일 오픈했습니다. 
+
+
+3. 챙겨먹어요 커뮤니티의 목적
+
+냉장고에 있는 음식 관련 레시피 정보공유를 목적으로 합니다.
+
+
+챙겨먹어요 게시판을 이용할때 알아야 하는 사항들입니다. 꼭 읽어보시기 바랍니다.
+
+
+
+더 좋은 챙겨먹어요가 되도록 함께 해 주셨으면 합니다. ','관리자',to_date('18/06/19 19:17','RR/MM/DD HH24:MI'),9,0);
+Insert into TAKEMEAL.TBL_BOARD (BNO,TITLE,CONTENT,WRITER,REGDATE,VIEWCNT,REPLYCNT) values (10,'PC보안 강화 및 백신 정보, 비밀번호 변경 Tip','가.정보보호실천수칙
+
+1. 지속적으로 OS 보안패치를 설치합니다. 
+2. 바이러스 백신 및 스파이웨어 제거 프로그램 사용합니다.
+3. 컴퓨터 패스워드를 설정합니다.
+4. 신뢰할 수 있는 웹사이트에서 제공하는 ActiveX 프로그램만 설치합니다.
+5. 의심스러운 이메일(E-mail) 열람하지 않습니다.
+6. 네트워크 공유폴더(Network shared folder) 사용 자제합니다.
+7. USB 등 보조기억매체 관리를 철저히 합니다.
+8. 페이스북, 트위터 등 SNS를 이용할 때 잘 모르는 사람의 SNS 페이지에서 함부로 단축 URL을 클릭하지 않습니다.
+9. P2P 프로그램 사용 시 파일을 다운로드할 때는 반드시 보안 제품으로 검사한 후 사용한다.
+10. 단축 URL은 피싱이나 사기, 클릭 유도, 스팸 등의 위험이 있으니, 믿을 만한 경우에만 클릭합니다.
+
+
+나. 온라인 검사
+
+ 백신 홈페이지 상에서 바이러스 및 스파이웨어를 점검할 수 있는 시스템입니다. 
+http://www.boho.or.kr/kor/check/check_02.jsp
+
+
+다.무료백신 설치
+
+1. 주요백신
+avast - http://www.avastkorea.com/download/free-antivirus/
+ avira  - http://www.avira.com/ko/avira-free-antivirus
+ mse - http://windows.microsoft.com/ko-KR/windows/products/security-essentials
+하우리 - http://www.hauri.co.kr/customer/download/download_index.html
+
+ 2. 기타백신
+http://www.boho.or.kr/kor/download/download_01.jsp
+
+
+라. 인터넷 브라우저 최신 버전 설치
+
+1.인터넷익스플로러 (Internet Explorer) : http://windows.microsoft.com/ko-KR/internet-explorer/products/ie/home
+ 2. 크롬 (chrome) : https://www.google.com/chrome/?brand=ECSB&installdataindex=no-apps-no-promo
+ 3. 사파리 (safari): http://www.apple.com/safari/download
+ 4. 파이어폭스 (Fire Fox) : http://www.mozilla.or.kr/ko/
+
+
+마. 기타 업데이트 및 전용백신, 프로그램
+
+1. Adobe Flashplayer
+http://get.adobe.com/kr/flashplayer/
+
+ 2. JAVA 최신 버젼 다운로드
+http://www.java.com/ko/ 
+
+ 3.  V3 GameHack Kill : 가장 빈번하게 발생하는 온라인 게임 계정 탈취를 목적으로 제작된 악성코드에 대응하는 전용백신입니다.
+http://www.ahnlab.com/kr/site/download/vacc/vaccView.do?seq=105
+
+ 4. 울타리 ( 악성코드 검사 및 제거)
+http://data.rodream.org/index.htm?page=safefence
+
+ 5. DNS 체인저 감염확인 및 조치안내
+http://www.dns-ok.us ( 녹색이면 양호 . 적색이면 감염 )
+http://www.boho.or.kr/kor/notice/noticeView.jsp?p_bulletin_writing_sequence=960
+
+
+바. 비밀번호 변경 
+
+- 비밀번호 변경 : http://www.ppomppu.co.kr/myinfo/profile.php
+
+- 비밀번호의 경우 특수문자+대문자+소문자+숫자를 조합해서 12자 이상으로 설정하시는게 좋습니다.
+    (챙겨먹어요 는 최대 20자까지 만들 수 있습니다.)
+
+- 각 사이트 별로 다르지만 쉽게 기억하기 위해, 각 사이트의 도메인과 공통된 조합문자를 사용하시면 더 안전합니다. 
+
+    예>챙겨먹어요  : Tk@1234#12, 네이버 : Na@1234#12, 다음 : Da@1234#12
+
+- 비밀번호는 재샤용 하지 않습니다.
+
+- 비밀번호 재설정 질문도 추측할 수 없도록 만듭니다.
+
+- 공용PC에서 자동 로그인이 안되도록 하고, 이용 후 반드시 브라우저를 닫습니다. ','관리자',to_date('18/06/19 19:17','RR/MM/DD HH24:MI'),15,0);
+Insert into TAKEMEAL.TBL_BOARD (BNO,TITLE,CONTENT,WRITER,REGDATE,VIEWCNT,REPLYCNT) values (11,'메인서비스 점검 안내','안녕하세요. 
+
+챙겨먹어요 입니다.  
+
+보다 안정적이고 편리한 서비스 제공을 위해 아래와 같이 사이트 점검이 진행될 예정입니다.  
+
+해당 점검시간에는 사이트 접속이 어려우니 고객님의 너그러운 양해 부탁드립니다.  
+
+감사합니다.  
+
+○ 점검 일시 : 2018년 06월 24일(일) 03:00 ~ 06:00(3시간)  
+
+○ 점검 내용 : 오브젝트 추가 및 변경, 데이터 마이그레이션, 운영 DBMS 스토리지 추가 작업 
+
+○ 영향 범위 : takeMeal 전체 웹 서비스 이용 중지','관리자',to_date('18/06/19 19:17','RR/MM/DD HH24:MI'),2,0);
+Insert into TAKEMEAL.TBL_BOARD (BNO,TITLE,CONTENT,WRITER,REGDATE,VIEWCNT,REPLYCNT) values (12,'개인정보처리방침 개정 안내','안녕하세요. 
+챙겨먹어요 입니다. 
+2018. 6. 7(목)부터 
+ 개인정보처리방침 내용 일부가 개정되어, 아래와 같이 안내합니다. 
+
+제5조 수집한 개인정보의 처리위탁 변경 
+ 본인확인 서비스 업무 : NICE 정보통신 주식회사 추가 
+
+ 회원님께서 개정일까지 거부의사(회원탈퇴)를 표시하지 않으시는 경우, 본 개인정보처리방침에 
+ 동의하신 것으로 봅니다. 
+
+앞으로도 고객님의 즐겁고 편안한 쇼핑을 위하여 더욱 노력하겠습니다. 
+감사합니다.','관리자',to_date('18/06/19 19:17','RR/MM/DD HH24:MI'),0,0);
+Insert into TAKEMEAL.TBL_BOARD (BNO,TITLE,CONTENT,WRITER,REGDATE,VIEWCNT,REPLYCNT) values (13,'챙겨먹어요 이용 규칙 ','가. 일반 회원의 사이트 이용규칙
+
+본 챙겨먹어요 사이트 이용규칙 (이하 “규칙”이라 합니다)은 ㈜챙겨먹어요가 관리, 유지, 소유하는 온라인 사이트(챙겨먹어요 
+)내 서비스 전체(이하 “서비스”라 합니다)에 포괄적으로 적용 됩니다.
+
+회원은 아래 각 조항에 해당하는 행위 시, 모니터링 또는 신고된 내용에 따라 주의 및 경고 또는 즉시 레벨강등 조치가 진행됩니다.  또한 규칙을 위반한 게시물, 코멘트 등은 삭제처리 된 후 원상복구 되지 않습니다. 가입 및 탈퇴, 게시물 등록 삭제 등의 과정에서 포인트가 차감되는 경우에도 포인트는 원상복구 되지 않습니다. 또한 재가입 시, 멀티아이디 등을 통해 제재가 진행된 부분은 본인 계정으로 승계 됩니다.
+
+제재 받게 된 게시글, 코멘트 등은 별도로 저장되며, 분쟁 해결을 위하여 행정기관 또는 사법기관의 증거 자료 제출 명령이 있을 경우, 요청된 자료는 해당 기관에 제공하게 됩니다.
+
+1조 회원 가입 및 이용 시 금지사항 입니다.
+
+1항  회원가입신청 또는 변경 시, 타인의 정보를 무단 도용 또는 전재하거나, 허위내용을 등록하였을 경우 강제 탈퇴처리 됩니다.
+
+2항  타 회원의 ID 및 비밀번호를 무단 도용하거나, 부당하게 서비스를 이용하는 경우 이용에 제한을 받습니다.
+
+3항  멀티 아이디를 사용하고 있는 경우, 임시 레벨강등 조치 후 해명절차가 진행되며 최소 1주일 이상 레벨강등의 징계를 받습니다. 
+
+- 본인이 아닌 타인의 명의로 가입하여 이를 사용하지 않더라도 적발될 경우 멀티 아이디 사용에 해당됩니다. 이는 일가친척의 명의에도 예외를 두지 않습니다. 본인의 계정 외 계정은 레벨강등 조치가 진행됩니다.
+
+- 챙겨먹어요 에서는 성별, 나이, 레벨 등에 따라 출입이 가능한 게시판이 제한되어 있어 본인 명의의 계정만 이용해야 합니다. 가족의 명의라도 본인의 계정이 아닌 경우 명의차용의 사유로 레벨강등이 진행됩니다.
+
+※ 탈퇴 및 영구레벨 강등 조치 후에는 개인정보가 포함된 게시물 외에는 삭제는 진행되지 않습니다.  
+
+4항 징계 중 임의 탈퇴하였을 경우, 이후 이력에 따라 최대 5년간 재가입이 제한될 수 있습니다. (포인트가 마이너스일 경우도 동일합니다.)
+
+5항 장터를 이용할 경우, 가입자와 장터 이용자, 거래통장의 실명이 상이할 경우 출입을 제한합니다.
+
+
+ ','관리자',to_date('18/06/19 19:17','RR/MM/DD HH24:MI'),2,0);
+Insert into TAKEMEAL.TBL_BOARD (BNO,TITLE,CONTENT,WRITER,REGDATE,VIEWCNT,REPLYCNT) values (14,'사이트 소개 - 2018년 06월 22일','챙겨먹어요 에 오신 것을 환영합니다.
+
+1. 챙겨먹어요 가 뭐에요??
+
+챙겨먹어요는 바쁜 현대인들에세
+맛있는 밥한끼 간편한 끼니 한끼를 책임지겠다는 의미로 쓰고있습니다
+
+
+2. 챙겨먹어요 사이트는 언제부터 생겼나요??
+
+2018년 6월 22일 오픈했습니다. 
+
+
+3. 챙겨먹어요 커뮤니티의 목적
+
+냉장고에 있는 음식 관련 레시피 정보공유를 목적으로 합니다.
+
+
+챙겨먹어요 게시판을 이용할때 알아야 하는 사항들입니다. 꼭 읽어보시기 바랍니다.
+
+
+
+더 좋은 챙겨먹어요가 되도록 함께 해 주셨으면 합니다. ','관리자',to_date('18/06/19 19:17','RR/MM/DD HH24:MI'),0,0);
+Insert into TAKEMEAL.TBL_BOARD (BNO,TITLE,CONTENT,WRITER,REGDATE,VIEWCNT,REPLYCNT) values (15,'PC보안 강화 및 백신 정보, 비밀번호 변경 Tip','가.정보보호실천수칙
+
+1. 지속적으로 OS 보안패치를 설치합니다. 
+2. 바이러스 백신 및 스파이웨어 제거 프로그램 사용합니다.
+3. 컴퓨터 패스워드를 설정합니다.
+4. 신뢰할 수 있는 웹사이트에서 제공하는 ActiveX 프로그램만 설치합니다.
+5. 의심스러운 이메일(E-mail) 열람하지 않습니다.
+6. 네트워크 공유폴더(Network shared folder) 사용 자제합니다.
+7. USB 등 보조기억매체 관리를 철저히 합니다.
+8. 페이스북, 트위터 등 SNS를 이용할 때 잘 모르는 사람의 SNS 페이지에서 함부로 단축 URL을 클릭하지 않습니다.
+9. P2P 프로그램 사용 시 파일을 다운로드할 때는 반드시 보안 제품으로 검사한 후 사용한다.
+10. 단축 URL은 피싱이나 사기, 클릭 유도, 스팸 등의 위험이 있으니, 믿을 만한 경우에만 클릭합니다.
+
+
+나. 온라인 검사
+
+ 백신 홈페이지 상에서 바이러스 및 스파이웨어를 점검할 수 있는 시스템입니다. 
+http://www.boho.or.kr/kor/check/check_02.jsp
+
+
+다.무료백신 설치
+
+1. 주요백신
+avast - http://www.avastkorea.com/download/free-antivirus/
+ avira  - http://www.avira.com/ko/avira-free-antivirus
+ mse - http://windows.microsoft.com/ko-KR/windows/products/security-essentials
+하우리 - http://www.hauri.co.kr/customer/download/download_index.html
+
+ 2. 기타백신
+http://www.boho.or.kr/kor/download/download_01.jsp
+
+
+라. 인터넷 브라우저 최신 버전 설치
+
+1.인터넷익스플로러 (Internet Explorer) : http://windows.microsoft.com/ko-KR/internet-explorer/products/ie/home
+ 2. 크롬 (chrome) : https://www.google.com/chrome/?brand=ECSB&installdataindex=no-apps-no-promo
+ 3. 사파리 (safari): http://www.apple.com/safari/download
+ 4. 파이어폭스 (Fire Fox) : http://www.mozilla.or.kr/ko/
+
+
+마. 기타 업데이트 및 전용백신, 프로그램
+
+1. Adobe Flashplayer
+http://get.adobe.com/kr/flashplayer/
+
+ 2. JAVA 최신 버젼 다운로드
+http://www.java.com/ko/ 
+
+ 3.  V3 GameHack Kill : 가장 빈번하게 발생하는 온라인 게임 계정 탈취를 목적으로 제작된 악성코드에 대응하는 전용백신입니다.
+http://www.ahnlab.com/kr/site/download/vacc/vaccView.do?seq=105
+
+ 4. 울타리 ( 악성코드 검사 및 제거)
+http://data.rodream.org/index.htm?page=safefence
+
+ 5. DNS 체인저 감염확인 및 조치안내
+http://www.dns-ok.us ( 녹색이면 양호 . 적색이면 감염 )
+http://www.boho.or.kr/kor/notice/noticeView.jsp?p_bulletin_writing_sequence=960
+
+
+바. 비밀번호 변경 
+
+- 비밀번호 변경 : http://www.ppomppu.co.kr/myinfo/profile.php
+
+- 비밀번호의 경우 특수문자+대문자+소문자+숫자를 조합해서 12자 이상으로 설정하시는게 좋습니다.
+    (챙겨먹어요 는 최대 20자까지 만들 수 있습니다.)
+
+- 각 사이트 별로 다르지만 쉽게 기억하기 위해, 각 사이트의 도메인과 공통된 조합문자를 사용하시면 더 안전합니다. 
+
+    예>챙겨먹어요  : Tk@1234#12, 네이버 : Na@1234#12, 다음 : Da@1234#12
+
+- 비밀번호는 재샤용 하지 않습니다.
+
+- 비밀번호 재설정 질문도 추측할 수 없도록 만듭니다.
+
+- 공용PC에서 자동 로그인이 안되도록 하고, 이용 후 반드시 브라우저를 닫습니다. ','관리자',to_date('18/06/19 19:17','RR/MM/DD HH24:MI'),3,0);
+Insert into TAKEMEAL.TBL_BOARD (BNO,TITLE,CONTENT,WRITER,REGDATE,VIEWCNT,REPLYCNT) values (16,'메인서비스 점검 안내','		안녕하세요. 
+
+챙겨먹어요 입니다.  
+
+보다 안정적이고 편리한 서비스 제공을 위해 아래와 같이 사이트 점검이 진행될 예정입니다.  
+
+해당 점검시간에는 사이트 접속이 어려우니 고객님의 너그러운 양해 부탁드립니다.  
+
+감사합니다.  
+
+○ 점검 일시 : 2018년 06월 24일(일) 03:00 ~ 06:00(3시간)  
+
+
+ ○ 점검 내용 : 오브젝트 추가 및 변경, 데이터 마이그레이션, 운영 DBMS 스토리지 추가 작업 
+
+○ 영향 범위 : takeMeal 전체 웹 서비스 이용 중지','관리자',to_date('18/06/19 19:22','RR/MM/DD HH24:MI'),22,0);
+
+
+commit;
+
+

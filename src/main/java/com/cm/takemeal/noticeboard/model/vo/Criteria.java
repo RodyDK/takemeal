@@ -37,8 +37,16 @@ public class Criteria {
 	
 	//method for MyBatis SQL Mapper - 
 	public int getPageStart() {
+		if(this.page <= 1) {
+			return 1;
+		}
 		
-		return (this.page -1)* perPageNum;
+		return (this.page * perPageNum) - 9;
+	}
+	//method for MyBatis SQL Mapper - 
+	//pageEnd mapper에서 쓰면됨
+	public int getPageEnd() {
+		return this.page * perPageNum;
 	}
 	
 	//method for MyBatis SQL Mapper 

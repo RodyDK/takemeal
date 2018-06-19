@@ -32,9 +32,7 @@ public class SearchBoardController {
 	public ModelAndView listPage(@ModelAttribute("page") SearchCriteria cri, ModelAndView mv)throws Exception{
 		
 		logger.info(cri.toString());
-		
-		
-		
+
 		mv.addObject("list", service.listSearchCriteria(cri));
 		mv.setViewName("DJ/list");
 		PageMaker pageMaker = new PageMaker();
@@ -43,7 +41,6 @@ public class SearchBoardController {
 		mv.addObject("pageMaker", pageMaker);
 		logger.info(pageMaker.toString());
 		return mv;
-		
 		
 	}
 	
@@ -78,12 +75,20 @@ public class SearchBoardController {
 	
 	}
 	
-	@RequestMapping(value="/modifyPage", method=RequestMethod.GET)
-	public String modifyPagingGET(int bno, @ModelAttribute("cri")SearchCriteria cri, Model model)throws Exception{
+	@RequestMapping(value="modifyPage", method=RequestMethod.GET)
+	public ModelAndView modifyPagingGET(int bno, @ModelAttribute("cri")SearchCriteria cri, ModelAndView mv, BoardVo board)throws Exception{
 		
 		System.out.println("-----------modifyPage.GET들어옴~~~~~~");
-		model.addAttribute(service.read(bno));
-		return "DJ/modifyPage";
+		/*model.addAttribute(service.read(bno));*/
+		
+		mv.addObject(service.read(bno));
+		mv.addObject(board);
+		logger.info("modifyPage.GET" + board.toString());
+		mv.setViewName("DJ/modifyPage");
+		
+		return mv;
+		/*return "DJ/modifyPage";*/
+		
 	} 
 	
 	
@@ -91,8 +96,9 @@ public class SearchBoardController {
 	public String modifyPagingPOST(BoardVo board, SearchCriteria cri, RedirectAttributes rttr)throws Exception{
 		
 		logger.info(cri.toString());
-		service.modify(board);
 		System.out.println("-----------modifyPage.POST들어옴~~~~~~");
+		logger.info(board.toString());
+		service.modify(board);
 		rttr.addAttribute("page", cri.getPage());
 		rttr.addAttribute("perPageNum", cri.getPerPageNum());
 		rttr.addAttribute("searchType", cri.getSearchType());

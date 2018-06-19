@@ -8,8 +8,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css"
-	href="../../resources/css/style.css">
+<link rel="stylesheet" type="text/css"href="/takemeal/resources/css/style.css">
 
 <%@ include file="/WEB-INF/views/head.jsp"%>
 
@@ -20,10 +19,8 @@
 	<%-- <%@ include file="../../header.jsp" %> --%>
 
 
-	<link rel="stylesheet"
-		href="/takemeal/resources/bootstrap/css/bootstrap.css">
-	<link rel="stylesheet"
-		href="/takemeal/resources/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet"	href="/takemeal/resources/bootstrap/css/bootstrap.css">
+	<link rel="stylesheet"	href="/takemeal/resources/bootstrap/css/bootstrap.min.css">
 
 	<script type="text/javascript"
 		src="/takemeal/resources/js/jquery-3.3.1.min.js"></script>
@@ -104,14 +101,14 @@
 
 	<table class="table table-bordered">
 		<colgroup>
-			<col width="80" />
+			<col width="100" />
 			<col width="" />
 			<col width="150" />
 		</colgroup>
 		<tr>
-			<th style="width: 10px">BNO</th>
-			<th>TITLE</th>
-			<th>REGDATE</th>
+			<th style="width: 10px">게시판 번호</th>
+			<th>제 목</th>
+			<th>작성날짜</th>
 			<th style="width: 40px">VIEWCNT</th>
 		</tr>
 

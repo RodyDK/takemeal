@@ -88,7 +88,7 @@
 					</div>
 					<div class="form-group">
 						<label for="exampleInputPassword1">내용</label>
-						<textarea class="form-control" name="content" rows="15"
+						<textarea class="form-control" name="content" rows="20"
 							readonly="readonly">${BoardVo.content}</textarea>
 					</div>
 					<div class="form-group">
@@ -125,11 +125,10 @@
 					<h3 class="box-title">댓글 달기</h3>
 				</div>
 				<div class="box-body">
-					<!-- <label for="exampleInputEmail1">Writer</label> <input
+					<label for="exampleInputEmail1">Writer</label> <input
 						class="form-control" type="text" placeholder="USER ID"
-						id="newReplyWriter"> -->
-						 <label for="exampleInputEmail1">Reply
-						Text</label> <input class="form-control" type="text"
+						id="newReplyWriter"> 
+						 <label for="exampleInputEmail1">ReplyText</label> <input class="form-control" type="text"
 						placeholder="REPLY TEXT" id="newReplyText">
 
 				</div>
@@ -268,7 +267,8 @@
 		target.html(str);
 	};
 
-	$("#repliesDiv").on("click", function() {
+/* 	$("#repliesDiv").on("click", function() { */
+	$("#repliesDiv").ready(function() {
 
 		 /* if ($(".timeline li").size() > 1) {
 			return;
@@ -384,19 +384,19 @@ $(document).ready(function(){
 	console.log(formObj);
 	
 	$("#modifyBtn").on("click", function(){
-		formObj.attr("action", "modifyPage.do");
+		formObj.attr("action", "modifyPage");
 		formObj.attr("method", "get");		
 		formObj.submit();
 	});
 	
 	$("#removeBtn").on("click", function(){
-		formObj.attr("action", "removePage.do");
+		formObj.attr("action", "removePage");
 		formObj.submit();
 	});
 	
 	$("#goListBtn ").on("click", function(){
 		formObj.attr("method", "get");
-		formObj.attr("action", "list.do");
+		formObj.attr("action", "list");
 		formObj.submit();
 	});
 	

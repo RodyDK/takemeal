@@ -25,7 +25,7 @@
 								.on(
 										"click",
 										function() {
-											self.location = "list.do?page=${cri.page}&perPageNum=${cri.perPageNum}"
+											self.location = "list?page=${cri.page}&perPageNum=${cri.perPageNum}"
 													+ "&searchType=${cri.searchType}&keyword=${cri.keyword}";
 										});
 
@@ -41,7 +41,8 @@
 
 	<form role="form" method="post" action="modifyPage">
 
-		<input type="hidden" name="page" value="${cri.page }"> <input
+		<input type="hidden" name="page" value="${cri.page }">
+		 <input
 			type="hidden" name="perPageNum" value="${cri.perPageNum }"> <input
 			type="hidden" name="searchType" value="${cri.searchType }"> <input
 			type="hidden" name="keyword" value="${cri.keyword }">
@@ -63,7 +64,7 @@
 
 		<div class="form-group">
 			<label for="exampleInputEmail1">CONTENT</label>
-			<textarea rows="3" class="form-control" name="content">${BoardVo.content }</textarea>
+			<textarea rows="15" class="form-control" name="content"	>${BoardVo.content }</textarea>
 
 		</div>
 
@@ -80,8 +81,8 @@
 </form>
 
 	<div class="box-footer">
-		<button type="submit" class="btn btn-primary">SAVE</button>
-		<button type="submit" class="btn btn-warning">CANCLE</button>
+		<button type="submit" class="btn btn-warning">SAVE</button>
+		<button type="submit" class="btn btn-primary">CANCLE</button>
 	</div>
 
 </body>
