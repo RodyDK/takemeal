@@ -10,9 +10,13 @@
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="../../resources/css/style.css">
 
-<%@ include file="../../head.jsp" %>
+<%@ include file="/WEB-INF/views/head.jsp" %>
+
+
+<%-- <%@ include file="../../head.jsp" %> --%>
 <body>
-<%@ include file="../../header.jsp" %>
+<%@ include file="/WEB-INF/views/header.jsp" %>
+<%-- <%@ include file="../../header.jsp" %> --%>
 
 
 <link rel="stylesheet"
@@ -159,6 +163,8 @@
 
 				</div>
 		
-<%@ include file="../../footer.jsp" %>
+
+<%@ include file="/WEB-INF/views/footer.jsp" %>
+<%-- <%@ include file="../../footer.jsp" %> --%>
 </body>
 </html>

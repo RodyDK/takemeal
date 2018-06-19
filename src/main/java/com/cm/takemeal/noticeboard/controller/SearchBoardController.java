@@ -20,7 +20,7 @@ import com.cm.takemeal.noticeboard.model.vo.PageMaker;
 import com.cm.takemeal.noticeboard.model.vo.SearchCriteria;
 
 @Controller
-@RequestMapping("/DJ/sboard/*")
+/*@RequestMapping("/DJ/*")*/
 public class SearchBoardController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(SearchBoardController.class);
@@ -29,12 +29,14 @@ public class SearchBoardController {
 	private BoardService service;
 	
 	@RequestMapping(value = "/list", method=RequestMethod.GET)
-	public ModelAndView listPage(@ModelAttribute("cri") SearchCriteria cri, ModelAndView mv)throws Exception{
+	public ModelAndView listPage(@ModelAttribute("page") SearchCriteria cri, ModelAndView mv)throws Exception{
 		
 		logger.info(cri.toString());
 		
+		
+		
 		mv.addObject("list", service.listSearchCriteria(cri));
-		mv.setViewName("DJ/sboard/list");
+		mv.setViewName("DJ/list");
 		PageMaker pageMaker = new PageMaker();
 		pageMaker.setCri(cri);
 		pageMaker.setTotalCount(service.listSearchCount(cri));
@@ -55,7 +57,7 @@ public class SearchBoardController {
 		System.out.println("bno : " + bno);
 		mv.addObject("BoardVo",service.read(bno));
 		/*mv.addObject(service.read(bno));*/
-		mv.setViewName("DJ/sboard/readPage2");
+		mv.setViewName("DJ/readPage2");
 		
 		return mv;
 	}
@@ -76,15 +78,16 @@ public class SearchBoardController {
 	
 	}
 	
-	@RequestMapping(value="/modifyPage.do", method=RequestMethod.GET)
-	public void modifyPagingGET(int bno, @ModelAttribute("cri")SearchCriteria cri, Model model)throws Exception{
+	@RequestMapping(value="/modifyPage", method=RequestMethod.GET)
+	public String modifyPagingGET(int bno, @ModelAttribute("cri")SearchCriteria cri, Model model)throws Exception{
 		
 		System.out.println("-----------modifyPage.GET들어옴~~~~~~");
-		model.addAttribute(service.read(bno));	
+		model.addAttribute(service.read(bno));
+		return "DJ/modifyPage";
 	} 
 	
 	
-	@RequestMapping(value="/modifyPage.do", method=RequestMethod.POST)
+	@RequestMapping(value="/modifyPage", method=RequestMethod.POST)
 	public String modifyPagingPOST(BoardVo board, SearchCriteria cri, RedirectAttributes rttr)throws Exception{
 		
 		logger.info(cri.toString());
@@ -97,7 +100,7 @@ public class SearchBoardController {
 		
 		rttr.addFlashAttribute("msg","SUCCESS");
 		
-		return "redirect:/sboard/list";
+		return "redirect:/list";
 	}
 
 	

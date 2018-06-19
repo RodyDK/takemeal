@@ -11,7 +11,7 @@ public class Criteria {
 	}
 
 	public void setPage(int page){
-		System.out.println("크리테리아 : page" + page);
+		System.out.println("크리테리아 : page " + page);
 		
 		if(page <= 0){
 			this.page = 1;

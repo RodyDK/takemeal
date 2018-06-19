@@ -39,7 +39,7 @@
 					<a href="faqList.do">자주찾는질문</a>
 				</li>
 				<li>
-					<a href="./noticeList.do">공지사항</a>
+					<a href="./list">공지사항</a>
 				</li>
 			</ul>
 		</div>
