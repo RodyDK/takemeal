@@ -384,7 +384,7 @@ $(document).ready(function(){
 	console.log(formObj);
 	
 	$("#modifyBtn").on("click", function(){
-		formObj.attr("action", "modifyPage");
+		formObj.attr("action", "DJ/modifyPage");
 		formObj.attr("method", "get");		
 		formObj.submit();
 	});
