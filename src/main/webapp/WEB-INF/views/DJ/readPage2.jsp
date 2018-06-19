@@ -122,12 +122,13 @@
 
 			<div class="box box-success">
 				<div class="box-header">
-					<h3 class="box-title">ADD NEW REPLY</h3>
+					<h3 class="box-title">댓글 달기</h3>
 				</div>
 				<div class="box-body">
-					<label for="exampleInputEmail1">Writer</label> <input
+					<!-- <label for="exampleInputEmail1">Writer</label> <input
 						class="form-control" type="text" placeholder="USER ID"
-						id="newReplyWriter"> <label for="exampleInputEmail1">Reply
+						id="newReplyWriter"> -->
+						 <label for="exampleInputEmail1">Reply
 						Text</label> <input class="form-control" type="text"
 						placeholder="REPLY TEXT" id="newReplyText">
 

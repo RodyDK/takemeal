@@ -1,0 +1,560 @@
+-- 유저생성. 관리자 계정으로 수행.
+-- CREATE USER TAKEMEAL IDENTIFIED BY TAKEMEAL;
+-- GRANT CONNECT,RESOURCE TO TAKEMEAL;
+
+----------------------------------------------------------------------------------------------------------------------------
+
+DROP TABLE FAQ;
+DROP TABLE NOTICE;
+DROP TABLE GOODS;
+DROP TABLE ALL_FOOD;
+DROP TABLE FOOD;
+DROP TABLE RECIPE;
+DROP TABLE MEMBER;
+PURGE RECYCLEBIN;
+
+--------------------------------------------------------
+--  파일이 생성됨 - 목요일-6월-14-2018   
+--------------------------------------------------------
+--------------------------------------------------------
+--  DDL for Table MEMBER
+--------------------------------------------------------
+
+CREATE TABLE MEMBER (
+  NO NUMBER(5) PRIMARY KEY, 
+  USERID VARCHAR2(200) UNIQUE, 
+  PASSWORD VARCHAR2(200) NOT NULL, 
+  USERNAME VARCHAR2(100) NOT NULL, 
+  TYPE NUMBER(2), 
+  PHONE VARCHAR2(150), 
+  BLOG VARCHAR2(250), 
+  REG_DATE DATE);
+  REM INSERTING into MEMBER
+  SET DEFINE OFF;
+
+Insert into TAKEMEAL.MEMBER (NO,USERID,PASSWORD,USERNAME,TYPE,PHONE,BLOG,REG_DATE) values (1,'admin','$2a$10$HitvIbUCymBdjVG1Tzrly.RwjheM17CMZFANgxuTfZdaiiuPe9PI2','관리자',1,'010-0000-0000',null,null);
+Insert into TAKEMEAL.MEMBER (NO,USERID,PASSWORD,USERNAME,TYPE,PHONE,BLOG,REG_DATE) values (2,'user1','$2a$10$HitvIbUCymBdjVG1Tzrly.RwjheM17CMZFANgxuTfZdaiiuPe9PI2','초아',2,null,null,null);
+Insert into TAKEMEAL.MEMBER (NO,USERID,PASSWORD,USERNAME,TYPE,PHONE,BLOG,REG_DATE) values (3,'user2','$2a$10$HitvIbUCymBdjVG1Tzrly.RwjheM17CMZFANgxuTfZdaiiuPe9PI2','혜리',2,null,null,null);
+Insert into TAKEMEAL.MEMBER (NO,USERID,PASSWORD,USERNAME,TYPE,PHONE,BLOG,REG_DATE) values (4,'user3','$2a$10$HitvIbUCymBdjVG1Tzrly.RwjheM17CMZFANgxuTfZdaiiuPe9PI2','아이린',2,null,null,null);
+Insert into TAKEMEAL.MEMBER (NO,USERID,PASSWORD,USERNAME,TYPE,PHONE,BLOG,REG_DATE) values (5,'blog1','$2a$10$HitvIbUCymBdjVG1Tzrly.RwjheM17CMZFANgxuTfZdaiiuPe9PI2','홍석천',3,null,null,null);
+Insert into TAKEMEAL.MEMBER (NO,USERID,PASSWORD,USERNAME,TYPE,PHONE,BLOG,REG_DATE) values (6,'blog2','$2a$10$HitvIbUCymBdjVG1Tzrly.RwjheM17CMZFANgxuTfZdaiiuPe9PI2','홍석천',3,null,null,null);
+Insert into TAKEMEAL.MEMBER (NO,USERID,PASSWORD,USERNAME,TYPE,PHONE,BLOG,REG_DATE) values (7,'blog3','$2a$10$HitvIbUCymBdjVG1Tzrly.RwjheM17CMZFANgxuTfZdaiiuPe9PI2','홍석천',3,null,null,null);
+Insert into TAKEMEAL.MEMBER (NO,USERID,PASSWORD,USERNAME,TYPE,PHONE,BLOG,REG_DATE) values (8,'blog4','$2a$10$HitvIbUCymBdjVG1Tzrly.RwjheM17CMZFANgxuTfZdaiiuPe9PI2','홍석천',3,null,null,null);
+Insert into TAKEMEAL.MEMBER (NO,USERID,PASSWORD,USERNAME,TYPE,PHONE,BLOG,REG_DATE) values (9,'blog5','$2a$10$HitvIbUCymBdjVG1Tzrly.RwjheM17CMZFANgxuTfZdaiiuPe9PI2','홍석천',3,null,null,null);
+
+--------------------------------------------------------
+
+CREATE TABLE GOODS(
+  NAME VARCHAR2(300 BYTE), 
+	PRICE NUMBER(38,0), 
+	QTY NUMBER(38,0), 
+	DESCRIPTION VARCHAR2(1000 BYTE), 
+	CONTENTS VARCHAR2(4000 BYTE), 
+	REG_DATE DATE, 
+	THUMBNAIL VARCHAR2(1000 BYTE), 
+	NO NUMBER(38,0), 
+	COMPANY VARCHAR2(300 BYTE), 
+	COUNTRY VARCHAR2(100 BYTE)
+  ) SEGMENT CREATION IMMEDIATE 
+  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 NOCOMPRESS LOGGING
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "SYSTEM";
+  
+REM INSERTING into GOODS
+SET DEFINE OFF;
+
+--------------------------------------------------------
+--  DDL for Index GOODS_PK
+--------------------------------------------------------
+  CREATE UNIQUE INDEX "TAKEMEAL"."GOODS_PK" ON "TAKEMEAL"."GOODS" ("NO") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "SYSTEM" ;
+--------------------------------------------------------
+--  Constraints for Table GOODS
+--------------------------------------------------------
+  ALTER TABLE "TAKEMEAL"."GOODS" ADD CONSTRAINT "GOODS_PK" PRIMARY KEY ("NO")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "SYSTEM"  ENABLE;
+  ALTER TABLE "TAKEMEAL"."GOODS" MODIFY ("COUNTRY" NOT NULL ENABLE);
+  ALTER TABLE "TAKEMEAL"."GOODS" MODIFY ("COMPANY" NOT NULL ENABLE);
+  ALTER TABLE "TAKEMEAL"."GOODS" MODIFY ("NO" NOT NULL ENABLE);
+  ALTER TABLE "TAKEMEAL"."GOODS" MODIFY ("THUMBNAIL" NOT NULL ENABLE);
+  ALTER TABLE "TAKEMEAL"."GOODS" MODIFY ("REG_DATE" NOT NULL ENABLE);
+  ALTER TABLE "TAKEMEAL"."GOODS" MODIFY ("CONTENTS" NOT NULL ENABLE);
+  ALTER TABLE "TAKEMEAL"."GOODS" MODIFY ("DESCRIPTION" NOT NULL ENABLE);
+  ALTER TABLE "TAKEMEAL"."GOODS" MODIFY ("QTY" NOT NULL ENABLE);
+  ALTER TABLE "TAKEMEAL"."GOODS" MODIFY ("PRICE" NOT NULL ENABLE);
+  ALTER TABLE "TAKEMEAL"."GOODS" MODIFY ("NAME" NOT NULL ENABLE);
+
+Insert into TAKEMEAL.GOODS (NAME,PRICE,QTY,DESCRIPTION,CONTENTS,REG_DATE,THUMBNAIL,NO,COMPANY,COUNTRY) values ('오징어',3000,1,'서산오징어','싱싱한 오징어가 왔어요',to_date('18/06/09','RR/MM/DD'),'http://image.homeplus.co.kr/UserFiles/Pressimages/15/800/120581615_0.jpg',1,'서산나라','한국');
+Insert into TAKEMEAL.GOODS (NAME,PRICE,QTY,DESCRIPTION,CONTENTS,REG_DATE,THUMBNAIL,NO,COMPANY,COUNTRY) values ('양배추',1990,1,'국산양배추','국내산 양배추',to_date('18/06/09','RR/MM/DD'),'http://image.homeplus.co.kr/UserFiles/Pressimages/95/800/000005495_0.jpg',2,'농협','한국');
+Insert into TAKEMEAL.GOODS (NAME,PRICE,QTY,DESCRIPTION,CONTENTS,REG_DATE,THUMBNAIL,NO,COMPANY,COUNTRY) values ('생닭',5990,1,'하림 생육 닭고기','신선한 하림 닭고기',to_date('18/06/09','RR/MM/DD'),'http://image.homeplus.co.kr/UserFiles/Pressimages/68/800/106974268_0.jpg',3,'(주)하림','한국');
+Insert into TAKEMEAL.GOODS (NAME,PRICE,QTY,DESCRIPTION,CONTENTS,REG_DATE,THUMBNAIL,NO,COMPANY,COUNTRY) values ('팽이버섯',1000,1,'알이 큰 팽이버섯','신선한 팽이버섯',to_date('18/06/09','RR/MM/DD'),'http://image.homeplus.co.kr/UserFiles/Pressimages/85/800/114666185_0.jpg',4,'농협','한국');
+Insert into TAKEMEAL.GOODS (NAME,PRICE,QTY,DESCRIPTION,CONTENTS,REG_DATE,THUMBNAIL,NO,COMPANY,COUNTRY) values ('팽이버섯',1000,1,'알이 큰 팽이버섯','신선한 팽이버섯',to_date('18/06/09','RR/MM/DD'),'http://image.homeplus.co.kr/UserFiles/Pressimages/85/800/114666185_0.jpg',5,'농협','한국');
+Insert into TAKEMEAL.GOODS (NAME,PRICE,QTY,DESCRIPTION,CONTENTS,REG_DATE,THUMBNAIL,NO,COMPANY,COUNTRY) values ('팽이버섯',1000,1,'알이 큰 팽이버섯','신선한 팽이버섯',to_date('18/06/09','RR/MM/DD'),'http://image.homeplus.co.kr/UserFiles/Pressimages/85/800/114666185_0.jpg',6,'농협','한국');
+
+
+------------------------------------------------------------------------------------------------------------------------------
+
+--------------------------------------------------------
+--  파일이 생성됨 - 목요일-6월-14-2018   
+--------------------------------------------------------
+--------------------------------------------------------
+--  DDL for Table FAQ
+--------------------------------------------------------
+CREATE TABLE FAQ (
+  NO NUMBER(38,0), 
+	SUBJECT VARCHAR2(300 BYTE), 
+	CONTENTS VARCHAR2(4000 BYTE), 
+	HIT NUMBER(38,0), 
+	REG_DATE DATE, 
+	CATEGORY NUMBER(38,0), 
+	USERID VARCHAR2(200 BYTE),
+  FOREIGN KEY (USERID) REFERENCES MEMBER(USERID)
+  ) SEGMENT CREATION IMMEDIATE 
+  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 NOCOMPRESS LOGGING
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "SYSTEM" ;
+  
+Insert into TAKEMEAL.FAQ (NO,SUBJECT,CONTENTS,HIT,REG_DATE,CATEGORY,USERID) values (1,'아이디,비밀번호를 분실했어요.','로그인 창에서 아이디/비밀번호 찾기를 이용하시면 됩니다.<br>
+아이디와 비밀번호는 회원정보에 등록된 정보 인증 또는 본인명의 휴대폰인증을 통해 찾으실 수 있습니다.<br> 
+아이디는 회원정보에 등록된 이름과 휴대폰번호 또는 이메일을 입력하시면 아이디의 일부를 보실 수 있습니다.<br>
+아이디 전체를 보고자 할 때는 아이디의 일부를 먼저 찾은 후에 하단의  아이디 전체확인를 클릭하셔서 휴대전화/이메일/본인인증 중 선택하셔서 인증번호를 입력하시면 확인하실 수 있습니다.<br>
+<br>
+비밀번호는 회원정보에 등록된 아이디를 입력하신 후, 휴대전화/이메일/본인 인증 중 선택하신 방법으로 인증을 거쳐 비밀번호를 재설정 하실 수 있습니다.<br>
+<br>
+등록된 회원정보를 기억 못하시거나 변경된 경우에는 콜센터 1577-3355로 연락 주시면 임시 비밀번호를 발송 해드립니다.',152,to_date('18/06/06','RR/MM/DD'),1,'admin');
+Insert into TAKEMEAL.FAQ (NO,SUBJECT,CONTENTS,HIT,REG_DATE,CATEGORY,USERID) values (2,'개인정보 수정을 하고 싶어요.','고객님께서 원하시는 경우 챙겨먹어요 서비스 사이트에서 변경 요청하실 수 있습니다.',188,to_date('18/06/06','RR/MM/DD'),1,'admin');
+Insert into TAKEMEAL.FAQ (NO,SUBJECT,CONTENTS,HIT,REG_DATE,CATEGORY,USERID) values (3,'비회원도 주문 가능한가요?','비회원 주문가능합니다.<br>
+<br>
+다만, 비회원으로 구매하시면 포인트 적립 등 회원만의 혜택을 누릴 수 없습니다.',177,to_date('18/06/06','RR/MM/DD'),2,'admin');
+Insert into TAKEMEAL.FAQ (NO,SUBJECT,CONTENTS,HIT,REG_DATE,CATEGORY,USERID) values (4,'장바구니 상품은 언제까지 보관되나요?','장바구니 상품은 고객님께서 장바구니에 담고 상품의 결제/주문을 완료하시기 전까지 계속 보관되며, 결제가 완료<br>
+된 후 장바구니에 담긴 상품은 삭제됩니다.<br>
+단, 주문을 완료하지 않으신 경우 상품은 고객님께서 마지막으로 장바구니에 담은 날짜부터 90일간 보관됩니다.
+',243,to_date('18/06/06','RR/MM/DD'),2,'admin');
+--------------------------------------------------------
+--  DDL for Index FAQ_PK
+--------------------------------------------------------
+CREATE UNIQUE INDEX "TAKEMEAL"."FAQ_PK" ON "TAKEMEAL"."FAQ" ("NO") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "SYSTEM" ;
+--------------------------------------------------------
+--  Constraints for Table FAQ
+--------------------------------------------------------
+ALTER TABLE "TAKEMEAL"."FAQ" ADD CONSTRAINT "FAQ_PK" PRIMARY KEY ("NO")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "SYSTEM"  ENABLE;
+ALTER TABLE "TAKEMEAL"."FAQ" MODIFY ("CATEGORY" NOT NULL ENABLE);
+ALTER TABLE "TAKEMEAL"."FAQ" MODIFY ("REG_DATE" NOT NULL ENABLE);
+ALTER TABLE "TAKEMEAL"."FAQ" MODIFY ("HIT" NOT NULL ENABLE);
+ALTER TABLE "TAKEMEAL"."FAQ" MODIFY ("CONTENTS" NOT NULL ENABLE);
+ALTER TABLE "TAKEMEAL"."FAQ" MODIFY ("SUBJECT" NOT NULL ENABLE);
+ALTER TABLE "TAKEMEAL"."FAQ" MODIFY ("NO" NOT NULL ENABLE);
+
+------------------------------------------------------------------------------------------------------------------------------
+
+
+--------------------------------------------------------
+--  파일이 생성됨 - 목요일-6월-14-2018   
+--------------------------------------------------------
+--------------------------------------------------------
+--  DDL for Table NOTICE
+--------------------------------------------------------
+CREATE TABLE NOTICE(
+  NO NUMBER(38,0), 
+	USERID VARCHAR2(300 BYTE), 
+	SUBJECT VARCHAR2(300 BYTE), 
+	CONTENTS VARCHAR2(4000 BYTE), 
+	HIT NUMBER(38,0), 
+	REG_DATE DATE,
+  FOREIGN KEY (USERID) REFERENCES MEMBER(USERID)
+  ) SEGMENT CREATION IMMEDIATE 
+  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 NOCOMPRESS LOGGING
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "SYSTEM" ;
+REM INSERTING into TAKEMEAL.NOTICE
+SET DEFINE OFF;
+Insert into TAKEMEAL.NOTICE (NO,USERID,SUBJECT,CONTENTS,HIT,REG_DATE) values (1,'admin','홈페이지 오픈!','안녕하세요!
+챙겨먹어요 관리자입니다.
+<br><br>
+챙겨먹어요가 2018년 6월 20일부로 정식런칭을 하였습니다.
+<br>
+저희는 요리들의 레시피들을 제공과 함께 레시피 상품재료들을
+<br>
+구매 그리고 재료별, 국가별등 다양한 조건으로 레시피를
+<br>
+검색할 수 있습니다.
+<br><br>
+고객분들의 더 맛있고 건강한 삶을 위해 노력하겠습니다.
+<br><br>
+감사합니다.',1562,to_date('18/06/20','RR/MM/DD'));
+Insert into TAKEMEAL.NOTICE (NO,USERID,SUBJECT,CONTENTS,HIT,REG_DATE) values (2,'admin','요리블로거 상시모집!','안녕하세요!
+<br>
+챙겨먹어요 관리자입니다.
+<br><br>
+저희 챙겨먹어요에서는 더욱 좋은 정보제공을 위해
+<br>
+블로거 및 SNS 인플루언서들을 모집합니다.
+<br><br>
+다양한 정보를 챙겨먹어요와 함께 많은 사용자들에게 제공하여
+<br>
+서로 Win-Win 할 수 있는 구조를 만들기 위해 노력하겠습니다.
+<br><br>
+블로거들은 직접 레시피도 등록할 수 있고
+<br>
+고객들과 소통할 수 있습니다.
+<br><br>
+많은 참여부탁드립니다.
+<br>
+감사합니다.',2652,to_date('18/06/21','RR/MM/DD'));
+--------------------------------------------------------
+--  DDL for Index NOTICE_PK
+--------------------------------------------------------
+CREATE UNIQUE INDEX "TAKEMEAL"."NOTICE_PK" ON "TAKEMEAL"."NOTICE" ("NO") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "SYSTEM" ;
+--------------------------------------------------------
+--  Constraints for Table NOTICE
+--------------------------------------------------------
+ALTER TABLE "TAKEMEAL"."NOTICE" MODIFY ("REG_DATE" NOT NULL ENABLE);
+ALTER TABLE "TAKEMEAL"."NOTICE" ADD CONSTRAINT "NOTICE_PK" PRIMARY KEY ("NO")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "SYSTEM"  ENABLE;
+ALTER TABLE "TAKEMEAL"."NOTICE" MODIFY ("NO" NOT NULL ENABLE);
+ALTER TABLE "TAKEMEAL"."NOTICE" MODIFY ("HIT" NOT NULL ENABLE);
+ALTER TABLE "TAKEMEAL"."NOTICE" MODIFY ("CONTENTS" NOT NULL ENABLE);
+ALTER TABLE "TAKEMEAL"."NOTICE" MODIFY ("SUBJECT" NOT NULL ENABLE);
+ALTER TABLE "TAKEMEAL"."NOTICE" MODIFY ("USERID" NOT NULL ENABLE);
+
+------------------------------------------------------------------------------------------------------------------------------
+
+
+--------------------------------------------------------
+--  파일이 생성됨 - 목요일-6월-14-2018   
+--------------------------------------------------------
+--------------------------------------------------------
+--  DDL for Table RECIPE
+--------------------------------------------------------
+CREATE TABLE RECIPE(
+  NO NUMBER(*,0), 
+	SUBJECT VARCHAR2(200), 
+	CONTENTS VARCHAR2(2000), 
+	THUMBNAIL VARCHAR2(200), 
+	TIME NUMBER(*,0), 
+	FOLLOW NUMBER(*,0), 
+	HIT NUMBER(*,0), 
+	KCAL NUMBER(*,0), 
+	USERID VARCHAR2(100), 
+	REG_DATE DATE
+  );
+REM INSERTING into TAKEMEAL.RECIPE
+SET DEFINE OFF;
+Insert into TAKEMEAL.RECIPE (NO,SUBJECT,CONTENTS,THUMBNAIL,TIME,FOLLOW,HIT,KCAL,USERID,REG_DATE) values (1,'딸기치즈케이크','여심을 자극하는 달콤한 딸기와 치즈의 만남','1.jpg',10,154,0,123,'blog1',to_date('18/05/23','RR/MM/DD'));
+Insert into TAKEMEAL.RECIPE (NO,SUBJECT,CONTENTS,THUMBNAIL,TIME,FOLLOW,HIT,KCAL,USERID,REG_DATE) values (2,'계란토스트','자취생을 위한 황금레시피! 달콤한 식빵과 고소한 달걀 콤비','2.png',30,1186,0,213,'blog1',to_date('18/05/24','RR/MM/DD'));
+Insert into TAKEMEAL.RECIPE (NO,SUBJECT,CONTENTS,THUMBNAIL,TIME,FOLLOW,HIT,KCAL,USERID,REG_DATE) values (3,'초코빙수','여자친구를 위한 달콤한 디저트','3.jpg',20,245,0,213,'blog1',to_date('18/05/24','RR/MM/DD'));
+Insert into TAKEMEAL.RECIPE (NO,SUBJECT,CONTENTS,THUMBNAIL,TIME,FOLLOW,HIT,KCAL,USERID,REG_DATE) values (4,'깻잎 누들','데리야끼소스 누들과 깻잎으로 만든 어디에도 없는 레시피','4.png',15,345,0,213,'blog1',to_date('18/05/24','RR/MM/DD'));
+Insert into TAKEMEAL.RECIPE (NO,SUBJECT,CONTENTS,THUMBNAIL,TIME,FOLLOW,HIT,KCAL,USERID,REG_DATE) values (5,'한입핫도그','아이들이 좋아하는 간식 필수템! 건강식으로도 최고!','5.jpg',30,784,0,213,'blog1',to_date('18/05/24','RR/MM/DD'));
+Insert into TAKEMEAL.RECIPE (NO,SUBJECT,CONTENTS,THUMBNAIL,TIME,FOLLOW,HIT,KCAL,USERID,REG_DATE) values (6,'마늘훈제삼겹살','혼술최강안주, 다진마늘로 돼지고기 냄새까지 싹 잡았다','6.png',60,111,0,213,'blog1',to_date('18/05/24','RR/MM/DD'));
+Insert into TAKEMEAL.RECIPE (NO,SUBJECT,CONTENTS,THUMBNAIL,TIME,FOLLOW,HIT,KCAL,USERID,REG_DATE) values (7,'마늘토스트','드라큘라도 반한 마늘토스트, 아이들도 좋아해요','7.jpg',25,203,0,213,'blog1',to_date('18/05/24','RR/MM/DD'));
+Insert into TAKEMEAL.RECIPE (NO,SUBJECT,CONTENTS,THUMBNAIL,TIME,FOLLOW,HIT,KCAL,USERID,REG_DATE) values (8,'꼬마김밥','작다고 무시하지 마시라! 맛은 김밥 of 김밥','8.jpg',20,511,0,213,'blog1',to_date('18/05/24','RR/MM/DD'));
+Insert into TAKEMEAL.RECIPE (NO,SUBJECT,CONTENTS,THUMBNAIL,TIME,FOLLOW,HIT,KCAL,USERID,REG_DATE) values (9,'두부제육','두부김치 NO~! 두부제육 OK~!','9.jpg',3,347,0,213,'blog1',to_date('18/05/24','RR/MM/DD'));
+Insert into TAKEMEAL.RECIPE (NO,SUBJECT,CONTENTS,THUMBNAIL,TIME,FOLLOW,HIT,KCAL,USERID,REG_DATE) values (10,'삼겹살 냉채','족발냉채도 GG치고간 삼겹살 냉채','10.jpg',5,842,0,213,'blog1',to_date('18/05/24','RR/MM/DD'));
+Insert into TAKEMEAL.RECIPE (NO,SUBJECT,CONTENTS,THUMBNAIL,TIME,FOLLOW,HIT,KCAL,USERID,REG_DATE) values (11,'바닐라아이스크림','집에서도 손쉽게 만들어먹는 간단 디저트','11.jpg',50,100,0,213,'blog1',to_date('18/05/24','RR/MM/DD'));
+Insert into TAKEMEAL.RECIPE (NO,SUBJECT,CONTENTS,THUMBNAIL,TIME,FOLLOW,HIT,KCAL,USERID,REG_DATE) values (12,'딸기롤','딸기가 듬뿍 들어간 수제 롤케잌','12.png',10,387,0,213,'blog1',to_date('18/06/25','RR/MM/DD'));
+
+--------------------------------------------------------
+--  DDL for Index RECIPE_INDEX1
+--------------------------------------------------------
+CREATE UNIQUE INDEX "TAKEMEAL"."RECIPE_INDEX1" ON "TAKEMEAL"."RECIPE" ("NO");
+--------------------------------------------------------
+--  Constraints for Table RECIPE
+--------------------------------------------------------
+ALTER TABLE "TAKEMEAL"."RECIPE" MODIFY ("NO" NOT NULL ENABLE);
+
+
+------------------------------------------------------------------------------------------------------------------------------------------
+
+
+--------------------------------------------------------
+--  파일이 생성됨 - 월요일-6월-18-2018   
+--------------------------------------------------------
+--------------------------------------------------------
+--  DDL for Table FOOD
+--------------------------------------------------------
+CREATE TABLE FOOD(
+  CLASS_CODE VARCHAR2(2 BYTE), 
+	CLASS_NAME VARCHAR2(30 BYTE), 
+	TABLE_CODE VARCHAR2(20 BYTE)
+  ) SEGMENT CREATION IMMEDIATE 
+  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 NOCOMPRESS LOGGING
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "SYSTEM" ;
+
+COMMENT ON COLUMN "TAKEMEAL"."FOOD"."CLASS_CODE" IS '식품코드';
+COMMENT ON COLUMN "TAKEMEAL"."FOOD"."CLASS_NAME" IS '식품이름';
+COMMENT ON COLUMN "TAKEMEAL"."FOOD"."TABLE_CODE" IS '테이블분류';
+
+REM INSERTING into TAKEMEAL.FOOD
+SET DEFINE OFF;
+
+Insert into TAKEMEAL.FOOD (CLASS_CODE,CLASS_NAME,TABLE_CODE) values ('ME','육류','MEATS');
+Insert into TAKEMEAL.FOOD (CLASS_CODE,CLASS_NAME,TABLE_CODE) values ('FS','어패류','FISHS');
+Insert into TAKEMEAL.FOOD (CLASS_CODE,CLASS_NAME,TABLE_CODE) values ('CR','곡류','CEREALS');
+Insert into TAKEMEAL.FOOD (CLASS_CODE,CLASS_NAME,TABLE_CODE) values ('VT','야채류','VEGETABLES');
+Insert into TAKEMEAL.FOOD (CLASS_CODE,CLASS_NAME,TABLE_CODE) values ('EG','계란','EGGS');
+Insert into TAKEMEAL.FOOD (CLASS_CODE,CLASS_NAME,TABLE_CODE) values ('MK','유제품','MILKY');
+--------------------------------------------------------
+--  DDL for Index SYS_C007672
+--------------------------------------------------------
+CREATE UNIQUE INDEX "TAKEMEAL"."SYS_C007672" ON "TAKEMEAL"."FOOD" ("CLASS_CODE") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "SYSTEM" ;
+--------------------------------------------------------
+--  Constraints for Table FOOD
+--------------------------------------------------------
+ALTER TABLE "TAKEMEAL"."FOOD" ADD PRIMARY KEY ("CLASS_CODE")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "SYSTEM"  ENABLE;
+ALTER TABLE "TAKEMEAL"."FOOD" MODIFY ("CLASS_NAME" NOT NULL ENABLE);
+
+------------------------------------------------------------------------------------------------------------------------------
+
+
+--------------------------------------------------------
+--  파일이 생성됨 - 월요일-6월-18-2018   
+--------------------------------------------------------
+--------------------------------------------------------
+--  DDL for Table ALL_FOOD
+--------------------------------------------------------
+CREATE TABLE ALL_FOOD(
+  NO NUMBER(3,0), 
+	CLASS_CODE VARCHAR2(2 BYTE), 
+	FOOD_CODE NUMBER(3,0), 
+	FOOD_NAME VARCHAR2(30 BYTE), 
+	COOL_SYS VARCHAR2(10 BYTE), 
+	EXPIRY_DATE DATE, 
+	FOOD_COUNT NUMBER(5,0) DEFAULT 0,
+  FOREIGN KEY (CLASS_CODE) REFERENCES FOOD(CLASS_CODE),
+  FOREIGN KEY (NO) REFERENCES MEMBER(NO)
+  ) SEGMENT CREATION IMMEDIATE 
+  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 NOCOMPRESS LOGGING
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "SYSTEM" ;
+
+COMMENT ON COLUMN "TAKEMEAL"."ALL_FOOD"."NO" IS '회원번호';
+COMMENT ON COLUMN "TAKEMEAL"."ALL_FOOD"."CLASS_CODE" IS '식품코드';
+COMMENT ON COLUMN "TAKEMEAL"."ALL_FOOD"."FOOD_CODE" IS '재료코드';
+COMMENT ON COLUMN "TAKEMEAL"."ALL_FOOD"."FOOD_NAME" IS '재료이름';
+COMMENT ON COLUMN "TAKEMEAL"."ALL_FOOD"."COOL_SYS" IS '보관형태';
+COMMENT ON COLUMN "TAKEMEAL"."ALL_FOOD"."EXPIRY_DATE" IS '유통기한';
+COMMENT ON COLUMN "TAKEMEAL"."ALL_FOOD"."FOOD_COUNT" IS '수량';
+
+REM INSERTING into TAKEMEAL.ALL_FOOD
+SET DEFINE OFF;
+
+--------------------------------------------------------
+--  Constraints for Table ALL_FOOD
+--------------------------------------------------------
+ALTER TABLE "TAKEMEAL"."ALL_FOOD" MODIFY ("FOOD_COUNT" NOT NULL ENABLE);
+ALTER TABLE "TAKEMEAL"."ALL_FOOD" MODIFY ("FOOD_CODE" NOT NULL ENABLE);
+ALTER TABLE "TAKEMEAL"."ALL_FOOD" MODIFY ("COOL_SYS" NOT NULL ENABLE);
+ALTER TABLE "TAKEMEAL"."ALL_FOOD" MODIFY ("FOOD_NAME" NOT NULL ENABLE);
+ALTER TABLE "TAKEMEAL"."ALL_FOOD" MODIFY ("CLASS_CODE" NOT NULL ENABLE);
+ALTER TABLE "TAKEMEAL"."ALL_FOOD" MODIFY ("NO" NOT NULL ENABLE);
+
+Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'ME',101,'소등심','냉동',null,0);
+Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'ME',102,'소안심','냉동',null,4);
+Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'ME',103,'소갈비','냉장',null,4);
+Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'ME',201,'삼겹살','냉동',null,0);
+Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'ME',202,'목살','냉동',null,0);
+Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'ME',203,'돼지갈비','냉동',null,0);
+Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'ME',301,'닭한마리','냉장',null,0);
+Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'ME',302,'닭가슴살','냉장',null,0);
+Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'ME',303,'닭발','냉동',null,0);
+Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'ME',304,'닭갈비','냉동',null,0);
+Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'CR',101,'백미','실온',null,0);
+Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'CR',102,'흑미','실온',null,0);
+Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'CR',103,'현미','실온',null,0);
+Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'CR',201,'옥수수','냉장',null,0);
+Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'CR',202,'강낭콩','냉동',null,0);
+Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'CR',203,'검은콩','냉동',null,0);
+Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'CR',204,'완두콩','냉동',null,0);
+Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'CR',301,'밀가루','실온',null,0);
+Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'CR',302,'쌀가루','실온',null,0);
+Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'CR',303,'튀김가루','실온',null,0);
+Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'CR',304,'빵가루','실온',null,0);
+Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'CR',401,'식빵','실온',null,0);
+Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'CR',402,'바게트빵','실온',null,0);
+Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'CR',403,'베이글','냉장',null,0);
+Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'CR',501,'떡국떡','냉동',null,0);
+Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'CR',502,'조랭이떡','냉동',null,0);
+Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'EG',101,'계란','냉장',null,0);
+Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'EG',102,'메추리알','냉장',null,0);
+Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'EG',103,'오리알','냉장',null,0);
+Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'FS',101,'고등어','냉장',null,0);
+Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'FS',102,'동태','냉동',null,0);
+Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'FS',103,'삼치','냉동',null,0);
+Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'FS',104,'갈치','냉장',null,2);
+Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'FS',201,'바지락','냉장',null,0);
+Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'FS',202,'모시조개','냉장',null,0);
+Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'FS',203,'꼬막','냉동',null,0);
+Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'FS',301,'마른미역','실온',null,0);
+Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'FS',302,'마른다시마','실온',null,0);
+Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'MK',101,'우유','냉장',null,0);
+Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'MK',102,'요거트','냉장',null,0);
+Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'MK',201,'체다치즈','냉장',null,0);
+Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'MK',202,'리코타치즈','냉장',null,0);
+Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'VT',101,'꽃상추','냉장',null,0);
+Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'VT',102,'적상추','냉장',null,0);
+Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'VT',103,'양파','냉장',null,0);
+Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'VT',104,'양배추','냉장',null,0);
+Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'VT',105,'대파','냉장',null,0);
+Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'VT',106,'쪽파','냉장',null,0);
+Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'VT',107,'당근','냉장',null,0);
+Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'VT',108,'마늘','냉장',null,0);
+Insert into TAKEMEAL.ALL_FOOD (NO,CLASS_CODE,FOOD_CODE,FOOD_NAME,COOL_SYS,EXPIRY_DATE,FOOD_COUNT) values (1,'VT',109,'생강','냉장',null,0);
+
+
+------------------------------------------------------------------------------------------------------------------------------
+
+
+--------------------------------------------------------
+--  파일이 생성됨 - 금요일-6월-08-2018   
+--------------------------------------------------------
+DROP TABLE TBL_REPLY;
+DROP TABLE TBL_BOARD;
+PURGE RECYCLEBIN;
+--------------------------------------------------------
+--  DDL for Sequence TBL_BOARD_SEQ
+--------------------------------------------------------
+DROP SEQUENCE TBL_BOARD_SEQ;
+CREATE SEQUENCE  "TAKEMEAL"."TBL_BOARD_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 21 CACHE 20 NOORDER  NOCYCLE ;
+--------------------------------------------------------
+--  DDL for Table TBL_BOARD
+--------------------------------------------------------
+
+CREATE TABLE TBL_BOARD(
+  BNO NUMBER PRIMARY KEY, 
+	TITLE VARCHAR2(200 BYTE), 
+	CONTENT VARCHAR2(2000 BYTE), 
+	WRITER VARCHAR2(200 BYTE), 
+	REGDATE DATE DEFAULT SYSDATE, 
+	VIEWCNT NUMBER
+  ) SEGMENT CREATION IMMEDIATE 
+  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 NOCOMPRESS LOGGING
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "SYSTEM";
+
+--------------------------------------------------------
+--  DDL for Trigger TBL_BOARD_TRG
+--------------------------------------------------------
+
+  CREATE OR REPLACE TRIGGER "TAKEMEAL"."TBL_BOARD_TRG" 
+BEFORE INSERT ON TBL_BOARD 
+FOR EACH ROW 
+BEGIN
+  <<COLUMN_SEQUENCES>>
+  BEGIN
+    NULL;
+  END COLUMN_SEQUENCES;
+END;
+/
+ALTER TRIGGER "TAKEMEAL"."TBL_BOARD_TRG" ENABLE;
+--------------------------------------------------------
+--  DDL for Trigger TBL_BOARD_TRG1
+--------------------------------------------------------
+
+  CREATE OR REPLACE TRIGGER "TAKEMEAL"."TBL_BOARD_TRG1" 
+BEFORE INSERT ON TBL_BOARD 
+FOR EACH ROW 
+BEGIN
+  <<COLUMN_SEQUENCES>>
+  BEGIN
+    IF INSERTING AND :NEW.BNO IS NULL THEN
+      SELECT TBL_BOARD_SEQ.NEXTVAL INTO :NEW.BNO FROM SYS.DUAL;
+    END IF;
+  END COLUMN_SEQUENCES;
+END;
+/
+ALTER TRIGGER "TAKEMEAL"."TBL_BOARD_TRG1" ENABLE;
+alter table TBL_BOARD add (replycnt number default 0);
+
+
+--------------------------------------------------------
+--  DDL for Sequence TBL_REPLY_SEQ
+--------------------------------------------------------
+DROP SEQUENCE TBL_REPLY_SEQ;
+CREATE SEQUENCE  "TAKEMEAL"."TBL_REPLY_SEQ"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 21 CACHE 20 NOORDER  NOCYCLE ;
+--------------------------------------------------------
+--  DDL for Table TBL_REPLY
+--------------------------------------------------------
+CREATE TABLE TBL_REPLY(
+  RNO NUMBER, 
+	BNO NUMBER, 
+	REPLYTEXT VARCHAR2(1000 BYTE), 
+	REPLYER VARCHAR2(100 BYTE), 
+	REGDATE DATE DEFAULT sysdate, 
+	UPDATEDATE DATE DEFAULT sysdate,
+  FOREIGN KEY (BNO) REFERENCES TBL_BOARD(BNO)) SEGMENT CREATION IMMEDIATE 
+  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 NOCOMPRESS LOGGING
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "SYSTEM" ;
+
+--------------------------------------------------------
+--  DDL for Index TBL_REPLY_PK
+--------------------------------------------------------
+  CREATE UNIQUE INDEX "TAKEMEAL"."TBL_REPLY_PK" ON "TAKEMEAL"."TBL_REPLY" ("RNO") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "SYSTEM" ;
+--------------------------------------------------------
+--  Constraints for Table TBL_REPLY
+--------------------------------------------------------
+  ALTER TABLE "TAKEMEAL"."TBL_REPLY" ADD CONSTRAINT "TBL_REPLY_PK" PRIMARY KEY ("RNO")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1 BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "SYSTEM"  ENABLE;
+  ALTER TABLE "TAKEMEAL"."TBL_REPLY" MODIFY ("UPDATEDATE" NOT NULL ENABLE);
+  ALTER TABLE "TAKEMEAL"."TBL_REPLY" MODIFY ("REGDATE" NOT NULL ENABLE);
+  ALTER TABLE "TAKEMEAL"."TBL_REPLY" MODIFY ("RNO" NOT NULL ENABLE);
+--------------------------------------------------------
+--  DDL for Trigger TBL_REPLY_TRG
+--------------------------------------------------------
+  CREATE OR REPLACE TRIGGER "TAKEMEAL"."TBL_REPLY_TRG" 
+BEFORE INSERT ON TBL_REPLY 
+FOR EACH ROW 
+BEGIN
+  <<COLUMN_SEQUENCES>>
+  BEGIN
+    IF INSERTING AND :NEW.RNO IS NULL THEN
+      SELECT TBL_REPLY_SEQ.NEXTVAL INTO :NEW.RNO FROM SYS.DUAL;
+    END IF;
+  END COLUMN_SEQUENCES;
+END;
+/
+ALTER TRIGGER "TAKEMEAL"."TBL_REPLY_TRG" ENABLE;
