@@ -21,7 +21,7 @@
 
 	<insert id="create">
 		insert into tbl_board(title, content, writer)
-		values(#{title}, #{content}, '관리자')
+		values(#{title}, #{content}, 'admin')
 	</insert>
 
 	<select id="read" resultType="BoardVo">
@@ -37,7 +37,7 @@
 	<update id="update">
 		update tbl_board set title =#{title}, 
 		content	=#{content},
-		writer = '관리자'
+		writer = 'admin'
 		where BNO = #{bno}
 	</update>
 
@@ -142,7 +142,8 @@
 	</select>
 
 	<update id="updateReplyCnt">
-	update tbl_board set replycnt = replycnt + #{amount} where bno = #{bno}
+	update tbl_board set replycnt = replycnt + #{amount} 
+	where bno = #{bno}
 	
 	</update>
 

@@ -129,8 +129,10 @@
 
 
 	</table>
+	<!-- user판단 -->
+	<c:if test="${sessionScope.loginUser != null && sessionScope.loginUser.type == 1}">
 	<button id="newBtn">New Board</button>
-
+	</c:if>
 	<form id="jobForm">
 		<input type="hidden" name="page" value=${cri.page } /> <input
 			type="hidden" name="perPageNum" value=${cri.perPageNum } />

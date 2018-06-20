@@ -76,17 +76,18 @@ public class SearchBoardController {
 	}
 	
 	@RequestMapping(value="DJ/modifyPage", method=RequestMethod.GET)
-	public void modifyPagingGET(int bno, @ModelAttribute("cri")SearchCriteria cri, Model model, BoardVo board)throws Exception{
+	public ModelAndView modifyPagingGET(int bno, @ModelAttribute("cri")SearchCriteria cri, ModelAndView mv, BoardVo board)throws Exception{
 		
 		System.out.println("-----------modifyPage.GET들어옴~~~~~~");
-		model.addAttribute(service.read(bno));
+	/*	model.addAttribute(service.read(bno));*/
 		logger.info(board.toString());
-		/*mv.addObject(service.read(bno));
-		mv.addObject(board);
+		mv.addObject("bvo", service.read(bno));
+		/*mv.addObject(service.read(bno));*/
+		mv.addObject("bd",board);
 		logger.info("modifyPage.GET" + board.toString());
 		mv.setViewName("DJ/modifyPage");
 		
-		return mv;*/
+		return mv;
 		/*return "DJ/modifyPage";*/
 		
 	} 
@@ -97,6 +98,7 @@ public class SearchBoardController {
 		
 		logger.info(cri.toString());
 		System.out.println("-----------modifyPage.POST들어옴~~~~~~");
+		System.out.println("BoardVo : "+ board);
 		logger.info(board.toString());
 		service.modify(board);
 		rttr.addAttribute("page", cri.getPage());

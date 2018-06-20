@@ -100,8 +100,10 @@
 				<!-- /.box-body -->
 
 			  <div class="box-footer">
+			  <c:if test="${sessionScope.loginUser != null && sessionScope.loginUser.type == 1}">
 			    <button type="submit" class="btn btn-warning" id="modifyBtn">수정</button>
 			    <button type="submit" class="btn btn-danger" id="removeBtn">게시글 삭제</button>
+			    </c:if>
 			    <button type="submit" class="btn btn-primary" id="goListBtn">리스트 </button>
 			  </div>
 
@@ -121,15 +123,19 @@
 		<div class="col-md-12">
 
 			<div class="box box-success">
+			
+					<!-- 로그인유저가 아니라면 댓글 막기	 -->
+					<c:if test="${sessionScope.loginUser != null }">
 				<div class="box-header">
 					<h3 class="box-title">댓글 달기</h3>
 				</div>
+				
 				<div class="box-body">
-					<label for="exampleInputEmail1">Writer</label> <input
-						class="form-control" type="text" placeholder="USER ID"
-						id="newReplyWriter"> 
-						 <label for="exampleInputEmail1">ReplyText</label> <input class="form-control" type="text"
-						placeholder="REPLY TEXT" id="newReplyText">
+					<label for="exampleInputEmail1">
+					</label> <input	class="form-control" type="text" 
+						id="newReplyWriter" readonly="readonly" value="${sessionScope.loginUser.userid}"> 
+						 <label for="exampleInputEmail1">ReplyText</label>
+						 <input class="form-control" type="text" placeholder="REPLY TEXT" id="newReplyText">
 
 				</div>
 				<!-- /.box-body -->
@@ -137,6 +143,7 @@
 					<button type="button" class="btn btn-primary" id="replyAddBtn">ADD
 						REPLY</button>
 				</div>
+				</c:if>
 			</div>
 
 		
@@ -176,6 +183,7 @@
         <p><input type="text" id="replytext" class="form-control"></p>
       </div>
       <div class="modal-footer">
+      
         <button type="button" class="btn btn-info" id="replyModBtn">Modify</button>
         <button type="button" class="btn btn-danger" id="replyDelBtn">DELETE</button>
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -197,11 +205,13 @@
   <span class="time">
     <i class="fa fa-clock-o"></i>{{prettifyDate regdate}}
   </span>
-  <h3 class="timeline-header"><strong>{{rno}}</strong> -{{replyer}}</h3>
-  <div class="timeline-body">{{replytext}} </div>
+  <h4 class="timeline-header"><strong>{{rno}}</strong> ID : {{replyer}} : 
+  <strong>{{replytext}}</strong> </h4></div>
+		<!-- 로그인유저가 아니라면 댓글 막기	 -->
+		<c:if test="${sessionScope.loginUser != null && sessionScope.loginUser.type == 1}">
     <div class="timeline-footer">
-     <a class="btn btn-primary btn-xs" 
-	    data-toggle="modal" data-target="#modifyModal">Modify</a>
+     <a class="btn btn-primary btn-xs" data-toggle="modal" data-target="#modifyModal">Modify</a>
+	</c:if>
     </div>
   </div>			
 </li>
@@ -311,7 +321,7 @@
 						alert("등록 되었습니다.");
 						replyPage = 1;
 						getPage("/takemeal/replies/"+bno+"/"+replyPage );
-						replyerObj.val("");
+						/* replyerObj.val(""); */
 						replytextObj.val("");
 					}
 			}});

@@ -13,21 +13,12 @@
 <script type="text/javascript"
 	src="/takemeal/resources/js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript">
-	$(document)
-			.ready(
-					function() {
-
+	$(document).ready(function() {
 						var formObj = $("form[role= 'form']");
-
 						console.log(formObj);
-
-						$(".btn-primary")
-								.on(
-										"click",
-										function() {
+						$(".btn-primary").on("click",function() {
 											self.location = "list?page=${cri.page}&perPageNum=${cri.perPageNum}"
-													+ "&searchType=${cri.searchType}&keyword=${cri.keyword}";
-										});
+													+ "&searchType=${cri.searchType}&keyword=${cri.keyword}";});
 
 						$(".btn-warning").on("click", function() {
 							formObj.submit();
@@ -41,37 +32,36 @@
 
 	<form role="form" method="post" action="modifyPage">
 
-		<input type="hidden" name="page" value="${cri.page }">
-		 <input
-			type="hidden" name="perPageNum" value="${cri.perPageNum }"> <input
-			type="hidden" name="searchType" value="${cri.searchType }"> <input
-			type="hidden" name="keyword" value="${cri.keyword }">
+		<%-- <input type="hidden" name="page" value="${cri.page}">
+		<input type="hidden" name="perPageNum" value="${cri.perPageNum }"> 
+		<input type="hidden" name="searchType" value="${cri.searchType }"> 
+		<input type="hidden" name="keyword" value="${cri.keyword }"> --%>
 	
 
 	<div class="box-body">
 		<div class="form-group">
-			<label for="exampleInputEmail1">BNO</label> <input type="text"
-				name="bno" class="form-control" value="${BoardVo.bno }"
+			<label for="exampleInputEmail1">BNO</label> 
+			<input type="text" name="bno" class="form-control" value="${bvo.bno }"
 				readonly="readonly">
 
 		</div>
 
 		<div class="form-group">
 			<label for="exampleInputEmail1">TITLE</label> <input type="text"
-				name="title" class="form-control" value="${BoardVo.title }">
+				name="title" class="form-control" value="${bvo.title }">
 
 		</div>
 
 		<div class="form-group">
 			<label for="exampleInputEmail1">CONTENT</label>
-			<textarea rows="15" class="form-control" name="content"	>${BoardVo.content }</textarea>
+			<textarea rows="15" class="form-control" name="content"	>${bvo.content }</textarea>
 
 		</div>
 
 
 		<div class="form-group">
 			<label for="exampleInputEmail1">Writer</label> <input type="text"
-				name="writer" class="form-control" value="${BoardVo.writer }"
+				name="writer" class="form-control" value="${bvo.writer }"
 				readonly="readonly">
 
 		</div>
