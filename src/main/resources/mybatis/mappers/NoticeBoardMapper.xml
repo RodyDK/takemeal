@@ -155,6 +155,12 @@
 	 viewcnt + 1 
 	 where bno = #{bno}
 	</select>
-
+	
+	
+	<select id="memberList" resultType="Member">
+		select no, userid, username, type, phone, blog, reg_date
+		from member
+		order by no desc
+	</select>
 
 </mapper>

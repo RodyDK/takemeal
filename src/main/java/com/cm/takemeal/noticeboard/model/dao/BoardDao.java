@@ -1,6 +1,8 @@
 package com.cm.takemeal.noticeboard.model.dao;
 
 import java.util.*;
+
+import com.cm.takemeal.member.model.vo.Member;
 import com.cm.takemeal.noticeboard.model.vo.BoardVo;
 import com.cm.takemeal.noticeboard.model.vo.Criteria;
 import com.cm.takemeal.noticeboard.model.vo.SearchCriteria;;
@@ -32,5 +34,6 @@ public interface BoardDao {
 	
 	public void updateViewCnt(Integer bno)throws Exception;
 	
+	public List<Member> memberList() throws Exception;
 	
 }

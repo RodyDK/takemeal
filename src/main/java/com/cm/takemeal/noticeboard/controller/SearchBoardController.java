@@ -1,12 +1,17 @@
 package com.cm.takemeal.noticeboard.controller;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -18,6 +23,7 @@ import com.cm.takemeal.noticeboard.model.service.BoardService;
 import com.cm.takemeal.noticeboard.model.vo.BoardVo;
 import com.cm.takemeal.noticeboard.model.vo.Criteria;
 import com.cm.takemeal.noticeboard.model.vo.PageMaker;
+import com.cm.takemeal.noticeboard.model.vo.ReplyVo;
 import com.cm.takemeal.noticeboard.model.vo.SearchCriteria;
 
 @Controller
@@ -132,13 +138,12 @@ public class SearchBoardController {
 		return "redirect:list.do";
 	}
 	
-	@RequestMapping(value = "/memberControl", method=RequestMethod.GET)
+	
+	@RequestMapping(value = "/memberList", method=RequestMethod.GET)
 	public ModelAndView memberList(Member member, ModelAndView mv)throws Exception{
 		
 		logger.info(member.toString());
-
-		/*mv.addObject("list", service.listSearchCriteria(cri));*/
-		mv.setViewName("DJ/memberControl");
+		mv.setViewName("DJ/memberList");
 		/*
 		PageMaker pageMaker = new PageMaker();
 		pageMaker.setCri(cri);
@@ -146,9 +151,34 @@ public class SearchBoardController {
 		mv.addObject("pageMaker", pageMaker);
 		logger.info(pageMaker.toString());
 		return mv;*/
-		
 		return mv;
 	}
+	
+	@RequestMapping(value = "/memberList/{page}", method=RequestMethod.GET)
+	public ResponseEntity <List<Member>> list(@PathVariable("page") Integer page){
+		
+		logger.info("asdasd");
+		
+		ResponseEntity<List<Member>> entity = null;
+		try {
+			entity = new ResponseEntity<>(service.memberList(), HttpStatus.OK);
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			entity = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+		}
+		
+		return entity;
+		
+		/*
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setCri(cri);
+		pageMaker.setTotalCount(service.listSearchCount(cri));
+		mv.addObject("pageMaker", pageMaker);
+		logger.info(pageMaker.toString());
+		return mv;*/
+	}
+	
 	
 	
 }

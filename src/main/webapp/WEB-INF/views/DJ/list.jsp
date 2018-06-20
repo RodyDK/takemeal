@@ -67,38 +67,6 @@
 </head>
 <body>
 
-	<%-- <div class="box-body">
-		<select name="searchType">
-			<option value="n"
-				<c:out value="${cri.searchType == null?'selected':'' }"/>>
-				---</option>
-			<option value="t"
-				<c:out value="${cri.searchType eq 't' ? 'selected':'' }"/>>
-				Titile</option>
-			<option value="c"
-				<c:out value="${cri.searchType eq 'c' ? 'selected':'' }"/>>
-				Content</option>
-			<option value="t"
-				<c:out value="${cri.searchType eq 'w' ? 'selected':'' }"/>>
-				Writer</option>
-			<option value="tc"
-				<c:out value="${cri.searchType eq 'tc' ? 'selected':'' }"/>>
-				Titile Or Content</option>
-			<option value="cw"
-				<c:out value="${cri.searchType eq 'cw' ? 'selected':'' }"/>>
-				Content Or Witer</option>
-			<option value="tcw"
-				<c:out value="${cri.searchType eq 'tcw' ? 'selected':'' }"/>>
-				Titile Or Content Or Writer</option>
-		</select>
-		
-		<input type="text" name="keyword" id="keywordInput" value="${cri.keyword }">
-		<button id="searchBtn">Search</button>
-		<button id="newBtn">New Board</button>
-		
-	
-	</div> --%>
-
 	<table class="table table-bordered">
 		<colgroup>
 			<col width="100" />
@@ -131,7 +99,7 @@
 	</table>
 	<!-- user판단 -->
 	<c:if test="${sessionScope.loginUser != null && sessionScope.loginUser.type == 1}">
-	<button id="newBtn">New Board</button>
+	<button class="btn btn-danger" id="newBtn" >공지 추가</button>
 	</c:if>
 	<form id="jobForm">
 		<input type="hidden" name="page" value=${cri.page } /> <input

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.cm.takemeal.member.model.vo.Member;
 import com.cm.takemeal.noticeboard.model.vo.*;
 import com.sun.media.jfxmedia.logging.Logger;
 
@@ -112,6 +113,13 @@ public class BoardDaoImpl implements BoardDao{
 			// TODO Auto-generated method stub
 			
 			session.update(namespace + ".updateViewCnt", bno);
+		}
+
+		@Override
+		public List<Member> memberList() throws Exception {
+			// TODO Auto-generated method stub
+			return session.selectList(namespace+ ".memberList");
+			
 		}
 		
 		

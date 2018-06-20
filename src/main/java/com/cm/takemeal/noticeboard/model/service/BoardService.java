@@ -2,6 +2,7 @@ package com.cm.takemeal.noticeboard.model.service;
 
 import java.util.List;
 
+import com.cm.takemeal.member.model.vo.Member;
 import com.cm.takemeal.noticeboard.model.vo.BoardVo;
 import com.cm.takemeal.noticeboard.model.vo.Criteria;
 import com.cm.takemeal.noticeboard.model.vo.SearchCriteria;
@@ -26,4 +27,5 @@ public interface BoardService {
 	
 	public int listSearchCount(SearchCriteria cri)throws Exception;
 	
+	public List<Member> memberList() throws Exception;
 }

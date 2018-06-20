@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.cm.takemeal.member.model.vo.Member;
 import com.cm.takemeal.noticeboard.model.dao.BoardDao;
 import com.cm.takemeal.noticeboard.model.vo.BoardVo;
 import com.cm.takemeal.noticeboard.model.vo.Criteria;
@@ -76,6 +77,13 @@ public class BoardServiceImpl implements BoardService{
 	public int listSearchCount(SearchCriteria cri) throws Exception {
 		// TODO Auto-generated method stub
 		return dao.listSearchCount(cri);
+	}
+
+
+	@Override
+	public List<Member> memberList() throws Exception {
+		// TODO Auto-generated method stub
+		return dao.memberList();
 	}
 	
 	
