@@ -58,6 +58,13 @@
 			<li>
 				<a href="./shopList.do">쇼핑몰</a>
 			</li>
+			
+			<!-- 멤버목록관련 noticeBoard 폴더에서 작업 -->
+			 <c:if test="${ sessionScope.loginUser != null && sessionScope.loginUser.type == 1}">
+			<li class="recipeWrite">
+					<a href="memberControl">회원관리</a>
+			</li> 
+			</c:if> 
 		</ul>
 	</nav>
 </header>

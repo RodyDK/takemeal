@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.cm.takemeal.member.model.vo.Member;
 import com.cm.takemeal.noticeboard.model.service.BoardService;
 import com.cm.takemeal.noticeboard.model.vo.BoardVo;
 import com.cm.takemeal.noticeboard.model.vo.Criteria;
@@ -129,6 +130,24 @@ public class SearchBoardController {
 		rttr.addFlashAttribute("msg", "SUCCESS");
 		
 		return "redirect:list.do";
+	}
+	
+	@RequestMapping(value = "/memberControl", method=RequestMethod.GET)
+	public ModelAndView memberList(Member member, ModelAndView mv)throws Exception{
+		
+		logger.info(member.toString());
+
+		/*mv.addObject("list", service.listSearchCriteria(cri));*/
+		mv.setViewName("DJ/memberControl");
+		/*
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setCri(cri);
+		pageMaker.setTotalCount(service.listSearchCount(cri));
+		mv.addObject("pageMaker", pageMaker);
+		logger.info(pageMaker.toString());
+		return mv;*/
+		
+		return mv;
 	}
 	
 	
