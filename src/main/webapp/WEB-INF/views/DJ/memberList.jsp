@@ -9,56 +9,35 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css"href="/takemeal/resources/css/style.css">
+<link rel="stylesheet" type="text/css"href="./resources/css/style.css">
+<script   src="https://code.jquery.com/jquery-2.2.4.min.js"   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="   crossorigin="anonymous"></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.js'></script>
+ <!-- Bootstrap 3.3.4 -->
+    <link href="/takemeal/resources/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <!-- Font Awesome Icons -->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <!-- Ionicons -->
+    <link href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" type="text/css" />
+ <%@ include file="/WEB-INF/views/head.jsp" %>
+ <%@ include file="/WEB-INF/views/header.jsp" %>
+ 
+ 
 
-<%@ include file="/WEB-INF/views/head.jsp"%>
-
-
-<%-- <%@ include file="../../head.jsp" %> --%>
-<body>
-	<%@ include file="/WEB-INF/views/header.jsp"%>
-	<%-- <%@ include file="../../header.jsp" %> --%>
-
-
-	<link rel="stylesheet"	href="/takemeal/resources/bootstrap/css/bootstrap.css">
-	<link rel="stylesheet"	href="/takemeal/resources/bootstrap/css/bootstrap.min.css">
-
-	<script type="text/javascript"
-		src="/takemeal/resources/js/jquery-3.3.1.min.js"></script>
-
-	<script type="text/javascript">
-
-			$("#memberList").ready(function() {
-				  $.ajax({
-						type:'post',
-						url:'/takemeal/DJ/memberList',
-						headers: { 
-						      "Content-Type": "application/json",
-						      "X-HTTP-Method-Override": "POST" },
-						dataType:'text',
-						data: JSON.stringify({
-							no:no,
-							userid:userid,
-							username:username,
-							blog:blog,
-							phone:phone,
-							reg_date:reg_date,
-							type:type
-							}),
-						
-						success:function(result){
-							console.log("result: " + result);
-							if(result == 'SUCCESS'){
-								page=1;
-								getPage("/takemeal/memberList");
-							}
-					}});
-			});
-
-	</script>
 </head>
 <body>
 
+
 	<table class="table table-bordered" id="memberList">
+		<colgroup>
+			<col width="70" />
+			<col width="70" />
+			<col width="70" />
+			<col width="" />
+			<col width="" />
+			<col width="200" />
+			<col width="70" />
+		</colgroup>
+		
 		<tr>
 			<th style="width: 10px">회원번호</th>
 			<th style="width: 10px">아이디</th>
@@ -66,19 +45,19 @@
 			<th>블로그</th>
 			<th>전화번호</th>
 			<th>가입날짜</th>
-			<th style="width: 40px">멤버타입</th>
+			<th style="width: 10px">멤버타입</th>
 		</tr>
-
+	<c:forEach items="${memberList}" var="Member">
 			<tr>
-				<td>{no}</td>
-				<td>{userid}</td>
-				<td>{username}</td>						
-				<td>{blog}</td>
-				<td>{phone}</td>
-				<td>{reg_date}</td>
-				<td><span class="badge bg-red">${type}</span></td>
+				<td>${Member.no }</td>
+				<td>${Member.userid }</td>
+				<td>${Member.username }	</td>
+				<td>${Member.blog }	</td>
+				<td>${Member.phone }</td>
+				<td>${Member.reg_date }</td>
+				<td>${Member.type }	</td>
 			</tr>
-
+		</c:forEach>
 	</table>
 	
 	<form id="jobForm">
@@ -96,13 +75,13 @@
 						href="list${pageMaker.makeSearch(pageMaker.startPage - 1) }">&laquo;</a></li>
 				</c:if>
 
-				<c:forEach begin="${pageMaker.startPage }"
-					end="${pageMaker.endPage }" var="idx">
+				<%-- <c:forEach begin="${pageMaker.startPage }"
+					end="${pageMaker.endPage }" var="idx"> --%>
 					<li
 						<c:out value="${pageMaker.cri.page == idx?'class =active':''}"/>>
-						<a href="list${pageMaker.makeSearch(idx)}">${idx}</a>
+						<a href="list${pageMaker.makeSearch(idx)}">${1}</a>
 					</li>
-				</c:forEach>
+				<%-- </c:forEach> --%>
 
 				<c:if test="${pageMaker.next && pageMaker.endPage > 0}">
 					<li><a href="list${pageMaker.makeSearch(pageMaker.endPage +1) }">&raquo;</a></li>
@@ -114,7 +93,8 @@
 	</div>
 
 
-	<%@ include file="/WEB-INF/views/footer.jsp"%>
+
+	<%-- <%@ include file="/WEB-INF/views/footer.jsp"%> --%>
 	<%-- <%@ include file="../../footer.jsp" %> --%>
 </body>
 </html>

@@ -6,25 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 
-<!-- <script src="/takemeal/resources/js/jquery-3.3.1.min.js"></script>
-<script src="/takemeal/resources/js/handlebars-v4.0.11.js"></script>
-<link rel="stylesheet"
-	href="/takemeal/resources/bootstrap/css/bootstrap.css">
-<link rel="stylesheet"
-	href="/takemeal/resources/bootstrap/css/bootstrap.min.css">
 
-	
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-    Font Awesome Icons
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-    Ionicons
-    <link href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" type="text/css" />
-
-
-<link rel="stylesheet"
-	href="/takemeal/resources/bootstrap/js/bootstrap.js">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
- -->
  <script   src="https://code.jquery.com/jquery-2.2.4.min.js"   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="   crossorigin="anonymous"></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.js'></script>
  <!-- Bootstrap 3.3.4 -->

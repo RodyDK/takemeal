@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -140,25 +142,23 @@ public class SearchBoardController {
 	
 	
 	@RequestMapping(value = "/memberList", method=RequestMethod.GET)
-	public ModelAndView memberList(Member member, ModelAndView mv)throws Exception{
+		public ModelAndView memberList(@ModelAttribute("page") SearchCriteria cri, ModelAndView mv)throws Exception{
 		
-		logger.info(member.toString());
+		logger.info(cri.toString());
+		mv.addObject("memberList", service.memberList());
 		mv.setViewName("DJ/memberList");
-		/*
 		PageMaker pageMaker = new PageMaker();
 		pageMaker.setCri(cri);
 		pageMaker.setTotalCount(service.listSearchCount(cri));
 		mv.addObject("pageMaker", pageMaker);
 		logger.info(pageMaker.toString());
-		return mv;*/
 		return mv;
+		
 	}
-	
-	@RequestMapping(value = "/memberList/{page}", method=RequestMethod.GET)
-	public ResponseEntity <List<Member>> list(@PathVariable("page") Integer page){
+	/*@RequestMapping(value = "/memberList/{page}", method=RequestMethod.GET)
+	public  ResponseEntity <List<Member> > list(@PathVariable("page") Integer page){
 		
-		logger.info("asdasd");
-		
+		System.out.println("asdasdasd");
 		ResponseEntity<List<Member>> entity = null;
 		try {
 			entity = new ResponseEntity<>(service.memberList(), HttpStatus.OK);
@@ -167,18 +167,20 @@ public class SearchBoardController {
 			e.printStackTrace();
 			entity = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
+		logger.info(entity.toString());
+		
 		
 		return entity;
 		
-		/*
+		
 		PageMaker pageMaker = new PageMaker();
 		pageMaker.setCri(cri);
 		pageMaker.setTotalCount(service.listSearchCount(cri));
 		mv.addObject("pageMaker", pageMaker);
 		logger.info(pageMaker.toString());
-		return mv;*/
+		return mv;
 	}
-	
+	*/
 	
 	
 }
