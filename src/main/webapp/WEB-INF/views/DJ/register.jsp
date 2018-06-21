@@ -43,7 +43,7 @@
 
 </form>
 
-<%@ include file="/WEB-INF/views/footer.jsp"%>
+ <%@ include file="/WEB-INF/views/footer.jsp"%> 
 
 </body>
 </html>

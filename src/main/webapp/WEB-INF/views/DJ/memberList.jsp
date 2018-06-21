@@ -8,9 +8,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet"	href="/takemeal/resources/bootstrap/css/bootstrap.css">
+<link rel="stylesheet"	href="/takemeal/resources/bootstrap/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css"href="/takemeal/resources/css/style.css">
 <link rel="stylesheet" type="text/css"href="./resources/css/style.css">
-<script   src="https://code.jquery.com/jquery-2.2.4.min.js"   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="   crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-2.2.4.min.js"   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="   crossorigin="anonymous"></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.js'></script>
  <!-- Bootstrap 3.3.4 -->
     <link href="/takemeal/resources/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
@@ -92,9 +94,7 @@
 
 	</div>
 
-
-
-	<%-- <%@ include file="/WEB-INF/views/footer.jsp"%> --%>
+ <%@ include file="/WEB-INF/views/footer.jsp"%> 
 	<%-- <%@ include file="../../footer.jsp" %> --%>
 </body>
 </html>

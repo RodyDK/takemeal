@@ -43,7 +43,7 @@
 
 							});
 					$('#newBtn').on("click", function(evt) {
-						self.location = "register";
+						self.location = "DJ/register";
 					});
 
 				});
@@ -135,7 +135,7 @@
 	</div>
 
 
-	<%@ include file="/WEB-INF/views/footer.jsp"%>
+	 <%@ include file="/WEB-INF/views/footer.jsp"%> 
 	<%-- <%@ include file="../../footer.jsp" %> --%>
 </body>
 </html>

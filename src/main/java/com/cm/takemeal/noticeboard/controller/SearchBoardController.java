@@ -121,13 +121,13 @@ public class SearchBoardController {
 	}
 
 	
-	@RequestMapping(value="/register", method=RequestMethod.GET)
+	@RequestMapping(value="DJ/register", method=RequestMethod.GET)
 	public void registGET() throws Exception{
 		logger.info("regist get..............");
 		
 	}
 	
-	@RequestMapping(value = "/register", method=RequestMethod.POST)
+	@RequestMapping(value = "DJ/register", method=RequestMethod.POST)
 	public String registerPOST(BoardVo board, RedirectAttributes rttr)throws Exception{
 		
 		logger.info("register post....");
@@ -137,7 +137,7 @@ public class SearchBoardController {
 		
 		rttr.addFlashAttribute("msg", "SUCCESS");
 		
-		return "redirect:list.do";
+		return "redirect:/list";
 	}
 	
 	
@@ -169,9 +169,7 @@ public class SearchBoardController {
 		}
 		logger.info(entity.toString());
 		
-		
 		return entity;
-		
 		
 		PageMaker pageMaker = new PageMaker();
 		pageMaker.setCri(cri);
@@ -181,6 +179,5 @@ public class SearchBoardController {
 		return mv;
 	}
 	*/
-	
 	
 }
