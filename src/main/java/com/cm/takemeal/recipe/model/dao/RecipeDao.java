@@ -22,6 +22,7 @@ public interface RecipeDao {
     List<Recipe> getContentList(Map<String, Object> paramMap);
 
 	int getContentCnt(Map<String, Object> paramMap);
+	int getLikeCnt(Map<String, Object> paramMap);
 	
 	List<String> getLike(Map<String, Object> paramMap);
 	
@@ -29,4 +30,12 @@ public interface RecipeDao {
 
 
 	void setRecipe(Map<String, Object> paramMap);
+
+	int deleteLike(Map<String, Object> paramMap);
+	int saveLike(Map<String, Object> paramMap);
+
+	int downLike(Map<String, Object> paramMap);
+	int upLike(Map<String, Object> paramMap);
+
+	
 }

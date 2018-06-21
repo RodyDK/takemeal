@@ -1,6 +1,7 @@
 package com.cm.takemeal.recipe.controller;
 
 import java.util.ArrayList;
+import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -17,6 +18,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
+
 import com.cm.takemeal.Setting;
 import com.cm.takemeal.member.model.vo.Member;
 import com.cm.takemeal.Pagination;
@@ -65,6 +68,42 @@ public class RecipeController {
  
     }
 
+    
+    //게시글 리스트 조회
+    @RequestMapping(value = "like.do")
+    public String mypageLike(@RequestParam Map<String, Object> paramMap, Model model, @ModelAttribute("setting")Setting setting, HttpSession session) {
+    	
+    	Member user = (Member) session.getAttribute("loginUser");
+    	
+        int totalCnt = recipeService.getContentCnt(paramMap);
+        int currentPage = setting.getPage();
+		int startRow = (currentPage-1) * setting.getPerPageNum();
+		int endRow = currentPage * setting.getPerPageNum();
+
+		
+
+		
+
+
+
+		Pagination pagination = new Pagination();
+		
+		
+		pagination.setSetting(setting);
+		pagination.setTotalCount(totalCnt);
+        paramMap.put("start", startRow);
+        paramMap.put("end", endRow);
+        paramMap.put("userid", user.getUserid());
+        
+        
+		model.addAttribute("pagination", pagination);
+        model.addAttribute("recipeList", recipeService.getContentList(paramMap));
+        
+        
+        return "member/like";
+ 
+    }
+    
     //게시글 상세 보기
     @RequestMapping(value = "recipeView.do")
     @ResponseBody
@@ -105,19 +144,56 @@ public class RecipeController {
     @ResponseBody
     public Object recipeLikeSave(@RequestParam Map<String, Object> paramMap, HttpServletRequest request) throws Exception {
     	
+    	System.out.println("paramMapparamMap"+paramMap);
+    	Map<String, Object> retVal = new HashMap<String, Object>();
+    	int userLikeCnt = recipeService.getLikeCnt(paramMap);
     	
-    	List<String> likeCnt = recipeService.getLike(paramMap);
-
-        return likeCnt;
+        if(userLikeCnt > 0) {
+        	retVal.put("code", "UNLIKE");
+        	int downLike = recipeService.downLike(paramMap);
+        	int unlike = recipeService.deleteLike(paramMap);
+        }else {
+        	retVal.put("code", "LIKE");
+        	int upLike = recipeService.upLike(paramMap);
+        	int like = recipeService.saveLike(paramMap);
+        }
+        
+        return retVal;
     }
     
     
     
     @RequestMapping(value = "recipeSave.do")
     @ResponseBody
-    public Object recipeSave(@RequestParam Map<String, Object> paramMap, HttpServletRequest request) throws Exception {
+    public Object recipeSave(@RequestParam Map<String, Object> paramMap, HttpServletRequest request, @RequestParam Map<Object, Object> paramMap1) throws Exception {
     	
     	Map<String, Object> retVal = new HashMap<String, Object>();
+
+
+    	Enumeration enums = request.getParameterNames();
+
+    	while(enums.hasMoreElements()){ 
+    		String paramName = (String)enums.nextElement(); 
+    		String[] parameters = request.getParameterValues(paramName); 
+
+    		// Parameter가 배열일 경우 
+    		if(parameters.length > 1){ 
+    			List<Object> parmList = new ArrayList<Object>();
+    				
+    			for(int i= 0; i<parameters.length;i++){
+    				parmList.add(parmList.size(), parameters[i]);
+    			}
+    			paramMap.put(paramName, parmList);
+    			// Parameter가 배열이 아닌 경우 
+    		}
+    	} 
+    	
+    	
+    	
+    	paramMap.put("tag", paramMap.get("tag[]").toString());
+    	paramMap.put("recipe_food", paramMap.get("recipe_food[]").toString());
+    	paramMap.put("recipe_amount", paramMap.get("recipe_amount[]").toString());
+    	
 
     	recipeService.setRecipe(paramMap,request);
 

@@ -35,4 +35,34 @@ public class ChefDaoImpl implements ChefDao{
         return sqlSession.selectOne("selectChefContentView", paramMap);
     }
     
+    
+    @Override
+    public int getRecipeContentCnt(Map<String, Object> paramMap) {
+        return sqlSession.selectOne("selectRecipeContentCnt", paramMap);
+    }
+
+
+    @Override
+    public int getFollowCnt(Map<String, Object> paramMap) {
+        return sqlSession.selectOne("getFollowCnt", paramMap);
+    }
+    @Override
+    public int deleteFollow(Map<String, Object> paramMap) {
+        return sqlSession.selectOne("deleteFollow", paramMap);
+    }
+    @Override
+    public int saveFollow(Map<String, Object> paramMap) {
+        return sqlSession.selectOne("saveFollow", paramMap);
+    }
+    
+    @Override
+    public List<String> getRecipeContentList(Map<String, Object> paramMap) {
+        return sqlSession.selectList("selectRecipeContent", paramMap);
+    }
+    
+    @Override
+    public List<String> getFollow(Map<String, Object> paramMap) {
+        return sqlSession.selectList("getFollow", paramMap);
+    }
+    
 }

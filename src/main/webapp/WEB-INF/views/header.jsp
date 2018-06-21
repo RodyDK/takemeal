@@ -28,7 +28,7 @@
 						</li>
 					</c:if> --%>
 					<li>
-						<a href="mypage.do">마이페이지</a>
+						<a href="follow.do">마이페이지</a>
 					</li>
 					<li>
 						<a href="logout.do">로그아웃</a>
@@ -39,7 +39,7 @@
 					<a href="faqList.do">자주찾는질문</a>
 				</li>
 				<li>
-					<a href="./list">공지사항</a>
+					<a href="./noticeList.do">공지사항</a>
 				</li>
 			</ul>
 		</div>
@@ -60,7 +60,7 @@
 			</li>
 			
 			<!-- 멤버목록관련 noticeBoard 폴더에서 작업 -->
-			 <c:if test="${ sessionScope.loginUser != null && sessionScope.loginUser.type == 1}">
+			<c:if test="${ sessionScope.loginUser != null && sessionScope.loginUser.type == 1}">
 			<li class="recipeWrite">
 					<a href="memberList">회원관리</a>
 			</li> 

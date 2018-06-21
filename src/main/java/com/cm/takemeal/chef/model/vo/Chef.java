@@ -8,7 +8,7 @@ public class Chef {
 	private String type;
 	private String phone;
 	private String blog;
-	
+	private String info;
 	public int getNo() {
 		return no;
 	}
@@ -45,16 +45,20 @@ public class Chef {
 	public void setBlog(String blog) {
 		this.blog = blog;
 	}
-	
-	
+	public String getInfo() {
+		return info;
+	}
+	public void setInfo(String info) {
+		this.info = info;
+	}
 	@Override
 	public String toString() {
 		return "Chef [no=" + no + ", userid=" + userid + ", username=" + username + ", type=" + type + ", phone="
-				+ phone + ", blog=" + blog + ", getNo()=" + getNo() + ", getUserid()=" + getUserid()
+				+ phone + ", blog=" + blog + ", info=" + info + ", getNo()=" + getNo() + ", getUserid()=" + getUserid()
 				+ ", getUsername()=" + getUsername() + ", getType()=" + getType() + ", getPhone()=" + getPhone()
-				+ ", getBlog()=" + getBlog() + ", getClass()=" + getClass() + ", hashCode()=" + hashCode()
-				+ ", toString()=" + super.toString() + "]";
+				+ ", getBlog()=" + getBlog() + ", getInfo()=" + getInfo() + ", getClass()=" + getClass()
+				+ ", hashCode()=" + hashCode() + ", toString()=" + super.toString() + "]";
 	}
 	
-	
+
 }

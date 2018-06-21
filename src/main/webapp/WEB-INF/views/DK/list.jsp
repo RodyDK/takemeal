@@ -14,10 +14,12 @@
 				　
 				</div>
 				<div class="search_form">
-					<input type="text" placeholder="음식명 으로 검색">
-					<a href="#">
-						<i class="fa fa-search"></i>
-					</a>
+					<form name="search" action="recipeList.do" method="get">
+						<input type="text" name="subject" placeholder="음식명 으로 검색" value="${param.subject}">
+						<button>
+							<i class="fa fa-search"></i>
+						</button>
+					</form>
 				</div>
 				<div class="sort">
 				　
@@ -27,7 +29,7 @@
 				<ul>		
 				<c:choose>
 				    <c:when test="${fn:length(recipeList) == 0}">
-				        <li>
+				        <li class="nodata">
 							조회결과가 없습니다.
 				        </li>
 				    </c:when>
@@ -40,9 +42,9 @@
 								<span class="author">
 									<a href="recipeChef.do?userid=${recipeList.userid}">
 										<span class="profile_thumb">
-											<img src="https://cloudfront.haemukja.com/vh.php?url=https://d1hk7gw6lgygff.cloudfront.net/uploads/user/image_file/10/thumb__BF_F8_C7_FC.jpg&amp;convert=jpgmin&amp;rt=600">
+											<img src="/takeMeal/resources/upfile/chef/${recipeList.userid}.jpg">
 										</span>
-										<strong>${recipeList.userid}</strong>
+										<strong>${recipeList.username}</strong>
 									</a>			
 								</span>
 								<h2 class="recipe_title">
@@ -63,15 +65,10 @@
 									<div class="like" rel="${recipeList.no}">
 										<a href="#">
 										<i class="fa fa-heart"></i>
-										${recipeList.follow}명
+										<span>${recipeList.follow}</span>명
 										</a>
 									</div>
-									<div class="share">
-										<a href="javascript:;" class="call-share">
-											<i class="fa fa-share-alt"></i>
-											공유
-										</a>
-									</div>
+
 								</div>
 								<!-- [D] 공유하기 레이어 -->
 								<div class="share_on">

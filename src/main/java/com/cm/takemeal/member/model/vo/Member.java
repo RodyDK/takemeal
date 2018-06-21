@@ -17,6 +17,7 @@ public class Member implements java.io.Serializable{
 	private int type;
 	private String phone;
 	private String blog;
+	private String info;
 	private Date reg_date;
 	public int getNo() {
 		return no;
@@ -60,6 +61,12 @@ public class Member implements java.io.Serializable{
 	public void setBlog(String blog) {
 		this.blog = blog;
 	}
+	public String getInfo() {
+		return info;
+	}
+	public void setInfo(String info) {
+		this.info = info;
+	}
 	public Date getReg_date() {
 		return reg_date;
 	}
@@ -69,17 +76,15 @@ public class Member implements java.io.Serializable{
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
-	
 	@Override
 	public String toString() {
 		return "Member [no=" + no + ", userid=" + userid + ", password=" + password + ", username=" + username
-				+ ", type=" + type + ", phone=" + phone + ", blog=" + blog + ", reg_date=" + reg_date + ", getNo()="
-				+ getNo() + ", getUserid()=" + getUserid() + ", getPassword()=" + getPassword() + ", getUsername()="
-				+ getUsername() + ", getType()=" + getType() + ", getPhone()=" + getPhone() + ", getBlog()=" + getBlog()
-				+ ", getReg_date()=" + getReg_date() + ", getClass()=" + getClass() + ", hashCode()=" + hashCode()
-				+ ", toString()=" + super.toString() + "]";
+				+ ", type=" + type + ", phone=" + phone + ", blog=" + blog + ", info=" + info + ", reg_date=" + reg_date
+				+ ", getNo()=" + getNo() + ", getUserid()=" + getUserid() + ", getPassword()=" + getPassword()
+				+ ", getUsername()=" + getUsername() + ", getType()=" + getType() + ", getPhone()=" + getPhone()
+				+ ", getBlog()=" + getBlog() + ", getInfo()=" + getInfo() + ", getReg_date()=" + getReg_date()
+				+ ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()=" + super.toString()
+				+ "]";
 	}
-
-
 	
 }

@@ -23,6 +23,11 @@
         FROM
             goods
 		]]> 
+	    <if test="goodsname != null">
+	    	<![CDATA[ 
+		    WHERE name like '%'||#{goodsname}||'%'
+		    ]]>
+		</if>
     </select>
     
     <select id="selectShopContent" resultType="com.cm.takemeal.shop.model.vo.Shop" parameterType="java.util.HashMap">
@@ -30,8 +35,15 @@
     	SELECT * FROM (
 		    SELECT no, name, price, qty, description, contents,  thumbnail, company, country, TO_CHAR(reg_date,'YYYY-MM-DD'), ROW_NUMBER() OVER(ORDER BY NO DESC) AS RNUM
 		    FROM goods
+		]]>
+		    <if test="goodsname != null">
+		    	<![CDATA[ 
+			    WHERE name like '%'||#{goodsname}||'%'
+			    ]]>
+			</if>
+		<![CDATA[ 
 		)
-		WHERE RNUM BETWEEN #{start} AND #{end}
+		WHERE RNUM > #{start} AND RNUM <= #{end}
 		]]> 
     </select>
     

@@ -3,6 +3,7 @@ package com.cm.takemeal.member.controller;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
   
 import org.slf4j.Logger;
@@ -167,6 +168,9 @@ public class MemberController {
 		
 		return "test/testCryto";
 	}
+	
+	
+
 }
 
 

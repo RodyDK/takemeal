@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>   
 </div>
+
 <style>
 	html.popup-on {
 		overflow:hidden;
@@ -301,6 +302,7 @@
 		font-size:24px; 
 		color:#999;
 		position:relative;
+		margin-bottom:10px;
 	}
 	.popup-view .popup-info .recipe-ingredient h2 em{
 		position:absolute;
@@ -366,62 +368,13 @@
 			<div class="recipeSlide">
 		        <div id="slider" class="flexslider">
 		          <ul class="slides">
-		            <li>
-					   <img src="https://cloudfront.haemukja.com/vh.php?url=https://d1hk7gw6lgygff.cloudfront.net/uploads/direction/image_file/4806/pad_thumb_Mixed-Berry-Cream-Cheese-Blintzes9.jpg&amp;convert=jpgmin&amp;rt=600" alt="Pad thumb mixed berry cream cheese blintzes9" draggable="false">
-					</li>
-					<li>
-					   <img src="https://cloudfront.haemukja.com/vh.php?url=https://d1hk7gw6lgygff.cloudfront.net/uploads/direction/image_file/4806/pad_thumb_Mixed-Berry-Cream-Cheese-Blintzes9.jpg&amp;convert=jpgmin&amp;rt=600" alt="Pad thumb mixed berry cream cheese blintzes9" draggable="false">
-					</li>
-					<li>
-					   <img src="https://cloudfront.haemukja.com/vh.php?url=https://d1hk7gw6lgygff.cloudfront.net/uploads/direction/image_file/4806/pad_thumb_Mixed-Berry-Cream-Cheese-Blintzes9.jpg&amp;convert=jpgmin&amp;rt=600" alt="Pad thumb mixed berry cream cheese blintzes9" draggable="false">
-					</li>
-					<li>
-					   <img src="https://cloudfront.haemukja.com/vh.php?url=https://d1hk7gw6lgygff.cloudfront.net/uploads/direction/image_file/4806/pad_thumb_Mixed-Berry-Cream-Cheese-Blintzes9.jpg&amp;convert=jpgmin&amp;rt=600" alt="Pad thumb mixed berry cream cheese blintzes9" draggable="false">
-					</li>
 		          </ul>
 		        </div>
 		        <div id="carousel" class="flexslider">
 		          <ul class="slides">
-				   	<li>
-				   		<img src="https://cloudfront.haemukja.com/vh.php?url=https://d1hk7gw6lgygff.cloudfront.net/uploads/direction/image_file/4806/pad_thumb_Mixed-Berry-Cream-Cheese-Blintzes9.jpg&amp;convert=jpgmin&amp;rt=600" alt="Pad thumb mixed berry cream cheese blintzes9" draggable="false">
-					</li>
-					<li>
-					   <img src="https://cloudfront.haemukja.com/vh.php?url=https://d1hk7gw6lgygff.cloudfront.net/uploads/direction/image_file/4806/pad_thumb_Mixed-Berry-Cream-Cheese-Blintzes9.jpg&amp;convert=jpgmin&amp;rt=600" alt="Pad thumb mixed berry cream cheese blintzes9" draggable="false">
-					</li>
-					<li>
-					   <img src="https://cloudfront.haemukja.com/vh.php?url=https://d1hk7gw6lgygff.cloudfront.net/uploads/direction/image_file/4806/pad_thumb_Mixed-Berry-Cream-Cheese-Blintzes9.jpg&amp;convert=jpgmin&amp;rt=600" alt="Pad thumb mixed berry cream cheese blintzes9" draggable="false">
-					</li>
-					<li>
-					   <img src="https://cloudfront.haemukja.com/vh.php?url=https://d1hk7gw6lgygff.cloudfront.net/uploads/direction/image_file/4806/pad_thumb_Mixed-Berry-Cream-Cheese-Blintzes9.jpg&amp;convert=jpgmin&amp;rt=600" alt="Pad thumb mixed berry cream cheese blintzes9" draggable="false">
-					</li>
 		          </ul>
 		        </div>
 		    </div>
-	     	<script type="text/javascript">
-			    
-			    $(window).load(function(){
-			      $('#carousel').flexslider({
-			        animation: "slide",
-			        controlNav: false,
-			        animationLoop: true,
-			        slideshow: false,
-			        itemWidth: 100,
-			        itemMargin: 10,
-			        asNavFor: '#slider'
-			      });
-			
-			      $('#slider').flexslider({
-			        animation: "slide",
-			        controlNav: false,
-			        animationLoop: true,
-			        slideshow: false,
-			        sync: "#carousel",
-			        start: function(slider){
-			          $('body').removeClass('loading');
-			        }
-			      });
-			    });
-			</script>
 			<div class="recipe-taginfo">
 				<h2>태그 정보</h2>
 				<ul>
@@ -436,26 +389,6 @@
 			<div class="recipe-detail">
 				<h2>레시피</h2>
 				<ul class="lst_step">
-					<li>
-						<div class="img-cover">
-							<img src="https://cloudfront.haemukja.com/vh.php?url=https://d1hk7gw6lgygff.cloudfront.net/uploads/direction/image_file/6666/org_resized_ChocMugcake-3.jpg&amp;convert=jpgmin&amp;rt=600" alt="Org resized chocmugcake 3">
-						</div>
-						<p>혼자 먹기 딱 적당한 양이죠?<br>양도 그렇지만 준비나 치우는 과정이 참 단순하고, 무엇보다 이 모든 과정이 5분 밖에 걸리지 않는다는 놀라운 사실!<br>모든 재료를 정량으로 준비하면 케이크는 너무 딱딱하거나 질척거리지 않을 거예요.</p>
-					</li>
-
-					<li>
-						<div class="img-cover">
-							<img src="https://cloudfront.haemukja.com/vh.php?url=https://d1hk7gw6lgygff.cloudfront.net/uploads/direction/image_file/6668/org_resized_ChocMugcake-5.jpg&amp;convert=jpgmin&amp;rt=600" alt="Org resized chocmugcake 5">
-						</div>
-						<p>아주 심플한 머그 케이크에 필요한 재료는요,<br>-밀가루 4 테이블스푼<br>-설탕 2 테이블스푼<br>-무가당 코코아 파우더 2 테이블스푼<br>-소금 조금 <br>-우유 3 테이블스푼<br>-바닐라 농축액 1/4 티스푼<br>-뉴텔라 2 테이블스푼<br>-베이킹 파우더 1/4 티스푼<br>-달걀 1개<br>-에스프레소 파우더 1 티스푼<br>-코코넛 오일 2 테이블스푼<br><br>재료가 준비되면, <br>머그컵에 달걀을 넣고 저어주다가 우유와 오일을 넣고 섞어주세요.<br>나머지 모든 재료를 다 넣어 줍니다.(밀가루, 설탕, 코코아 파우더, 소금)<br>마지막으로 뉴텔라를 넣고 잘 저어주세요.<br>전자레인지에서 2분 정도 돌리는데, 1분 20초가 넘으면 상태를 계속 체크해주세요. 젓가락으로 찔렀을 때 묻어 나오지 않을 정도면 적당하게 익은 거예요.<br>슈거파우더나 초콜릿 시럽을 뿌려 먹어도 좋아요.</p>
-					</li>
-
-					<li>
-						<div class="img-cover">
-							<img src="">
-						</div>
-						<p></p>
-					</li>
 				</ul>
 			</div>	
 		</div>
@@ -464,7 +397,7 @@
 				<span class="author">
 					<a href="recipeChef.do?userid=">
 						<span class="profile_thumb">
-							<img src="https://cloudfront.haemukja.com/vh.php?url=https://d1hk7gw6lgygff.cloudfront.net/uploads/user/image_file/10/thumb__BF_F8_C7_FC.jpg&amp;convert=jpgmin&amp;rt=600">
+							<img src="">
 						</span>
 						<strong >
 						
@@ -496,38 +429,14 @@
 			</div>
 			<div class="recipe-sns">
 				<dl>
-					<dd><i class="fa fa-facebook-f"></i></dd>
-					<dd><i class="fa fa-twitter"></i></dd>
-					<dd><i class="fa fa-link"></i></dd>
+					<dd><i class="fa fa-google-plus-square" onclick="sns('google','12321','http://takemeal.co.kr','1','1')"></i></dd>
+					<dd><i class="fa fa-twitter" onclick="sns('twitter','12321','http://takemeal.co.kr','1','1')"></i></dd>
+					<dd><i class="fa fa-link" onclick="sns('line','','','','')"></i></dd>
 				</dl>
 			</div>
 			<div class="recipe-ingredient">
-				<h2>재료리스트  <em>10인 기준</em></h2>
+				<h2>재료리스트  <em><span>10</span>인 기준</em></h2>
 				<ul>
-					<li>
-						<span class="title">생망고</span>
-						<span class="desc">1½ 컵</span>
-					</li>
-					<li>
-						<span class="title">설탕</span>
-						<span class="desc">1/4컵</span>
-					</li>
-					<li>
-						<span class="title">생망고</span>
-						<span class="desc">1½ 컵</span>
-					</li>
-					<li>
-						<span class="title">설탕</span>
-						<span class="desc">1/4컵</span>
-					</li>
-					<li>
-						<span class="title">생망고</span>
-						<span class="desc">1½ 컵</span>
-					</li>
-					<li>
-						<span class="title">설탕</span>
-						<span class="desc">1/4컵</span>
-					</li>
 				</ul>
 			</div>
 		</div>
@@ -741,6 +650,39 @@ function uploadChange(file) {
   }
 }
 
+var recipe_tag = [{
+	"1001":["간식/야식"],
+	"1002":["술안주"],
+	"1003":["해장요리"],
+	"1004":["손님 접대 요리"],
+	"1005":["나들이 요리"],
+	"1006":["파티/명절요리"],
+	"1007":["실생활 요리"],	
+	"2001":["한식 요리"],
+	"2002":["중식 요리"],
+	"2003":["일식 요리"],
+	"2004":["동남아/인도 요리"],
+	"2005":["멕시칸 요리"],
+	"2006":["양식 요리"],
+	"2007":["퓨전요리"],	
+	"3001":["돼지고기"],
+	"3002":["쇠고기"],
+	"3003":["닭고기"],
+	"3004":["햄/소시지"],
+	"3005":["채소류 요리"],
+	"3006":["생선 수산물"],
+	"3007":["콩/두부 요리"],
+	"3008":["과일 요리"],	
+	"3009":["달걀/유제품 요리"],	
+	"3010":["면요리"],	
+	"3011":["만두요리"],	
+	"3012":["김치요리"],	
+	"3013":["가공식품 요리"]
+}];
+
+
+console.log(recipe_tag);
+
 function faqlistAccordion(obj,no){
 	
 	var html = "";
@@ -887,9 +829,58 @@ function popupOpen(type,no){
                 if(result.code=="SUCCESS"){
                 	var recipeValue = result.data;
                 	
-                	$(".recipe-subject").text(recipeValue.subject);
-                	$(".recipe-time").text(recipeValue.time+"분");
-                	$(".recipe-follow").text(recipeValue.follow);
+  
+                
+                	var recipeHtml = "";
+                	var recipeSliderHtml = "";
+                	var recipeFoodHtml = "";
+                	var recipeTagHtml = "";
+                	var recipeFood = JSON.parse(recipeValue.recipe_food);
+                	var recipeAmount = JSON.parse(recipeValue.recipe_amount);
+                	var recipeTag = JSON.parse(recipeValue.tag);
+              
+                	
+                	
+                	$("#recipe .profile_thumb img").attr("src","/takeMeal/resources/upfile/chef/"+recipeValue.userid+".jpg");
+                	$("#recipe .recipe-subject").text(recipeValue.subject);
+                	$("#recipe .recipe-time").text(recipeValue.time+"분");
+                	$("#recipe .recipe-follow").text(recipeValue.follow);
+                	$("#recipe .recipe-ingredient h2 em span").html(recipeValue.people);
+                	
+                	$.each(recipeFood, function(key,val){
+                		recipeFoodHtml += "<li>";
+                		recipeFoodHtml += "<span class='title'>"+val+"</span>";
+                		recipeFoodHtml += "<span class='desc'>"+recipeAmount[key]+"</span>";
+                		recipeFoodHtml += "<li>";
+                	});
+                	$("#recipe .recipe-ingredient ul").html(recipeFoodHtml);
+                	
+                	if(recipeValue.thumbnail1){
+                		recipeHtml+='<li><div class="img-cover"><img src="/takeMeal/resources/upfile/recipe/'+recipeValue.thumbnail1+'"></div><p>'+recipeValue.desc1+'</p></li>';
+                		recipeSliderHtml+='<li><img src="/takeMeal/resources/upfile/recipe/'+recipeValue.thumbnail1+'"></li>';
+                	}
+                	if(recipeValue.thumbnail2){
+                		recipeHtml+='<li><div class="img-cover"><img src="/takeMeal/resources/upfile/recipe/'+recipeValue.thumbnail2+'"></div><p>'+recipeValue.desc1+'</p></li>';
+                		recipeSliderHtml+='<li><img src="/takeMeal/resources/upfile/recipe/'+recipeValue.thumbnail2+'"></li>';
+                	}
+                	if(recipeValue.thumbnail3){
+                		recipeHtml+='<li><div class="img-cover"><img src="/takeMeal/resources/upfile/recipe/'+recipeValue.thumbnail3+'"></div><p>'+recipeValue.desc1+'</p></li>';
+                		recipeSliderHtml+='<li><img src="/takeMeal/resources/upfile/recipe/'+recipeValue.thumbnail3+'"></li>';
+                	}
+                	if(recipeValue.thumbnail4){
+                		recipeHtml+='<li><div class="img-cover"><img src="/takeMeal/resources/upfile/recipe/'+recipeValue.thumbnail4+'"></div><p>'+recipeValue.desc1+'</p></li>';
+                		recipeSliderHtml+='<li><img src="/takeMeal/resources/upfile/recipe/'+recipeValue.thumbnail4+'"></li>';
+                	}
+                	
+                	$("#recipe .lst_step").html(recipeHtml);
+                	$("#recipe #slider ul.slides").html(recipeSliderHtml);
+                	$("#recipe #carousel ul.slides").html(recipeSliderHtml);
+                	if(recipeTag){
+	                	$.each(recipeTag,function(key,val){
+	                		recipeTagHtml+='<li>#'+recipe_tag[0][val]+'</li>';
+	                	})
+                	}
+                	$(".recipe-taginfo ul").html(recipeTagHtml);
                 	$("#"+type+".popup-info").height($("#"+type+".popup-content").height());
                 	
                 	
@@ -902,10 +893,61 @@ function popupOpen(type,no){
             },
             complete: function(){
             	scrollFix(type);
+            	$('#carousel').removeData("flexslider");
+            	$('#slider').removeData("flexslider");
+				$('#carousel').flexslider({
+				  animation: "slide",
+				  controlNav: false,
+				  animationLoop: true,
+				  slideshow: false,
+				  itemWidth: 100,
+				  itemMargin: 10,
+				  asNavFor: '#slider'
+				});
+				
+				$('#slider').flexslider({
+				  animation: "slide",
+				  controlNav: false,
+				  animationLoop: true,
+				  slideshow: false,
+				  sync: "#carousel",
+				  start: function(slider){
+				    $('body').removeClass('loading');
+				  }
+				});
             }
         });
 	}
 }
+
+
+
+function sns(type,title,url,imageUrl,description){
+
+    var encodeTitle = encodeURIComponent(title),
+    encodeUrl   = encodeURIComponent(url),
+    encodeImage = encodeURIComponent(imageUrl); // 공유할 이미지
+ 
+
+    if(type=="google"){
+        window.open("https://plus.google.com/share?t="+encodeTitle+"&url="+encodeUrl, "google+", "width=500, height=550, resizable=no");
+    }
+    if(type=="twitter"){
+    	window.open("http://www.twitter.com/intent/tweet?text="+encodeTitle+"&url="+encodeUrl, 'twitter', "width=500, height=450, resizable=no");
+    }
+    if(type=="line"){
+    	var IE=(document.all)?true:false;
+    	if (IE) {
+    	if(confirm("이 글의 트랙백 주소를 클립보드에 복사하시겠습니까?"))
+    	window.clipboardData.setData("Text", trb);
+    	} else {
+    	temp = prompt("이 글의 트랙백 주소입니다. Ctrl+C를 눌러 클립보드로 복사하세요", "http://takemeal.co.kr");
+    	}
+    }
+
+ 
+}
+
 
 $("a.btn-login").on("click", function(){
 	$("#login-sec").addClass("active");
@@ -1119,19 +1161,71 @@ function customAlert(message, url) {
 		    	console.log(result);
 		    }
 		});	
+
+		
+		$.ajax({
+			method: "POST",
+		    cache: false,
+		    url: "chefFollow.do",
+		    data: {
+				userid:"${sessionScope.loginUser.userid}"
+		    },
+		    success: function(result) {
+					if(result){
+					$.each(result,function(key,value){
+						$(".chef_box_"+value.CHEF_NO+" .follow").addClass("on");
+					});
+				}
+		    },
+		    error: function (result) {
+		    	console.log(result);
+		    }
+		});
+		
+		$(".chef_box_normal li div.follow").on("click",function(){
+			var obj = $(this);
+			$.ajax({
+				method: "POST",
+			    cache: false,
+			    url: "chefFollowSave.do",
+			    data: {
+			    	userid:"${sessionScope.loginUser.userid}",
+					chef_no:$(this).attr("rel")
+			    },
+			    success: function(result) {
+					if(result.code=="UNFOLLOW"){
+						$(obj).removeClass("on");
+					}else if(result.code=="FOLLOW"){
+						$(obj).addClass("on");
+					}
+			    },
+			    error: function (result) {
+			    	console.log(result);
+			    }
+			});	
+		})
 		
 		$(".recipe_box_normal li div.like").on("click",function(){
-			alert($(this).attr("rel"));
+			var obj = $(this);
+			var follow = $(this).find("span");
 			$.ajax({
 				method: "POST",
 			    cache: false,
 			    url: "recipeLikeSave.do",
 			    data: {
-					userid:"${sessionScope.loginUser.userid}",
+			    	userid:"${sessionScope.loginUser.userid}",
 					recipe_no:$(this).attr("rel")
 			    },
 			    success: function(result) {
-					
+			    	console.log(result.code);
+					if(result.code=="UNLIKE"){
+						$(obj).removeClass("on");
+						follow.text(Number(follow.text())-1);
+						
+					}else if(result.code=="LIKE"){
+						$(obj).addClass("on");
+						follow.text(Number(follow.text())+1);
+					}
 			    },
 			    error: function (result) {
 			    	console.log(result);

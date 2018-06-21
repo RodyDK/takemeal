@@ -28,6 +28,30 @@ public class RecipeDaoImpl implements RecipeDao{
         return sqlSession.selectOne("selectContentCnt", paramMap);
     }
 
+    
+    @Override
+    public int getLikeCnt(Map<String, Object> paramMap) {
+        return sqlSession.selectOne("selectLikeCnt", paramMap);
+    }
+
+    @Override
+    public int deleteLike(Map<String, Object> paramMap) {
+        return sqlSession.delete("deleteLike", paramMap);
+    }
+    @Override
+    public int saveLike(Map<String, Object> paramMap) {
+        return sqlSession.insert("saveLike", paramMap);
+    }
+    
+    @Override
+    public int downLike(Map<String, Object> paramMap) {
+        return sqlSession.update("downLike", paramMap);
+    }
+    @Override
+    public int upLike(Map<String, Object> paramMap) {
+        return sqlSession.update("upLike", paramMap);
+    }
+    
     @Override
     public List<String> getLike(Map<String, Object> paramMap) {
         return sqlSession.selectList("selectRecipeLikeCnt", paramMap);

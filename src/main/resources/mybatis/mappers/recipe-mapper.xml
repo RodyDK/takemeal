@@ -25,7 +25,12 @@
             COUNT(no)
         FROM
             recipe
-		]]> 
+        ]]>
+       	<if test="subject != null">
+	    	<![CDATA[ 
+		    WHERE subject like '%'||#{subject}||'%'
+		    ]]>
+		</if>
     </select>
     
     
@@ -39,6 +44,14 @@
             thumbnail2,
             thumbnail3,
             thumbnail4,
+            desc1,
+            desc2,
+            desc3,
+            desc4,
+            tag,
+            people,
+            recipe_food,
+            recipe_amount,
             time
         )values(
         	RECIPE_SEQ.NEXTVAL,
@@ -48,6 +61,14 @@
             #{thumbnail2, jdbcType=VARCHAR},
             #{thumbnail3, jdbcType=VARCHAR},
             #{thumbnail4, jdbcType=VARCHAR},
+            #{desc1},
+            #{desc2},
+            #{desc3},
+            #{desc4},
+            #{tag},
+            #{people},
+            #{recipe_food},
+            #{recipe_amount},
             #{time}
         )
         ]]>
@@ -55,22 +76,78 @@
     
     
     <select id="selectContent" resultType="com.cm.takemeal.recipe.model.vo.Recipe" parameterType="java.util.HashMap">
-    	<![CDATA[ 
-    	SELECT * FROM (
-		    SELECT no, subject, contents, time, follow, thumbnail1, thumbnail2, thumbnail3, thumbnail4, TO_CHAR(reg_date,'YYYY-MM-DD'), ROW_NUMBER() OVER(ORDER BY NO DESC) AS RNUM
-		    FROM recipe
+    
+    	<if test="userid != null">
+    	<![CDATA[
+        SELECT * FROM (
+		    SELECT r.no, r.userid, r.subject, r.contents, r.time, r.follow, r.thumbnail1, r.thumbnail2, r.thumbnail3, r.thumbnail4, TO_CHAR(r.reg_date,'YYYY-MM-DD'), ROW_NUMBER() OVER(ORDER BY r.no DESC) AS RNUM
+		    FROM recipe r LEFT JOIN recipe_like l on  r.no = l.recipe_no WHERE l.USERID = #{userid}
+		]]>
+			<if test="username != null">
+		    	<![CDATA[ 
+			    AND username like '%'||#{username}||'%'
+			    ]]>
+			</if>
+		<![CDATA[
 		)
 		WHERE RNUM > #{start} AND RNUM <= #{end}
+		]]>
+		</if>
+		
+		<if test="userid == null">
+    	<![CDATA[ 
+    	SELECT * FROM (
+		    SELECT m.username, r.no, r.userid, r.subject, r.contents, r.time, r.follow, r.thumbnail1, r.thumbnail2, r.thumbnail3, r.thumbnail4, TO_CHAR(r.reg_date,'YYYY-MM-DD'), ROW_NUMBER() OVER(ORDER BY r.no DESC) AS RNUM
+		    FROM
+		    	recipe r LEFT JOIN member m
+		    ON r.userid = m.userid
+		]]> 
+		 
+		    <if test="subject != null">
+		    	<![CDATA[ 
+			    WHERE r.subject like '%'||#{subject}||'%'
+			    ]]>
+			</if>
+		<![CDATA[
+			)
+		WHERE RNUM > #{start} AND RNUM <= #{end}
+		]]> 
+		</if>
+    </select>
+
+
+
+
+    <update id="upLike" parameterType="java.util.HashMap">
+    	<![CDATA[ 
+		UPDATE recipe SET follow = follow + 1
+		WHERE 
+			no = #{recipe_no}
+		]]> 
+    </update>
+
+    <update id="downLike" parameterType="java.util.HashMap">
+    	<![CDATA[ 
+		UPDATE recipe SET follow = follow - 1
+		WHERE 
+			no = #{recipe_no}
+		]]> 
+    </update>
+    
+    <select id="selectLikeCnt" resultType="int" parameterType="java.util.HashMap">
+    	<![CDATA[ 
+		SELECT
+			count(*)
+		FROM 
+			recipe_like
+		WHERE 
+			userid = #{userid} AND recipe_no = #{recipe_no}
 		]]> 
     </select>
-    
-    
-    
     
     <select id="selectRecipeLikeCnt" resultType="java.util.HashMap" parameterType="java.util.HashMap">
     	<![CDATA[ 
 		SELECT
-			no,
 			recipe_no,
 			userid
 		FROM 
@@ -84,10 +161,23 @@
     	<![CDATA[ 
 		SELECT
 			no,
+			userid,
 			subject,
 			contents,
 			time,
 			follow,
+			recipe_food,
+			recipe_amount,
+            thumbnail1,
+            thumbnail2,
+            thumbnail3,
+            thumbnail4,
+            desc1,
+            desc2,
+            desc3,
+            desc4,
+            tag,
+            people,
 			TO_CHAR(reg_date,'YYYY-MM-DD')
 		FROM 
 			recipe
@@ -98,10 +188,25 @@
     
     
 	
+    <insert id="saveLike" parameterType="java.util.HashMap">
+    	<![CDATA[ 
+        INSERT INTO recipe_like(
+        	recipe_no,
+            userid
+        )values(
+            #{recipe_no},
+            #{userid}
+        )
+        ]]>
+    </insert>
 
 
-
-
+    <delete id="deleteLike" parameterType="java.util.HashMap">
+    	<![CDATA[ 
+		DELETE FROM recipe_like
+		WHERE userid = #{userid} AND recipe_no = #{recipe_no}
+        ]]>
+    </delete>
 
 
 

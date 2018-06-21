@@ -32,6 +32,35 @@ public class RecipeServiceImpl implements RecipeService {
         return recipeDao.getContentCnt(paramMap);
     }
  
+    
+    @Override
+    public int deleteLike(Map<String, Object> paramMap) {
+        return recipeDao.deleteLike(paramMap);
+    }
+    
+    @Override
+    public int saveLike(Map<String, Object> paramMap) {
+        return recipeDao.saveLike(paramMap);
+    }
+
+    @Override
+    public int downLike(Map<String, Object> paramMap) {
+        return recipeDao.downLike(paramMap);
+    }
+    
+    @Override
+    public int upLike(Map<String, Object> paramMap) {
+        return recipeDao.upLike(paramMap);
+    }
+    
+    
+    @Override
+    public int getLikeCnt(Map<String, Object> paramMap) {
+        return recipeDao.getLikeCnt(paramMap);
+    }
+ 
+
+    
     @Override
     public List<String> getLike(Map<String, Object> paramMap) {
         return recipeDao.getLike(paramMap);
@@ -57,7 +86,7 @@ public class RecipeServiceImpl implements RecipeService {
 		for(int i=0, size=list.size(); i<size; i++){
 			paramMap.put("thumbnail"+(i+1), list.get(i).get("STORED_FILE_NAME"));
 		}
-		System.out.println("paramMap"+paramMap);
+		System.out.println("paramMap"+request);
         recipeDao.setRecipe(paramMap);
     }
     

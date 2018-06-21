@@ -12,14 +12,22 @@ public interface RecipeService {
 	
     int getContentCnt(Map<String, Object> paramMap);
     
+    int deleteLike(Map<String, Object> paramMap);
+    int saveLike(Map<String, Object> paramMap);
+    
     void setRecipe(Map<String, Object> paramMap, HttpServletRequest request) throws Exception;
     
     List<String> getLike(Map<String, Object> paramMap);
-
+    
+    int getLikeCnt(Map<String, Object> paramMap);
     
     List<Recipe> getContentList(Map<String, Object> paramMap);
 
     Recipe getContentView(Map<String, Object> paramMap);
+
+	int downLike(Map<String, Object> paramMap);
+
+	int upLike(Map<String, Object> paramMap);
     
     //List<RecipeReply> getReplyList(Map<String, Object> paramMap);
 }

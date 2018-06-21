@@ -47,7 +47,7 @@ $(document).ready(function(){
 	var recipe_tag_01_html = "";
 	$.each(recipe_tag_01,function(key,val){
 		if(val.use==true){
-			recipe_tag_01_html += '<input type="checkbox" name="recipe_tag_01[]" value="'+val.id+'" style="display:none" id="recipe_tag_01_'+val.id+'">';
+			recipe_tag_01_html += '<input type="checkbox" name="tag[]" value="'+val.id+'" style="display:none" id="recipe_tag_01_'+val.id+'">';
 			recipe_tag_01_html += '<label for="recipe_tag_01_'+val.id+'">'+val.value+'</label>';					
 		}
 		$("#recipe_tag_01_html").html(recipe_tag_01_html);
@@ -56,7 +56,7 @@ $(document).ready(function(){
 	var recipe_tag_02_html = "";
 	$.each(recipe_tag_02,function(key,val){
 		if(val.use==true){
-			recipe_tag_02_html += '<input type="checkbox" name="recipe_tag_02[]" value="'+val.id+'" style="display:none" id="recipe_tag_02_'+val.id+'">';
+			recipe_tag_02_html += '<input type="checkbox" name="tag[]" value="'+val.id+'" style="display:none" id="recipe_tag_02_'+val.id+'">';
 			recipe_tag_02_html += '<label for="recipe_tag_02_'+val.id+'">'+val.value+'</label>';					
 		}
 		$("#recipe_tag_02_html").html(recipe_tag_02_html);
@@ -65,7 +65,7 @@ $(document).ready(function(){
 	var recipe_tag_03_html = "";
 	$.each(recipe_tag_03,function(key,val){
 		if(val.use==true){
-			recipe_tag_03_html += '<input type="checkbox" name="recipe_tag_03[]" value="'+val.id+'" style="display:none" id="recipe_tag_03_'+val.id+'">';
+			recipe_tag_03_html += '<input type="checkbox" name="tag[]" value="'+val.id+'" style="display:none" id="recipe_tag_03_'+val.id+'">';
 			recipe_tag_03_html += '<label for="recipe_tag_03_'+val.id+'">'+val.value+'</label>';					
 		}
 		$("#recipe_tag_03_html").html(recipe_tag_03_html);
@@ -108,7 +108,39 @@ $(document).ready(function(){
 						<li>
 							<span>레시피 정보</span>
 							<div>
-								조리분량 <input type="text" class="small"> 인분, 조리시간 총 <input type="text" name="time" class="small"> 분 소요
+								조리분량 <input type="text" class="small" name="people"> 인분, 조리시간 총 <input type="text" name="time" class="small"> 분 소요
+							</div>
+						</li>
+						<li>
+							<span>재료정보</span>
+							<div>
+								<dl id="food_list">
+									<dd style="padding:5px 0;">
+										<input type="text" name="recipe_food[]" class="medium" placeholder="재료명 (예:삼겹살)"> <input type="text" name="recipe_amount[]" class="medium" placeholder="분량 (예:1인분)"><i class="fa fa-times-circle" style="font-size:16px; margin-left:10px;" onclick="deleteLine(this)"></i>
+									</dd>
+									<dd style="padding:5px 0;">
+										<input type="text" name="recipe_food[]" class="medium" placeholder="재료명 (예:삼겹살)"> <input type="text" name="recipe_amount[]" class="medium" placeholder="분량 (예:1인분)"><i class="fa fa-times-circle" style="font-size:16px; margin-left:10px;" onclick="deleteLine(this)"></i>
+									</dd>
+									<dd style="padding:5px 0;">
+										<input type="text" name="recipe_food[]" class="medium" placeholder="재료명 (예:삼겹살)"> <input type="text" name="recipe_amount[]" class="medium" placeholder="분량 (예:1인분)"><i class="fa fa-times-circle" style="font-size:16px; margin-left:10px;" onclick="deleteLine(this)"></i>
+									</dd>
+								</dl>
+								<span onclick="addLine()">
+									<i class="fa fa-plus-square" style="font-size:16px;"></i> 재료추가
+								</span>
+								<script>
+									function deleteLine(obj){
+										if($("#food_list dd").length > 1){
+											$(obj).parents("dd").remove();
+										}else{
+											alert("재료정보 최소 1개 등록해주세요!");
+										}
+									}
+									function addLine(obj){
+										$("#food_list").append('<dd style="padding:5px 0;"><input type="text" name="recipe_food[]" class="medium" placeholder="재료명 (예:삼겹살)"> <input type="text" name="recipe_amount[]" class="medium" placeholder="분량 (예:1인분)"><i class="fa fa-times-circle" style="font-size:16px; margin-left:10px;" onclick="deleteLine(this)"></i></dd>');
+									}
+									
+								</script>
 							</div>
 						</li>
 					</ul>
@@ -119,7 +151,7 @@ $(document).ready(function(){
 						<li>
 							<span>STEP 01</span>
 							<div>
-								<textarea></textarea>
+								<textarea name="desc1"></textarea>
 								<div class="input-file">
 									<span class="file-text"></span>
 									<span class="file-btn">찾아보기</span>
@@ -130,7 +162,7 @@ $(document).ready(function(){
 						<li>
 							<span>STEP 02</span>
 							<div>
-								<textarea></textarea>
+								<textarea name="desc2"></textarea>
 								<div class="input-file">
 									<span class="file-text"></span>
 									<span class="file-btn">찾아보기</span>
@@ -141,7 +173,7 @@ $(document).ready(function(){
 						<li>
 							<span>STEP 03</span>
 							<div>
-								<textarea></textarea>
+								<textarea name="desc3"></textarea>
 								<div class="input-file">
 									<span class="file-text"></span>
 									<span class="file-btn">찾아보기</span>
@@ -152,7 +184,7 @@ $(document).ready(function(){
 						<li>
 							<span>STEP 04</span>
 							<div>
-								<textarea></textarea>
+								<textarea name="desc4"></textarea>
 								<div class="input-file">
 									<span class="file-text"></span>
 									<span class="file-btn">찾아보기</span>
@@ -171,32 +203,18 @@ $(document).ready(function(){
 
 							</div>
 						</li>
-
-
 						<li>
 							<span>나라별 요리</span>
 							<div class="tag_box" id="recipe_tag_02_html">
 
 							</div>
 						</li>
-						
 						<li>
 							<span>재료별 요리</span>
 							<div class="tag_box" id="recipe_tag_03_html">
 
 							</div>
 						</li>
-						
-						
-						
-						
-
-			
-						
-						
-						
-						
-						
 					</ul>
 				</div>
 				

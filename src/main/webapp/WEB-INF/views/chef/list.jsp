@@ -14,10 +14,12 @@
 				　
 				</div>
 				<div class="search_form">
-					<input type="text" placeholder="요리사 이름으로 검색">
-					<a href="#">
-						<i class="fa fa-search"></i>
-					</a>
+					<form name="search" action="chefList.do" method="get">
+						<input type="text" name="username" placeholder="요리사 이름 으로 검색" value="${param.username}">
+						<button>
+							<i class="fa fa-search"></i>
+						</button>
+					</form>
 				</div>
 				<div class="sort">
 				　
@@ -27,42 +29,40 @@
 				<ul>
 				<c:choose>
 				    <c:when test="${fn:length(chefList) == 0}">
-				        <li>
+				        <li class="nodata">
 							조회결과가 없습니다.
 				        </li>
 				    </c:when>
 				    <c:otherwise>
 				        <c:forEach var="chefList" items="${chefList}" varStatus="status">
-						<li>
+						<li class="chef_box_${chefList.no}">
 							<div style="padding:30px 0;">
 								<span class="author">
-									<a href="/profile/10">
+									<a href="chefView.do?userid=${chefList.userid}">
 										<span class="profile_thumb">
-											<img src="https://cloudfront.haemukja.com/vh.php?url=https://d1hk7gw6lgygff.cloudfront.net/uploads/user/image_file/10/thumb__BF_F8_C7_FC.jpg&amp;convert=jpgmin&amp;rt=600">
+											<img src="/takeMeal/resources/upfile/chef/${chefList.userid}.jpg">
 										</span>
-										<strong>${recipeList.username}</strong>
+										<strong>${chefList.username}</strong>
 									</a>			
 								</span>
 								<div class="author-tag">
-									<span>한식</span>
-									<span>간편요리</span>
-									<span>안주</span>
+									<span>${chefList.info}</span>
 								</div>
 							</div>
 							<div class="option">
 								<div>
-									<a href="#">
+									<a href="chefView.do?userid=${chefList.userid}">
 									<i class="fa fa-list-alt"></i>
 									레시피
 									</a>
 								</div>
 								<div>
-									<a href="${recipeList.blog}" target="_blank">
+									<a href="${chefList.blog}" target="_blank">
 									<i class="fa fa-bold"></i>
 									블로그
 									</a>
 								</div>
-								<div>
+								<div class="follow" rel="${chefList.no}">
 									<a href="#">
 									<i class="fa fa-star"></i>
 									팔로우

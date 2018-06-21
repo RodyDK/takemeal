@@ -17,10 +17,12 @@
 				　
 				</div>
 				<div class="search_form">
-					<input type="text" placeholder="요리사 이름으로 검색">
-					<a href="#">
-						<i class="fa fa-search"></i>
-					</a>
+					<form name="search" action="shopList.do" method="get">
+						<input type="text" name="goodsname" placeholder="상품명 으로 검색" value="${param.goodsname}">
+						<button>
+							<i class="fa fa-search"></i>
+						</button>
+					</form>
 				</div>
 				<div class="sort">
 				　
@@ -30,7 +32,7 @@
 				<ul>
 				<c:choose>
 				    <c:when test="${fn:length(shopList) == 0}">
-				        <li>
+				        <li class="nodata">
 							조회결과가 없습니다.
 				        </li>
 				    </c:when>

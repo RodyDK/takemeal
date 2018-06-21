@@ -16,31 +16,132 @@
             COUNT(no)
         FROM
             MEMBER WHERE type = 3
+        ]]> 
+	    <if test="username != null">
+	    	<![CDATA[ 
+		    AND username like '%'||#{username}||'%'
+		    ]]>
+		</if>
+		
+    </select>
+
+
+    <select id="getFollow" resultType="java.util.HashMap" parameterType="java.util.HashMap">
+    	<![CDATA[ 
+		SELECT
+			chef_no,
+			userid
+		FROM 
+			chef_follow
+		WHERE 
+			userid = #{userid}
 		]]> 
     </select>
     
-    <select id="selectChefContent" resultType="com.cm.takemeal.recipe.model.vo.Recipe" parameterType="java.util.HashMap">
+    <select id="selectChefContent" resultType="com.cm.takemeal.member.model.vo.Member" parameterType="java.util.HashMap">
+    	<if test="userid != null">
+    	<![CDATA[
+        SELECT * FROM (
+		    SELECT m.no, m.userid, m.username, m.type, m.blog, m.info, ROW_NUMBER() OVER(ORDER BY m.NO DESC) AS RNUM
+		    FROM MEMBER m right join CHEF_FOLLOW c on  m.no = c.chef_no WHERE c.USERID = #{userid}
+		]]>
+			<if test="username != null">
+		    	<![CDATA[ 
+			    AND username like '%'||#{username}||'%'
+			    ]]>
+			</if>
+		<![CDATA[
+		)
+		WHERE RNUM > #{start} AND RNUM <= #{end}
+		]]>
+		</if>
+		<if test="userid == null">
     	<![CDATA[ 
     	SELECT * FROM (
-		    SELECT no, username, type, blog, ROW_NUMBER() OVER(ORDER BY NO DESC) AS RNUM
-		    FROM MEMBER
+		    SELECT no, userid, username, type, blog, info, ROW_NUMBER() OVER(ORDER BY NO DESC) AS RNUM
+		    FROM MEMBER WHERE type = 3
+		]]>
+	    <if test="username != null">
+	    	<![CDATA[ 
+		    AND username like '%'||#{username}||'%'
+		    ]]>
+		</if>
+		<![CDATA[
 		)
-		WHERE RNUM > #{start} AND RNUM <= #{end} AND type = 3
+		WHERE RNUM > #{start} AND RNUM <= #{end}
+		]]> 
+		</if>
+    </select>
+    
+    
+	<select id="selectRecipeContentCnt" resultType="int" parameterType="java.util.HashMap">
+    	<![CDATA[ 
+        SELECT
+            COUNT(no)
+        FROM
+            recipe
+        WHERE userid = #{userid}
 		]]> 
     </select>
+    
+    <select id="selectRecipeContent" resultType="com.cm.takemeal.recipe.model.vo.Recipe" parameterType="java.util.HashMap">
+    	<![CDATA[ 
+    	SELECT * FROM (
+			SELECT m.username, r.no, r.userid, r.subject, r.contents, r.time, r.follow, r.thumbnail1, r.thumbnail2, r.thumbnail3, r.thumbnail4, TO_CHAR(r.reg_date,'YYYY-MM-DD'), ROW_NUMBER() OVER(ORDER BY r.no DESC) AS RNUM
+		    FROM recipe r LEFT JOIN member m ON r.userid = m.userid WHERE r.userid = #{userid}
+		)
+		WHERE RNUM > #{start} AND RNUM <= #{end}
+		]]> 
+    </select>
+    
+    
+    
     
     
     <select id="selectChefContentView" resultType="com.cm.takemeal.chef.model.vo.Chef" parameterType="java.util.HashMap">
     	<![CDATA[ 
 		SELECT
 			no,
+			userid,
 			username,
-			type,
-			blog
+			blog,
+			info
 		FROM 
-			chef
+			member
 		WHERE 
-			no = #{no}
+			userid = #{userid}
 		]]> 
     </select>
+
+    <select id="getFollowCnt" resultType="int" parameterType="java.util.HashMap">
+    	<![CDATA[ 
+		SELECT
+			count(*)
+		FROM 
+			chef_follow
+		WHERE 
+			userid = #{userid} AND chef_no = #{chef_no}
+		]]> 
+    </select>
+    
+    <insert id="saveFollow" parameterType="java.util.HashMap">
+    	<![CDATA[ 
+        INSERT INTO chef_follow(
+        	chef_no,
+            userid
+        )values(
+            #{chef_no},
+            #{userid}
+        )
+        ]]>
+    </insert>
+
+
+    <delete id="deleteFollow" parameterType="java.util.HashMap">
+    	<![CDATA[ 
+		DELETE FROM chef_follow
+		WHERE userid = #{userid} AND chef_no = #{chef_no}
+        ]]>
+    </delete>
+    
 </mapper>
